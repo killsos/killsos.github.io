@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="模块化CommonJS123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051521. function require(path)&amp;#123;    return mod.require(path);&amp;#125;2. Module.prototype.require">
+<meta name="description" content="Promise同步版123456789101112131415161718192021222324252627282930313233343536function Promise(executor) &amp;#123;    let that = this;    that.status = &apos;pending&apos;;    that.value = &apos;&apos;;    that.reason = &apos;&apos;;    f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CommonJS的实现">
-<meta property="og:url" content="http://jsonload.com/2019/03/05/CommonJS的实现/index.html">
+<meta property="og:title" content="Promise的实现">
+<meta property="og:url" content="http://jsonload.com/2019/03/05/promise的实现/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="模块化CommonJS123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051521. function require(path)&amp;#123;    return mod.require(path);&amp;#125;2. Module.prototype.require">
+<meta property="og:description" content="Promise同步版123456789101112131415161718192021222324252627282930313233343536function Promise(executor) &amp;#123;    let that = this;    that.status = &apos;pending&apos;;    that.value = &apos;&apos;;    that.reason = &apos;&apos;;    f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-04T20:11:20.702Z">
+<meta property="og:updated_time" content="2019-03-04T20:21:43.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CommonJS的实现">
-<meta name="twitter:description" content="模块化CommonJS123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051521. function require(path)&amp;#123;    return mod.require(path);&amp;#125;2. Module.prototype.require">
+<meta name="twitter:title" content="Promise的实现">
+<meta name="twitter:description" content="Promise同步版123456789101112131415161718192021222324252627282930313233343536function Promise(executor) &amp;#123;    let that = this;    that.status = &apos;pending&apos;;    that.value = &apos;&apos;;    that.reason = &apos;&apos;;    f">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/03/05/CommonJS的实现/">
+  <link rel="canonical" href="http://jsonload.com/2019/03/05/promise的实现/">
 
 
 
 
 
-  <title>CommonJS的实现 | killsos</title>
+  <title>Promise的实现 | killsos</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/05/CommonJS的实现/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/05/promise的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CommonJS的实现</h1>
+          <h1 class="post-title" itemprop="name headline">Promise的实现</h1>
         
 
         <div class="post-meta">
@@ -261,7 +261,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T03:10:53+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T04:10:40+08:00">
                 2019-03-05
               </time>
             
@@ -299,7 +299,7 @@
       
 
       
-        <h2 id="模块化CommonJS"><a href="#模块化CommonJS" class="headerlink" title="模块化CommonJS"></a>模块化CommonJS</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="function"><span class="keyword">function</span> <span class="title">require</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mod.require(path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> Module.prototype.require = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> Module._load = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">request, parent</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> filename =Module._resolveFilename(request, parent);</span><br><span class="line"></span><br><span class="line">    <span class="number">1</span> 先看缓存里是否有 如果有直接返回</span><br><span class="line">        Module._cache(requestfilename);</span><br><span class="line"></span><br><span class="line">    <span class="number">2</span> 没有 生成一个新模块</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent)</span><br><span class="line"></span><br><span class="line">    tryModuleLoad(<span class="built_in">module</span>, filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> <span class="function"><span class="keyword">function</span> <span class="title">tryModuleLoad</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">module</span>.load(filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> Module.prototype.load = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.filename = filename;</span><br><span class="line">    <span class="keyword">this</span>.path = ;</span><br><span class="line">    <span class="keyword">var</span> extension = ;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// extension 可能是 js json node </span></span><br><span class="line"></span><br><span class="line">    Module._extension[extension](<span class="keyword">this</span>, filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span> Module._extension[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>._compile(stripBOM(content), filename);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">7.</span> Module.prototype._compile = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 返回一个匿名函数的字符串</span></span><br><span class="line">    <span class="keyword">var</span> warpper = Module.warp(content);</span><br><span class="line">    <span class="comment">// 将字符串返回为一个函数</span></span><br><span class="line">    <span class="keyword">var</span> compiledWarpper = vm.runInThisContext(warpper,&#123;filename&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> result = compiledWarpper.call(<span class="keyword">this</span>.exports,<span class="keyword">this</span>.exports, <span class="built_in">require</span>,)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="Promise同步版"><a href="#Promise同步版" class="headerlink" title="Promise同步版"></a>Promise同步版</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Promise</span>(<span class="params">executor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">    that.status = <span class="string">'pending'</span>;</span><br><span class="line">    that.value = <span class="string">''</span>;</span><br><span class="line">    that.reason = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(that.status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">            that.status = <span class="string">'fulfilled'</span>;</span><br><span class="line">            that.value = value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">reason</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(that.status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">            that.status = <span class="string">'rejected'</span>;</span><br><span class="line">            that.reason = reason;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    executor(resolve,reject);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.prototype.then = <span class="function"><span class="keyword">function</span> (<span class="params">onFulfilled, onRejected</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'fulfilled'</span>) &#123;</span><br><span class="line">        onFulfilled(<span class="keyword">this</span>.value)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'rejected'</span>) &#123;</span><br><span class="line">        onRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="built_in">Promise</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -323,8 +323,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/ES201/" rel="next" title="Javascript ES201*">
-                <i class="fa fa-chevron-left"></i> Javascript ES201*
+              <a href="/2019/03/05/CommonJS的实现/" rel="next" title="CommonJS的实现">
+                <i class="fa fa-chevron-left"></i> CommonJS的实现
               </a>
             
           </div>
@@ -332,10 +332,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/05/promise的实现/" rel="prev" title="Promise的实现">
-                Promise的实现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -449,7 +445,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化CommonJS"><span class="nav-number">1.</span> <span class="nav-text">模块化CommonJS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise同步版"><span class="nav-number">1.</span> <span class="nav-text">Promise同步版</span></a></li></ol></div>
             
 
           </div>

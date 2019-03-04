@@ -229,6 +229,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/05/promise的实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/promise的实现/" itemprop="url">Promise的实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T04:10:40+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Promise同步版"><a href="#Promise同步版" class="headerlink" title="Promise同步版"></a>Promise同步版</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Promise</span>(<span class="params">executor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">    that.status = <span class="string">'pending'</span>;</span><br><span class="line">    that.value = <span class="string">''</span>;</span><br><span class="line">    that.reason = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(that.status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">            that.status = <span class="string">'fulfilled'</span>;</span><br><span class="line">            that.value = value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">reason</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(that.status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">            that.status = <span class="string">'rejected'</span>;</span><br><span class="line">            that.reason = reason;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    executor(resolve,reject);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.prototype.then = <span class="function"><span class="keyword">function</span> (<span class="params">onFulfilled, onRejected</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'fulfilled'</span>) &#123;</span><br><span class="line">        onFulfilled(<span class="keyword">this</span>.value)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'rejected'</span>) &#123;</span><br><span class="line">        onRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="built_in">Promise</span>;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/05/CommonJS的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -300,7 +419,7 @@
       
         
           
-            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="function"><span class="keyword">function</span> <span class="title">require</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mod.require(path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> Module.prototype.require = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> Module._load = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">request, parent</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> filename =Module._resolveFilename(request, parent);</span><br><span class="line"></span><br><span class="line">    <span class="number">1</span> 先看缓存里是否有 如果有直接返回</span><br><span class="line">        Module._cache(requestfilename);</span><br><span class="line"></span><br><span class="line">    <span class="number">2</span> 没有 生成一个新模块</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent)</span><br><span class="line"></span><br><span class="line">    tryModuleLoad(<span class="built_in">module</span>, filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> <span class="function"><span class="keyword">function</span> <span class="title">tryModuleLoad</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">module</span>.load(filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> Module.prototype.load = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.filename = filename;</span><br><span class="line">    <span class="keyword">this</span>.path = ;</span><br><span class="line">    <span class="keyword">var</span> extension = ;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// extension 可能是 js json node </span></span><br><span class="line"></span><br><span class="line">    Module._extension[extension](<span class="keyword">this</span>, filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span> Module._extension[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>._compile(stripBOM(content), filename);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">7.</span> Module.prototype._compile = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 返回一个匿名函数的字符串</span></span><br><span class="line">    <span class="keyword">var</span> warpper = Module.warp(content);</span><br><span class="line">    <span class="comment">// 将字符串返回为一个函数</span></span><br><span class="line">    <span class="keyword">var</span> compiledWarpper = vm.runInThisContext(warpper,&#123;filename&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> result = compiledWarpper.call(<span class="keyword">this</span>.exports,<span class="keyword">this</span>.exports, <span class="built_in">require</span>,)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="模块化CommonJS"><a href="#模块化CommonJS" class="headerlink" title="模块化CommonJS"></a>模块化CommonJS</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="function"><span class="keyword">function</span> <span class="title">require</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mod.require(path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> Module.prototype.require = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> Module._load = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">request, parent</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> filename =Module._resolveFilename(request, parent);</span><br><span class="line"></span><br><span class="line">    <span class="number">1</span> 先看缓存里是否有 如果有直接返回</span><br><span class="line">        Module._cache(requestfilename);</span><br><span class="line"></span><br><span class="line">    <span class="number">2</span> 没有 生成一个新模块</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent)</span><br><span class="line"></span><br><span class="line">    tryModuleLoad(<span class="built_in">module</span>, filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> <span class="function"><span class="keyword">function</span> <span class="title">tryModuleLoad</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">module</span>.load(filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> Module.prototype.load = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.filename = filename;</span><br><span class="line">    <span class="keyword">this</span>.path = ;</span><br><span class="line">    <span class="keyword">var</span> extension = ;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// extension 可能是 js json node </span></span><br><span class="line"></span><br><span class="line">    Module._extension[extension](<span class="keyword">this</span>, filename)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span> Module._extension[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>._compile(stripBOM(content), filename);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">7.</span> Module.prototype._compile = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 返回一个匿名函数的字符串</span></span><br><span class="line">    <span class="keyword">var</span> warpper = Module.warp(content);</span><br><span class="line">    <span class="comment">// 将字符串返回为一个函数</span></span><br><span class="line">    <span class="keyword">var</span> compiledWarpper = vm.runInThisContext(warpper,&#123;filename&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> result = compiledWarpper.call(<span class="keyword">this</span>.exports,<span class="keyword">this</span>.exports, <span class="built_in">require</span>,)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -504,7 +623,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
