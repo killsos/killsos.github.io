@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="CommonJS主流程的实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162const fs = require(&apos;fs&apos;);const vm = require(&apos;vm&apos;);const path = require(">
+<meta name="description" content="回滚大致分为下面2种情况 1.没有push这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题 准备取消提交,用到下面命令  git reset [--soft | --mixed | --hard  --mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.  git reset 默认是 --mixed 模式    git reset">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CommonJS的初步实现">
-<meta property="og:url" content="http://jsonload.com/2019/03/06/CommonJS的初步实现/index.html">
+<meta property="og:title" content="git reset revert">
+<meta property="og:url" content="http://jsonload.com/2019/03/17/git-reset-revert/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="CommonJS主流程的实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162const fs = require(&apos;fs&apos;);const vm = require(&apos;vm&apos;);const path = require(">
+<meta property="og:description" content="回滚大致分为下面2种情况 1.没有push这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题 准备取消提交,用到下面命令  git reset [--soft | --mixed | --hard  --mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.  git reset 默认是 --mixed 模式    git reset">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-06T10:25:07.565Z">
+<meta property="og:updated_time" content="2019-03-17T12:56:20.707Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CommonJS的初步实现">
-<meta name="twitter:description" content="CommonJS主流程的实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162const fs = require(&apos;fs&apos;);const vm = require(&apos;vm&apos;);const path = require(">
+<meta name="twitter:title" content="git reset revert">
+<meta name="twitter:description" content="回滚大致分为下面2种情况 1.没有push这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题 准备取消提交,用到下面命令  git reset [--soft | --mixed | --hard  --mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.  git reset 默认是 --mixed 模式    git reset">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/03/06/CommonJS的初步实现/">
+  <link rel="canonical" href="http://jsonload.com/2019/03/17/git-reset-revert/">
 
 
 
 
 
-  <title>CommonJS的初步实现 | killsos</title>
+  <title>git reset revert | killsos</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/06/CommonJS的初步实现/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/git-reset-revert/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CommonJS的初步实现</h1>
+          <h1 class="post-title" itemprop="name headline">git reset revert</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-06T05:15:27+08:00">
-                2019-03-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T20:45:48+08:00">
+                2019-03-17
               </time>
             
 
@@ -299,7 +299,59 @@
       
 
       
-        <h2 id="CommonJS主流程的实现"><a href="#CommonJS主流程的实现" class="headerlink" title="CommonJS主流程的实现"></a>CommonJS主流程的实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> vm = <span class="built_in">require</span>(<span class="string">'vm'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">req</span>(<span class="params">modulePath</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取文件绝对路径</span></span><br><span class="line">    <span class="keyword">let</span> absPath = path.resolve(__dirname, modulePath);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (Module._cache[absPath]) &#123;</span><br><span class="line">        <span class="keyword">return</span> Module._cache[absPath].exports</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成一个新module</span></span><br><span class="line">    <span class="keyword">let</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(absPath);</span><br><span class="line"></span><br><span class="line">    Module._cache[absPath] = <span class="built_in">module</span>;</span><br><span class="line"></span><br><span class="line">    tryModuleLoad(<span class="built_in">module</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Module</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// id 是文件的绝对路径</span></span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">    <span class="comment">// exports 是返回结果</span></span><br><span class="line">    <span class="keyword">this</span>.exports = &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Module._wrapper = [</span><br><span class="line">    <span class="string">"(function(exprots, module, require, __dirname, __filename) &#123;"</span>,</span><br><span class="line">    <span class="string">"&#125;)"</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Module._extensions = [</span><br><span class="line">    <span class="string">'.js'</span> (<span class="built_in">module</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> content = fs.readFileSync(<span class="built_in">module</span>.id, <span class="string">'utf8'</span>);</span><br><span class="line">        <span class="keyword">let</span> fnString = Module._wrapper[<span class="number">0</span>] + content + Module._wrapper[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">let</span> fn = vm.runInThisContext(fnString);</span><br><span class="line">        <span class="keyword">let</span> result = fn.call(<span class="built_in">module</span>.exports, <span class="built_in">module</span>.exports, <span class="built_in">module</span>, req)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'.json'</span> (<span class="built_in">module</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> json = <span class="built_in">JSON</span>.parse(fs.readFileSync(<span class="built_in">module</span>.id, <span class="string">'utf8'</span>));</span><br><span class="line">        <span class="built_in">module</span>.exports = json;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tryModuleLoad</span>(<span class="params">module</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> extension = path.extname(<span class="built_in">module</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!extension) &#123;</span><br><span class="line">        extension = <span class="string">'.js'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Module._extensions[extension](<span class="built_in">module</span>.id)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = req(<span class="string">'./a'</span>);</span><br></pre></td></tr></table></figure>
+        <h2 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h2><pre><code>大致分为下面2种情况
+</code></pre><h4 id="1-没有push"><a href="#1-没有push" class="headerlink" title="1.没有push"></a>1.没有push</h4><pre><code>这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题
+准备取消提交,用到下面命令
+
+git reset [--soft | --mixed | --hard
+
+--mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.
+
+git reset 默认是 --mixed 模式   
+git reset --mixed  等价于  git reset
+
+--soft
+保留源码,只回退到commit 信息到某个版本
+不涉及index的回退,如果还需要提交,直接commit即可.
+
+--hard
+源码也会回退到某个版本,commit和index 都回回退到某个版本
+(注意,这种方式是改变本地代码仓库源码)
+</code></pre><h4 id="2-已经push"><a href="#2-已经push" class="headerlink" title="2.已经push"></a>2.已经push</h4><pre><code>对于已经把代码push到线上仓库,你回退本地代码其实也想同时回退线上代码
+
+回滚到某个指定的版本,线上,线下代码保持一致.你要用到下面的命令
+
+git revert用于反转提交,执行evert命令时要求工作树必须是干净的
+
+git revert用一个新提交来消除一个历史提交所做的任何修改
+
+revert 之后你的本地代码会回滚到指定的历史版本
+
+这时你再 git push 既可以把线上的代码更新
+
+revert 使用,需要先找到你想回滚版本唯一的commit标识代码
+
+可以用 git log 或者在adgit搭建的web环境历史提交记录里查看
+
+git revert c011eb3c20ba6fb38cc94fe5a8dda366a3990c61
+
+通常,前几位即可
+
+git revert c011eb3
+</code></pre><h4 id="git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit"><a href="#git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit" class="headerlink" title="git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit"></a>git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit</h4><pre><code>看似达到的效果是一样的,其实完全不同.
+
+第一:
+
+上面我们说的如果你已经push到线上代码库, reset 删除指定commit以后,你git push可能导致一大堆冲突.但是revert 并不会.
+
+第二:
+
+如果在日后现有分支和历史分支需要合并的时候,reset 恢复部分的代码依然会出现在历史分支里.但是revert 方向提交的commit 并不会出现在历史分支里.
+
+第三:
+
+reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的HEAD 是一直向前的.
+</code></pre>
       
     </div>
     
@@ -323,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/promise的实现/" rel="next" title="Promise的实现">
-                <i class="fa fa-chevron-left"></i> Promise的实现
+              <a href="/2019/03/17/粘包分析/" rel="next" title="粘包分析">
+                <i class="fa fa-chevron-left"></i> 粘包分析
               </a>
             
           </div>
@@ -332,10 +384,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/16/众妙之门-网站UI设计之道/" rel="prev" title="众妙之门-网站UI设计之道">
-                众妙之门-网站UI设计之道 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -458,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJS主流程的实现"><span class="nav-number">1.</span> <span class="nav-text">CommonJS主流程的实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#回滚"><span class="nav-number">1.</span> <span class="nav-text">回滚</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-没有push"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.没有push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-已经push"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.已经push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit"><span class="nav-number">1.0.3.</span> <span class="nav-text">git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit</span></a></li></ol></li></ol></div>
             
 
           </div>
