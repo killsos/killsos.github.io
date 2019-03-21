@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="ES核心特色 let const let const 具有块级作用域 var没有块级作用域  1234567&amp;#123;    let a = 1; &amp;#125;console.log(a); // ReferenceError: a is not defined  From IIFEs to blocks  12345678910111213141516(function () &amp;#123;">
+<meta name="description" content="虚拟机有三种网络模式 桥接  NAT  Host-Only   桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能  通过宿主">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript ES201* - 01">
-<meta property="og:url" content="http://jsonload.com/2019/03/05/ES201*-01/index.html">
+<meta property="og:title" content="虚拟机网络模式">
+<meta property="og:url" content="http://jsonload.com/2019/03/22/虚拟机网络模式/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="ES核心特色 let const let const 具有块级作用域 var没有块级作用域  1234567&amp;#123;    let a = 1; &amp;#125;console.log(a); // ReferenceError: a is not defined  From IIFEs to blocks  12345678910111213141516(function () &amp;#123;">
+<meta property="og:description" content="虚拟机有三种网络模式 桥接  NAT  Host-Only   桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能  通过宿主">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-10T02:11:33.199Z">
+<meta property="og:updated_time" content="2019-03-21T17:10:53.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript ES201* - 01">
-<meta name="twitter:description" content="ES核心特色 let const let const 具有块级作用域 var没有块级作用域  1234567&amp;#123;    let a = 1; &amp;#125;console.log(a); // ReferenceError: a is not defined  From IIFEs to blocks  12345678910111213141516(function () &amp;#123;">
+<meta name="twitter:title" content="虚拟机网络模式">
+<meta name="twitter:description" content="虚拟机有三种网络模式 桥接  NAT  Host-Only   桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能  通过宿主">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/03/05/ES201*-01/">
+  <link rel="canonical" href="http://jsonload.com/2019/03/22/虚拟机网络模式/">
 
 
 
 
 
-  <title>Javascript ES201* - 01 | killsos</title>
+  <title>虚拟机网络模式 | killsos</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/05/ES201*-01/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/22/虚拟机网络模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Javascript ES201* - 01</h1>
+          <h1 class="post-title" itemprop="name headline">虚拟机网络模式</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T02:22:41+08:00">
-                2019-03-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-22T00:21:13+08:00">
+                2019-03-22
               </time>
             
 
@@ -299,16 +299,86 @@
       
 
       
-        <p>ES核心特色</p>
-<h2 id="let-const"><a href="#let-const" class="headerlink" title="let const"></a>let const</h2><ol>
-<li>let const 具有块级作用域 var没有块级作用域</li>
+        <h2 id="虚拟机有三种网络模式"><a href="#虚拟机有三种网络模式" class="headerlink" title="虚拟机有三种网络模式"></a>虚拟机有三种网络模式</h2><ol>
+<li><p>桥接</p>
+</li>
+<li><p>NAT</p>
+</li>
+<li><p>Host-Only</p>
+</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); </span><br><span class="line"></span><br><span class="line"><span class="comment">// ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>From IIFEs to blocks</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  <span class="comment">// open IIFE</span></span><br><span class="line">    <span class="keyword">var</span> tmp = ···;</span><br><span class="line">    ···</span><br><span class="line">&#125;());  <span class="comment">// close IIFE</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(tmp); <span class="comment">// ReferenceError</span></span><br><span class="line"></span><br><span class="line">In ECMAScript <span class="number">6</span></span><br><span class="line"></span><br><span class="line">&#123;  <span class="comment">// open block</span></span><br><span class="line">    <span class="keyword">let</span> tmp = ···;</span><br><span class="line">    ···</span><br><span class="line">&#125;  <span class="comment">// close block</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(tmp); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
+<h2 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h2><pre><code>桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接
 
+物理网卡和虚拟网卡在拓扑图上处于同等地位
+
+那么物理网卡和虚拟网卡就相当于处于同一个网段
+
+虚拟交换机就相当于一台现实网络中的交换机
+
+所以两个网卡的IP地址也要设置为同一网段   
+</code></pre><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><pre><code>NAT模式中  就是让虚拟机借助NAT(网络地址转换)功能
+
+通过宿主机器所在的网络来访问公网
+
+NAT模式中   虚拟机的网卡和物理网卡的网络 不在同一个网络
+
+虚拟机的网卡  是在vmware提供的一个虚拟网络
+
+NAT和桥接的比较:
+
+    1   NAT模式和桥接模式虚拟机都可以上外网
+
+    2   由于NAT的网络在vmware提供的一个虚拟网络里
+        所以局域网其他主机是无法访问虚拟机的  而宿主机可以访问虚拟机
+        虚拟机可以访问局域网的所有主机
+        因为真实的局域网相对于NAT的虚拟网络
+        就是NAT的虚拟网络的外网
+
+    3   桥接模式下 多个虚拟机之间可以互相访问
+        NAT模式下 多个虚拟机之间也可以相互访问
+
+如果你建一个虚拟机 只是给自己用 不需要给局域网其他人用  那么可以选择NAT
+
+毕竟NAT模式下的虚拟系统的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP服务器提供的
+
+只要虚拟机的网路配置是DHCP  那么你不需要进行任何其他的配置
+
+只需要宿主机器能访问互联网即可  就可以让虚拟机联网了    
+</code></pre><h2 id="Host-Only"><a href="#Host-Only" class="headerlink" title="Host-Only"></a>Host-Only</h2><pre><code>在Host-Only模式下 虚拟网络是一个全封闭的网络
+
+它唯一能够访问的就是主机
+
+其实Host-Only网络和NAT网络很相似 不同的地方就是Host-Only网络没有NAT服务
+
+所以虚拟网络不能连接到Internet
+
+主机和虚拟机之间的通信是通过VMware Network Adepter VMnet1虚拟网卡来实现的
+
+Host-Only的宗旨就是建立一个与外界隔绝的内部网络 来提高内网的安全性
+
+这个功能或许对普通用户来说没有多大意义
+
+但大型服务商会常常利用这个功能
+
+如果你想为VMnet1网段提供路由功能
+
+那就需要使用RRAS    而不能使用XP或2000的ICS
+
+因为ICS会把内网的IP地址改为192.168.0.1
+
+但虚拟机是不会给VMnet1虚拟网卡分配这个地址的
+
+那么主机和虚拟机之间就不能通信了
+</code></pre><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><pre><code>在VMware的3中网络模式中 NAT模式是最简单的
+
+基本不需要手动配置IP地址等相关参数 至于桥接模式则需要额外的IP地址
+
+如果是在内网环境中还很容易
+
+如果是ADSL宽带就比较麻烦了
+
+ISP一般是不会大方的多提供一个公网IP的
+</code></pre>
       
     </div>
     
@@ -332,15 +402,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/03/17/git-reset-revert/" rel="next" title="git reset revert">
+                <i class="fa fa-chevron-left"></i> git reset revert
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/05/CommonJS的实现剖析/" rel="prev" title="CommonJS的实现剖析">
-                CommonJS的实现剖析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -463,7 +533,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#let-const"><span class="nav-number">1.</span> <span class="nav-text">let const</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机有三种网络模式"><span class="nav-number">1.</span> <span class="nav-text">虚拟机有三种网络模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桥接"><span class="nav-number">2.</span> <span class="nav-text">桥接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT"><span class="nav-number">3.</span> <span class="nav-text">NAT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Host-Only"><span class="nav-number">4.</span> <span class="nav-text">Host-Only</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">5.</span> <span class="nav-text">综述</span></a></li></ol></div>
             
 
           </div>
