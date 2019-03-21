@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="虚拟机有三种网络模式 桥接  NAT  Host-Only   桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能  通过宿主">
+<meta name="description" content="虚拟机有三种网络模式1. 桥接  2. NAT  3. Host-Only 桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虚拟机网络模式">
 <meta property="og:url" content="http://jsonload.com/2019/03/22/虚拟机网络模式/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="虚拟机有三种网络模式 桥接  NAT  Host-Only   桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能  通过宿主">
+<meta property="og:description" content="虚拟机有三种网络模式1. 桥接  2. NAT  3. Host-Only 桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-21T17:10:53.305Z">
+<meta property="og:updated_time" content="2019-03-21T17:13:41.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机网络模式">
-<meta name="twitter:description" content="虚拟机有三种网络模式 桥接  NAT  Host-Only   桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能  通过宿主">
+<meta name="twitter:description" content="虚拟机有三种网络模式1. 桥接  2. NAT  3. Host-Only 桥接桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接  物理网卡和虚拟网卡在拓扑图上处于同等地位  那么物理网卡和虚拟网卡就相当于处于同一个网段  虚拟交换机就相当于一台现实网络中的交换机  所以两个网卡的IP地址也要设置为同一网段    NATNAT模式中  就是让虚拟机借助NAT(网络地址转换)功能">
 
 
 
@@ -299,15 +299,12 @@
       
 
       
-        <h2 id="虚拟机有三种网络模式"><a href="#虚拟机有三种网络模式" class="headerlink" title="虚拟机有三种网络模式"></a>虚拟机有三种网络模式</h2><ol>
-<li><p>桥接</p>
-</li>
-<li><p>NAT</p>
-</li>
-<li><p>Host-Only</p>
-</li>
-</ol>
-<h2 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h2><pre><code>桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接
+        <h2 id="虚拟机有三种网络模式"><a href="#虚拟机有三种网络模式" class="headerlink" title="虚拟机有三种网络模式"></a>虚拟机有三种网络模式</h2><pre><code>1. 桥接
+
+2. NAT
+
+3. Host-Only
+</code></pre><h2 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h2><pre><code>桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接
 
 物理网卡和虚拟网卡在拓扑图上处于同等地位
 
