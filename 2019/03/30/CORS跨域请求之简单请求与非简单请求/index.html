@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="killsos">
 <meta property="og:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T08:09:04.281Z">
+<meta property="og:updated_time" content="2019-03-30T08:10:50.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CORS跨域请求之简单请求与非简单请求">
 <meta name="twitter:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
@@ -316,13 +316,21 @@
         text/plain
 
 只有同时满足以上两个条件时,才是简单请求,否则为非简单请求
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据,服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据
+
+服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
 
 “预检”请求时，允许请求方式则需服务器设置响应头：Access-Control-Request-Method
+
 “预检”请求时，允许请求头则需服务器设置响应头：Access-Control-Request-Headers
+
 “预检”缓存时间，服务器设置响应头：Access-Control-Max-Age
-虽然可以通过设置响应头和响应方式等支持非简单请求,但是不到万不得已的情况,不能允许客户端发送非简单请求.
-因为非简单请求会使服务器比简单请求的多一倍的压力.
+
+虽然可以通过设置响应头和响应方式等支持非简单请求
+
+但是不到万不得已的情况,不能允许客户端发送非简单请求
+
+因为非简单请求会使服务器比简单请求的多一倍的压力
 </code></pre>
       
     </div>
