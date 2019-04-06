@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const  强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声">
+<meta name="description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声明">
 <meta property="og:type" content="article">
 <meta property="og:title" content="执行上下文 变量对象 作用域 闭包">
 <meta property="og:url" content="http://jsonload.com/2019/04/06/执行上下文-变量对象-作用域-闭包/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const  强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声">
+<meta property="og:description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声明">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://jsonload.com/images/execution%20context.png">
 <meta property="og:image" content="http://jsonload.com/images/execution-context-code.png">
-<meta property="og:updated_time" content="2019-04-06T04:30:56.114Z">
+<meta property="og:updated_time" content="2019-04-06T04:33:52.676Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="执行上下文 变量对象 作用域 闭包">
-<meta name="twitter:description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const  强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声">
+<meta name="twitter:description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声明">
 <meta name="twitter:image" content="http://jsonload.com/images/execution%20context.png">
 
 
@@ -305,12 +305,9 @@
         <h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><pre><code>执行上下文 是 一个动态概念
 
 也就是说 只有在代码执行的时候生成
-</code></pre><h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><pre><code>1. 代码中所有声明的变量都在 变量对象中 不包括通过let const
+</code></pre><h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><pre><code>1. 代码中所有声明的变量都在 变量对象中 不包括通过let const 强调一下 声明这两个字
 
-强调一下 声明这两个字
-
-2. 函数的所有参数 也就是 参数argments对象
-也会在变量对象中
+2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中
 
 3. 当前上下文中的所有函数声明 注意不包括函数表达式
 
