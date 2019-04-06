@@ -325,9 +325,24 @@ let const 声明变量 与 var 不同就在这里:
 
 没有argments 
 
+没有super new.targe
+
+不能new调用 没有[[constructor]]方法
+
+没有原型
+
 本质 箭头函数 使用 父级执行上下文
 
 所有就说明没有this 使用父级执行上下文中的this
+</code></pre><h2 id="call-apply-bind"><a href="#call-apply-bind" class="headerlink" title="call apply bind"></a>call apply bind</h2><pre><code>call apply 为了绑定函数执行上下文中this arments
+
+bind 为了绑定函数的执行上下文this argments 
+
+bind 返回一个新函数
+
+如果bind绑定arments 返回的新函数不能传参
+
+如果bind没有绑定arments 返回的新函数可以传参
 </code></pre><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><pre><code>当前执行上下文A中的变量对象和作用域中没有的变量
 
 而是调用父级们执行上下文中的变量对象或者scope 就形成 闭包
