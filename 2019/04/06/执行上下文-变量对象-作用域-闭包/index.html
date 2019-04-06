@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声明">
+<meta name="description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 当前上下文中的所有的通过var声明的变量 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. let const 声明变量在作用域上 作用域作用域 是 一个 静态概">
 <meta property="og:type" content="article">
 <meta property="og:title" content="执行上下文 变量对象 作用域 闭包">
 <meta property="og:url" content="http://jsonload.com/2019/04/06/执行上下文-变量对象-作用域-闭包/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声明">
+<meta property="og:description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 当前上下文中的所有的通过var声明的变量 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. let const 声明变量在作用域上 作用域作用域 是 一个 静态概">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://jsonload.com/images/execution%20context.png">
 <meta property="og:image" content="http://jsonload.com/images/execution-context-code.png">
-<meta property="og:updated_time" content="2019-04-06T04:33:52.676Z">
+<meta property="og:updated_time" content="2019-04-06T07:19:26.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="执行上下文 变量对象 作用域 闭包">
-<meta name="twitter:description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 代码中所有声明的变量都在 变量对象中 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. 当前上下文中的所有的通过var声明的变量  5. let const 声明">
+<meta name="twitter:description" content="执行上下文执行上下文 是 一个动态概念  也就是说 只有在代码执行的时候生成 变量对象1. 当前上下文中的所有的通过var声明的变量 不包括通过let const 强调一下 声明这两个字  2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中  3. 当前上下文中的所有函数声明 注意不包括函数表达式  4. let const 声明变量在作用域上 作用域作用域 是 一个 静态概">
 <meta name="twitter:image" content="http://jsonload.com/images/execution%20context.png">
 
 
@@ -305,24 +305,31 @@
         <h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><pre><code>执行上下文 是 一个动态概念
 
 也就是说 只有在代码执行的时候生成
-</code></pre><h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><pre><code>1. 代码中所有声明的变量都在 变量对象中 不包括通过let const 强调一下 声明这两个字
+</code></pre><h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><pre><code>1. 当前上下文中的所有的通过var声明的变量 不包括通过let const 强调一下 声明这两个字
 
 2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中
 
 3. 当前上下文中的所有函数声明 注意不包括函数表达式
 
-4. 当前上下文中的所有的通过var声明的变量
-
-5. let const 声明变量在作用域上
-</code></pre><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><pre><code>作用域和作用域链式静态概念
+4. let const 声明变量在作用域上
+</code></pre><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><pre><code>作用域 是 一个 静态概念
 
 是在代码的编译阶段就生成的
+
+每一个函数在编译阶段就会添加一个[[scopes]]属性
 
 let const 声明变量 与 var 不同就在这里:
 
     let const声明变量不会预解析 也就是不会保存到变量对象中
 
     而是保存到一个作用域scope中 并且是 这个scope是块级作用域
+</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>没有this  就用函数声明的位置this
+
+没有argments 
+
+本质 箭头函数 使用 父级执行上下文
+
+所有就说明没有this 使用父级执行上下文中的this
 </code></pre><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><pre><code>当前执行上下文A中的变量对象和作用域中没有的变量
 
 而是调用父级们执行上下文中的变量对象或者scope 就形成 闭包
@@ -363,7 +370,7 @@ this
 </code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//eval("console.log(a)");  // 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"console.log(a)"</span>);</span><br><span class="line"></span><br><span class="line">fn()  <span class="comment">// a is not defined</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/execution context.png" alt="execution context" title="Title">  </p>
 <p><img src="/images/execution-context-code.png" alt="execution-context-code" title="Title"></p>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">理解块级作用域的代码</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let a 声明后</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -518,7 +525,7 @@ this
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文"><span class="nav-number">1.</span> <span class="nav-text">执行上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量对象"><span class="nav-number">2.</span> <span class="nav-text">变量对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">3.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块级作用域-代码演示"><span class="nav-number">5.</span> <span class="nav-text">块级作用域 代码演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文"><span class="nav-number">1.</span> <span class="nav-text">执行上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量对象"><span class="nav-number">2.</span> <span class="nav-text">变量对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">3.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数"><span class="nav-number">4.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">5.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块级作用域-代码演示"><span class="nav-number">6.</span> <span class="nav-text">块级作用域 代码演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
