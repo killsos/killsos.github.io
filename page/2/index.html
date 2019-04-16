@@ -229,6 +229,682 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/git-commit-规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/git-commit-规范/" itemprop="url">git commit 规范</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T11:40:49+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Commit-message-的作用"><a href="#1-Commit-message-的作用" class="headerlink" title="1 Commit message 的作用"></a>1 Commit message 的作用</h2><h4 id="1）提供更多的历史信息，方便快速浏览"><a href="#1）提供更多的历史信息，方便快速浏览" class="headerlink" title="1）提供更多的历史信息，方便快速浏览"></a>1）提供更多的历史信息，方便快速浏览</h4><pre><code>$ git log &lt;last tag&gt; HEAD --pretty=format:%s
+</code></pre><h4 id="2）可以过滤某些commit（比如文档改动），便于快速查找信息"><a href="#2）可以过滤某些commit（比如文档改动），便于快速查找信息" class="headerlink" title="2）可以过滤某些commit（比如文档改动），便于快速查找信息"></a>2）可以过滤某些commit（比如文档改动），便于快速查找信息</h4><pre><code>$ git log &lt;last release&gt; HEAD --grep feature
+</code></pre><h4 id="3）可以直接从commit生成Change-log"><a href="#3）可以直接从commit生成Change-log" class="headerlink" title="3）可以直接从commit生成Change log"></a>3）可以直接从commit生成Change log</h4><pre><code>Change Log 是发布新版本时，用来说明与上一个版本差异的文档
+</code></pre><h2 id="2-Commit-message-的格式"><a href="#2-Commit-message-的格式" class="headerlink" title="2 Commit message 的格式"></a>2 Commit message 的格式</h2><pre><code>每次提交，Commit message 都包括三个部分：Header，Body 和 Footer
+
+&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+// 空一行
+&lt;body&gt;
+// 空一行
+&lt;footer&gt;
+</code></pre><h4 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h4><pre><code>Header部分只有一行，包括三个字段：type（必需）、scope（可选）和subject（必需）
+
+1）type
+
+type用于说明 commit 的类别，只允许使用下面7个标识
+
+feat：新功能（feature）
+
+fix：修补bug
+
+docs：文档（documentation）
+
+style： 格式（不影响代码运行的变动）
+
+refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+
+test：增加测试
+
+chore：构建过程或辅助工具的变动
+
+如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中
+其他情况（docs、chore、style、refactor、test）由你决定
+要不要放入 Change log，建议是不要
+
+2）scope
+
+scope用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
+
+3）subject
+
+subject是 commit 目的的简短描述，不超过50个字符。
+
+以动词开头，使用第一人称现在时，比如change，而不是changed或changes
+第一个字母小写
+结尾不加句号（.）
+</code></pre><h4 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h4><pre><code>Body 部分是对本次 commit 的详细描述，可以分成多行
+
+范例
+
+More detailed explanatory text, if necessary.  Wrap it to 
+about 72 characters or so. 
+
+Further paragraphs come after blank lines.
+
+- Bullet points are okay, too
+- Use a hanging indent
+
+有两个注意点
+
+1）使用第一人称现在时，比如使用change而不是changed或changes
+
+2）应该说明代码变动的动机，以及与以前行为的对比
+</code></pre><h4 id="Footer"><a href="#Footer" class="headerlink" title="Footer"></a>Footer</h4><pre><code>Footer 部分只用于两种情况
+
+1）不兼容变动
+
+如果当前代码与上一个版本不兼容
+
+则 Footer 部分以BREAKING CHANGE开头
+
+后面是对变动的描述、以及变动理由和迁移方法
+
+2）关闭 Issue
+
+如果当前 commit 针对某个issue
+
+那么可以在 Footer 部分关闭这个 issue
+
+Closes #234
+</code></pre><h4 id="Revert"><a href="#Revert" class="headerlink" title="Revert"></a>Revert</h4><pre><code>如果当前 commit 用于撤销以前的 commit
+
+则必须以revert:开头，后面跟着被撤销 Commit 的 Header
+
+revert: feat(pencil): add &apos;graphiteWidth&apos; option
+
+This reverts commit 667ecc1654a317a13331b17617d973392f415f02
+
+Body部分的格式是固定的，必须写成This reverts commit &amp;lt;hash&gt;.
+
+其中的hash是被撤销 commit 的 SHA 标识符
+</code></pre><h4 id="Commitizen"><a href="#Commitizen" class="headerlink" title="Commitizen"></a>Commitizen</h4><pre><code>Commitizen是一个撰写合格 Commit message 的工具
+
+安装命令    $ npm install -g commitizen
+
+在项目目录里，运行下面的命令
+
+$ commitizen init cz-conventional-changelog --save --save-exact
+
+以后，凡是用到git commit命令，一律改为使用git cz
+
+这时，就会出现选项，用来生成符合格式的 Commit message
+</code></pre><h4 id="validate-commit-msg"><a href="#validate-commit-msg" class="headerlink" title="validate-commit-msg"></a>validate-commit-msg</h4><pre><code>validate-commit-msg 用于检查 Node 项目的 Commit message 是否符合格式
+
+它的安装是手动的
+
+首先，拷贝下面这个JS文件，放入你的代码库
+
+文件名可以取为validate-commit-msg.js
+
+接着，把这个脚本加入 Git 的 hook
+
+下面是在package.json里面使用 ghooks
+
+把这个脚本加为commit-msg时运行
+
+&quot;config&quot;: {
+    &quot;ghooks&quot;: {
+        &quot;commit-msg&quot;: &quot;./validate-commit-msg.js&quot;
+    }
+}
+
+然后，每次git commit的时候，这个脚本就会自动检查 Commit message 是否合格
+
+如果不合格，就会报错
+</code></pre><h4 id="生成-Change-log"><a href="#生成-Change-log" class="headerlink" title="生成 Change log"></a>生成 Change log</h4><pre><code>conventional-changelog 就是生成 Change log 的工具，运行下面的命令即可。
+
+$ npm install -g conventional-changelog
+$ cd my-project
+$ conventional-changelog -p angular -i CHANGELOG.md -w
+
+上面命令不会覆盖以前的 Change log
+
+只会在CHANGELOG.md的头部加上自从上次发布以来的变动
+
+如果你想生成所有发布的 Change log，要改为运行下面的命令
+
+$ conventional-changelog -p angular -i CHANGELOG.md -w -r 0
+
+为了方便使用，可以将其写入package.json的scripts字段。
+
+{
+    &quot;scripts&quot;: {
+        &quot;changelog&quot;: &quot;conventional-changelog -p angular -i CHANGELOG.md -w -r 0&quot;
+    }
+}
+以后，直接运行下面的命令即可。
+
+$ npm run changelog
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/github技巧-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/github技巧-01/" itemprop="url">github技巧-01</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T10:57:00+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="github-与-git-关系"><a href="#github-与-git-关系" class="headerlink" title="github 与 git 关系"></a>github 与 git 关系</h2><pre><code>git是代码管理的工具
+
+github是通过git来完成存放代码的远程仓库
+</code></pre><h4 id="Github项目变成网站"><a href="#Github项目变成网站" class="headerlink" title="Github项目变成网站"></a>Github项目变成网站</h4><pre><code>立一个gh-pages的分支，通过setting里的设置的GitHub Pages模块可以自动创建该项目的网站
+</code></pre><h3 id="trending"><a href="#trending" class="headerlink" title="trending"></a>trending</h3><pre><code>https://github.com/trending/javascript?since=daily
+
+https://github.com/trending/html?since=daily
+
+https://github.com/trending/css?since=daily
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/一篇文章-教你学会Git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/一篇文章-教你学会Git/" itemprop="url">一篇文章 教你学会Git</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T03:07:18+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Git工作流程"><a href="#1-Git工作流程" class="headerlink" title="1 Git工作流程"></a>1 Git工作流程</h2><p><img src="../images/git2.png" alt>   </p>
+<pre><code>Workspace：工作区
+Index / Stage：暂存区
+Repository：仓库区 或本地仓库
+Remote：远程仓库
+</code></pre><h4 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h4><pre><code>code的地方
+</code></pre><h4 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h4><pre><code>.git目录下的index文件, 暂存区会记录git add添加文件的相关信息
+
+不保存文件实体, 通过id指向每个文件实体
+
+可以使用git status查看暂存区的状态
+
+暂存区标记了你当前工作区中，哪些内容是被git管理的
+
+当你完成某个需求或功能后需要提交到远程仓库
+
+那么第一步就是通过git add先提交到暂存区 被git管理
+</code></pre><h4 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h4><pre><code>保存了对象被提交 过的各个版本 每提交一次到本地仓库就生成一个commitID
+
+git commit后同步index的目录树到本地仓库
+
+方便从下一步通过git push同步本地仓库与远程仓库的同步
+</code></pre><h4 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h4><pre><code>远程仓库的内容可能被分布在多个地点的处于协作关系的本地仓库修改
+
+因此它可能与本地仓库同步，也可能不同步，但是它的内容是最旧的
+</code></pre><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><pre><code>任何对象都是在工作区中诞生和被修改
+
+任何修改都是从进入index区才开始被版本控制
+
+只有把修改提交到本地仓库，该修改才能在仓库中留下痕迹
+
+与协作者分享本地的修改，可以把它们push到远程仓库来共享  
+</code></pre><p><img src="../images/git3.png" alt>  </p>
+<h2 id="2-常用Git命令"><a href="#2-常用Git命令" class="headerlink" title="2 常用Git命令"></a>2 常用Git命令</h2><p><img src="../images/git4.png" alt>  </p>
+<h4 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h4><p><img src="../images/git5.png" alt>  </p>
+<pre><code>HEAD 它始终指向当前所处分支的最新的提交点
+
+你所处的分支变化了 或者产生了新的提交点 HEAD就会跟着改变
+
+关键字的提取 当前分支  最新的commitID
+</code></pre><h4 id="add"><a href="#add" class="headerlink" title="add"></a>add</h4><p><img src="../images/git6.png" alt>  </p>
+<pre><code>add 主要实现将工作区修改的内容提交到暂存区 交由git管理
+
+git add .    添加当前目录的所有文件到暂存区
+
+git add [dir]    添加指定目录到暂存区，包括子目录
+
+git add [file1]    添加指定文件到暂存区
+</code></pre><h4 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h4><p><img src="../images/git7.png" alt>  </p>
+<pre><code>commit 主要实现将暂存区的内容提交到本地仓库
+
+并使得当前分支的HEAD向后移动一个提交点
+
+git commit -m [message]
+提交暂存区到本地仓库,message代表说明信息
+
+git commit [file1] -m [message]
+提交暂存区的指定文件到本地仓库
+
+git commit --amend -m [message]
+使用一次新的commit，替代上一次提交
+</code></pre><h4 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h4><p><img src="../images/git8.png" alt>  </p>
+<pre><code>git branch
+列出所有本地分支
+
+git branch -r
+列出所有远程分支
+
+git branch -a
+列出所有本地分支和远程分支
+
+git branch [branch-name]
+新建一个分支，但依然停留在当前分支
+
+git checkout -b [branch-name]
+新建一个分支，并切换到该分支
+
+git branch --track [branch][remote-branch]
+新建一个分支，与指定的远程分支建立追踪关系
+
+git checkout [branch-name]
+切换到指定分支，并更新工作区
+
+git branch -d [branch-name]
+删除分支
+
+git push origin --delete [branch-name]
+删除远程分支
+</code></pre><h4 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h4><p><img src="../images/git9.png" alt>  </p>
+<pre><code>merge命令把不同的分支合并起来
+
+如上图 在实际开放中，我们可能从master分支中切出一个分支
+
+然后进行开发完成需求 中间经过R3,R4,R5的commit记录
+
+最后开发完成需要合入master中，这便用到了merge  
+
+git fetch [remote]    merge之前先拉一下远程仓库最新代码
+
+git merge [branch]    合并指定分支到当前分支
+
+一般在merge之后，会出现conflict
+
+需要针对冲突情况 手动解除冲突
+
+主要是因为两个用户修改了同一文件的同一块区域
+
+7  &lt;   7 =
+</code></pre><h4 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h4><p><img src="../images/git10.png" alt>   </p>
+<pre><code>rebase又称为衍合 是合并的另外一种选择
+</code></pre><h4 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h4><p><img src="../images/git11.png" alt> </p>
+<pre><code>git reset —soft [commit]
+只改变提交点，暂存区和工作目录的内容都不改变
+
+git reset —mixed [commit]
+改变提交点，同时改变暂存区的内容
+
+git reset —hard [commit]
+暂存区、工作区的内容都会被修改到与提交点完全一致的状态
+
+git reset --hard HEAD
+让工作区回到上次提交时的状态
+</code></pre><h4 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h4><p><img src="../images/git12.png" alt>  </p>
+<pre><code>git revert用一个新提交来消除一个历史提交所做的任何修改
+</code></pre><h4 id="revert与reset的区别"><a href="#revert与reset的区别" class="headerlink" title="revert与reset的区别"></a>revert与reset的区别</h4><p><img src="../images/git13.png" alt>  </p>
+<pre><code>git revert是用一次新的commit来回滚之前的commit
+
+git reset是直接删除指定的commit
+
+git revert是用一次逆向的commit“中和”之前的提交 因此日后合并老的branch时
+导致这部分改变不会再次出现，减少冲突
+
+但是git reset是之间把某些commit在某个branch上删除
+因而和老的branch再次merge时 这些被回滚的commit应该还会被引入 产生很多冲突
+
+git reset 是把HEAD向后移动了一下，而git revert是HEAD继续前进
+只是新的commit的内容和要revert的内容正好相反
+能够抵消要被revert的内容
+</code></pre><h4 id="push"><a href="#push" class="headerlink" title="push"></a>push</h4><pre><code>实现本地仓库分支与远程仓库分支同步
+
+git push [remote][branch]
+上传本地指定分支到远程仓库
+
+git push [remote] --force
+强行推送当前分支到远程仓库，即使有冲突
+
+git push [remote] --all 
+推送所有分支到远程仓库
+</code></pre><h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><pre><code>git status
+显示有变更的文件
+
+git log
+显示当前分支的版本历史
+
+git diff
+显示暂存区和工作区的差异
+
+git diff HEAD
+显示工作区与当前分支最新commit之间的差异
+
+git cherry-pick [commit]
+选择一个commit 合并进当前分支
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/16/玩懂Git-命令篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1240,7 +1916,7 @@ $ git archive
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1253,7 +1929,7 @@ $ git archive
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

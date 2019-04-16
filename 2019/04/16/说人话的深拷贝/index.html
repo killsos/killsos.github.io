@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="javascript  深拷贝,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta name="description" content="类型判断方法1. typeof  2. instanceof  3. Object.prototype.toString.call()  4. 对象.constructor typeof 7种类型typeof 1 // number  typeof &amp;apos;a&amp;apos; // string  typeof true // boolean  typeof undefined // undefi">
+<meta name="keywords" content="javascript  深拷贝">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CORS跨域请求之简单请求与非简单请求">
-<meta property="og:url" content="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/index.html">
+<meta property="og:title" content="说人话的深拷贝">
+<meta property="og:url" content="http://jsonload.com/2019/04/16/说人话的深拷贝/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta property="og:description" content="类型判断方法1. typeof  2. instanceof  3. Object.prototype.toString.call()  4. 对象.constructor typeof 7种类型typeof 1 // number  typeof &amp;apos;a&amp;apos; // string  typeof true // boolean  typeof undefined // undefi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T08:10:50.123Z">
+<meta property="og:updated_time" content="2019-04-16T09:26:58.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CORS跨域请求之简单请求与非简单请求">
-<meta name="twitter:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta name="twitter:title" content="说人话的深拷贝">
+<meta name="twitter:description" content="类型判断方法1. typeof  2. instanceof  3. Object.prototype.toString.call()  4. 对象.constructor typeof 7种类型typeof 1 // number  typeof &amp;apos;a&amp;apos; // string  typeof true // boolean  typeof undefined // undefi">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+  <link rel="canonical" href="http://jsonload.com/2019/04/16/说人话的深拷贝/">
 
 
 
 
 
-  <title>CORS跨域请求之简单请求与非简单请求 | killsos</title>
+  <title>说人话的深拷贝 | killsos</title>
   
 
 
@@ -232,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/16/说人话的深拷贝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CORS跨域请求之简单请求与非简单请求</h1>
+          <h1 class="post-title" itemprop="name headline">说人话的深拷贝</h1>
         
 
         <div class="post-meta">
@@ -261,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T16:04:52+08:00">
-                2019-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-16T16:55:30+08:00">
+                2019-04-16
               </time>
             
 
@@ -299,38 +300,84 @@
       
 
       
-        <h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><pre><code>就是使用设定的请求方式请求数据
-</code></pre><h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><pre><code>则是在使用设定的请求方式请求数据之前
-先发送一个OPTIONS请求 
-看服务端是否允许客户端发送非简单请
-只有&quot;预检&quot;通过后才会再发送一次请求用于数据传输
-</code></pre><h2 id="简单请求与非简单请求的区别"><a href="#简单请求与非简单请求的区别" class="headerlink" title="简单请求与非简单请求的区别"></a>简单请求与非简单请求的区别</h2><pre><code>* 请求方式:HEAD,GET,POST
-* 请求头信息:
-    Accept
-    Accept-Language
-    Content-Language
-    Last-Event-ID
-    Content-Type 对应的值是以下三个中的任意一个
-        application/x-www-form-urlencoded
-        multipart/form-data
-        text/plain
+        <h2 id="类型判断方法"><a href="#类型判断方法" class="headerlink" title="类型判断方法"></a>类型判断方法</h2><pre><code>1. typeof
 
-只有同时满足以上两个条件时,才是简单请求,否则为非简单请求
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据
+2. instanceof
 
-服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
+3. Object.prototype.toString.call()
 
-“预检”请求时，允许请求方式则需服务器设置响应头：Access-Control-Request-Method
+4. 对象.constructor
+</code></pre><h2 id="typeof-7种类型"><a href="#typeof-7种类型" class="headerlink" title="typeof 7种类型"></a>typeof 7种类型</h2><pre><code>typeof 1 // number
 
-“预检”请求时，允许请求头则需服务器设置响应头：Access-Control-Request-Headers
+typeof &apos;a&apos; // string
 
-“预检”缓存时间，服务器设置响应头：Access-Control-Max-Age
+typeof true // boolean
 
-虽然可以通过设置响应头和响应方式等支持非简单请求
+typeof undefined // undefined
 
-但是不到万不得已的情况,不能允许客户端发送非简单请求
+typeof function a(){} // function
 
-因为非简单请求会使服务器比简单请求的多一倍的压力
+typeof {} // object
+
+typeof symbol() // symbol
+</code></pre><h2 id="instanceof-主要对象的细化"><a href="#instanceof-主要对象的细化" class="headerlink" title="instanceof 主要对象的细化"></a>instanceof 主要对象的细化</h2><pre><code>[] instanceof Array
+
+/1/g instanceof RegExp
+</code></pre><h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><pre><code>Object.prototype.toString.call([]) // &quot;[object Array]&quot;
+</code></pre><h2 id="深克隆的实现"><a href="#深克隆的实现" class="headerlink" title="深克隆的实现"></a>深克隆的实现</h2><pre><code>function deepClone(data){
+
+    // 1. typeof 非对象类型
+    // number string boolean undefined function  symbol
+
+    if (typeof data !== &apos;obejct&apos;) return data;
+
+    // 2. null
+    if (data === null) return data;
+
+    // 3. string number boolean包对象
+    if (data instanceof String) return new String(data);
+    if (data instanceof Number) return new Number(data);
+    if (data instanceof Boolean) return new Boolean(data);
+
+    // 4. 日期 正则
+    if (data instanceof Date) return new Date(data);
+    if (data instanceof RegExp) return new RegExp(data);
+
+    // 5. WeakSet WeakMap
+    if (data instanceof WeakSet) return data;
+    if (data instanceof WeakMap) return data;
+
+    // 6. Array Object Set Map
+    let cloner = new data.constructor();
+
+    // Set
+    if (data instanceof Set) {
+        return cloner = new Set([...data])
+    }
+
+    // Map
+    if (data instanceof Map) {
+        for (let key of data.keys()) {
+            let cloneKey = deepClone(key);
+            cloner[cloneKey] = deepClone(data.get(key));
+        }
+        return cloner;
+    }
+
+    // Array Object
+
+    for (let key in data) {
+        if (data.hasOwnPropery(key)) {
+            cloner[key] = deepClone(data[key])
+        }
+    }
+
+    return cloner
+
+}
+</code></pre><h2 id="symbol-WeakSet-WeakMap"><a href="#symbol-WeakSet-WeakMap" class="headerlink" title="symbol WeakSet WeakMap"></a>symbol WeakSet WeakMap</h2><pre><code>symbol(&apos;1&apos;) === symbol(&apos;1&apos;) // false
+
+ WeakSet WeakMap 不支持遍历
 </code></pre>
       
     </div>
@@ -346,6 +393,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/javascript-深拷贝/" rel="tag"># javascript  深拷贝</a>
+          
+        </div>
+      
 
       
       
@@ -355,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/22/虚拟机网络模式/" rel="next" title="虚拟机网络模式">
-                <i class="fa fa-chevron-left"></i> 虚拟机网络模式
+              <a href="/2019/04/08/进化/" rel="next" title="进化">
+                <i class="fa fa-chevron-left"></i> 进化
               </a>
             
           </div>
@@ -365,8 +418,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/04/编程字体/" rel="prev" title="编程字体">
-                编程字体 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/17/let-const-块级作用-执行上下文/" rel="prev" title="let/const 块级作用 执行上下文">
+                let/const 块级作用 执行上下文 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -490,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求"><span class="nav-number">1.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非简单请求"><span class="nav-number">2.</span> <span class="nav-text">非简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求与非简单请求的区别"><span class="nav-number">3.</span> <span class="nav-text">简单请求与非简单请求的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型判断方法"><span class="nav-number">1.</span> <span class="nav-text">类型判断方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof-7种类型"><span class="nav-number">2.</span> <span class="nav-text">typeof 7种类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instanceof-主要对象的细化"><span class="nav-number">3.</span> <span class="nav-text">instanceof 主要对象的细化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-prototype-toString-call"><span class="nav-number">4.</span> <span class="nav-text">Object.prototype.toString.call()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深克隆的实现"><span class="nav-number">5.</span> <span class="nav-text">深克隆的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#symbol-WeakSet-WeakMap"><span class="nav-number">6.</span> <span class="nav-text">symbol WeakSet WeakMap</span></a></li></ol></div>
             
 
           </div>

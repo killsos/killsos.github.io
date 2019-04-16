@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta name="description" content="执行代码123456789101112131415161718    function bar(x,y) &amp;#123;      var a = 1;    &amp;#123;        let b = 1;        &amp;#123;            let c = 1;            console.log(c);                    &amp;#125;    &amp;#12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CORS跨域请求之简单请求与非简单请求">
-<meta property="og:url" content="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/index.html">
+<meta property="og:title" content="let&#x2F;const 块级作用 执行上下文">
+<meta property="og:url" content="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta property="og:description" content="执行代码123456789101112131415161718    function bar(x,y) &amp;#123;      var a = 1;    &amp;#123;        let b = 1;        &amp;#123;            let c = 1;            console.log(c);                    &amp;#125;    &amp;#12">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T08:10:50.123Z">
+<meta property="og:image" content="http://jsonload.com/2019/04/17/images/EC1.jpg">
+<meta property="og:image" content="http://jsonload.com/2019/04/17/images/EC2.jpg">
+<meta property="og:image" content="http://jsonload.com/2019/04/17/images/EC3.jpg">
+<meta property="og:updated_time" content="2019-04-16T18:00:26.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CORS跨域请求之简单请求与非简单请求">
-<meta name="twitter:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta name="twitter:title" content="let&#x2F;const 块级作用 执行上下文">
+<meta name="twitter:description" content="执行代码123456789101112131415161718    function bar(x,y) &amp;#123;      var a = 1;    &amp;#123;        let b = 1;        &amp;#123;            let c = 1;            console.log(c);                    &amp;#125;    &amp;#12">
+<meta name="twitter:image" content="http://jsonload.com/2019/04/17/images/EC1.jpg">
 
 
 
@@ -119,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+  <link rel="canonical" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
 
 
 
 
 
-  <title>CORS跨域请求之简单请求与非简单请求 | killsos</title>
+  <title>let/const 块级作用 执行上下文 | killsos</title>
   
 
 
@@ -232,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CORS跨域请求之简单请求与非简单请求</h1>
+          <h1 class="post-title" itemprop="name headline">let/const 块级作用 执行上下文</h1>
         
 
         <div class="post-meta">
@@ -261,8 +265,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T16:04:52+08:00">
-                2019-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T01:34:00+08:00">
+                2019-04-17
               </time>
             
 
@@ -299,38 +303,16 @@
       
 
       
-        <h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><pre><code>就是使用设定的请求方式请求数据
-</code></pre><h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><pre><code>则是在使用设定的请求方式请求数据之前
-先发送一个OPTIONS请求 
-看服务端是否允许客户端发送非简单请
-只有&quot;预检&quot;通过后才会再发送一次请求用于数据传输
-</code></pre><h2 id="简单请求与非简单请求的区别"><a href="#简单请求与非简单请求的区别" class="headerlink" title="简单请求与非简单请求的区别"></a>简单请求与非简单请求的区别</h2><pre><code>* 请求方式:HEAD,GET,POST
-* 请求头信息:
-    Accept
-    Accept-Language
-    Content-Language
-    Last-Event-ID
-    Content-Type 对应的值是以下三个中的任意一个
-        application/x-www-form-urlencoded
-        multipart/form-data
-        text/plain
+        <h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x,y</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">let</span> c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(c);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="执行上下文1"><a href="#执行上下文1" class="headerlink" title="执行上下文1"></a>执行上下文1</h2><p><img src="../images/EC1.jpg" alt>   </p>
+<h2 id="执行上下文2"><a href="#执行上下文2" class="headerlink" title="执行上下文2"></a>执行上下文2</h2><p><img src="../images/EC2.jpg" alt> </p>
+<h2 id="执行上下文3"><a href="#执行上下文3" class="headerlink" title="执行上下文3"></a>执行上下文3</h2><p><img src="../images/EC3.jpg" alt>  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>每一个块级作用域都会生成一个新的执行上下文
+this 取决于 父级作用域的this  
+可以通过 调试 bar.call(o,1,2) 来验证
 
-只有同时满足以上两个条件时,才是简单请求,否则为非简单请求
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据
-
-服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
-
-“预检”请求时，允许请求方式则需服务器设置响应头：Access-Control-Request-Method
-
-“预检”请求时，允许请求头则需服务器设置响应头：Access-Control-Request-Headers
-
-“预检”缓存时间，服务器设置响应头：Access-Control-Max-Age
-
-虽然可以通过设置响应头和响应方式等支持非简单请求
-
-但是不到万不得已的情况,不能允许客户端发送非简单请求
-
-因为非简单请求会使服务器比简单请求的多一倍的压力
+变量对象 variable object 包含 let const 声明的变量或者常量
+但是注意TDZ 
 </code></pre>
       
     </div>
@@ -355,8 +337,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/22/虚拟机网络模式/" rel="next" title="虚拟机网络模式">
-                <i class="fa fa-chevron-left"></i> 虚拟机网络模式
+              <a href="/2019/04/16/说人话的深拷贝/" rel="next" title="说人话的深拷贝">
+                <i class="fa fa-chevron-left"></i> 说人话的深拷贝
               </a>
             
           </div>
@@ -364,10 +346,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/04/编程字体/" rel="prev" title="编程字体">
-                编程字体 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,7 +468,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求"><span class="nav-number">1.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非简单请求"><span class="nav-number">2.</span> <span class="nav-text">非简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求与非简单请求的区别"><span class="nav-number">3.</span> <span class="nav-text">简单请求与非简单请求的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行代码"><span class="nav-number">1.</span> <span class="nav-text">执行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文1"><span class="nav-number">2.</span> <span class="nav-text">执行上下文1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文2"><span class="nav-number">3.</span> <span class="nav-text">执行上下文2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文3"><span class="nav-number">4.</span> <span class="nav-text">执行上下文3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
