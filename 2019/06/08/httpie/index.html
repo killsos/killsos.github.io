@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta name="description" content="httpie一个http客户端 usagehttps://httpie.org/doc#examples">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CORS跨域请求之简单请求与非简单请求">
-<meta property="og:url" content="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/index.html">
+<meta property="og:title" content="httpie">
+<meta property="og:url" content="http://jsonload.com/2019/06/08/httpie/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta property="og:description" content="httpie一个http客户端 usagehttps://httpie.org/doc#examples">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T08:10:50.123Z">
+<meta property="og:updated_time" content="2019-06-07T17:17:18.061Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CORS跨域请求之简单请求与非简单请求">
-<meta name="twitter:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta name="twitter:title" content="httpie">
+<meta name="twitter:description" content="httpie一个http客户端 usagehttps://httpie.org/doc#examples">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+  <link rel="canonical" href="http://jsonload.com/2019/06/08/httpie/">
 
 
 
 
 
-  <title>CORS跨域请求之简单请求与非简单请求 | killsos</title>
+  <title>httpie | killsos</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/08/httpie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CORS跨域请求之简单请求与非简单请求</h1>
+          <h1 class="post-title" itemprop="name headline">httpie</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T16:04:52+08:00">
-                2019-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T01:16:05+08:00">
+                2019-06-08
               </time>
             
 
@@ -299,39 +299,9 @@
       
 
       
-        <h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><pre><code>就是使用设定的请求方式请求数据
-</code></pre><h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><pre><code>则是在使用设定的请求方式请求数据之前
-先发送一个OPTIONS请求 
-看服务端是否允许客户端发送非简单请
-只有&quot;预检&quot;通过后才会再发送一次请求用于数据传输
-</code></pre><h2 id="简单请求与非简单请求的区别"><a href="#简单请求与非简单请求的区别" class="headerlink" title="简单请求与非简单请求的区别"></a>简单请求与非简单请求的区别</h2><pre><code>* 请求方式:HEAD,GET,POST
-* 请求头信息:
-    Accept
-    Accept-Language
-    Content-Language
-    Last-Event-ID
-    Content-Type 对应的值是以下三个中的任意一个
-        application/x-www-form-urlencoded
-        multipart/form-data
-        text/plain
+        <h2 id="httpie"><a href="#httpie" class="headerlink" title="httpie"></a>httpie</h2><pre><code>一个http客户端
+</code></pre><h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p><a href="https://httpie.org/doc#examples" target="_blank" rel="noopener">https://httpie.org/doc#examples</a></p>
 
-只有同时满足以上两个条件时,才是简单请求,否则为非简单请求
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据
-
-服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
-
-“预检”请求时，允许请求方式则需服务器设置响应头：Access-Control-Request-Method
-
-“预检”请求时，允许请求头则需服务器设置响应头：Access-Control-Request-Headers
-
-“预检”缓存时间，服务器设置响应头：Access-Control-Max-Age
-
-虽然可以通过设置响应头和响应方式等支持非简单请求
-
-但是不到万不得已的情况,不能允许客户端发送非简单请求
-
-因为非简单请求会使服务器比简单请求的多一倍的压力
-</code></pre>
       
     </div>
     
@@ -355,8 +325,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/22/虚拟机网络模式/" rel="next" title="虚拟机网络模式">
-                <i class="fa fa-chevron-left"></i> 虚拟机网络模式
+              <a href="/2019/04/17/let-const-块级作用-执行上下文/" rel="next" title="let/const 块级作用域 执行上下文">
+                <i class="fa fa-chevron-left"></i> let/const 块级作用域 执行上下文
               </a>
             
           </div>
@@ -364,10 +334,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/04/编程字体/" rel="prev" title="编程字体">
-                编程字体 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,7 +456,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求"><span class="nav-number">1.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非简单请求"><span class="nav-number">2.</span> <span class="nav-text">非简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求与非简单请求的区别"><span class="nav-number">3.</span> <span class="nav-text">简单请求与非简单请求的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#httpie"><span class="nav-number">1.</span> <span class="nav-text">httpie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usage"><span class="nav-number">2.</span> <span class="nav-text">usage</span></a></li></ol></div>
             
 
           </div>
