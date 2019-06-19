@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta name="description" content="程序如何开始的C 系列语言中，程序的入口都是 main 函数   一个 Objective-C 的 iOS app 项目在新建时   Xcode 会给我们创建好一个 main.m 的文件 123456789#import &amp;lt;UIKit/UIKit.h&amp;gt;#import &quot;AppDelegate.h&quot;int main(int argc, char * argv[])&amp;#123;    @a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CORS跨域请求之简单请求与非简单请求">
-<meta property="og:url" content="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/index.html">
+<meta property="og:title" content="swift @UIApplicationMain">
+<meta property="og:url" content="http://jsonload.com/2019/06/20/swift-UIApplicationMain/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta property="og:description" content="程序如何开始的C 系列语言中，程序的入口都是 main 函数   一个 Objective-C 的 iOS app 项目在新建时   Xcode 会给我们创建好一个 main.m 的文件 123456789#import &amp;lt;UIKit/UIKit.h&amp;gt;#import &quot;AppDelegate.h&quot;int main(int argc, char * argv[])&amp;#123;    @a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T08:10:50.123Z">
+<meta property="og:updated_time" content="2019-06-19T17:49:57.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CORS跨域请求之简单请求与非简单请求">
-<meta name="twitter:description" content="简单请求就是使用设定的请求方式请求数据 非简单请求则是在使用设定的请求方式请求数据之前 先发送一个OPTIONS请求  看服务端是否允许客户端发送非简单请 只有&amp;quot;预检&amp;quot;通过后才会再发送一次请求用于数据传输 简单请求与非简单请求的区别* 请求方式:HEAD,GET,POST * 请求头信息:     Accept     Accept-Language     Content-L">
+<meta name="twitter:title" content="swift @UIApplicationMain">
+<meta name="twitter:description" content="程序如何开始的C 系列语言中，程序的入口都是 main 函数   一个 Objective-C 的 iOS app 项目在新建时   Xcode 会给我们创建好一个 main.m 的文件 123456789#import &amp;lt;UIKit/UIKit.h&amp;gt;#import &quot;AppDelegate.h&quot;int main(int argc, char * argv[])&amp;#123;    @a">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+  <link rel="canonical" href="http://jsonload.com/2019/06/20/swift-UIApplicationMain/">
 
 
 
 
 
-  <title>CORS跨域请求之简单请求与非简单请求 | killsos</title>
+  <title>swift @UIApplicationMain | killsos</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/20/swift-UIApplicationMain/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CORS跨域请求之简单请求与非简单请求</h1>
+          <h1 class="post-title" itemprop="name headline">swift @UIApplicationMain</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T16:04:52+08:00">
-                2019-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T01:42:20+08:00">
+                2019-06-20
               </time>
             
 
@@ -299,39 +299,29 @@
       
 
       
-        <h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><pre><code>就是使用设定的请求方式请求数据
-</code></pre><h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><pre><code>则是在使用设定的请求方式请求数据之前
-先发送一个OPTIONS请求 
-看服务端是否允许客户端发送非简单请
-只有&quot;预检&quot;通过后才会再发送一次请求用于数据传输
-</code></pre><h2 id="简单请求与非简单请求的区别"><a href="#简单请求与非简单请求的区别" class="headerlink" title="简单请求与非简单请求的区别"></a>简单请求与非简单请求的区别</h2><pre><code>* 请求方式:HEAD,GET,POST
-* 请求头信息:
-    Accept
-    Accept-Language
-    Content-Language
-    Last-Event-ID
-    Content-Type 对应的值是以下三个中的任意一个
-        application/x-www-form-urlencoded
-        multipart/form-data
-        text/plain
+        <h2 id="程序如何开始的"><a href="#程序如何开始的" class="headerlink" title="程序如何开始的"></a>程序如何开始的</h2><p>C 系列语言中，程序的入口都是 main 函数  </p>
+<p>一个 Objective-C 的 iOS app 项目在新建时  </p>
+<p>Xcode 会给我们创建好一个 main.m 的文件</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#<span class="keyword">import</span> "AppDelegate.h"</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="type">NSStringFromClass</span>([<span class="type">AppDelegate</span> <span class="class"><span class="keyword">class</span>]));</span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>复制代码我们调用了 UIKit 的 UIApplicationMain 方法  </p>
+<p>这个方法根据第三个参数初始化一个 UIApplication 或者它的子类对象开始接收事件  </p>
+<p>当传入 nil 时则使用默认的 UIApplication   </p>
+<p>最后一个参数指定了 AppDelegate 类作为应用的委托  </p>
+<p>用来接收与应用生命周期相关的委托方法。</p>
+<p>虽然这个方法标明要返回一个 int，但其实它并不会真正的返回   </p>
+<p>而是一直存在于内存中，直到用户或者系统将应用强制终止。  </p>
+<h2 id="swift-中的对应情况"><a href="#swift-中的对应情况" class="headerlink" title="swift 中的对应情况"></a>swift 中的对应情况</h2><p>创建一个 swift 的项目之后  </p>
+<p>我们发现所有的文件中并没有一个类似于 Objective-C 中的 main.m 文件  也没有 main 函数   </p>
+<p>唯一和 main 有关系的就是在 AppDelegate 中有一个 @UIApplicationMain 标签  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">@UIApplicationMain</span><br><span class="line">class AppDelegate: UIResponder, UIApplicationDelegate &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个标签的作用就是将标注的类作为委托，创建一个 UIApplication 并启动整个程序。  </p>
+<p>一般情况我们不需要对这个标签做任何修改，但如果我们想使用 UIApplication 的子类 </p>
+<p>而不是它本身，我们就要自定义一个 main.swift 文件了</p>
+<p>（记得删除 @UIApplicationMain 标签）</p>
+<p>这个文件我们不需要定义作用域，直接写代码就OK。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(<span class="number">_</span> event: UIEvent)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Event sent:\(event)"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(</span><br><span class="line">    <span class="type">CommandLine</span>.argc,</span><br><span class="line">    <span class="type">UnsafeMutableRawPointer</span>(<span class="type">CommandLine</span>.unsafeArgv)</span><br><span class="line">        .bindMemory(</span><br><span class="line">            to: <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">Int8</span>&gt;.<span class="keyword">self</span>,</span><br><span class="line">            capacity: <span class="type">Int</span>(<span class="type">CommandLine</span>.argc)),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">MyApplication</span>.<span class="keyword">self</span>),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>.<span class="keyword">self</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这样每次发送事件（点击按钮之类的）我们都可以监听到了</p>
 
-只有同时满足以上两个条件时,才是简单请求,否则为非简单请求
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据
-
-服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
-
-“预检”请求时，允许请求方式则需服务器设置响应头：Access-Control-Request-Method
-
-“预检”请求时，允许请求头则需服务器设置响应头：Access-Control-Request-Headers
-
-“预检”缓存时间，服务器设置响应头：Access-Control-Max-Age
-
-虽然可以通过设置响应头和响应方式等支持非简单请求
-
-但是不到万不得已的情况,不能允许客户端发送非简单请求
-
-因为非简单请求会使服务器比简单请求的多一倍的压力
-</code></pre>
       
     </div>
     
@@ -355,8 +345,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/22/虚拟机网络模式/" rel="next" title="虚拟机网络模式">
-                <i class="fa fa-chevron-left"></i> 虚拟机网络模式
+              <a href="/2019/06/18/命令行工具/" rel="next" title="命令行工具">
+                <i class="fa fa-chevron-left"></i> 命令行工具
               </a>
             
           </div>
@@ -364,10 +354,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/04/编程字体/" rel="prev" title="编程字体">
-                编程字体 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,7 +476,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求"><span class="nav-number">1.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非简单请求"><span class="nav-number">2.</span> <span class="nav-text">非简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求与非简单请求的区别"><span class="nav-number">3.</span> <span class="nav-text">简单请求与非简单请求的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序如何开始的"><span class="nav-number">1.</span> <span class="nav-text">程序如何开始的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swift-中的对应情况"><span class="nav-number">2.</span> <span class="nav-text">swift 中的对应情况</span></a></li></ol></div>
             
 
           </div>
