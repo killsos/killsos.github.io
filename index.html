@@ -315,11 +315,20 @@
 <li>最好的设置 .bash_profile</li>
 </ol>
 <ol start="3">
-<li><p>设定</p>
-<p>export PATH=${PATH}:/test/folder</p>
+<li><p>设定 export PATH=${PATH}:/test/folder</p>
+</li>
+<li><p>系统级</p>
+<p> /etc/profile 和 /etc/paths 是系统级别的</p>
+</li>
+<li><p>用户级</p>
+<p> ~/.bash_profile </p>
+<p> ~/.bash_login </p>
+<p> ~/.profile </p>
+<p> ~/.bashrc</p>
 </li>
 </ol>
-
+<h2 id="1-etc-profile-建议不修改这个文件"><a href="#1-etc-profile-建议不修改这个文件" class="headerlink" title="1 /etc/profile 建议不修改这个文件"></a>1 /etc/profile 建议不修改这个文件</h2><pre><code>全局（公有）配置，不管是哪个用户，登录时都会读取该文件
+</code></pre><h2 id="2-etc-paths-全局建议修改这个文件"><a href="#2-etc-paths-全局建议修改这个文件" class="headerlink" title="2 /etc/paths 全局建议修改这个文件"></a>2 /etc/paths 全局建议修改这个文件</h2><h2 id="3-etc-bashrc-（一般在这个文件中添加系统级环境变量）"><a href="#3-etc-bashrc-（一般在这个文件中添加系统级环境变量）" class="headerlink" title="3 /etc/bashrc （一般在这个文件中添加系统级环境变量）"></a>3 /etc/bashrc （一般在这个文件中添加系统级环境变量）</h2>
           
         
       

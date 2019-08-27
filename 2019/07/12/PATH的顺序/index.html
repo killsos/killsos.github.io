@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="PATH的顺序/etc/profile   /etc/paths   ~/.bash_profile   ~/.bash_login   ~/.profile   ~/.bashrc  最好的设置 .bash_profile   设定 export PATH=${PATH}:/test/folder">
+<meta name="description" content="PATH的顺序/etc/profile   /etc/paths   ~/.bash_profile   ~/.bash_login   ~/.profile   ~/.bashrc  最好的设置 .bash_profile   设定 export PATH=${PATH}:/test/folder  系统级  /etc/profile 和 /etc/paths 是系统级别的  用户级  ~/.b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PATH的顺序">
 <meta property="og:url" content="http://jsonload.com/2019/07/12/PATH的顺序/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="PATH的顺序/etc/profile   /etc/paths   ~/.bash_profile   ~/.bash_login   ~/.profile   ~/.bashrc  最好的设置 .bash_profile   设定 export PATH=${PATH}:/test/folder">
+<meta property="og:description" content="PATH的顺序/etc/profile   /etc/paths   ~/.bash_profile   ~/.bash_login   ~/.profile   ~/.bashrc  最好的设置 .bash_profile   设定 export PATH=${PATH}:/test/folder  系统级  /etc/profile 和 /etc/paths 是系统级别的  用户级  ~/.b">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T09:16:52.271Z">
+<meta property="og:updated_time" content="2019-07-12T09:37:03.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PATH的顺序">
-<meta name="twitter:description" content="PATH的顺序/etc/profile   /etc/paths   ~/.bash_profile   ~/.bash_login   ~/.profile   ~/.bashrc  最好的设置 .bash_profile   设定 export PATH=${PATH}:/test/folder">
+<meta name="twitter:description" content="PATH的顺序/etc/profile   /etc/paths   ~/.bash_profile   ~/.bash_login   ~/.profile   ~/.bashrc  最好的设置 .bash_profile   设定 export PATH=${PATH}:/test/folder  系统级  /etc/profile 和 /etc/paths 是系统级别的  用户级  ~/.b">
 
 
 
@@ -314,11 +314,20 @@
 <li>最好的设置 .bash_profile</li>
 </ol>
 <ol start="3">
-<li><p>设定</p>
-<p>export PATH=${PATH}:/test/folder</p>
+<li><p>设定 export PATH=${PATH}:/test/folder</p>
+</li>
+<li><p>系统级</p>
+<p> /etc/profile 和 /etc/paths 是系统级别的</p>
+</li>
+<li><p>用户级</p>
+<p> ~/.bash_profile </p>
+<p> ~/.bash_login </p>
+<p> ~/.profile </p>
+<p> ~/.bashrc</p>
 </li>
 </ol>
-
+<h2 id="1-etc-profile-建议不修改这个文件"><a href="#1-etc-profile-建议不修改这个文件" class="headerlink" title="1 /etc/profile 建议不修改这个文件"></a>1 /etc/profile 建议不修改这个文件</h2><pre><code>全局（公有）配置，不管是哪个用户，登录时都会读取该文件
+</code></pre><h2 id="2-etc-paths-全局建议修改这个文件"><a href="#2-etc-paths-全局建议修改这个文件" class="headerlink" title="2 /etc/paths 全局建议修改这个文件"></a>2 /etc/paths 全局建议修改这个文件</h2><h2 id="3-etc-bashrc-（一般在这个文件中添加系统级环境变量）"><a href="#3-etc-bashrc-（一般在这个文件中添加系统级环境变量）" class="headerlink" title="3 /etc/bashrc （一般在这个文件中添加系统级环境变量）"></a>3 /etc/bashrc （一般在这个文件中添加系统级环境变量）</h2>
       
     </div>
     
@@ -473,7 +482,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PATH的顺序"><span class="nav-number">1.</span> <span class="nav-text">PATH的顺序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PATH的顺序"><span class="nav-number">1.</span> <span class="nav-text">PATH的顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-etc-profile-建议不修改这个文件"><span class="nav-number">2.</span> <span class="nav-text">1 /etc/profile 建议不修改这个文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-etc-paths-全局建议修改这个文件"><span class="nav-number">3.</span> <span class="nav-text">2 /etc/paths 全局建议修改这个文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-etc-bashrc-（一般在这个文件中添加系统级环境变量）"><span class="nav-number">4.</span> <span class="nav-text">3 /etc/bashrc （一般在这个文件中添加系统级环境变量）</span></a></li></ol></div>
             
 
           </div>
