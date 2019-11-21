@@ -229,6 +229,351 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019-2020-即将来临js特色/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/2019-2020-即将来临js特色/" itemprop="url">2019/2020-即将来临js特色</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T17:10:02+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/即将来临js特色/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/即将来临js特色/" itemprop="url">即将来临js特色</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T17:09:22+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Optional-Chaining"><a href="#1-Optional-Chaining" class="headerlink" title="1. Optional Chaining ?."></a>1. Optional Chaining ?.</h2><pre><code>const street = user.address?.street
+</code></pre><h2 id="2-Nullish-Coalescing-Operator-undefined-or-null"><a href="#2-Nullish-Coalescing-Operator-undefined-or-null" class="headerlink" title="2. Nullish Coalescing Operator  ??  undefined or null"></a>2. Nullish Coalescing Operator  ??  undefined or null</h2><pre><code>Base case. If the expression at the left-hand side of the ?? operator evaluates to undefined or null, its right-hand side is returned.
+
+const response = {
+    settings: {
+        nullValue: null,
+        height: 400,
+        animationDuration: 0,
+        headerText: &apos;&apos;,
+        showSplashScreen: false
+    }
+    };
+
+    const undefinedValue = response.settings.undefinedValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const nullValue = response.settings.nullValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const headerText = response.settings.headerText ?? &apos;Hello, world!&apos;; // result: &apos;&apos;
+    const animationDuration = response.settings.animationDuration ?? 300; // result: 0
+    const showSplashScreen = response.settings.showSplashScreen ?? true; // result: false
+</code></pre><h2 id="3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型"><a href="#3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型" class="headerlink" title="3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型"></a>3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型</h2><pre><code>IEEE754 64-bit floats  BigInt 可以表示 2^53
+
+63 符号位
+
+62-53 指数位
+
+0-52 精度位
+
+const x = Number.MAX_SAFE_INTEGER;
+// ↪ 9007199254740991, this is 1 less than 2^53
+
+const y = x + 1;
+// ↪ 9007199254740992, ok, checks out
+
+const z = x + 2
+// ↪ 9007199254740992, wait, that’s the same as above!
+
+A BigInt is created by appending n to the end of the integer or by calling the constructor:
+
+const theBiggestInt = 9007199254740991n;
+
+const alsoHuge = BigInt(9007199254740991);
+// ↪ 9007199254740991n
+
+const hugeButString = BigInt(&apos;9007199254740991&apos;);
+// ↪ 9007199254740991n
+</code></pre><h2 id="4-类静态"><a href="#4-类静态" class="headerlink" title="4. 类静态"></a>4. 类静态</h2><ul>
+<li>静态公有属性</li>
+</ul>
+<pre><code>class CustomDate {
+// ...
+static epoch = new CustomDate(0);
+}
+
+/* or */
+
+class CustomDate {
+// ...
+}
+CustomDate.epoch = new CustomDate(0);
+</code></pre><ul>
+<li><p>静态私有属性</p>
+<pre><code>class C {
+    static #x = 42;
+    x(){
+        return C.#x;
+    }
+}
+return new C().x() === 42;
+</code></pre></li>
+<li><p>静态私有方法 </p>
+</li>
+<li><p>静态计算属性</p>
+<pre><code>class C {
+    static [&apos;x&apos;] = 42;
+}
+return C.x === 42;
+</code></pre></li>
+</ul>
+<h2 id="5-类实例"><a href="#5-类实例" class="headerlink" title="5. 类实例"></a>5. 类实例</h2><ul>
+<li><p>类实例私有属性 / 类实例私有方法</p>
+<pre><code>class Counter extends HTMLElement {
+        #xValue = 0; // 类实例私有属性
+
+        get #x() { return #xValue; } // 类实例私有方法
+        set #x(value) { // setter // 类实例私有方法
+            this.#xValue = value;
+            window.requestAnimationFrame(this.#render.bind(this));
+        }
+
+        #clicked() { // 类实例私有方法
+            this.#x++;
+        }
+
+        constructor() {
+            super();
+            this.onclick = this.#clicked.bind(this);
+        }
+
+        connectedCallback() { this.#render(); }
+
+        #render() { // 类实例私有方法
+            this.textContent = this.#x.toString();
+        }
+    }
+    window.customElements.define(&apos;num-counter&apos;, Counter);
+</code></pre></li>
+</ul>
+<p><a href="https://medium.com/better-programming/new-upcoming-javascript-features-2019-2020-and-beyond-5c426f31ec97" target="_blank" rel="noopener">原始位置</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1228,125 +1573,6 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/09/24/函数与变量优先级/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/24/函数与变量优先级/" itemprop="url">函数与变量优先级</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T16:46:43+08:00">
-                2019-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="函数优先级高于变量"><a href="#函数优先级高于变量" class="headerlink" title="函数优先级高于变量"></a>函数优先级高于变量</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.b); <span class="comment">// 10</span></span><br><span class="line">    b = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.b); <span class="comment">// 10</span></span><br><span class="line">    <span class="built_in">console</span>.log(b);  <span class="comment">// Function b</span></span><br><span class="line">    </span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面自执行匿名函数 等价于 下面</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.b); <span class="comment">// 10</span></span><br><span class="line">    b = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.b); <span class="comment">// 10</span></span><br><span class="line">    <span class="built_in">console</span>.log(b); <span class="comment">// Function b</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">c();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    e = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(e); <span class="comment">// 20</span></span><br><span class="line">&#125;</span><br><span class="line">e();</span><br><span class="line"></span><br><span class="line">在函数声明的内部可以有与函数同名的变量并且</span><br><span class="line">遵循作用域就近原则 执行</span><br><span class="line"></span><br><span class="line">在函数表达式内部可以有与函数同名的变量</span><br><span class="line">但是遵循函数高于变量原则 执行</span><br><span class="line"></span><br><span class="line">所以在函数表达式内部 如果有函数同名的变量</span><br><span class="line">变量即是进行赋值操作 变量依然指向函数</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/07/12/PATH的顺序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1779,127 +2005,6 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/08/httpie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/08/httpie/" itemprop="url">httpie</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T01:16:05+08:00">
-                2019-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="httpie"><a href="#httpie" class="headerlink" title="httpie"></a>httpie</h2><pre><code>一个http客户端
-</code></pre><h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p><a href="https://httpie.org/doc#examples" target="_blank" rel="noopener">https://httpie.org/doc#examples</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1950,7 +2055,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
