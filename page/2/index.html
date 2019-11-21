@@ -229,6 +229,203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/16/说人话的深拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/说人话的深拷贝/" itemprop="url">说人话的深拷贝</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-16T16:55:30+08:00">
+                2019-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="类型判断方法"><a href="#类型判断方法" class="headerlink" title="类型判断方法"></a>类型判断方法</h2><pre><code>1. typeof
+
+2. instanceof
+
+3. Object.prototype.toString.call()
+
+4. 对象.constructor
+</code></pre><h2 id="typeof-7种类型"><a href="#typeof-7种类型" class="headerlink" title="typeof 7种类型"></a>typeof 7种类型</h2><pre><code>typeof 1 // number
+
+typeof &apos;a&apos; // string
+
+typeof true // boolean
+
+typeof undefined // undefined
+
+typeof function a(){} // function
+
+typeof {} // object
+
+typeof symbol() // symbol
+</code></pre><h2 id="instanceof-主要对象的细化"><a href="#instanceof-主要对象的细化" class="headerlink" title="instanceof 主要对象的细化"></a>instanceof 主要对象的细化</h2><pre><code>[] instanceof Array
+
+/1/g instanceof RegExp
+</code></pre><h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><pre><code>Object.prototype.toString.call([]) // &quot;[object Array]&quot;
+</code></pre><h2 id="深克隆的实现"><a href="#深克隆的实现" class="headerlink" title="深克隆的实现"></a>深克隆的实现</h2><pre><code>function deepClone(data){
+
+    // 1. typeof 非对象类型
+    // number string boolean undefined function  symbol
+
+    if (typeof data !== &apos;obejct&apos;) return data;
+
+    // 2. null
+    if (data === null) return data;
+
+    // 3. string number boolean包对象
+    if (data instanceof String) return new String(data);
+    if (data instanceof Number) return new Number(data);
+    if (data instanceof Boolean) return new Boolean(data);
+
+    // 4. 日期 正则
+    if (data instanceof Date) return new Date(data);
+    if (data instanceof RegExp) return new RegExp(data);
+
+    // 5. WeakSet WeakMap
+    if (data instanceof WeakSet) return data;
+    if (data instanceof WeakMap) return data;
+
+    // 6. Array Object Set Map
+    let cloner = new data.constructor();
+
+    // Set
+    if (data instanceof Set) {
+        return cloner = new Set([...data])
+    }
+
+    // Map
+    if (data instanceof Map) {
+        for (let key of data.keys()) {
+            let cloneKey = deepClone(key);
+            cloner[cloneKey] = deepClone(data.get(key));
+        }
+        return cloner;
+    }
+
+    // Array Object
+
+    for (let key in data) {
+        if (data.hasOwnPropery(key)) {
+            cloner[key] = deepClone(data[key])
+        }
+    }
+
+    return cloner
+
+}
+</code></pre><h2 id="symbol-WeakSet-WeakMap"><a href="#symbol-WeakSet-WeakMap" class="headerlink" title="symbol WeakSet WeakMap"></a>symbol WeakSet WeakMap</h2><pre><code>symbol(&apos;1&apos;) === symbol(&apos;1&apos;) // false
+
+ WeakSet WeakMap 不支持遍历
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/08/进化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1762,134 +1959,6 @@ $ npm run changelog
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/github技巧-01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/github技巧-01/" itemprop="url">github技巧-01</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T10:57:00+08:00">
-                2019-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="github-与-git-关系"><a href="#github-与-git-关系" class="headerlink" title="github 与 git 关系"></a>github 与 git 关系</h2><pre><code>git是代码管理的工具
-
-github是通过git来完成存放代码的远程仓库
-</code></pre><h4 id="Github项目变成网站"><a href="#Github项目变成网站" class="headerlink" title="Github项目变成网站"></a>Github项目变成网站</h4><pre><code>立一个gh-pages的分支，通过setting里的设置的GitHub Pages模块可以自动创建该项目的网站
-</code></pre><h3 id="trending"><a href="#trending" class="headerlink" title="trending"></a>trending</h3><pre><code>https://github.com/trending/javascript?since=daily
-
-https://github.com/trending/html?since=daily
-
-https://github.com/trending/css?since=daily
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1940,7 +2009,7 @@ https://github.com/trending/css?since=daily
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
