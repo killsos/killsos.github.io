@@ -79,21 +79,17 @@
 
 
 
-<meta name="description" content="执行代码123456789101112131415161718    function bar(x,y) &amp;#123;      var a = 1;    &amp;#123;        let b = 1;        &amp;#123;            let c = 1;            console.log(c);                    &amp;#125;    &amp;#12">
+<meta name="description" content="1. async awaitasync function getData() {     const result = await axios.get(&amp;apos;https://dube.io/service/ping&amp;apos;)     const data = result.data      console.log(&amp;apos;data&amp;apos;, data)      return">
 <meta property="og:type" content="article">
-<meta property="og:title" content="let&#x2F;const 块级作用域 执行上下文">
-<meta property="og:url" content="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/index.html">
+<meta property="og:title" content="2019的9个js技巧">
+<meta property="og:url" content="http://jsonload.com/2019/11/21/2019的9个js技巧/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="执行代码123456789101112131415161718    function bar(x,y) &amp;#123;      var a = 1;    &amp;#123;        let b = 1;        &amp;#123;            let c = 1;            console.log(c);                    &amp;#125;    &amp;#12">
+<meta property="og:description" content="1. async awaitasync function getData() {     const result = await axios.get(&amp;apos;https://dube.io/service/ping&amp;apos;)     const data = result.data      console.log(&amp;apos;data&amp;apos;, data)      return">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://jsonload.com/2019/04/17/images/EC1.jpg">
-<meta property="og:image" content="http://jsonload.com/2019/04/17/images/EC2.jpg">
-<meta property="og:image" content="http://jsonload.com/2019/04/17/images/EC3.jpg">
-<meta property="og:updated_time" content="2019-04-16T18:01:53.676Z">
+<meta property="og:updated_time" content="2019-11-21T08:45:27.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="let&#x2F;const 块级作用域 执行上下文">
-<meta name="twitter:description" content="执行代码123456789101112131415161718    function bar(x,y) &amp;#123;      var a = 1;    &amp;#123;        let b = 1;        &amp;#123;            let c = 1;            console.log(c);                    &amp;#125;    &amp;#12">
-<meta name="twitter:image" content="http://jsonload.com/2019/04/17/images/EC1.jpg">
+<meta name="twitter:title" content="2019的9个js技巧">
+<meta name="twitter:description" content="1. async awaitasync function getData() {     const result = await axios.get(&amp;apos;https://dube.io/service/ping&amp;apos;)     const data = result.data      console.log(&amp;apos;data&amp;apos;, data)      return">
 
 
 
@@ -123,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
+  <link rel="canonical" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
 
 
 
 
 
-  <title>let/const 块级作用域 执行上下文 | killsos</title>
+  <title>2019的9个js技巧 | killsos</title>
   
 
 
@@ -236,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -253,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">let/const 块级作用域 执行上下文</h1>
+          <h1 class="post-title" itemprop="name headline">2019的9个js技巧</h1>
         
 
         <div class="post-meta">
@@ -265,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T01:34:00+08:00">
-                2019-04-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T16:33:11+08:00">
+                2019-11-21
               </time>
             
 
@@ -303,17 +299,99 @@
       
 
       
-        <h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x,y</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">let</span> c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(c);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="执行上下文1"><a href="#执行上下文1" class="headerlink" title="执行上下文1"></a>执行上下文1</h2><p><img src="../images/EC1.jpg" alt>   </p>
-<h2 id="执行上下文2"><a href="#执行上下文2" class="headerlink" title="执行上下文2"></a>执行上下文2</h2><p><img src="../images/EC2.jpg" alt> </p>
-<h2 id="执行上下文3"><a href="#执行上下文3" class="headerlink" title="执行上下文3"></a>执行上下文3</h2><p><img src="../images/EC3.jpg" alt>  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>每一个块级作用域都会生成一个新的执行上下文
-this 取决于 父级作用域的this  
-可以通过 调试 bar.call(o,1,2) 来验证
+        <h2 id="1-async-await"><a href="#1-async-await" class="headerlink" title="1. async await"></a>1. async await</h2><pre><code>async function getData() {
+    const result = await axios.get(&apos;https://dube.io/service/ping&apos;)
+    const data = result.data
 
-变量对象 variable object 包含 let const 声明的变量或者常量
-但是注意TDZ 
-</code></pre>
+    console.log(&apos;data&apos;, data)
+
+    return data
+}
+
+getData()
+</code></pre><h2 id="2-async-control-flow"><a href="#2-async-control-flow" class="headerlink" title="2. async control flow"></a>2. async control flow</h2><ul>
+<li><p>for of</p>
+<pre><code>import axios from &apos;axios&apos;
+
+let myData = [{id: 0}, {id: 1}, {id: 2}, {id: 3}]
+
+async function fetchData(dataSet) {
+    for(entry of dataSet) {
+        const result = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`)
+        const newData = result.data
+        updateData(newData)
+
+        console.log(myData)
+    }
+}
+
+function updateData(newData) {
+    myData = myData.map(el =&gt; {
+        if(el.id === newData.id) return newData
+        return el
+    })
+}
+
+fetchData(myData)
+</code></pre></li>
+<li><p>Promise.all</p>
+</li>
+</ul>
+<h2 id="3-Destructuring-amp-default-values"><a href="#3-Destructuring-amp-default-values" class="headerlink" title="3. Destructuring &amp; default values"></a>3. Destructuring &amp; default values</h2><h2 id="4-Truthy-amp-falsy-values"><a href="#4-Truthy-amp-falsy-values" class="headerlink" title="4. Truthy &amp; falsy values"></a>4. Truthy &amp; falsy values</h2><pre><code>    Falsy
+        strings with the length of 0
+        the number 0
+        false
+        undefined
+        null
+        NaN
+
+
+    Truthy
+        empty arrays
+        empty objects
+        Everything else
+
+比较 == 不要用 严格比较  ===
+</code></pre><h2 id="5-Logical-and-ternary-operators"><a href="#5-Logical-and-ternary-operators" class="headerlink" title="5. Logical and ternary operators"></a>5. Logical and ternary operators</h2><pre><code>console.log(0 &amp;&amp; {a: 1}) // 0
+console.log(false &amp;&amp; &apos;a&apos;) // false
+console.log(&apos;2&apos; &amp;&amp; 5) // 5
+console.log([] || false) // []
+console.log(NaN || null) // null
+console.log(true || &apos;a&apos;) // true
+</code></pre><ul>
+<li><p>三运算符</p>
+<ol>
+<li><p>比较结果是 true false  </p>
+</li>
+<li><p>true 返回第一个  </p>
+</li>
+<li><p>false 返回第二个  </p>
+<p> const lang = ‘German’<br> console.log(lang === ‘German’ ? ‘Hallo’ : ‘Hello’) // Hallo<br> console.log(lang ? ‘Ja’ : ‘Yes’) // Ja<br> console.log(lang === ‘French’ ? ‘Bon soir’ : ‘Good evening’) // Good evening</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="6-Optional-chaining"><a href="#6-Optional-chaining" class="headerlink" title="6. Optional chaining ?."></a>6. Optional chaining ?.</h2><pre><code>const data = myObj?.firstProp?.secondProp?.actualData
+</code></pre><h2 id="7-Class-properties-amp-binding"><a href="#7-Class-properties-amp-binding" class="headerlink" title="7. Class properties &amp; binding"></a>7. Class properties &amp; binding</h2><pre><code>class Counter extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { count: 0 }
+    }
+
+    render() {
+        return(
+            &lt;div&gt;
+                &lt;h1&gt;{this.state.count}&lt;/h1&gt;  
+                &lt;button onClick={this._increaseCount}&gt;Increase Count&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+    // 类属性 自动绑定this
+    _increaseCount = () =&gt; {
+        this.setState({ count: this.state.count + 1 })
+    }
+}
+</code></pre><h2 id="8-Use-parcel"><a href="#8-Use-parcel" class="headerlink" title="8. Use parcel"></a>8. Use parcel</h2><h2 id="9-动手写自己代码-清楚原理"><a href="#9-动手写自己代码-清楚原理" class="headerlink" title="9. 动手写自己代码 清楚原理"></a>9. 动手写自己代码 清楚原理</h2>
       
     </div>
     
@@ -337,8 +415,8 @@ this 取决于 父级作用域的this
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/16/说人话的深拷贝/" rel="next" title="说人话的深拷贝">
-                <i class="fa fa-chevron-left"></i> 说人话的深拷贝
+              <a href="/2019/11/21/javascript如何处理错误/" rel="next" title="javascript如何处理错误">
+                <i class="fa fa-chevron-left"></i> javascript如何处理错误
               </a>
             
           </div>
@@ -346,10 +424,6 @@ this 取决于 父级作用域的this
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/08/httpie/" rel="prev" title="httpie">
-                httpie <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -472,7 +546,7 @@ this 取决于 父级作用域的this
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行代码"><span class="nav-number">1.</span> <span class="nav-text">执行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文1"><span class="nav-number">2.</span> <span class="nav-text">执行上下文1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文2"><span class="nav-number">3.</span> <span class="nav-text">执行上下文2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文3"><span class="nav-number">4.</span> <span class="nav-text">执行上下文3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-async-await"><span class="nav-number">1.</span> <span class="nav-text">1. async await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-async-control-flow"><span class="nav-number">2.</span> <span class="nav-text">2. async control flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Destructuring-amp-default-values"><span class="nav-number">3.</span> <span class="nav-text">3. Destructuring &amp; default values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Truthy-amp-falsy-values"><span class="nav-number">4.</span> <span class="nav-text">4. Truthy &amp; falsy values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Logical-and-ternary-operators"><span class="nav-number">5.</span> <span class="nav-text">5. Logical and ternary operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Optional-chaining"><span class="nav-number">6.</span> <span class="nav-text">6. Optional chaining ?.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Class-properties-amp-binding"><span class="nav-number">7.</span> <span class="nav-text">7. Class properties &amp; binding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Use-parcel"><span class="nav-number">8.</span> <span class="nav-text">8. Use parcel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-动手写自己代码-清楚原理"><span class="nav-number">9.</span> <span class="nav-text">9. 动手写自己代码 清楚原理</span></a></li></ol></div>
             
 
           </div>
