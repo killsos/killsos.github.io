@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="arrow function. 省略{} . 省略 return   No parameters () =&amp;gt; 42  甚至可以省略括号  _ =&amp;gt; 42  single parameter x =&amp;gt; 42  || (x) =&amp;gt; 42    Multiple parameters (x, y) =&amp;gt; 42    Statements (as opposed to exp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么时候用或不用箭头函数">
+<meta property="og:url" content="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/index.html">
+<meta property="og:site_name" content="killsos">
+<meta property="og:description" content="arrow function. 省略{} . 省略 return   No parameters () =&amp;gt; 42  甚至可以省略括号  _ =&amp;gt; 42  single parameter x =&amp;gt; 42  || (x) =&amp;gt; 42    Multiple parameters (x, y) =&amp;gt; 42    Statements (as opposed to exp">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-22T01:34:39.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="什么时候用或不用箭头函数">
+<meta name="twitter:description" content="arrow function. 省略{} . 省略 return   No parameters () =&amp;gt; 42  甚至可以省略括号  _ =&amp;gt; 42  single parameter x =&amp;gt; 42  || (x) =&amp;gt; 42    Multiple parameters (x, y) =&amp;gt; 42    Statements (as opposed to exp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/">
+
+
+
+
+
+  <title>什么时候用或不用箭头函数 | killsos</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">killsos</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人情似水分高下 世事如云任卷舒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">什么时候用或不用箭头函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T08:57:23+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="arrow-function"><a href="#arrow-function" class="headerlink" title="arrow function"></a>arrow function</h2><p>. 省略{}</p>
+<p>. 省略 return </p>
+<ol>
+<li><p>No parameters</p>
+<pre><code>() =&gt; 42
+
+甚至可以省略括号
+
+_ =&gt; 42
+</code></pre></li>
+<li><p>single parameter</p>
+<pre><code>x =&gt; 42  || (x) =&gt; 42
+</code></pre></li>
+</ol>
+<ol start="3">
+<li><p>Multiple parameters</p>
+<pre><code>(x, y) =&gt; 42
+</code></pre></li>
+</ol>
+<ol start="4">
+<li><p>Statements (as opposed to expressions)</p>
+<pre><code>需要花括号
+
+需要return
+</code></pre></li>
+<li><p>“Block body”</p>
+</li>
+<li><p>Object literals</p>
+<pre><code>如果想返回一个对象 需要一个大括号包起来 避免认为是语句
+
+x =&gt;({ y: x })
+</code></pre></li>
+</ol>
+<h2 id="arrow-function-Syntactically-anonymous"><a href="#arrow-function-Syntactically-anonymous" class="headerlink" title="arrow function Syntactically anonymous"></a>arrow function Syntactically anonymous</h2><ol>
+<li><p>难于调试</p>
+</li>
+<li><p>No self-referencing</p>
+<pre><code>递归
+
+event handler that needs to unbind
+</code></pre></li>
+</ol>
+<h2 id="Main-benefit-No-binding-of-‘this’"><a href="#Main-benefit-No-binding-of-‘this’" class="headerlink" title="Main benefit: No binding of ‘this’"></a>Main benefit: No binding of ‘this’</h2><pre><code>var obj = {
+    id: 42,
+    counter: function counter() {
+        setTimeout(() =&gt; {
+        console.log(this.id);
+        }, 1000);
+    }
+}; // 这是原作者举得栗子
+
+obj.counter() // this --&gt; obj
+
+实际上 arrow functio 中 this 取决于 词法作用域上父级作用域的this 如果父级作用域中this存在
+</code></pre><h2 id="When-you-should-not-use-Arrow-Functions"><a href="#When-you-should-not-use-Arrow-Functions" class="headerlink" title="When you should not use Arrow Functions"></a>When you should not use Arrow Functions</h2><ol>
+<li><p>Object methods</p>
+<pre><code>var cat = {
+    lives: 9,
+    jumps: () =&gt; {
+        this.lives--; // this 不是 对象本身
+    }
+} 
+</code></pre></li>
+<li><p>Callback functions with dynamic context</p>
+<pre><code>var button = document.getElementById(&apos;press&apos;);
+    button.addEventListener(&apos;click&apos;, () =&gt; {
+    this.classList.toggle(&apos;on&apos;);
+}); // this 不是 button
+</code></pre></li>
+<li><p>call apply bind  对于 箭头函数 是无效的</p>
+</li>
+<li><p>代码可读性差</p>
+</li>
+</ol>
+<h2 id="When-you-should-use-them"><a href="#When-you-should-use-them" class="headerlink" title="When you should use them"></a>When you should use them</h2><ol>
+<li><p>箭头函数最适合需要利用this绑定特性，而不是函数本身</p>
+</li>
+<li><p>map reducer方法中使用   the pros outweigh the cons 利大于弊</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/21/即将来临js特色/" rel="next" title="即将来临js特色">
+                <i class="fa fa-chevron-left"></i> 即将来临js特色
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/22/停止用i-在循环中/" rel="prev" title="停止用i++在循环中">
+                停止用i++在循环中 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">killsos.ql@gmail.com</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#arrow-function"><span class="nav-number">1.</span> <span class="nav-text">arrow function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arrow-function-Syntactically-anonymous"><span class="nav-number">2.</span> <span class="nav-text">arrow function Syntactically anonymous</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main-benefit-No-binding-of-‘this’"><span class="nav-number">3.</span> <span class="nav-text">Main benefit: No binding of ‘this’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#When-you-should-not-use-Arrow-Functions"><span class="nav-number">4.</span> <span class="nav-text">When you should not use Arrow Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#When-you-should-use-them"><span class="nav-number">5.</span> <span class="nav-text">When you should use them</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">killsos.ql@gmail.com</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

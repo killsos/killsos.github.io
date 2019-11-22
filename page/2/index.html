@@ -229,6 +229,894 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/3种javascript性能之殇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/3种javascript性能之殇/" itemprop="url">3种javascript性能之殇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:13:58+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-数组循环"><a href="#1-数组循环" class="headerlink" title="1. 数组循环"></a>1. 数组循环</h2><ul>
+<li>for</li>
+<li>forof</li>
+<li>while</li>
+<li>forEach</li>
+<li>reduce</li>
+<li><p>map</p>
+<pre><code>reduce 使用方便
+
+reduce和forEach要求递归调用该函数以递归方式调用并膨胀堆栈，并且对执行的代码进行额外的操作和验证
+
+for while 性能好
+</code></pre></li>
+</ul>
+<h2 id="2-复制数组"><a href="#2-复制数组" class="headerlink" title="2. 复制数组"></a>2. 复制数组</h2><ul>
+<li><p>spread operation […arr]  性能中</p>
+</li>
+<li><p>Array from Array.from(arr)  性能最差</p>
+</li>
+<li><p>map arr.map(x =&gt; x) 性能次</p>
+</li>
+<li><p>slice arr.slice() 性能好</p>
+</li>
+<li><p>concatenate [].concat(arr) 性能好</p>
+</li>
+</ul>
+<h2 id="3-迭代对象"><a href="#3-迭代对象" class="headerlink" title="3. 迭代对象"></a>3. 迭代对象</h2><ul>
+<li><p>forin   性能好</p>
+</li>
+<li><p>Object.keys()  forEach 性能次</p>
+</li>
+<li><p>Object.entries()   forof  性能差</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/18/js闭包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/18/js闭包/" itemprop="url">js闭包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-18T09:08:17+08:00">
+                2019-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="闭包概念"><a href="#闭包概念" class="headerlink" title="闭包概念"></a>闭包概念</h2><pre><code>函数与对其状态(即词法环境 lexical environment) 的引用 共同构成 闭包 closure
+
+也就是说 闭包可以让你从内部函数 访问 外部函数作用域
+
+在javascript中 函数在每次创建时生成闭包
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Mozilla"</span>; <span class="comment">// name 是一个被 init 创建的局部变量</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123; <span class="comment">// displayName() 是内部函数,一个闭包</span></span><br><span class="line">        alert(name); <span class="comment">// 使用了父函数中声明的变量</span></span><br><span class="line">    &#125;</span><br><span class="line">    displayName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+<h2 id="词法（lexical）"><a href="#词法（lexical）" class="headerlink" title="词法（lexical）"></a>词法（lexical）</h2><pre><code>词法一词表明，词法作用域根据声明变量的位置来确定该变量可被访问的位置。
+
+嵌套函数可获取声明于外部作用域的函数。
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Mozilla"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
+<pre><code>在一些编程语言中，函数中的局部变量仅在函数的执行期间可用。一旦 makeFunc() 执行完毕，
+我们会认为 name 变量将不能被访问。
+然而，因为代码运行得没问题，所以很显然在 JavaScript 中并不是这样的。
+
+这个谜题的答案是，JavaScript中的函数会形成闭包。 
+
+闭包是由函数以及创建该函数的词法环境组合而成。
+这个环境包含了这个闭包创建时所能访问的所有局部变量
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">var</span> add10 = makeAdder(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add5(<span class="number">2</span>));  <span class="comment">// 7</span></span><br><span class="line"><span class="built_in">console</span>.log(add10(<span class="number">2</span>)); <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+<pre><code>从本质上讲，makeAdder 是一个函数工厂 — 他创建了将指定的值和它的参数相加求和的函数。
+在上面的示例中，我们使用函数工厂创建了两个新函数 — 一个将其参数和 5 求和，另一个和 10 求和。
+
+add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存了不同的词法环境。
+在 add5 的环境中，x 为 5。而在 add10 中，x 则为 10。
+</code></pre><h3 id="实用的闭包"><a href="#实用的闭包" class="headerlink" title="实用的闭包"></a>实用的闭包</h3><p>闭包很有用，因为它允许将函数与其所操作的某些数据（环境）关联起来。<br>这显然类似于面向对象编程。在面向对象编程中，对象允许我们将某些数据（对象的属性）与一个或者多个方法相关联。</p>
+<p>因此，通常你使用只有一个方法的对象的地方，都可以使用闭包。</p>
+<p>在 Web 中，你想要这样做的情况特别常见。<br>大部分我们所写的 JavaScript 代码都是基于事件的 — 定义某种行为，<br>然后将其添加到用户触发的事件之上（比如点击或者按键）。</p>
+<p>我们的代码通常作为回调：为响应事件而执行的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeSizer</span>(<span class="params">size</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.body.style.fontSize = size + <span class="string">'px'</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> size12 = makeSizer(<span class="number">12</span>);</span><br><span class="line"><span class="keyword">var</span> size14 = makeSizer(<span class="number">14</span>);</span><br><span class="line"><span class="keyword">var</span> size16 = makeSizer(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-12'</span>).onclick = size12;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-14'</span>).onclick = size14;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-16'</span>).onclick = size16;</span><br></pre></td></tr></table></figure>
+<h3 id="用闭包模拟私有方法"><a href="#用闭包模拟私有方法" class="headerlink" title="用闭包模拟私有方法"></a>用闭包模拟私有方法</h3><p>编程语言中，比如 Java，是支持将方法声明为私有的，即它们只能被同一个类中的其它方法所调用。</p>
+<p>而 JavaScript 没有这种原生支持，但我们可以使用闭包来模拟私有方法。   </p>
+<p>私有方法不仅仅有利于限制对代码的访问：还提供了管理全局命名空间的强大能力，  </p>
+<p>避免非核心的方法弄乱了代码的公共接口部分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Counter = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> privateCounter = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">changeBy</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    privateCounter += val;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    decrement: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">-1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> privateCounter;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;   </span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="在循环中创建闭包：一个常见错误"><a href="#在循环中创建闭包：一个常见错误" class="headerlink" title="在循环中创建闭包：一个常见错误"></a>在循环中创建闭包：一个常见错误</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      showHelp(item.help);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+<pre><code>原因是赋值给 onfocus 的是闭包。这些闭包是由他们的函数定义和在 setupHelp 作用域中捕获的环境所组成的。
+
+三个闭包在循环中被创建，但他们共享了同一个词法作用域，在这个作用域中存在一个变量item。
+
+这是因为变量help使用var进行声明，由于变量提升，所以具有函数作用域。
+
+当onfocus的回调执行时，item.help的值被决定。由于循环在事件触发之前早已执行完毕，
+
+变量对象item（被三个闭包所共享）已经指向了helpText的最后一项。
+</code></pre><h4 id="解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂"><a href="#解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂" class="headerlink" title="解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂"></a>解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeHelpCallback</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    showHelp(help);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = makeHelpCallback(item.help);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+<h4 id="另一种方法使用了匿名闭包"><a href="#另一种方法使用了匿名闭包" class="headerlink" title="另一种方法使用了匿名闭包"></a>另一种方法使用了匿名闭包</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">       <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         showHelp(item.help);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;)(); <span class="comment">// 马上把当前循环项的item与事件回调相关联起来</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+<h4 id="避免使用过多的闭包，可以用let关键词"><a href="#避免使用过多的闭包，可以用let关键词" class="headerlink" title="避免使用过多的闭包，可以用let关键词"></a>避免使用过多的闭包，可以用let关键词</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      showHelp(item.help);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+<pre><code>这个例子使用let而不是var，因此每个闭包都绑定了块作用域的变量，这意味着不再需要额外的闭包。   
+</code></pre><h3 id="性能考量"><a href="#性能考量" class="headerlink" title="性能考量"></a>性能考量</h3><pre><code>如果不是某些特定任务需要使用闭包，在其它函数中创建函数是不明智的，
+因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/07/12/PATH的顺序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/12/PATH的顺序/" itemprop="url">PATH的顺序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:04:16+08:00">
+                2019-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PATH的顺序"><a href="#PATH的顺序" class="headerlink" title="PATH的顺序"></a>PATH的顺序</h2><pre><code>/etc/profile 
+
+/etc/paths 
+
+~/.bash_profile 
+
+~/.bash_login 
+
+~/.profile 
+
+~/.bashrc
+</code></pre><ol start="2">
+<li>最好的设置 .bash_profile</li>
+</ol>
+<ol start="3">
+<li><p>设定 export PATH=${PATH}:/test/folder</p>
+</li>
+<li><p>系统级</p>
+<p> /etc/profile 和 /etc/paths 是系统级别的</p>
+</li>
+<li><p>用户级</p>
+<p> ~/.bash_profile </p>
+<p> ~/.bash_login </p>
+<p> ~/.profile </p>
+<p> ~/.bashrc</p>
+</li>
+</ol>
+<h2 id="1-etc-profile-建议不修改这个文件"><a href="#1-etc-profile-建议不修改这个文件" class="headerlink" title="1 /etc/profile 建议不修改这个文件"></a>1 /etc/profile 建议不修改这个文件</h2><pre><code>全局（公有）配置，不管是哪个用户，登录时都会读取该文件
+</code></pre><h2 id="2-etc-paths-全局建议修改这个文件"><a href="#2-etc-paths-全局建议修改这个文件" class="headerlink" title="2 /etc/paths 全局建议修改这个文件"></a>2 /etc/paths 全局建议修改这个文件</h2><h2 id="3-etc-bashrc-（一般在这个文件中添加系统级环境变量）"><a href="#3-etc-bashrc-（一般在这个文件中添加系统级环境变量）" class="headerlink" title="3 /etc/bashrc （一般在这个文件中添加系统级环境变量）"></a>3 /etc/bashrc （一般在这个文件中添加系统级环境变量）</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/20/swift-UIApplicationMain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/swift-UIApplicationMain/" itemprop="url">swift @UIApplicationMain</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T01:42:20+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="程序如何开始的"><a href="#程序如何开始的" class="headerlink" title="程序如何开始的"></a>程序如何开始的</h2><p>C 系列语言中，程序的入口都是 main 函数  </p>
+<p>一个 Objective-C 的 iOS app 项目在新建时  </p>
+<p>Xcode 会给我们创建好一个 main.m 的文件</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#<span class="keyword">import</span> "AppDelegate.h"</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="type">NSStringFromClass</span>([<span class="type">AppDelegate</span> <span class="class"><span class="keyword">class</span>]));</span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>复制代码我们调用了 UIKit 的 UIApplicationMain 方法  </p>
+<p>这个方法根据第三个参数初始化一个 UIApplication 或者它的子类对象开始接收事件  </p>
+<p>当传入 nil 时则使用默认的 UIApplication   </p>
+<p>最后一个参数指定了 AppDelegate 类作为应用的委托  </p>
+<p>用来接收与应用生命周期相关的委托方法。</p>
+<p>虽然这个方法标明要返回一个 int，但其实它并不会真正的返回   </p>
+<p>而是一直存在于内存中，直到用户或者系统将应用强制终止。  </p>
+<h2 id="swift-中的对应情况"><a href="#swift-中的对应情况" class="headerlink" title="swift 中的对应情况"></a>swift 中的对应情况</h2><p>创建一个 swift 的项目之后  </p>
+<p>我们发现所有的文件中并没有一个类似于 Objective-C 中的 main.m 文件  也没有 main 函数   </p>
+<p>唯一和 main 有关系的就是在 AppDelegate 中有一个 @UIApplicationMain 标签  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">@UIApplicationMain</span><br><span class="line">class AppDelegate: UIResponder, UIApplicationDelegate &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个标签的作用就是将标注的类作为委托，创建一个 UIApplication 并启动整个程序。  </p>
+<p>一般情况我们不需要对这个标签做任何修改，但如果我们想使用 UIApplication 的子类 </p>
+<p>而不是它本身，我们就要自定义一个 main.swift 文件了</p>
+<p>（记得删除 @UIApplicationMain 标签）</p>
+<p>这个文件我们不需要定义作用域，直接写代码就OK。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(<span class="number">_</span> event: UIEvent)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Event sent:\(event)"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(</span><br><span class="line">    <span class="type">CommandLine</span>.argc,</span><br><span class="line">    <span class="type">UnsafeMutableRawPointer</span>(<span class="type">CommandLine</span>.unsafeArgv)</span><br><span class="line">        .bindMemory(</span><br><span class="line">            to: <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">Int8</span>&gt;.<span class="keyword">self</span>,</span><br><span class="line">            capacity: <span class="type">Int</span>(<span class="type">CommandLine</span>.argc)),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">MyApplication</span>.<span class="keyword">self</span>),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>.<span class="keyword">self</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这样每次发送事件（点击按钮之类的）我们都可以监听到了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/18/命令行工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/18/命令行工具/" itemprop="url">命令行工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T23:53:53+08:00">
+                2019-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="mas"><a href="#mas" class="headerlink" title="mas"></a>mas</h2><ul>
+<li>对应Appstroe</li>
+</ul>
+<p><a href="https://github.com/mas-cli/mas" target="_blank" rel="noopener">https://github.com/mas-cli/mas</a></p>
+<h2 id="gitsome"><a href="#gitsome" class="headerlink" title="gitsome"></a>gitsome</h2><ul>
+<li>一个非常实用的 GitHub 命令行工具</li>
+</ul>
+<p><a href="https://github.com/donnemartin/gitsome" target="_blank" rel="noopener">https://github.com/donnemartin/gitsome</a></p>
+<h2 id="thefuck"><a href="#thefuck" class="headerlink" title="thefuck"></a>thefuck</h2><ul>
+<li>在你输错命令后，fuck 一下，自动帮你更正命令，解气又实用</li>
+</ul>
+<p><a href="https://github.com/nvbn/thefuck" target="_blank" rel="noopener">https://github.com/nvbn/thefuck</a></p>
+<h2 id="Httpie"><a href="#Httpie" class="headerlink" title="Httpie"></a>Httpie</h2><ul>
+<li>一个 HTTP 命令行客户端</li>
+</ul>
+<p><a href="https://github.com/jakubroztocil/httpie" target="_blank" rel="noopener">https://github.com/jakubroztocil/httpie</a></p>
+<h2 id="transfer-sh"><a href="#transfer-sh" class="headerlink" title="transfer.sh"></a>transfer.sh</h2><ul>
+<li>可通过简单的命令行来快速完成文件共享操作</li>
+</ul>
+<p><a href="https://github.com/dutchcoders/transfer.sh" target="_blank" rel="noopener">https://github.com/dutchcoders/transfer.sh</a></p>
+<h2 id="stegify"><a href="#stegify" class="headerlink" title="stegify"></a>stegify</h2><ul>
+<li>能将任意文件隐藏到图片里面的命令行工具</li>
+</ul>
+<p><a href="https://github.com/DimitarPetrov/stegify" target="_blank" rel="noopener">https://github.com/DimitarPetrov/stegify</a></p>
+<h2 id="gtop"><a href="#gtop" class="headerlink" title="gtop"></a>gtop</h2><ul>
+<li>终端的系统显示工具</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm install gtop -g</span><br></pre></td></tr></table></figure>
+<h2 id="lazygit"><a href="#lazygit" class="headerlink" title="lazygit"></a>lazygit</h2><ul>
+<li>git终端</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazygit</span><br></pre></td></tr></table></figure>
+<h2 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h2><ul>
+<li>git终端</li>
+</ul>
+<h2 id="fx"><a href="#fx" class="headerlink" title="fx"></a>fx</h2><ul>
+<li>优化了终端命令行JSON 查阅体验</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install fx</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/08/httpie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/08/httpie/" itemprop="url">httpie</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T01:16:05+08:00">
+                2019-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="httpie"><a href="#httpie" class="headerlink" title="httpie"></a>httpie</h2><pre><code>一个http客户端
+</code></pre><h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p><a href="https://httpie.org/doc#examples" target="_blank" rel="noopener">https://httpie.org/doc#examples</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -794,1038 +1682,11 @@ typeof symbol() // symbol
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/06/执行上下文-变量对象-作用域-闭包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/06/执行上下文-变量对象-作用域-闭包/" itemprop="url">执行上下文 变量对象 作用域 闭包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-06T10:33:47+08:00">
-                2019-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><pre><code>执行上下文 是 一个动态概念
-
-也就是说 只有在代码执行的时候生成
-</code></pre><h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><pre><code>1. 当前上下文中的所有的通过var声明的变量 不包括通过let const 强调一下 声明这两个字
-
-2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中
-
-3. 当前上下文中的所有函数声明 注意不包括函数表达式
-
-4. let const 声明变量在作用域上
-</code></pre><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><pre><code>作用域 是 一个 静态概念
-
-是在代码的编译阶段就生成的
-
-每一个函数在编译阶段就会添加一个[[scopes]]属性
-
-let const 声明变量 与 var 不同就在这里:
-
-    let const声明变量不会预解析 也就是不会保存到变量对象中
-
-    而是保存到一个作用域scope中 并且是 这个scope是块级作用域
-</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>没有this  就用函数声明的位置this
-
-没有argments 
-
-没有super new.targe
-
-不能new调用 没有[[constructor]]方法
-
-没有原型
-
-本质 箭头函数 使用 父级执行上下文
-
-所有就说明没有this 使用父级执行上下文中的this
-</code></pre><h2 id="call-apply-bind"><a href="#call-apply-bind" class="headerlink" title="call apply bind"></a>call apply bind</h2><pre><code>call apply 为了绑定函数执行上下文中this arments
-
-bind 为了绑定函数的执行上下文this argments 
-
-bind 返回一个新函数
-
-如果bind绑定arments 返回的新函数不能传参
-
-如果bind没有绑定arments 返回的新函数可以传参
-</code></pre><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><pre><code>当前执行上下文A中的变量对象和作用域中没有的变量
-
-而是调用父级们执行上下文中的变量对象或者scope 就形成 闭包
-</code></pre><h2 id="块级作用域-代码演示"><a href="#块级作用域-代码演示" class="headerlink" title="块级作用域 代码演示"></a>块级作用域 代码演示</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt;<span class="number">3</span>; index++) &#123;</span><br><span class="line">    arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">代码编译时候变成下面的代码</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt;<span class="number">2</span>; index++) &#123;</span><br><span class="line">    <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">    arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index + o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>执行上下文有一下情况会生成
-
-    1. 全局环境
-
-    2. 函数环境
-
-    3. eavl  依赖于执行位置
-
-    4. vm    全新
-
-    5. new Function   全新
-
-执行上下文一般包括含 变量对象  作用域  this
-
-执行栈中栈顶的执行上下文的变量对象 称之为 活动对象
-
-变量对象
-
-    argumets对象
-
-    var 声明变量
-
-    function 函数声明
-
-scope
-
-    let const 声明变量
-
-    私有属性 Parent 
-
-this
-
-    是给调用者影响函数执行的一个窗口
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//eval("console.log(a)");  // 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"console.log(a)"</span>);</span><br><span class="line"></span><br><span class="line">fn()  <span class="comment">// a is not defined</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/execution context.png" alt="execution context" title="Title">  </p>
-<p><img src="/images/execution-context-code.png" alt="execution-context-code" title="Title"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">理解块级作用域的代码</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let a 声明后</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/04/编程字体/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/04/编程字体/" itemprop="url">编程字体</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-04T22:56:43+08:00">
-                2019-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="编程字体"><a href="#编程字体" class="headerlink" title="编程字体"></a>编程字体</h2><pre><code>Ubuntu Mono
-
-Menlo
-
-Fira Code 
-
-Meslo
-
-Source Code Pro
-
-San Francisco Mono
-
-YaHei Consolas Hybrid
-
-Ubuntu Monospace
-
-Courier New
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/30/CORS跨域请求之简单请求与非简单请求/" itemprop="url">CORS跨域请求之简单请求与非简单请求</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T16:04:52+08:00">
-                2019-03-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><pre><code>就是使用设定的请求方式请求数据
-</code></pre><h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><pre><code>则是在使用设定的请求方式请求数据之前
-先发送一个OPTIONS请求 
-看服务端是否允许客户端发送非简单请
-只有&quot;预检&quot;通过后才会再发送一次请求用于数据传输
-</code></pre><h2 id="简单请求与非简单请求的区别"><a href="#简单请求与非简单请求的区别" class="headerlink" title="简单请求与非简单请求的区别"></a>简单请求与非简单请求的区别</h2><pre><code>* 请求方式:HEAD,GET,POST
-* 请求头信息:
-    Accept
-    Accept-Language
-    Content-Language
-    Last-Event-ID
-    Content-Type 对应的值是以下三个中的任意一个
-        application/x-www-form-urlencoded
-        multipart/form-data
-        text/plain
-
-只有同时满足以上两个条件时,才是简单请求,否则为非简单请求
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据
-
-服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
-
-“预检”请求时，允许请求方式则需服务器设置响应头：Access-Control-Request-Method
-
-“预检”请求时，允许请求头则需服务器设置响应头：Access-Control-Request-Headers
-
-“预检”缓存时间，服务器设置响应头：Access-Control-Max-Age
-
-虽然可以通过设置响应头和响应方式等支持非简单请求
-
-但是不到万不得已的情况,不能允许客户端发送非简单请求
-
-因为非简单请求会使服务器比简单请求的多一倍的压力
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/22/虚拟机网络模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/22/虚拟机网络模式/" itemprop="url">虚拟机网络模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-22T00:21:13+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="虚拟机有三种网络模式"><a href="#虚拟机有三种网络模式" class="headerlink" title="虚拟机有三种网络模式"></a>虚拟机有三种网络模式</h2><pre><code>1. 桥接
-
-2. NAT
-
-3. Host-Only
-</code></pre><h2 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h2><pre><code>桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接
-
-物理网卡和虚拟网卡在拓扑图上处于同等地位
-
-那么物理网卡和虚拟网卡就相当于处于同一个网段
-
-虚拟交换机就相当于一台现实网络中的交换机
-
-所以两个网卡的IP地址也要设置为同一网段   
-</code></pre><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><pre><code>NAT模式中  就是让虚拟机借助NAT(网络地址转换)功能
-
-通过宿主机器所在的网络来访问公网
-
-NAT模式中   虚拟机的网卡和物理网卡的网络 不在同一个网络
-
-虚拟机的网卡  是在vmware提供的一个虚拟网络
-
-NAT和桥接的比较:
-
-    1   NAT模式和桥接模式虚拟机都可以上外网
-
-    2   由于NAT的网络在vmware提供的一个虚拟网络里
-        所以局域网其他主机是无法访问虚拟机的  而宿主机可以访问虚拟机
-        虚拟机可以访问局域网的所有主机
-        因为真实的局域网相对于NAT的虚拟网络
-        就是NAT的虚拟网络的外网
-
-    3   桥接模式下 多个虚拟机之间可以互相访问
-        NAT模式下 多个虚拟机之间也可以相互访问
-
-如果你建一个虚拟机 只是给自己用 不需要给局域网其他人用  那么可以选择NAT
-
-毕竟NAT模式下的虚拟系统的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP服务器提供的
-
-只要虚拟机的网路配置是DHCP  那么你不需要进行任何其他的配置
-
-只需要宿主机器能访问互联网即可  就可以让虚拟机联网了    
-</code></pre><h2 id="Host-Only"><a href="#Host-Only" class="headerlink" title="Host-Only"></a>Host-Only</h2><pre><code>在Host-Only模式下 虚拟网络是一个全封闭的网络
-
-它唯一能够访问的就是主机
-
-其实Host-Only网络和NAT网络很相似 不同的地方就是Host-Only网络没有NAT服务
-
-所以虚拟网络不能连接到Internet
-
-主机和虚拟机之间的通信是通过VMware Network Adepter VMnet1虚拟网卡来实现的
-
-Host-Only的宗旨就是建立一个与外界隔绝的内部网络 来提高内网的安全性
-
-这个功能或许对普通用户来说没有多大意义
-
-但大型服务商会常常利用这个功能
-
-如果你想为VMnet1网段提供路由功能
-
-那就需要使用RRAS    而不能使用XP或2000的ICS
-
-因为ICS会把内网的IP地址改为192.168.0.1
-
-但虚拟机是不会给VMnet1虚拟网卡分配这个地址的
-
-那么主机和虚拟机之间就不能通信了
-</code></pre><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><pre><code>在VMware的3中网络模式中 NAT模式是最简单的
-
-基本不需要手动配置IP地址等相关参数 至于桥接模式则需要额外的IP地址
-
-如果是在内网环境中还很容易
-
-如果是ADSL宽带就比较麻烦了
-
-ISP一般是不会大方的多提供一个公网IP的
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/git-reset-revert/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/git-reset-revert/" itemprop="url">git reset revert</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T20:45:48+08:00">
-                2019-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h2><pre><code>大致分为下面2种情况
-</code></pre><h4 id="1-没有push"><a href="#1-没有push" class="headerlink" title="1.没有push"></a>1.没有push</h4><pre><code>这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题
-准备取消提交,用到下面命令
-
-git reset [--soft | --mixed | --hard
-
---mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.
-
-git reset 默认是 --mixed 模式   
-git reset --mixed  等价于  git reset
-
---soft
-保留源码,只回退到commit 信息到某个版本
-不涉及index的回退,如果还需要提交,直接commit即可.
-
---hard
-源码也会回退到某个版本,commit和index 都回回退到某个版本
-(注意,这种方式是改变本地代码仓库源码)
-</code></pre><h4 id="2-已经push"><a href="#2-已经push" class="headerlink" title="2.已经push"></a>2.已经push</h4><pre><code>对于已经把代码push到线上仓库,你回退本地代码其实也想同时回退线上代码
-
-回滚到某个指定的版本,线上,线下代码保持一致.你要用到下面的命令
-
-git revert用于反转提交,执行evert命令时要求工作树必须是干净的
-
-git revert用一个新提交来消除一个历史提交所做的任何修改
-
-revert 之后你的本地代码会回滚到指定的历史版本
-
-这时你再 git push 既可以把线上的代码更新
-
-revert 使用,需要先找到你想回滚版本唯一的commit标识代码
-
-可以用 git log 或者在adgit搭建的web环境历史提交记录里查看
-
-git revert c011eb3c20ba6fb38cc94fe5a8dda366a3990c61
-
-通常,前几位即可
-
-git revert c011eb3
-</code></pre><h4 id="git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit"><a href="#git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit" class="headerlink" title="git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit"></a>git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit</h4><pre><code>看似达到的效果是一样的,其实完全不同.
-
-第一:
-
-上面我们说的如果你已经push到线上代码库, reset 删除指定commit以后,你git push可能导致一大堆冲突.但是revert 并不会.
-
-第二:
-
-如果在日后现有分支和历史分支需要合并的时候,reset 恢复部分的代码依然会出现在历史分支里.但是revert 方向提交的commit 并不会出现在历史分支里.
-
-第三:
-
-reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的HEAD 是一直向前的.
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/粘包分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/粘包分析/" itemprop="url">粘包分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T20:13:01+08:00">
-                2019-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-长连接与短连接"><a href="#1-长连接与短连接" class="headerlink" title="1. 长连接与短连接"></a>1. 长连接与短连接</h2><p>1.长连接</p>
-<pre><code>Client方与Server方先建立通讯连接，连接建立后不断开， 然后再进行报文发送和接收。
-</code></pre><p>2.短连接</p>
-<pre><code>Client方与Server每进行一次报文收发交易时才进行通讯连接，交易完毕后立即断开连接。此种方式常用于一点对多点 
-通讯，比如多个Client连接一个Server.
-</code></pre><h2 id="2-什么时候需要考虑粘包问题"><a href="#2-什么时候需要考虑粘包问题" class="headerlink" title="2 什么时候需要考虑粘包问题?"></a>2 什么时候需要考虑粘包问题?</h2><pre><code>1: 如果利用tcp每次发送数据，就与对方建立连接，然后双方发送完一段数据后，就关闭连接，这样就不会出现粘包问题
-
-2: 如果发送数据无结构，如文件传输，这样发送方只管发送，接收方只管接收存储就ok，也不用考虑粘包
-</code></pre><h2 id="3-粘包出现原因"><a href="#3-粘包出现原因" class="headerlink" title="3 粘包出现原因"></a>3 粘包出现原因</h2><pre><code>在流传输中出现，UDP不会出现粘包，因为它有消息边界
-
-1 发送端需要等缓冲区满才发送出去，造成粘包
-
-2 接收方不及时接收缓冲区的包，造成多个包接收
-
-解决办法：
-
-    为了避免粘包现象，可采取以下几种措施
-
-    一 是对于发送方引起的粘包现象，用户可通过编程设置来避免，TCP提供了强制数据立即传送的操作指令push，TCP软件收到该操作指令后，就立即将本段数据发送出去，而不必等待发送缓冲区满
-
-    二 是对于接收方引起的粘包，则可通过优化程序设计、精简接收进程工作量、提高接收进程优先级等措施，使其及时接收数据，从而尽量避免出现粘包现象
-
-    三 是由接收方控制，将一包数据按结构字段，人为控制分多次接收，然后合并，通过这种手段来避免粘包
-
-TCP是个&quot;流&quot;协议,所谓流,就是没有界限的一串数据.大家可以想想河里的流水,是连成一片的,其间是没有分界线的.但一般通讯程序开发是需要定义一个个相互独立的数据包的,比如用于登陆的数据包,用于注销的数据包.由于TCP&quot;流&quot;的特性以及网络状况,在进行数据传输时会出现以下几种情况.
-
-假设我们连续调用两次send分别发送两段数据data1和data2,
-在接收端有以下几种接收情况(当然不止这几种情况,这里只列出了有代表性的情况).
-
-A.先接收到data1,然后接收到data2.
-
-B.先接收到data1的部分数据,然后接收到data1余下的部分以及data2的全部.
-
-C.先接收到了data1的全部数据和data2的部分数据,然后接收到了data2的余下的数据.
-
-D.一次性接收到了data1和data2的全部数据.
-
-对于A这种情况正是我们需要的,不再做讨论.
-
-对于B,C,D的情况就是大家经常说的&quot;粘包&quot;,就需要我们把接收到的数据进行拆包
-拆成一个个独立的数据包.为了拆包就必须在发送端进行封包
-</code></pre><h4 id="为什么会出现B-C-D的情况"><a href="#为什么会出现B-C-D的情况" class="headerlink" title="为什么会出现B.C.D的情况."></a>为什么会出现B.C.D的情况.</h4><pre><code>&quot;粘包&quot;可发生在发送端也可发生在接收端.
-
-1.由Nagle算法造成的发送端的粘包:Nagle算法是一种改善网络传输效率的算法.
-简单的说,当我们提交一段数据给TCP发送时,TCP并不立刻发送此段数据
-而是等待一小段时间,看看在等待期间是否还有要发送的数据
-若有则会一次把这两段数据发送出去.这是对Nagle算法一个简单的解释
-详细的请看相关书籍.象C和D的情况就有可能是Nagle算法造成的.
-
-2.接收端接收不及时造成的接收端粘包:TCP会把接收到的数据存在自己的缓冲区中
-然后通知应用层取数据.当应用层由于某些原因不能及时的把TCP的数据取出来
-就会造成TCP缓冲区中存放了几段数据
-</code></pre><p><a href="https://blog.csdn.net/tiandijun/article/details/41961785" title="Title" target="_blank" rel="noopener">good </a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1871,7 +1732,7 @@ D.一次性接收到了data1和data2的全部数据.
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
