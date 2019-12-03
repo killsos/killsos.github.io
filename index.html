@@ -229,6 +229,322 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/javascript中getter与setter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/03/javascript中getter与setter/" itemprop="url">javascript中getter与setter</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T09:34:20+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Getter与Setter是用来获得或者设置变量值得函数或者方法<br>Getter与Setter的概念是在计算机编程中一个普遍的概念<br>几乎所有高级编程语言<br>几乎所有的高级编程语言都带有一组用于实现getter和setter的语法，包括JavaScipt  </p>
+<p>在这篇文章 我们将能懂getters setters是什么 如何建立和使用他们在Javascript  </p>
+<h2 id="Getters-setters与封装"><a href="#Getters-setters与封装" class="headerlink" title="Getters-setters与封装"></a>Getters-setters与封装</h2><p>Getters-setters总是会与封装联系在一起<br>封装可以用两种方式来理解  </p>
+<ol>
+<li><p>首先 它是数据获取者、设置者和修改者的集合 这种限定在某些操作的时候是非常有意义的<br> 例如验证 在数据保存和展示之前 getter和setter提供了完美解决</p>
+</li>
+<li><p>依据封装是为了隐藏数据 使得外部不能访问内部数据 除了通过getter和setter 这样避免了程序中其他代码重写数据</p>
+</li>
+</ol>
+<h2 id="创建Getters-setters"><a href="#创建Getters-setters" class="headerlink" title="创建Getters-setters"></a>创建Getters-setters</h2><ol>
+<li>通过方法</li>
+</ol>
+<p>由于getter和setter本质改变和设置值的函数 </p>
+<pre><code>var obj = {
+    foo:    &apos;this is the value of foo&apos;,
+    getFoo: function() {
+                return this.foo;
+    ,
+    setFoo: function(val) {
+                this.foo = val;
+    }
+}
+
+    console.log(obj.getFoo());
+    // &quot;this is the value of foo&quot;
+
+    obj.setFoo(&apos;hello&apos;);
+
+    console.log(obj.getFoo());
+    // &quot;hello&quot;
+    This is the simples  
+</code></pre><ol start="2">
+<li><p>通过关键字</p>
+<pre><code>通过关键字get/set是官方和健壮的做法
+
+var obj = {
+    fooVal: &apos;this is the value of foo&apos;,
+    get foo() {
+        return this.fooVal;
+    },
+    set foo(val) {
+        this.fooVal = val;
+    }
+}
+
+    console.log(obj.foo);
+    // &quot;this is the value of foo&quot;
+
+    obj.foo = &apos;hello&apos;;
+
+    console.log(obj.foo);
+    // &quot;hello&quot;
+</code></pre></li>
+</ol>
+<p>注意，数据只能存储在与getter-setter方法不同的属性名(fooVal)下，因为持有getter-setter方法的属性也不能持有数据。  </p>
+<h2 id="Overwrite-prevention-重写保护"><a href="#Overwrite-prevention-重写保护" class="headerlink" title="Overwrite prevention 重写保护"></a>Overwrite prevention 重写保护</h2><p>如果因为某种原因选择第一种 想使属性通过getter-setter方法并且是一个只读属性<br>可以通过Object.defineProperties<br>Object.defineProperties, Object.defineProperty and Reflect.defineProperty automatically configure to writable: false which means read-only:</p>
+<pre><code>/* Overwrite prevention */
+var obj = {
+foo: &apos;this is the value of foo&apos;
+};
+
+Object.defineProperties(obj, {
+&apos;getFoo&apos;: {
+    value: function () {
+        return this.foo;
+    }
+},
+&apos;setFoo&apos;: {
+    value: function (val) {
+        this.foo = val;
+    }
+}
+});
+
+obj.getFoo = 66;
+// getFoo is not going to be overwritten!
+
+console.log(obj.getFoo());
+// &quot;this is the value of foo&quot;
+</code></pre><h2 id="getter和setter中的操作"><a href="#getter和setter中的操作" class="headerlink" title="getter和setter中的操作"></a>getter和setter中的操作</h2><pre><code>var obj = {
+n: 67,
+get id() {
+    return &apos;The ID is: &apos; + this.n;
+},
+set id(val) {
+    if (typeof val === &apos;number&apos;)
+        this.n = val;
+}
+}
+
+console.log(obj.id);
+// &quot;The ID is: 67&quot;
+
+obj.id = 893;
+
+console.log(obj.id);
+// &quot;The ID is: 893&quot;
+
+obj.id = &apos;hello&apos;;
+
+console.log(obj.id);
+// &quot;The ID is: 893&quot;
+</code></pre><h2 id="通过getter与setter保护数据"><a href="#通过getter与setter保护数据" class="headerlink" title="通过getter与setter保护数据"></a>通过getter与setter保护数据</h2><ul>
+<li><p>Unprotected data</p>
+<pre><code>var obj = {
+    fooVal: &apos;this is the value of foo&apos;,
+    get foo() {
+        return this.fooVal;
+    },
+    set foo(val) {
+        this.fooVal = val;
+    }
+}
+
+obj.fooVal = &apos;hello&apos;;
+
+console.log(obj.foo);
+// &quot;hello&quot;
+</code></pre></li>
+</ul>
+<p>保护数据通过块级作用域或者函数作用域  </p>
+<ol>
+<li>块级作用域 通过let</li>
+</ol>
+<p>创建块级作用域一种方法是通过{}中创建</p>
+<pre><code>/* BLOCK SCOPE, leave the braces alone! */
+
+{
+    let fooVal = &apos;this is the value of foo&apos;;
+    var obj = {
+        get foo() {
+            return fooVal;
+        },
+        set foo(val) {
+            fooVal = val
+        }
+    }
+}
+
+fooVal = &apos;hello&apos;;
+// not going to affect the fooVal inside the block
+
+console.log(obj.foo);
+// &quot;this is the value of foo&quot;
+</code></pre><ol start="2">
+<li>函数作用域</li>
+</ol>
+<p>The more common way to protect the data with scoping is by keeping the data inside a function and returning an object with the getters and setters from that function.  </p>
+<pre><code>function myobj(){
+    var fooVal = &apos;this is the value of foo&apos;;
+    return {
+        get foo() {
+            return fooVal;
+        },
+        set foo(val) {
+            fooVal = val
+        }
+    }
+}
+
+fooVal = &apos;hello&apos;;
+// not going to affect our original fooVal
+
+var obj = myobj();
+
+console.log(obj.foo);
+// &quot;this is the value of foo&quot;
+</code></pre><ol start="3">
+<li>Data protection without scoping</li>
+</ol>
+<p>如果数据具有一个不太容易复制的变量/属性名称，则没有人（甚至我们自己）也不会通过为该变量/属性名称分配一些值来覆盖它  </p>
+<pre><code>var obj = {
+    s89274934764: &apos;this is the value of foo&apos;,
+    get foo() {
+        return this.s89274934764;
+    },
+    set foo(val) {
+        this.s89274934764 = val;
+    }
+}
+
+console.log(obj.foo);
+// &quot;this is the value of foo&quot;
+</code></pre><ol start="4">
+<li><p>通过闭包</p>
+<pre><code>function reactive(obj, prop, value){
+    Object.defineProperty(obj, prop,{
+        get() {
+            return value
+        },
+        set(newValue) {
+            value = newValue;
+        }   
+    })
+}
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/02/像素-2k-4k-高清/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1954,217 +2270,6 @@ return C.x === 42;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/2019的9个js技巧/" itemprop="url">2019的9个js技巧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T16:33:11+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-async-await"><a href="#1-async-await" class="headerlink" title="1. async await"></a>1. async await</h2><pre><code>async function getData() {
-    const result = await axios.get(&apos;https://dube.io/service/ping&apos;)
-    const data = result.data
-
-    console.log(&apos;data&apos;, data)
-
-    return data
-}
-
-getData()
-</code></pre><h2 id="2-async-control-flow"><a href="#2-async-control-flow" class="headerlink" title="2. async control flow"></a>2. async control flow</h2><ul>
-<li><p>for of</p>
-<pre><code>import axios from &apos;axios&apos;
-
-let myData = [{id: 0}, {id: 1}, {id: 2}, {id: 3}]
-
-async function fetchData(dataSet) {
-    for(entry of dataSet) {
-        const result = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`)
-        const newData = result.data
-        updateData(newData)
-
-        console.log(myData)
-    }
-}
-
-function updateData(newData) {
-    myData = myData.map(el =&gt; {
-        if(el.id === newData.id) return newData
-        return el
-    })
-}
-
-fetchData(myData)
-</code></pre></li>
-<li><p>Promise.all</p>
-</li>
-</ul>
-<h2 id="3-Destructuring-amp-default-values"><a href="#3-Destructuring-amp-default-values" class="headerlink" title="3. Destructuring &amp; default values"></a>3. Destructuring &amp; default values</h2><h2 id="4-Truthy-amp-falsy-values"><a href="#4-Truthy-amp-falsy-values" class="headerlink" title="4. Truthy &amp; falsy values"></a>4. Truthy &amp; falsy values</h2><pre><code>    Falsy
-        strings with the length of 0
-        the number 0
-        false
-        undefined
-        null
-        NaN
-
-
-    Truthy
-        empty arrays
-        empty objects
-        Everything else
-
-比较 == 不要用 严格比较  ===
-</code></pre><h2 id="5-Logical-and-ternary-operators"><a href="#5-Logical-and-ternary-operators" class="headerlink" title="5. Logical and ternary operators"></a>5. Logical and ternary operators</h2><pre><code>console.log(0 &amp;&amp; {a: 1}) // 0
-console.log(false &amp;&amp; &apos;a&apos;) // false
-console.log(&apos;2&apos; &amp;&amp; 5) // 5
-console.log([] || false) // []
-console.log(NaN || null) // null
-console.log(true || &apos;a&apos;) // true
-</code></pre><ul>
-<li><p>三运算符</p>
-<ol>
-<li><p>比较结果是 true false  </p>
-</li>
-<li><p>true 返回第一个  </p>
-</li>
-<li><p>false 返回第二个  </p>
-<p> const lang = ‘German’<br> console.log(lang === ‘German’ ? ‘Hallo’ : ‘Hello’) // Hallo<br> console.log(lang ? ‘Ja’ : ‘Yes’) // Ja<br> console.log(lang === ‘French’ ? ‘Bon soir’ : ‘Good evening’) // Good evening</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="6-Optional-chaining"><a href="#6-Optional-chaining" class="headerlink" title="6. Optional chaining ?."></a>6. Optional chaining ?.</h2><pre><code>const data = myObj?.firstProp?.secondProp?.actualData
-</code></pre><h2 id="7-Class-properties-amp-binding"><a href="#7-Class-properties-amp-binding" class="headerlink" title="7. Class properties &amp; binding"></a>7. Class properties &amp; binding</h2><pre><code>class Counter extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { count: 0 }
-    }
-
-    render() {
-        return(
-            &lt;div&gt;
-                &lt;h1&gt;{this.state.count}&lt;/h1&gt;  
-                &lt;button onClick={this._increaseCount}&gt;Increase Count&lt;/button&gt;
-            &lt;/div&gt;
-        )
-    }
-    // 类属性 自动绑定this
-    _increaseCount = () =&gt; {
-        this.setState({ count: this.state.count + 1 })
-    }
-}
-</code></pre><h2 id="8-Use-parcel"><a href="#8-Use-parcel" class="headerlink" title="8. Use parcel"></a>8. Use parcel</h2><h2 id="9-动手写自己代码-清楚原理"><a href="#9-动手写自己代码-清楚原理" class="headerlink" title="9. 动手写自己代码 清楚原理"></a>9. 动手写自己代码 清楚原理</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2215,7 +2320,7 @@ console.log(true || &apos;a&apos;) // true
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
