@@ -229,6 +229,1043 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/js面试10点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/js面试10点/" itemprop="url">js面试10点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:46:33+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-js编程方式"><a href="#1-js编程方式" class="headerlink" title="1 js编程方式"></a>1 js编程方式</h2><ul>
+<li><p>JavaScript是一种多范式语言，支持命令式/过程式编程以及OOP（面向对象编程）和函数式编程 JavaScript支持原型继承的OOP</p>
+<pre><code>范式  过程式/命令式    面向对象    函数式
+
+面向对象 prototype 
+
+函数式 闭包  函数一等类  lambdas 
+</code></pre></li>
+</ul>
+<h2 id="2-函数式编程"><a href="#2-函数式编程" class="headerlink" title="2 函数式编程"></a>2 函数式编程</h2><ul>
+<li>函数式编程通过组合数学函数来生成程序，并避免共享状态和可变数据</li>
+<li>Lisp（在1958年指定）是最早支持函数式编程的语言之一，并且受到lambda演算的极大启发。</li>
+<li>Lisp和许多Lisp家庭语言在今天仍然很普遍</li>
+</ul>
+<ol>
+<li><p>纯函数/函数纯度。</p>
+</li>
+<li><p>避免副作用。</p>
+</li>
+<li><p>简单的功能组成。</p>
+</li>
+<li><p>功能语言的示例：Lisp，ML，Haskell，Erlang，Clojure，Elm，F Sharp，OCaml等</p>
+</li>
+<li><p>提到支持FP的功能：一流的功能，高阶功能，作为参数/值的功能</p>
+</li>
+</ol>
+<h2 id="3-经典继承和原型继承有什么区别？"><a href="#3-经典继承和原型继承有什么区别？" class="headerlink" title="3.经典继承和原型继承有什么区别？"></a>3.经典继承和原型继承有什么区别？</h2><ol>
+<li><p>类继承：实例从类继承（如蓝图-类的描述），并创建子类关系：分层类分类法。</p>
+<pre><code>实例通常通过带有`new`关键字的构造函数来实例化。
+类继承可以使用也可以不使用ES6中的`class`关键字。
+</code></pre></li>
+<li><p>原型继承：实例直接从其他对象继承。</p>
+<pre><code>通常通过工厂函数或Object.create（）实例化实例。
+实例可以由许多不同的对象组成，从而可以轻松地进行选择性继承。
+</code></pre></li>
+<li><p>类：创建紧密耦合 或层次结构/分类法。  原型：提及串联继承，原型委托，功能继承，对象组成。</p>
+</li>
+</ol>
+<h2 id="4-函数式程序设计与面向对象程序设计的优缺点是什么？"><a href="#4-函数式程序设计与面向对象程序设计的优缺点是什么？" class="headerlink" title="4. 函数式程序设计与面向对象程序设计的优缺点是什么？"></a>4. 函数式程序设计与面向对象程序设计的优缺点是什么？</h2><ul>
+<li><p>OOP优点：易于理解对象的基本概念，并易于解释方法调用的含义。OOP倾向于使用命令式而不是声明式，其读起来就像一组简单的指令供计算机遵循。</p>
+</li>
+<li><p>OOP缺点：OOP通常取决于共享状态。对象和行为通常在同一实体上固定在一起，可以由具有不确定顺序的任意数量的函数随机访问，这可能导致不良行为，例如竞态条件。</p>
+</li>
+<li><p>FP优点：使用功能范式，程序员避免了任何共享状态或副作用，从而消除了由多个功能争夺同一资源引起的错误。</p>
+<p>  通过使用无点样式（又称为默认编程）等功能，与OOP相比，对于那些更普遍可重用的代码，功能往往会得到根本简化，并且易于重组。</p>
+<p>  FP还倾向于使用声明性和指示性样式，它们不会详细说明操作的分步说明，而是专注于执行操作，让底层函数负责操作方式。</p>
+<p>  这为重构和性能优化留出了极大的自由度，甚至允许您通过很少的代码更改就可以用效率更高的算法替换整个算法。例如，记住或使用懒惰的评估代替急切的评估</p>
+<p>  利用纯函数的计算也很容易在多个处理器或分布式计算集群之间扩展，而不必担心线程资源冲突，竞争条件等。</p>
+</li>
+<li><p>FP缺点：过度利用FP功能（如无点样式和较大的组合）可能会降低可读性，因为生成的代码通常被更抽象地指定，更简洁且不太具体。</p>
+<p>  比函数编程更熟悉OO和命令式编程，因此即使是函数式编程中的常见习语也会使新团队成员感到困惑。FP的学习曲线比OOP陡得多</p>
+<p>  这是因为OOP的广泛普及使OOP的语言和学习材料变得更具对话性，而FP的语言往往更具学术性和形式性。</p>
+<p>  FP概念经常被编写为使用lambda演算，代数和范畴论中的惯用语和记号，所有这些都需要先了解这些领域的知识基础。</p>
+</li>
+<li><p>提到共享状态带来的麻烦，争夺相同资源的不同事物，等等……</p>
+</li>
+<li><p>意识到FP能够从根本上简化许多应用程序的能力</p>
+</li>
+<li><p>意识到学习曲线的差异</p>
+</li>
+<li><p>阐明副作用及其对程序可维护性的影响</p>
+</li>
+<li><p>意识到功能强大的代码库可能具有陡峭的学习曲线</p>
+</li>
+<li><p>意识到，与同等的FP代码库相比，高度面向对象的代码库可以极大地抵抗更改并且非常脆弱</p>
+</li>
+<li><p>意识到不变性会带来极其可访问和可延展的程序状态历史记录，从而允许轻松添加无限的撤消/重做，倒带/重播，时间旅行调试等功能</p>
+</li>
+<li><p>在这两种范例中都可以实现不变性，但是共享状态对象的泛滥使OOP的实现变得复杂</p>
+</li>
+</ul>
+<h2 id="5-When-is-classical-inheritance-an-appropriate-choice"><a href="#5-When-is-classical-inheritance-an-appropriate-choice" class="headerlink" title="5. When is classical inheritance an appropriate choice?"></a>5. When is classical inheritance an appropriate choice?</h2><h2 id="6-原型继承何时合适？"><a href="#6-原型继承何时合适？" class="headerlink" title="6.原型继承何时合适？"></a>6.原型继承何时合适？</h2><ul>
+<li><p>原型继承有多种类型：</p>
+<ol>
+<li><p>委托（即原型链）</p>
+</li>
+<li><p>串联的（即mixins，<code>Object.assign（）</code>）</p>
+</li>
+<li><p>函数式的（不要与函数式编程混淆。用于创建私有状态/封装的闭包的函数）</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="7-“偏向于类继承而不是对象继承”是什么意思？"><a href="#7-“偏向于类继承而不是对象继承”是什么意思？" class="headerlink" title="7.“偏向于类继承而不是对象继承”是什么意思？"></a>7.“偏向于类继承而不是对象继承”是什么意思？</h2><pre><code>这摘自“设计模式：可重用的面向对象软件的元素”。这意味着应该通过将较小的功能单元组装到新对象中，而不是从类继承并创建对象分类法来实现代码重用
+
+换句话说，使用can-do，has-a或uses-a关系代替is-a关系。
+</code></pre><ul>
+<li>避免类层次结构。</li>
+<li>避免脆性基类问题。</li>
+<li>避免紧密耦合。</li>
+<li>避免使用严格的分类法（强迫is-a关系对于新用例最终是错误的）。</li>
+<li>避免大猩猩香蕉问题（“您想要的是香蕉，得到的是拿着香蕉的大猩猩，以及整个丛林”）。</li>
+<li>使代码更灵活。</li>
+</ul>
+<h2 id="8-什么是双向数据绑定和单向数据流，它们有何不同？"><a href="#8-什么是双向数据绑定和单向数据流，它们有何不同？" class="headerlink" title="8.什么是双向数据绑定和单向数据流，它们有何不同？"></a>8.什么是双向数据绑定和单向数据流，它们有何不同？</h2><ul>
+<li>双向数据绑定意味着将UI字段动态绑定到模型数据，这样，当UI字段更改时，模型数据也会随之更改，反之亦然。</li>
+<li>单向数据流的一种方式意味着模型是事实的唯一来源。UI中的更改会触发消息，向用户发送信号通知模型（或在React中store）的意图。只有模型才有权更改应用程序的状态。结果是数据始终沿单一方向流动，这使它更易于理解。</li>
+<li><p>单向数据流是确定性的一种方式，而双向绑定可能会引起副作用，而这些副作用很难理解和理解。</p>
+</li>
+<li><p>React是单向数据流的新典范示例，因此提到React是一个很好的信号。</p>
+</li>
+<li>Cycle.js是另一种流行的单向数据流实现。</li>
+<li>Angular是使用双向绑定的流行框架</li>
+</ul>
+<h2 id="9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures"><a href="#9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures" class="headerlink" title="9. What are the pros and cons of monolithic vs microservice architectures?"></a>9. What are the pros and cons of monolithic vs microservice architectures?</h2><ul>
+<li><p>整体架构意味着您的应用程序是作为一个内聚的代码单元编写的，其组件被设计为可以协同工作，共享相同的内存空间和资源</p>
+</li>
+<li><p>微服务架构意味着您的应用程序由许多较小的独立应用程序组成，这些应用程序可以在自己的内存空间中运行，并且可以在可能的许多不同机器上彼此独立地扩展</p>
+</li>
+<li><p>整体式优点：整体式架构的主要优势在于，大多数应用程序通常具有大量的跨领域问题，例如日志记录，速率限制以及诸如审计跟踪和DOS保护之类的安全功能。<br>  当所有事情都通过同一个应用程序运行时，很容易将组件与那些跨领域的问题联系起来。由于共享内存访问比进程间通信（IPC）更快，因此也可能具有性能优势。</p>
+</li>
+<li><p>整体式劣势：随着应用程序的发展，整体式应用程序服务趋于紧密耦合和纠缠，从而难以出于独立缩放或代码可维护性等目的隔离服务。<br>  整体架构也很难理解，因为当您查看特定的服务或控制器时，可能存在不明显的依赖关系，副作用和魔力。</p>
+</li>
+<li><p>微服务的优点：微服务架构通常组织得更好，因为每个微服务都有非常具体的工作，并且与其他组件的工作无关。<br>解耦的服务也更易于重组和重新配置，以服务于不同应用程序的目的（例如，服务于Web客户端和公共API）<br>根据它们的组织方式，它们还可以具有性能优势，因为可以隔离热服务并独立于应用程序的其余部分进行扩展</p>
+</li>
+<li><p>微服务的弊端：在构建新的微服务架构时，您可能会发现很多跨领域的问题，而这些问题在设计时并未预料到。<br>  单一的应用程序可以建立共享的魔术助手或中间件来处理此类跨领域的问题，而无需付出太多努力。<br>  在微服务架构中，您要么需要为每个横切关注点承担单独模块的开销，要么将横切关注点封装在所有流量都通过的另一个服务层中。<br>  最终，即使是单一的体系结构也倾向于通过外部服务层路由流量，以解决跨领域的问题，<br>  但是采用整体体系结构，有可能将这项工作的成本推迟到项目更加成熟之前。<br>  微服务经常部署在自己的虚拟机或容器上，从而导致VM争用工作激增。<br>  这些任务通常使用集装箱车队管理工具自动执行。</p>
+<ul>
+<li>尽管与单一应用程序相比，初始成本较高，但对微服务仍持积极态度。</li>
+<li>意识到微服务从长远来看往往具有更好的性能和扩展性。关于微服务与整体应用程序的实践。</li>
+<li>对应用程序进行结构设计，以使服务在代码级别上彼此独立，但一开始就很容易将其作为整体应用程序捆绑在一起。</li>
+<li>微服务的间接成本可以延迟，直到支付价格变得更加实际为止。</li>
+</ul>
+<h2 id="10-什么是异步编程，为什么它在JavaScript中很重要？"><a href="#10-什么是异步编程，为什么它在JavaScript中很重要？" class="headerlink" title="10.什么是异步编程，为什么它在JavaScript中很重要？"></a>10.什么是异步编程，为什么它在JavaScript中很重要？</h2><pre><code>同步编程意味着，除非有条件和函数调用，否则代码将自上而下依次执行，从而阻止长时间运行的任务（例如网络请求和磁盘I / O）。
+异步编程意味着引擎在事件循环中运行。当需要阻止操作时，请求将启动，并且代码将继续运行而不会阻止结果。当响应准备就绪时，将触发一个中断，这将导致事件处理程序运行，并在此处继续控制流程。
+这样，单个程序线程可以处理许多并发操作。用户界面本质上是异步的，它们花费大部分时间等待用户输入来中断事件循环并触发事件处理程序。
+默认情况下，Node是异步的，这意味着服务器的工作方式几乎相同，在循环中等待网络请求，并在处理第一个请求时接受更多的传入请求。
+这在JavaScript中很重要，因为它非常适合用户界面代码，并且对服务器性能非常有益。
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/Error实践技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/Error实践技巧/" itemprop="url">Error实践技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:19:27+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><pre><code>class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;ValidationError&apos;
+        this.message = message
+    }
+}
+
+class PermissionError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;PermissionError&apos;
+        this.message = message
+    }
+}
+
+class DatabaseError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;DatabaseError&apos;
+        this.message = message
+    }
+}
+
+module.exports = {
+    ValidationError,
+    PermissionError,
+    DatabaseError
+} 
+
+const { ValidationError } = require(&apos;./error&apos;);
+
+function myFunction(input) {
+    if (!input)
+        throw new ValidationError(&apos;A validation error&apos;)
+    return input
+}
+
+try {
+    myFunction(null)
+} catch (e) {
+    if (e.name === &apos;ValidationError&apos;) {
+        console.log(&quot;Handle input validation error&quot;)
+    } else {
+        console.log(&quot;Handle other errors&quot;)
+    }
+}
+</code></pre><h2 id="Returning-Error-objects-from-Promises"><a href="#Returning-Error-objects-from-Promises" class="headerlink" title="Returning Error objects from Promises"></a>Returning Error objects from Promises</h2><ol>
+<li><p>return error when rejecting a Promise</p>
+<pre><code>const { ValidationError } = require(&apos;./error&apos;)
+function myFunction(input) {
+    return new Promise((resolve, reject) =&gt; {
+        if (!input)
+        return reject(new ValidationError(&apos;A validation error&apos;))
+        resolve(input)
+    })
+}
+</code></pre></li>
+<li><p>Promise.catch</p>
+</li>
+</ol>
+<h2 id="Serializing-Error-objects-in-JSON"><a href="#Serializing-Error-objects-in-JSON" class="headerlink" title="Serializing Error objects in JSON"></a>Serializing Error objects in JSON</h2><p>By default, Error objects seralize to JSON with output like this:  </p>
+<pre><code>{ name: &apos;ValidationError&apos; }
+</code></pre><p>可以重写序列化方法toJSON() </p>
+<pre><code>class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;ValidationError&apos;
+        this.message = message
+    }
+
+    toJSON() {
+        return {
+        error: {
+            name: this.name,
+            message: this.message,
+            stacktrace: this.stack
+        }
+        }
+    }
+}
+
+ps: 对象不是JSON 一个对象stringify首先第一步是一个对象的调用toJSON方法 将对象转为JSON 然后执行JSON.stringify方法
+</code></pre><h2 id="new-Error-message-fileName-lineNumber"><a href="#new-Error-message-fileName-lineNumber" class="headerlink" title="new Error([message[, fileName[,lineNumber]]])"></a>new Error([message[, fileName[,lineNumber]]])</h2><pre><code>message
+可选。人类可阅读的错误描述信息。
+
+fileName 
+可选。被创建的Error对象的fileName属性值。默认是调用Error构造器代码所在的文件 的名字。
+
+lineNumber 
+可选。被创建的Error对象的lineNumber属性值。默认是调用Error构造器代码所在的文件的行号。
+
+作为函数使用 不需要new  const x = Error(&apos;I was created using a function call!&apos;);
+
+6种类型
+
+    EvalError       表示错误的原因：与 eval() 有关
+
+    InternalError   代表Javascript引擎内部错误 如: &quot;递归太多&quot;
+
+    RangeError      表示错误的原因：数值变量或参数超出其有效范围
+
+    SyntaxError     语法错误
+
+    TypeError       类型错误   变量或参数不属于有效类型
+
+    URIError        给 encodeURI()或  decodeURl()传递的参数无效
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/停止用i-在循环中/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/停止用i-在循环中/" itemprop="url">停止用i++在循环中</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T09:37:12+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="why-i-may-be-better-than-i-in-most-situations"><a href="#why-i-may-be-better-than-i-in-most-situations" class="headerlink" title="why ++i may be better than i++ in most situations"></a>why ++i may be better than i++ in most situations</h2><ul>
+<li><p>Post-Increment (i++)</p>
+<pre><code>int j = i;
+i = i + 1;
+return j;
+由于后递增运算符必须返回i的原始值，而不是返回递增值i + 1，因此它必须存储i的旧版本。
+这意味着它通常不必要地使用额外的内存来存储该值，因为在大多数情况下，我们实际上并不使用旧版本的i，而只是将其丢弃
+</code></pre></li>
+<li><p>Pre-Increment (++i)</p>
+<pre><code>i = i + 1;
+return i;
+值得注意的是，在这里，我们不必保存i的旧值-我们可以简单地将其添加并返回。
+这与for循环中的典型用例更加契合，因为在这种情况下我们很少需要i的旧值。
+只要您不需要所要递增的值的前一个值，则预增量运算符就会好于或等于后增量运算符
+</code></pre></li>
+</ul>
+<pre><code>在看到后增量和前增量之间的差异之后，您可能会注意到，由于i的缓存值从未在后增量中使用，因此编译器将优化该行，使两个运算符等效。
+对于基本类型（例如整数），最可能是这样。
+但是，对于更复杂的类型，例如用户定义的类型或带有+操作重载的迭代器，编译器可能无法安全地优化缓存操作
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/什么时候用或不用箭头函数/" itemprop="url">什么时候用或不用箭头函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T08:57:23+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="arrow-function"><a href="#arrow-function" class="headerlink" title="arrow function"></a>arrow function</h2><p>. 省略{}</p>
+<p>. 省略 return </p>
+<ol>
+<li><p>No parameters</p>
+<pre><code>() =&gt; 42
+
+甚至可以省略括号
+
+_ =&gt; 42
+</code></pre></li>
+<li><p>single parameter</p>
+<pre><code>x =&gt; 42  || (x) =&gt; 42
+</code></pre></li>
+</ol>
+<ol start="3">
+<li><p>Multiple parameters</p>
+<pre><code>(x, y) =&gt; 42
+</code></pre></li>
+</ol>
+<ol start="4">
+<li><p>Statements (as opposed to expressions)</p>
+<pre><code>需要花括号
+
+需要return
+</code></pre></li>
+<li><p>“Block body”</p>
+</li>
+<li><p>Object literals</p>
+<pre><code>如果想返回一个对象 需要一个大括号包起来 避免认为是语句
+
+x =&gt;({ y: x })
+</code></pre></li>
+</ol>
+<h2 id="arrow-function-Syntactically-anonymous"><a href="#arrow-function-Syntactically-anonymous" class="headerlink" title="arrow function Syntactically anonymous"></a>arrow function Syntactically anonymous</h2><ol>
+<li><p>难于调试</p>
+</li>
+<li><p>No self-referencing</p>
+<pre><code>递归
+
+event handler that needs to unbind
+</code></pre></li>
+</ol>
+<h2 id="Main-benefit-No-binding-of-‘this’"><a href="#Main-benefit-No-binding-of-‘this’" class="headerlink" title="Main benefit: No binding of ‘this’"></a>Main benefit: No binding of ‘this’</h2><pre><code>var obj = {
+    id: 42,
+    counter: function counter() {
+        setTimeout(() =&gt; {
+        console.log(this.id);
+        }, 1000);
+    }
+}; // 这是原作者举得栗子
+
+obj.counter() // this --&gt; obj
+
+实际上 arrow functio 中 this 取决于 词法作用域上父级作用域的this 如果父级作用域中this存在
+</code></pre><h2 id="When-you-should-not-use-Arrow-Functions"><a href="#When-you-should-not-use-Arrow-Functions" class="headerlink" title="When you should not use Arrow Functions"></a>When you should not use Arrow Functions</h2><ol>
+<li><p>Object methods</p>
+<pre><code>var cat = {
+    lives: 9,
+    jumps: () =&gt; {
+        this.lives--; // this 不是 对象本身
+    }
+} 
+</code></pre></li>
+<li><p>Callback functions with dynamic context</p>
+<pre><code>var button = document.getElementById(&apos;press&apos;);
+    button.addEventListener(&apos;click&apos;, () =&gt; {
+    this.classList.toggle(&apos;on&apos;);
+}); // this 不是 button
+</code></pre></li>
+<li><p>call apply bind  对于 箭头函数 是无效的</p>
+</li>
+<li><p>代码可读性差</p>
+</li>
+</ol>
+<h2 id="When-you-should-use-them"><a href="#When-you-should-use-them" class="headerlink" title="When you should use them"></a>When you should use them</h2><ol>
+<li><p>箭头函数最适合需要利用this绑定特性，而不是函数本身</p>
+</li>
+<li><p>map reducer方法中使用   the pros outweigh the cons 利大于弊</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/即将来临js特色/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/即将来临js特色/" itemprop="url">即将来临js特色</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T17:09:22+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Optional-Chaining"><a href="#1-Optional-Chaining" class="headerlink" title="1. Optional Chaining ?."></a>1. Optional Chaining ?.</h2><pre><code>const street = user.address?.street
+</code></pre><h2 id="2-Nullish-Coalescing-Operator-undefined-or-null"><a href="#2-Nullish-Coalescing-Operator-undefined-or-null" class="headerlink" title="2. Nullish Coalescing Operator  ??  undefined or null"></a>2. Nullish Coalescing Operator  ??  undefined or null</h2><pre><code>Base case. If the expression at the left-hand side of the ?? operator evaluates to undefined or null, its right-hand side is returned.
+
+const response = {
+    settings: {
+        nullValue: null,
+        height: 400,
+        animationDuration: 0,
+        headerText: &apos;&apos;,
+        showSplashScreen: false
+    }
+    };
+
+    const undefinedValue = response.settings.undefinedValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const nullValue = response.settings.nullValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const headerText = response.settings.headerText ?? &apos;Hello, world!&apos;; // result: &apos;&apos;
+    const animationDuration = response.settings.animationDuration ?? 300; // result: 0
+    const showSplashScreen = response.settings.showSplashScreen ?? true; // result: false
+</code></pre><h2 id="3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型"><a href="#3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型" class="headerlink" title="3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型"></a>3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型</h2><pre><code>IEEE754 64-bit floats  BigInt 可以表示 2^53
+
+63 符号位
+
+62-53 指数位
+
+0-52 精度位
+
+const x = Number.MAX_SAFE_INTEGER;
+// ↪ 9007199254740991, this is 1 less than 2^53
+
+const y = x + 1;
+// ↪ 9007199254740992, ok, checks out
+
+const z = x + 2
+// ↪ 9007199254740992, wait, that’s the same as above!
+
+A BigInt is created by appending n to the end of the integer or by calling the constructor:
+
+const theBiggestInt = 9007199254740991n;
+
+const alsoHuge = BigInt(9007199254740991);
+// ↪ 9007199254740991n
+
+const hugeButString = BigInt(&apos;9007199254740991&apos;);
+// ↪ 9007199254740991n
+</code></pre><h2 id="4-类静态"><a href="#4-类静态" class="headerlink" title="4. 类静态"></a>4. 类静态</h2><ul>
+<li>静态公有属性</li>
+</ul>
+<pre><code>class CustomDate {
+// ...
+static epoch = new CustomDate(0);
+}
+
+/* or */
+
+class CustomDate {
+// ...
+}
+CustomDate.epoch = new CustomDate(0);
+</code></pre><ul>
+<li><p>静态私有属性</p>
+<pre><code>class C {
+    static #x = 42;
+    x(){
+        return C.#x;
+    }
+}
+return new C().x() === 42;
+</code></pre></li>
+<li><p>静态私有方法 </p>
+</li>
+<li><p>静态计算属性</p>
+<pre><code>class C {
+    static [&apos;x&apos;] = 42;
+}
+return C.x === 42;
+</code></pre></li>
+</ul>
+<h2 id="5-类实例"><a href="#5-类实例" class="headerlink" title="5. 类实例"></a>5. 类实例</h2><ul>
+<li><p>类实例私有属性 / 类实例私有方法</p>
+<pre><code>class Counter extends HTMLElement {
+        #xValue = 0; // 类实例私有属性
+
+        get #x() { return #xValue; } // 类实例私有方法
+        set #x(value) { // setter // 类实例私有方法
+            this.#xValue = value;
+            window.requestAnimationFrame(this.#render.bind(this));
+        }
+
+        #clicked() { // 类实例私有方法
+            this.#x++;
+        }
+
+        constructor() {
+            super();
+            this.onclick = this.#clicked.bind(this);
+        }
+
+        connectedCallback() { this.#render(); }
+
+        #render() { // 类实例私有方法
+            this.textContent = this.#x.toString();
+        }
+    }
+    window.customElements.define(&apos;num-counter&apos;, Counter);
+</code></pre></li>
+</ul>
+<p><a href="https://medium.com/better-programming/new-upcoming-javascript-features-2019-2020-and-beyond-5c426f31ec97" target="_blank" rel="noopener">原始位置</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1215,706 +2252,11 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/07/12/PATH的顺序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/PATH的顺序/" itemprop="url">PATH的顺序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:04:16+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="PATH的顺序"><a href="#PATH的顺序" class="headerlink" title="PATH的顺序"></a>PATH的顺序</h2><pre><code>/etc/profile 
-
-/etc/paths 
-
-~/.bash_profile 
-
-~/.bash_login 
-
-~/.profile 
-
-~/.bashrc
-</code></pre><ol start="2">
-<li>最好的设置 .bash_profile</li>
-</ol>
-<ol start="3">
-<li><p>设定 export PATH=${PATH}:/test/folder</p>
-</li>
-<li><p>系统级</p>
-<p> /etc/profile 和 /etc/paths 是系统级别的</p>
-</li>
-<li><p>用户级</p>
-<p> ~/.bash_profile </p>
-<p> ~/.bash_login </p>
-<p> ~/.profile </p>
-<p> ~/.bashrc</p>
-</li>
-</ol>
-<h2 id="1-etc-profile-建议不修改这个文件"><a href="#1-etc-profile-建议不修改这个文件" class="headerlink" title="1 /etc/profile 建议不修改这个文件"></a>1 /etc/profile 建议不修改这个文件</h2><pre><code>全局（公有）配置，不管是哪个用户，登录时都会读取该文件
-</code></pre><h2 id="2-etc-paths-全局建议修改这个文件"><a href="#2-etc-paths-全局建议修改这个文件" class="headerlink" title="2 /etc/paths 全局建议修改这个文件"></a>2 /etc/paths 全局建议修改这个文件</h2><h2 id="3-etc-bashrc-（一般在这个文件中添加系统级环境变量）"><a href="#3-etc-bashrc-（一般在这个文件中添加系统级环境变量）" class="headerlink" title="3 /etc/bashrc （一般在这个文件中添加系统级环境变量）"></a>3 /etc/bashrc （一般在这个文件中添加系统级环境变量）</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/20/swift-UIApplicationMain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/swift-UIApplicationMain/" itemprop="url">swift @UIApplicationMain</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T01:42:20+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="程序如何开始的"><a href="#程序如何开始的" class="headerlink" title="程序如何开始的"></a>程序如何开始的</h2><p>C 系列语言中，程序的入口都是 main 函数  </p>
-<p>一个 Objective-C 的 iOS app 项目在新建时  </p>
-<p>Xcode 会给我们创建好一个 main.m 的文件</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#<span class="keyword">import</span> "AppDelegate.h"</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="type">NSStringFromClass</span>([<span class="type">AppDelegate</span> <span class="class"><span class="keyword">class</span>]));</span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>复制代码我们调用了 UIKit 的 UIApplicationMain 方法  </p>
-<p>这个方法根据第三个参数初始化一个 UIApplication 或者它的子类对象开始接收事件  </p>
-<p>当传入 nil 时则使用默认的 UIApplication   </p>
-<p>最后一个参数指定了 AppDelegate 类作为应用的委托  </p>
-<p>用来接收与应用生命周期相关的委托方法。</p>
-<p>虽然这个方法标明要返回一个 int，但其实它并不会真正的返回   </p>
-<p>而是一直存在于内存中，直到用户或者系统将应用强制终止。  </p>
-<h2 id="swift-中的对应情况"><a href="#swift-中的对应情况" class="headerlink" title="swift 中的对应情况"></a>swift 中的对应情况</h2><p>创建一个 swift 的项目之后  </p>
-<p>我们发现所有的文件中并没有一个类似于 Objective-C 中的 main.m 文件  也没有 main 函数   </p>
-<p>唯一和 main 有关系的就是在 AppDelegate 中有一个 @UIApplicationMain 标签  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">@UIApplicationMain</span><br><span class="line">class AppDelegate: UIResponder, UIApplicationDelegate &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个标签的作用就是将标注的类作为委托，创建一个 UIApplication 并启动整个程序。  </p>
-<p>一般情况我们不需要对这个标签做任何修改，但如果我们想使用 UIApplication 的子类 </p>
-<p>而不是它本身，我们就要自定义一个 main.swift 文件了</p>
-<p>（记得删除 @UIApplicationMain 标签）</p>
-<p>这个文件我们不需要定义作用域，直接写代码就OK。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(<span class="number">_</span> event: UIEvent)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Event sent:\(event)"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(</span><br><span class="line">    <span class="type">CommandLine</span>.argc,</span><br><span class="line">    <span class="type">UnsafeMutableRawPointer</span>(<span class="type">CommandLine</span>.unsafeArgv)</span><br><span class="line">        .bindMemory(</span><br><span class="line">            to: <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">Int8</span>&gt;.<span class="keyword">self</span>,</span><br><span class="line">            capacity: <span class="type">Int</span>(<span class="type">CommandLine</span>.argc)),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">MyApplication</span>.<span class="keyword">self</span>),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>.<span class="keyword">self</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>这样每次发送事件（点击按钮之类的）我们都可以监听到了</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/18/命令行工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/18/命令行工具/" itemprop="url">命令行工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T23:53:53+08:00">
-                2019-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="mas"><a href="#mas" class="headerlink" title="mas"></a>mas</h2><ul>
-<li>对应Appstroe</li>
-</ul>
-<p><a href="https://github.com/mas-cli/mas" target="_blank" rel="noopener">https://github.com/mas-cli/mas</a></p>
-<h2 id="gitsome"><a href="#gitsome" class="headerlink" title="gitsome"></a>gitsome</h2><ul>
-<li>一个非常实用的 GitHub 命令行工具</li>
-</ul>
-<p><a href="https://github.com/donnemartin/gitsome" target="_blank" rel="noopener">https://github.com/donnemartin/gitsome</a></p>
-<h2 id="thefuck"><a href="#thefuck" class="headerlink" title="thefuck"></a>thefuck</h2><ul>
-<li>在你输错命令后，fuck 一下，自动帮你更正命令，解气又实用</li>
-</ul>
-<p><a href="https://github.com/nvbn/thefuck" target="_blank" rel="noopener">https://github.com/nvbn/thefuck</a></p>
-<h2 id="Httpie"><a href="#Httpie" class="headerlink" title="Httpie"></a>Httpie</h2><ul>
-<li>一个 HTTP 命令行客户端</li>
-</ul>
-<p><a href="https://github.com/jakubroztocil/httpie" target="_blank" rel="noopener">https://github.com/jakubroztocil/httpie</a></p>
-<h2 id="transfer-sh"><a href="#transfer-sh" class="headerlink" title="transfer.sh"></a>transfer.sh</h2><ul>
-<li>可通过简单的命令行来快速完成文件共享操作</li>
-</ul>
-<p><a href="https://github.com/dutchcoders/transfer.sh" target="_blank" rel="noopener">https://github.com/dutchcoders/transfer.sh</a></p>
-<h2 id="stegify"><a href="#stegify" class="headerlink" title="stegify"></a>stegify</h2><ul>
-<li>能将任意文件隐藏到图片里面的命令行工具</li>
-</ul>
-<p><a href="https://github.com/DimitarPetrov/stegify" target="_blank" rel="noopener">https://github.com/DimitarPetrov/stegify</a></p>
-<h2 id="gtop"><a href="#gtop" class="headerlink" title="gtop"></a>gtop</h2><ul>
-<li>终端的系统显示工具</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm install gtop -g</span><br></pre></td></tr></table></figure>
-<h2 id="lazygit"><a href="#lazygit" class="headerlink" title="lazygit"></a>lazygit</h2><ul>
-<li>git终端</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazygit</span><br></pre></td></tr></table></figure>
-<h2 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h2><ul>
-<li>git终端</li>
-</ul>
-<h2 id="fx"><a href="#fx" class="headerlink" title="fx"></a>fx</h2><ul>
-<li>优化了终端命令行JSON 查阅体验</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install fx</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/08/httpie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/08/httpie/" itemprop="url">httpie</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T01:16:05+08:00">
-                2019-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="httpie"><a href="#httpie" class="headerlink" title="httpie"></a>httpie</h2><pre><code>一个http客户端
-</code></pre><h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p><a href="https://httpie.org/doc#examples" target="_blank" rel="noopener">https://httpie.org/doc#examples</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/let-const-块级作用-执行上下文/" itemprop="url">let/const 块级作用域 执行上下文</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T01:34:00+08:00">
-                2019-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x,y</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">let</span> c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(c);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="执行上下文1"><a href="#执行上下文1" class="headerlink" title="执行上下文1"></a>执行上下文1</h2><p><img src="../images/EC1.jpg" alt>   </p>
-<h2 id="执行上下文2"><a href="#执行上下文2" class="headerlink" title="执行上下文2"></a>执行上下文2</h2><p><img src="../images/EC2.jpg" alt> </p>
-<h2 id="执行上下文3"><a href="#执行上下文3" class="headerlink" title="执行上下文3"></a>执行上下文3</h2><p><img src="../images/EC3.jpg" alt>  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>每一个块级作用域都会生成一个新的执行上下文
-this 取决于 父级作用域的this  
-可以通过 调试 bar.call(o,1,2) 来验证
-
-变量对象 variable object 包含 let const 声明的变量或者常量
-但是注意TDZ 
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1960,7 +2302,7 @@ this 取决于 父级作用域的this
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
