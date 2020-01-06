@@ -229,6 +229,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/20/swift-UIApplicationMain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/swift-UIApplicationMain/" itemprop="url">swift @UIApplicationMain</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T01:42:20+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="程序如何开始的"><a href="#程序如何开始的" class="headerlink" title="程序如何开始的"></a>程序如何开始的</h2><p>C 系列语言中，程序的入口都是 main 函数  </p>
+<p>一个 Objective-C 的 iOS app 项目在新建时  </p>
+<p>Xcode 会给我们创建好一个 main.m 的文件</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#<span class="keyword">import</span> "AppDelegate.h"</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="type">NSStringFromClass</span>([<span class="type">AppDelegate</span> <span class="class"><span class="keyword">class</span>]));</span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>复制代码我们调用了 UIKit 的 UIApplicationMain 方法  </p>
+<p>这个方法根据第三个参数初始化一个 UIApplication 或者它的子类对象开始接收事件  </p>
+<p>当传入 nil 时则使用默认的 UIApplication   </p>
+<p>最后一个参数指定了 AppDelegate 类作为应用的委托  </p>
+<p>用来接收与应用生命周期相关的委托方法。</p>
+<p>虽然这个方法标明要返回一个 int，但其实它并不会真正的返回   </p>
+<p>而是一直存在于内存中，直到用户或者系统将应用强制终止。  </p>
+<h2 id="swift-中的对应情况"><a href="#swift-中的对应情况" class="headerlink" title="swift 中的对应情况"></a>swift 中的对应情况</h2><p>创建一个 swift 的项目之后  </p>
+<p>我们发现所有的文件中并没有一个类似于 Objective-C 中的 main.m 文件  也没有 main 函数   </p>
+<p>唯一和 main 有关系的就是在 AppDelegate 中有一个 @UIApplicationMain 标签  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">@UIApplicationMain</span><br><span class="line">class AppDelegate: UIResponder, UIApplicationDelegate &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个标签的作用就是将标注的类作为委托，创建一个 UIApplication 并启动整个程序。  </p>
+<p>一般情况我们不需要对这个标签做任何修改，但如果我们想使用 UIApplication 的子类 </p>
+<p>而不是它本身，我们就要自定义一个 main.swift 文件了</p>
+<p>（记得删除 @UIApplicationMain 标签）</p>
+<p>这个文件我们不需要定义作用域，直接写代码就OK。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(<span class="number">_</span> event: UIEvent)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Event sent:\(event)"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(</span><br><span class="line">    <span class="type">CommandLine</span>.argc,</span><br><span class="line">    <span class="type">UnsafeMutableRawPointer</span>(<span class="type">CommandLine</span>.unsafeArgv)</span><br><span class="line">        .bindMemory(</span><br><span class="line">            to: <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">Int8</span>&gt;.<span class="keyword">self</span>,</span><br><span class="line">            capacity: <span class="type">Int</span>(<span class="type">CommandLine</span>.argc)),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">MyApplication</span>.<span class="keyword">self</span>),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>.<span class="keyword">self</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这样每次发送事件（点击按钮之类的）我们都可以监听到了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/18/命令行工具/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1561,201 +1702,6 @@ Courier New
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/22/虚拟机网络模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/22/虚拟机网络模式/" itemprop="url">虚拟机网络模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-22T00:21:13+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="虚拟机有三种网络模式"><a href="#虚拟机有三种网络模式" class="headerlink" title="虚拟机有三种网络模式"></a>虚拟机有三种网络模式</h2><pre><code>1. 桥接
-
-2. NAT
-
-3. Host-Only
-</code></pre><h2 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h2><pre><code>桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接
-
-物理网卡和虚拟网卡在拓扑图上处于同等地位
-
-那么物理网卡和虚拟网卡就相当于处于同一个网段
-
-虚拟交换机就相当于一台现实网络中的交换机
-
-所以两个网卡的IP地址也要设置为同一网段   
-</code></pre><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><pre><code>NAT模式中  就是让虚拟机借助NAT(网络地址转换)功能
-
-通过宿主机器所在的网络来访问公网
-
-NAT模式中   虚拟机的网卡和物理网卡的网络 不在同一个网络
-
-虚拟机的网卡  是在vmware提供的一个虚拟网络
-
-NAT和桥接的比较:
-
-    1   NAT模式和桥接模式虚拟机都可以上外网
-
-    2   由于NAT的网络在vmware提供的一个虚拟网络里
-        所以局域网其他主机是无法访问虚拟机的  而宿主机可以访问虚拟机
-        虚拟机可以访问局域网的所有主机
-        因为真实的局域网相对于NAT的虚拟网络
-        就是NAT的虚拟网络的外网
-
-    3   桥接模式下 多个虚拟机之间可以互相访问
-        NAT模式下 多个虚拟机之间也可以相互访问
-
-如果你建一个虚拟机 只是给自己用 不需要给局域网其他人用  那么可以选择NAT
-
-毕竟NAT模式下的虚拟系统的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP服务器提供的
-
-只要虚拟机的网路配置是DHCP  那么你不需要进行任何其他的配置
-
-只需要宿主机器能访问互联网即可  就可以让虚拟机联网了    
-</code></pre><h2 id="Host-Only"><a href="#Host-Only" class="headerlink" title="Host-Only"></a>Host-Only</h2><pre><code>在Host-Only模式下 虚拟网络是一个全封闭的网络
-
-它唯一能够访问的就是主机
-
-其实Host-Only网络和NAT网络很相似 不同的地方就是Host-Only网络没有NAT服务
-
-所以虚拟网络不能连接到Internet
-
-主机和虚拟机之间的通信是通过VMware Network Adepter VMnet1虚拟网卡来实现的
-
-Host-Only的宗旨就是建立一个与外界隔绝的内部网络 来提高内网的安全性
-
-这个功能或许对普通用户来说没有多大意义
-
-但大型服务商会常常利用这个功能
-
-如果你想为VMnet1网段提供路由功能
-
-那就需要使用RRAS    而不能使用XP或2000的ICS
-
-因为ICS会把内网的IP地址改为192.168.0.1
-
-但虚拟机是不会给VMnet1虚拟网卡分配这个地址的
-
-那么主机和虚拟机之间就不能通信了
-</code></pre><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><pre><code>在VMware的3中网络模式中 NAT模式是最简单的
-
-基本不需要手动配置IP地址等相关参数 至于桥接模式则需要额外的IP地址
-
-如果是在内网环境中还很容易
-
-如果是ADSL宽带就比较麻烦了
-
-ISP一般是不会大方的多提供一个公网IP的
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1806,7 +1752,7 @@ ISP一般是不会大方的多提供一个公网IP的
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

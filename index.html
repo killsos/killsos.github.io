@@ -229,6 +229,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/01/06/Timing-breakdown-phases-explained/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/06/Timing-breakdown-phases-explained/" itemprop="url">Timing breakdown phases explained</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-06T16:23:21+08:00">
+                2020-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Queueing"><a href="#Queueing" class="headerlink" title="Queueing."></a>Queueing.</h2><p>The browser queues requests when:</p>
+<ul>
+<li><p>There are higher priority requests. 更高优先级的请求</p>
+</li>
+<li><p>There are already six TCP connections open for this origin, which is the limit. Applies to HTTP/1.0 and HTTP/1.1 only. 6个HTTP/1.0 和 HTTP/1.1</p>
+</li>
+<li><p>The browser is briefly allocating space in the disk cache 浏览器分配本地磁盘空间</p>
+</li>
+</ul>
+<h2 id="Stalled"><a href="#Stalled" class="headerlink" title="Stalled."></a>Stalled.</h2><ul>
+<li>The request could be stalled for any of the reasons described in Queueing. 被延迟的原因</li>
+</ul>
+<h2 id="DNS-Lookup"><a href="#DNS-Lookup" class="headerlink" title="DNS Lookup."></a>DNS Lookup.</h2><ul>
+<li>The browser is resolving the request’s IP address. DNS解析时间</li>
+</ul>
+<h2 id="Proxy-negotiation"><a href="#Proxy-negotiation" class="headerlink" title="Proxy negotiation."></a>Proxy negotiation.</h2><ul>
+<li>The browser is negotiating the request with a proxy server. 浏览器将请求发送代理服务器</li>
+</ul>
+<h2 id="Request-sent"><a href="#Request-sent" class="headerlink" title="Request sent."></a>Request sent.</h2><ul>
+<li>The request is being sent. 请求被发送</li>
+</ul>
+<h2 id="ServiceWorker-Preparation"><a href="#ServiceWorker-Preparation" class="headerlink" title="ServiceWorker Preparation."></a>ServiceWorker Preparation.</h2><ul>
+<li>The browser is starting up the service worker. 浏览器正在启动服务程序</li>
+</ul>
+<h2 id="Request-to-ServiceWorker"><a href="#Request-to-ServiceWorker" class="headerlink" title="Request to ServiceWorker."></a>Request to ServiceWorker.</h2><ul>
+<li>The request is being sent to the service worker. 请求发送给服务程序</li>
+</ul>
+<h2 id="Waiting-TTFB"><a href="#Waiting-TTFB" class="headerlink" title="Waiting (TTFB)."></a>Waiting (TTFB).</h2><ul>
+<li>The browser is waiting for the first byte of a response.  接收到第一个字节</li>
+<li>TTFB stands for Time To First Byte.</li>
+<li>This timing includes 1 round trip of latency and the time the server took to prepare the response. 一个来回延迟</li>
+</ul>
+<h2 id="Content-Download"><a href="#Content-Download" class="headerlink" title="Content Download."></a>Content Download.</h2><ul>
+<li>The browser is receiving the response. 浏览器接受数据时间</li>
+</ul>
+<h2 id="Receiving-Push"><a href="#Receiving-Push" class="headerlink" title="Receiving Push."></a>Receiving Push.</h2><ul>
+<li>The browser is receiving data for this response via HTTP/2 Server Push. 通过http2push方式接受的数据</li>
+</ul>
+<h2 id="Reading-Push"><a href="#Reading-Push" class="headerlink" title="Reading Push."></a>Reading Push.</h2><p>The browser is reading the local data previously received.  读取本地数据</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/01/06/dragimage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1970,125 +2128,6 @@ repository: prompt(&apos;github repository url&apos;, &apos;&apos;, function (ur
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/自执行匿名函数本质/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/04/自执行匿名函数本质/" itemprop="url">自执行匿名函数本质</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T11:17:41+08:00">
-                2019-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2139,7 +2178,7 @@ repository: prompt(&apos;github repository url&apos;, &apos;&apos;, function (ur
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.控制流 if else  switch  for forof forin asyncawait  三元算符   2. 错误处理 构建自己Error函数  正确捕获 trycatch    3. 数据模型4. 异步处理 promise  async/await   5. DOM处理 原生操作 避免Jquery  6. Node.js/Express7. 函数编程 map  reducer  fi">
+<meta name="description" content="Queueing.The browser queues requests when:  There are higher priority requests. 更高优先级的请求  There are already six TCP connections open for this origin, which is the limit. Applies to HTTP/1.0 and HTTP/1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="10种javascript技巧">
-<meta property="og:url" content="http://jsonload.com/2019/11/21/10种javascript技巧/index.html">
+<meta property="og:title" content="Timing breakdown phases explained">
+<meta property="og:url" content="http://jsonload.com/2020/01/06/Timing-breakdown-phases-explained/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="1.控制流 if else  switch  for forof forin asyncawait  三元算符   2. 错误处理 构建自己Error函数  正确捕获 trycatch    3. 数据模型4. 异步处理 promise  async/await   5. DOM处理 原生操作 避免Jquery  6. Node.js/Express7. 函数编程 map  reducer  fi">
+<meta property="og:description" content="Queueing.The browser queues requests when:  There are higher priority requests. 更高优先级的请求  There are already six TCP connections open for this origin, which is the limit. Applies to HTTP/1.0 and HTTP/1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-21T07:43:01.866Z">
+<meta property="og:updated_time" content="2020-01-06T08:39:20.916Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="10种javascript技巧">
-<meta name="twitter:description" content="1.控制流 if else  switch  for forof forin asyncawait  三元算符   2. 错误处理 构建自己Error函数  正确捕获 trycatch    3. 数据模型4. 异步处理 promise  async/await   5. DOM处理 原生操作 避免Jquery  6. Node.js/Express7. 函数编程 map  reducer  fi">
+<meta name="twitter:title" content="Timing breakdown phases explained">
+<meta name="twitter:description" content="Queueing.The browser queues requests when:  There are higher priority requests. 更高优先级的请求  There are already six TCP connections open for this origin, which is the limit. Applies to HTTP/1.0 and HTTP/1">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/11/21/10种javascript技巧/">
+  <link rel="canonical" href="http://jsonload.com/2020/01/06/Timing-breakdown-phases-explained/">
 
 
 
 
 
-  <title>10种javascript技巧 | killsos</title>
+  <title>Timing breakdown phases explained | killsos</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/10种javascript技巧/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/01/06/Timing-breakdown-phases-explained/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">10种javascript技巧</h1>
+          <h1 class="post-title" itemprop="name headline">Timing breakdown phases explained</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:30:30+08:00">
-                2019-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-06T16:23:21+08:00">
+                2020-01-06
               </time>
             
 
@@ -299,53 +299,46 @@
       
 
       
-        <h2 id="1-控制流"><a href="#1-控制流" class="headerlink" title="1.控制流"></a>1.控制流</h2><ul>
-<li><p>if else</p>
+        <h2 id="Queueing"><a href="#Queueing" class="headerlink" title="Queueing."></a>Queueing.</h2><p>The browser queues requests when:</p>
+<ul>
+<li><p>There are higher priority requests. 更高优先级的请求</p>
 </li>
-<li><p>switch</p>
+<li><p>There are already six TCP connections open for this origin, which is the limit. Applies to HTTP/1.0 and HTTP/1.1 only. 6个HTTP/1.0 和 HTTP/1.1</p>
 </li>
-<li><p>for</p>
-<pre><code>forof forin asyncawait
-</code></pre></li>
-<li><p>三元算符</p>
+<li><p>The browser is briefly allocating space in the disk cache 浏览器分配本地磁盘空间</p>
 </li>
 </ul>
-<h2 id="2-错误处理"><a href="#2-错误处理" class="headerlink" title="2. 错误处理"></a>2. 错误处理</h2><ul>
-<li><p>构建自己Error函数</p>
-</li>
-<li><p>正确捕获 trycatch </p>
-</li>
+<h2 id="Stalled"><a href="#Stalled" class="headerlink" title="Stalled."></a>Stalled.</h2><ul>
+<li>The request could be stalled for any of the reasons described in Queueing. 被延迟的原因</li>
 </ul>
-<h2 id="3-数据模型"><a href="#3-数据模型" class="headerlink" title="3. 数据模型"></a>3. 数据模型</h2><h2 id="4-异步处理"><a href="#4-异步处理" class="headerlink" title="4. 异步处理"></a>4. 异步处理</h2><ul>
-<li><p>promise</p>
-</li>
-<li><p>async/await</p>
-</li>
+<h2 id="DNS-Lookup"><a href="#DNS-Lookup" class="headerlink" title="DNS Lookup."></a>DNS Lookup.</h2><ul>
+<li>The browser is resolving the request’s IP address. DNS解析时间</li>
 </ul>
-<h2 id="5-DOM处理"><a href="#5-DOM处理" class="headerlink" title="5. DOM处理"></a>5. DOM处理</h2><ul>
-<li>原生操作 避免Jquery</li>
+<h2 id="Proxy-negotiation"><a href="#Proxy-negotiation" class="headerlink" title="Proxy negotiation."></a>Proxy negotiation.</h2><ul>
+<li>The browser is negotiating the request with a proxy server. 浏览器将请求发送代理服务器</li>
 </ul>
-<h2 id="6-Node-js-Express"><a href="#6-Node-js-Express" class="headerlink" title="6. Node.js/Express"></a>6. Node.js/Express</h2><h2 id="7-函数编程"><a href="#7-函数编程" class="headerlink" title="7. 函数编程"></a>7. 函数编程</h2><ul>
-<li><p>map</p>
-</li>
-<li><p>reducer</p>
-</li>
-<li><p>filter</p>
-</li>
-<li><p>forEach</p>
-</li>
-<li><p>find</p>
-</li>
+<h2 id="Request-sent"><a href="#Request-sent" class="headerlink" title="Request sent."></a>Request sent.</h2><ul>
+<li>The request is being sent. 请求被发送</li>
 </ul>
-<h2 id="8-面向对象编程"><a href="#8-面向对象编程" class="headerlink" title="8. 面向对象编程"></a>8. 面向对象编程</h2><h2 id="9-前端框架"><a href="#9-前端框架" class="headerlink" title="9. 前端框架"></a>9. 前端框架</h2><h2 id="10-打包、编译"><a href="#10-打包、编译" class="headerlink" title="10. 打包、编译"></a>10. 打包、编译</h2><ul>
-<li><p>babel.js</p>
-</li>
-<li><p>webpack</p>
-</li>
-<li><p>parcel</p>
-</li>
+<h2 id="ServiceWorker-Preparation"><a href="#ServiceWorker-Preparation" class="headerlink" title="ServiceWorker Preparation."></a>ServiceWorker Preparation.</h2><ul>
+<li>The browser is starting up the service worker. 浏览器正在启动服务程序</li>
 </ul>
-<h2 id="11-正则表达式"><a href="#11-正则表达式" class="headerlink" title="11. 正则表达式"></a>11. 正则表达式</h2><h2 id="12-测试"><a href="#12-测试" class="headerlink" title="12. 测试"></a>12. 测试</h2>
+<h2 id="Request-to-ServiceWorker"><a href="#Request-to-ServiceWorker" class="headerlink" title="Request to ServiceWorker."></a>Request to ServiceWorker.</h2><ul>
+<li>The request is being sent to the service worker. 请求发送给服务程序</li>
+</ul>
+<h2 id="Waiting-TTFB"><a href="#Waiting-TTFB" class="headerlink" title="Waiting (TTFB)."></a>Waiting (TTFB).</h2><ul>
+<li>The browser is waiting for the first byte of a response.  接收到第一个字节</li>
+<li>TTFB stands for Time To First Byte.</li>
+<li>This timing includes 1 round trip of latency and the time the server took to prepare the response. 一个来回延迟</li>
+</ul>
+<h2 id="Content-Download"><a href="#Content-Download" class="headerlink" title="Content Download."></a>Content Download.</h2><ul>
+<li>The browser is receiving the response. 浏览器接受数据时间</li>
+</ul>
+<h2 id="Receiving-Push"><a href="#Receiving-Push" class="headerlink" title="Receiving Push."></a>Receiving Push.</h2><ul>
+<li>The browser is receiving data for this response via HTTP/2 Server Push. 通过http2push方式接受的数据</li>
+</ul>
+<h2 id="Reading-Push"><a href="#Reading-Push" class="headerlink" title="Reading Push."></a>Reading Push.</h2><p>The browser is reading the local data previously received.  读取本地数据</p>
+
       
     </div>
     
@@ -369,8 +362,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/21/3种javascript性能之殇/" rel="next" title="3种javascript性能之殇">
-                <i class="fa fa-chevron-left"></i> 3种javascript性能之殇
+              <a href="/2020/01/06/dragimage/" rel="next" title="dragimage">
+                <i class="fa fa-chevron-left"></i> dragimage
               </a>
             
           </div>
@@ -378,10 +371,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/21/javascript如何处理错误/" rel="prev" title="javascript如何处理错误">
-                javascript如何处理错误 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -504,7 +493,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-控制流"><span class="nav-number">1.</span> <span class="nav-text">1.控制流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-错误处理"><span class="nav-number">2.</span> <span class="nav-text">2. 错误处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-数据模型"><span class="nav-number">3.</span> <span class="nav-text">3. 数据模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-异步处理"><span class="nav-number">4.</span> <span class="nav-text">4. 异步处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-DOM处理"><span class="nav-number">5.</span> <span class="nav-text">5. DOM处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Node-js-Express"><span class="nav-number">6.</span> <span class="nav-text">6. Node.js/Express</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-函数编程"><span class="nav-number">7.</span> <span class="nav-text">7. 函数编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-面向对象编程"><span class="nav-number">8.</span> <span class="nav-text">8. 面向对象编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-前端框架"><span class="nav-number">9.</span> <span class="nav-text">9. 前端框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-打包、编译"><span class="nav-number">10.</span> <span class="nav-text">10. 打包、编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-正则表达式"><span class="nav-number">11.</span> <span class="nav-text">11. 正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-测试"><span class="nav-number">12.</span> <span class="nav-text">12. 测试</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Queueing"><span class="nav-number">1.</span> <span class="nav-text">Queueing.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stalled"><span class="nav-number">2.</span> <span class="nav-text">Stalled.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-Lookup"><span class="nav-number">3.</span> <span class="nav-text">DNS Lookup.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy-negotiation"><span class="nav-number">4.</span> <span class="nav-text">Proxy negotiation.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request-sent"><span class="nav-number">5.</span> <span class="nav-text">Request sent.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ServiceWorker-Preparation"><span class="nav-number">6.</span> <span class="nav-text">ServiceWorker Preparation.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request-to-ServiceWorker"><span class="nav-number">7.</span> <span class="nav-text">Request to ServiceWorker.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Waiting-TTFB"><span class="nav-number">8.</span> <span class="nav-text">Waiting (TTFB).</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Download"><span class="nav-number">9.</span> <span class="nav-text">Content Download.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Receiving-Push"><span class="nav-number">10.</span> <span class="nav-text">Receiving Push.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reading-Push"><span class="nav-number">11.</span> <span class="nav-text">Reading Push.</span></a></li></ol></div>
             
 
           </div>
