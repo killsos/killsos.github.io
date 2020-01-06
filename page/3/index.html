@@ -229,6 +229,144 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/停止用i-在循环中/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/停止用i-在循环中/" itemprop="url">停止用i++在循环中</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T09:37:12+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="why-i-may-be-better-than-i-in-most-situations"><a href="#why-i-may-be-better-than-i-in-most-situations" class="headerlink" title="why ++i may be better than i++ in most situations"></a>why ++i may be better than i++ in most situations</h2><ul>
+<li><p>Post-Increment (i++)</p>
+<pre><code>int j = i;
+i = i + 1;
+return j;
+由于后递增运算符必须返回i的原始值，而不是返回递增值i + 1，因此它必须存储i的旧版本。
+这意味着它通常不必要地使用额外的内存来存储该值，因为在大多数情况下，我们实际上并不使用旧版本的i，而只是将其丢弃
+</code></pre></li>
+<li><p>Pre-Increment (++i)</p>
+<pre><code>i = i + 1;
+return i;
+值得注意的是，在这里，我们不必保存i的旧值-我们可以简单地将其添加并返回。
+这与for循环中的典型用例更加契合，因为在这种情况下我们很少需要i的旧值。
+只要您不需要所要递增的值的前一个值，则预增量运算符就会好于或等于后增量运算符
+</code></pre></li>
+</ul>
+<pre><code>在看到后增量和前增量之间的差异之后，您可能会注意到，由于i的缓存值从未在后增量中使用，因此编译器将优化该行，使两个运算符等效。
+对于基本类型（例如整数），最可能是这样。
+但是，对于更复杂的类型，例如用户定义的类型或带有+操作重载的迭代器，编译器可能无法安全地优化缓存操作
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1928,168 +2066,11 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/18/命令行工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/18/命令行工具/" itemprop="url">命令行工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T23:53:53+08:00">
-                2019-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="mas"><a href="#mas" class="headerlink" title="mas"></a>mas</h2><ul>
-<li>对应Appstroe</li>
-</ul>
-<p><a href="https://github.com/mas-cli/mas" target="_blank" rel="noopener">https://github.com/mas-cli/mas</a></p>
-<h2 id="gitsome"><a href="#gitsome" class="headerlink" title="gitsome"></a>gitsome</h2><ul>
-<li>一个非常实用的 GitHub 命令行工具</li>
-</ul>
-<p><a href="https://github.com/donnemartin/gitsome" target="_blank" rel="noopener">https://github.com/donnemartin/gitsome</a></p>
-<h2 id="thefuck"><a href="#thefuck" class="headerlink" title="thefuck"></a>thefuck</h2><ul>
-<li>在你输错命令后，fuck 一下，自动帮你更正命令，解气又实用</li>
-</ul>
-<p><a href="https://github.com/nvbn/thefuck" target="_blank" rel="noopener">https://github.com/nvbn/thefuck</a></p>
-<h2 id="Httpie"><a href="#Httpie" class="headerlink" title="Httpie"></a>Httpie</h2><ul>
-<li>一个 HTTP 命令行客户端</li>
-</ul>
-<p><a href="https://github.com/jakubroztocil/httpie" target="_blank" rel="noopener">https://github.com/jakubroztocil/httpie</a></p>
-<h2 id="transfer-sh"><a href="#transfer-sh" class="headerlink" title="transfer.sh"></a>transfer.sh</h2><ul>
-<li>可通过简单的命令行来快速完成文件共享操作</li>
-</ul>
-<p><a href="https://github.com/dutchcoders/transfer.sh" target="_blank" rel="noopener">https://github.com/dutchcoders/transfer.sh</a></p>
-<h2 id="stegify"><a href="#stegify" class="headerlink" title="stegify"></a>stegify</h2><ul>
-<li>能将任意文件隐藏到图片里面的命令行工具</li>
-</ul>
-<p><a href="https://github.com/DimitarPetrov/stegify" target="_blank" rel="noopener">https://github.com/DimitarPetrov/stegify</a></p>
-<h2 id="gtop"><a href="#gtop" class="headerlink" title="gtop"></a>gtop</h2><ul>
-<li>终端的系统显示工具</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm install gtop -g</span><br></pre></td></tr></table></figure>
-<h2 id="lazygit"><a href="#lazygit" class="headerlink" title="lazygit"></a>lazygit</h2><ul>
-<li>git终端</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazygit</span><br></pre></td></tr></table></figure>
-<h2 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h2><ul>
-<li>git终端</li>
-</ul>
-<h2 id="fx"><a href="#fx" class="headerlink" title="fx"></a>fx</h2><ul>
-<li>优化了终端命令行JSON 查阅体验</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install fx</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2135,7 +2116,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2185,7 +2166,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

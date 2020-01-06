@@ -88,7 +88,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://jsonload.com/2019/12/13/images/fp.png">
 <meta property="og:image" content="http://jsonload.com/2019/12/13/images/fp1.png">
-<meta property="og:updated_time" content="2019-12-16T03:03:32.177Z">
+<meta property="og:updated_time" content="2019-12-16T03:11:06.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES7-ES8-ES9-ES10">
 <meta name="twitter:description" content="Array.prototype.includes()方法  12345678910111213const arr = [1, 3, 5, 2, &apos;8&apos;, NaN, -0]arr.includes(1) // truearr.includes(1, 2) // false 该方法的第二个参数表示搜索的起始位置，默认为0arr.includes(&apos;1&apos;) // falsearr.includes(N">
@@ -347,7 +347,7 @@
 <p>const re = /foo.bar/s // Or, <code>const re = new RegExp(&#39;foo.bar&#39;, &#39;s&#39;);</code>.  </p>
 <p>console.log(re.test(‘foo\nbar’)) // true  </p>
 <p>console.log(re.dotAll) // true  </p>
-<p>console.log(re.flags) // ‘s’ </p>
+<p>console.log(re.flags) // ‘s’</p>
 <ol start="2">
 <li>命名捕获组<br>在一些正则表达式模式中，使用数字进行匹配可能会令人混淆。例如，使用正则表达式/(\d{4})-(\d{2})-(\d{2})/来匹配日期。<br>因为美式英语中的日期表示法和英式英语中的日期表示法不同，所以很难区分哪一组表示日期，哪一组表示月份:  </li>
 </ol>
@@ -377,11 +377,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const object = &#123; x: 23, y:24 &#125;;</span><br><span class="line">const entries = Object.entries(object); // [[&apos;x&apos;, 23], [&apos;y&apos;, 24]]</span><br><span class="line">const result = Object.fromEntries(entries); // &#123; x: 23, y: 24 &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="14-String-trimStart-和-String-trimEnd"><a href="#14-String-trimStart-和-String-trimEnd" class="headerlink" title="14. String.trimStart 和 String.trimEnd"></a>14. String.trimStart 和 String.trimEnd</h2><h2 id="15-String-prototype-matchAll"><a href="#15-String-prototype-matchAll" class="headerlink" title="15. String.prototype.matchAll"></a>15. String.prototype.matchAll</h2><p>现在通过ES9的String.prototype.matchAll方法，可以一次性取出所有匹配  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function collectGroup1 (regExp, str) &#123;</span><br><span class="line">  let results = []</span><br><span class="line">  for (const match of str.matchAll(regExp)) &#123;</span><br><span class="line">    results.push(match[1])</span><br><span class="line">  &#125;</span><br><span class="line">  return results</span><br><span class="line">&#125;</span><br><span class="line">console.log(collectGroup1(/&quot;([^&quot;]*)&quot;/g, `&quot;foo&quot; and &quot;bar&quot; and &quot;baz&quot;`))</span><br><span class="line">// [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]</span><br></pre></td></tr></table></figure>
-<h2 id="16-try…catch"><a href="#16-try…catch" class="headerlink" title="16. try…catch"></a>16. try…catch</h2><p>在ES10中，try-catch语句中的参数变为了一个可选项。以前我们写catch语句时，必须传递一个异常参数。<br>这就意味着，即便我们在catch里面根本不需要用到这个异常参数也必须将其传递进去 </p>
+<h2 id="16-try…catch"><a href="#16-try…catch" class="headerlink" title="16. try…catch"></a>16. try…catch</h2><p>在ES10中，try-catch语句中的参数变为了一个可选项。以前我们写catch语句时，必须传递一个异常参数。<br>这就意味着，即便我们在catch里面根本不需要用到这个异常参数也必须将其传递进去</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">这里 err 是必须的参数，在 ES10 可以省略这个参数：</span><br><span class="line"></span><br><span class="line">// ES10</span><br><span class="line">try &#123;</span><br><span class="line">  console.log(&apos;Foobar&apos;)</span><br><span class="line">&#125; catch &#123;</span><br><span class="line">  console.error(&apos;Bar&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="17-BigInt"><a href="#17-BigInt" class="headerlink" title="17. BigInt"></a>17. BigInt</h2><p>JS中Number采用IEEE 754中双精度浮点数 采用64位(8字节)存储一个浮点数  </p>
 <p>0 - 51位 存储 尾数  采用二级制 科学记号  mantissa   52   </p>
-<p>52 - 62位 存储 指数  exponent    11 </p>
+<p>52 - 62位 存储 指数  exponent    11</p>
 <p>63位 符号位 sign bit   1  </p>
 <p><img src="../images/fp.png" alt="双精度浮点数"></p>
 <p>格式：符号位+指数位+尾数位<br>符号位S：第 1 位是正负数符号位（sign），0代表正数，1代表负数  </p>
@@ -389,8 +389,13 @@
 <p>科学计数法中指数E是可以为负数的，在表示负的指数时IEEE754标准引入了一个偏移量1023(3ff)<br>在存储指数时加上该偏移量把负数E转成正数。这就导致11位的指数能够表示指数的范围是[-1023, 1024]</p>
 <p>尾数位M：最后的 52 位是尾数（mantissa），超出的部分自动进一舍零，没有填满的部分自动补0<br>如10进制数400.12，用10进制科学计数法表示为：4.0012*10^2,。其中”0012”就是尾数部分。</p>
 <p><img src="../images/fp1.png" alt="双精度浮点数"></p>
-<p>注意以上的公式遵循科学计数法的规范，在十进制是为0&lt;M&lt;10，到二进行就是0&lt;M&lt;2。也就是说整数部分只能是1，所以可以被舍去，只保留后面的小数部分。如 4.5 转换成二进制就是 100.1，科学计数法表示是 1.001*2^2，舍去1后 M = 001。E是一个无符号整数，因为长度是11位，取值范围是 0~2047。但是科学计数法中的指数是可以为负数的，所以再减去一个中间数 1023，[0,1022]表示为负，[1024,2047] 表示为正。如4.5 的指数E = 1025，尾数M为 001。</p>
+<p>注意以上的公式遵循科学计数法的规范，在十进制是为0&lt;M&lt;10，到二进行就是0&lt;M&lt;2。也就是说整数部分只能是1，<br>所以可以被舍去，只保留后面的小数部分。如 4.5 转换成二进制就是 100.1，科学计数法表示是 1.001*2^2，<br>舍去1后 M = 001。E是一个无符号整数，因为长度是11位，取值范围是 0~2047。但是科学计数法中的指数是可以为负数的，<br>所以再减去一个中间数 1023，[0,1022]表示为负，[1024,2047] 表示为正。如4.5 的指数E = 1025，尾数M为 001。  </p>
 <p>单精度浮点数 32位  1符号位 sign bit +  8指数位 exponent + 23尾数位mantissa</p>
+<p>现在ES10引入了一种新的数据类型 BigInt（大整数），来解决这个问题。BigInt 只用来表示整数，没有位数的限制，任何位数的整数都可以精确表示<br>创建 BigInt 类型的值也非常简单，只需要在数字后面加上 n 即可。例如，123 变为 123n。<br>也可以使用全局方法 BigInt(value) 转化，入参 value 为数字或数字字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> aNumber = <span class="number">111</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> aBigInt = BigInt(aNumber);</span><br><span class="line"></span><br><span class="line">aBigInt === <span class="number">111</span>n <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> aBigInt === <span class="string">'bigint'</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">111</span> <span class="comment">// "number"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">111</span>n <span class="comment">// "bigint"</span></span><br></pre></td></tr></table></figure>
+<p>如果算上 BigInt，JavaScript 中原始类型就从 6 个变为了 7 个。</p>
+<p>Boolean<br>Null<br>Undefined<br>Number<br>String<br>Symbol (new in ECMAScript 2015)<br>BigInt (new in ECMAScript 2019)</p>
+<p>再加上一个 引用类型 Object</p>
 <h2 id="18-Symbol-prototype-description"><a href="#18-Symbol-prototype-description" class="headerlink" title="18. Symbol.prototype.description"></a>18. Symbol.prototype.description</h2><p>我们知道，Symbol 的描述只被存储在内部的 [[Description]]，没有直接对外暴露<br>我们只有调用 Symbol 的 toString() 时才可以读取这个属性：</p>
 <p>Symbol(‘desc’).description;  // “desc”<br>Symbol(‘’).description;      // “”<br>Symbol().description;        // undefined</p>
 <h2 id="19-Function-prototype-toString"><a href="#19-Function-prototype-toString" class="headerlink" title="19.Function.prototype.toString()"></a>19.Function.prototype.toString()</h2><p>ES2019中，Function.toString()发生了变化。之前执行这个方法时，得到的字符串是去空白符号的。而现在，得到的字符串呈现出原本源码的样子</p>
@@ -428,6 +433,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/06/dragimage/" rel="prev" title="dragimage">
+                dragimage <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -504,7 +513,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -570,7 +579,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
