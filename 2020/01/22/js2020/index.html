@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="回滚大致分为下面2种情况 1.没有push这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题 准备取消提交,用到下面命令  git reset [--soft | --mixed | --hard  --mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.  git reset 默认是 --mixed 模式    git reset">
+<meta name="description" content="? 可选链  1234obj?.prop       // optional static property accessobj?.[expr]     // optional dynamic property accessfunc?.(...args) // optional function or method call  空值合并运算符（??）是一个逻辑运算符  当左侧操作数为 null">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git reset revert">
-<meta property="og:url" content="http://jsonload.com/2019/03/17/git-reset-revert/index.html">
+<meta property="og:title" content="js2020">
+<meta property="og:url" content="http://jsonload.com/2020/01/22/js2020/index.html">
 <meta property="og:site_name" content="killsos">
-<meta property="og:description" content="回滚大致分为下面2种情况 1.没有push这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题 准备取消提交,用到下面命令  git reset [--soft | --mixed | --hard  --mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.  git reset 默认是 --mixed 模式    git reset">
+<meta property="og:description" content="? 可选链  1234obj?.prop       // optional static property accessobj?.[expr]     // optional dynamic property accessfunc?.(...args) // optional function or method call  空值合并运算符（??）是一个逻辑运算符  当左侧操作数为 null">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-17T12:56:20.707Z">
+<meta property="og:updated_time" content="2020-01-22T08:57:19.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git reset revert">
-<meta name="twitter:description" content="回滚大致分为下面2种情况 1.没有push这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题 准备取消提交,用到下面命令  git reset [--soft | --mixed | --hard  --mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.  git reset 默认是 --mixed 模式    git reset">
+<meta name="twitter:title" content="js2020">
+<meta name="twitter:description" content="? 可选链  1234obj?.prop       // optional static property accessobj?.[expr]     // optional dynamic property accessfunc?.(...args) // optional function or method call  空值合并运算符（??）是一个逻辑运算符  当左侧操作数为 null">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://jsonload.com/2019/03/17/git-reset-revert/">
+  <link rel="canonical" href="http://jsonload.com/2020/01/22/js2020/">
 
 
 
 
 
-  <title>git reset revert | killsos</title>
+  <title>js2020 | killsos</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/git-reset-revert/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/01/22/js2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git reset revert</h1>
+          <h1 class="post-title" itemprop="name headline">js2020</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T20:45:48+08:00">
-                2019-03-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-22T16:53:03+08:00">
+                2020-01-22
               </time>
             
 
@@ -299,59 +299,16 @@
       
 
       
-        <h2 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h2><pre><code>大致分为下面2种情况
-</code></pre><h4 id="1-没有push"><a href="#1-没有push" class="headerlink" title="1.没有push"></a>1.没有push</h4><pre><code>这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题
-准备取消提交,用到下面命令
-
-git reset [--soft | --mixed | --hard
-
---mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.
-
-git reset 默认是 --mixed 模式   
-git reset --mixed  等价于  git reset
-
---soft
-保留源码,只回退到commit 信息到某个版本
-不涉及index的回退,如果还需要提交,直接commit即可.
-
---hard
-源码也会回退到某个版本,commit和index 都回回退到某个版本
-(注意,这种方式是改变本地代码仓库源码)
-</code></pre><h4 id="2-已经push"><a href="#2-已经push" class="headerlink" title="2.已经push"></a>2.已经push</h4><pre><code>对于已经把代码push到线上仓库,你回退本地代码其实也想同时回退线上代码
-
-回滚到某个指定的版本,线上,线下代码保持一致.你要用到下面的命令
-
-git revert用于反转提交,执行evert命令时要求工作树必须是干净的
-
-git revert用一个新提交来消除一个历史提交所做的任何修改
-
-revert 之后你的本地代码会回滚到指定的历史版本
-
-这时你再 git push 既可以把线上的代码更新
-
-revert 使用,需要先找到你想回滚版本唯一的commit标识代码
-
-可以用 git log 或者在adgit搭建的web环境历史提交记录里查看
-
-git revert c011eb3c20ba6fb38cc94fe5a8dda366a3990c61
-
-通常,前几位即可
-
-git revert c011eb3
-</code></pre><h4 id="git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit"><a href="#git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit" class="headerlink" title="git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit"></a>git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit</h4><pre><code>看似达到的效果是一样的,其实完全不同.
-
-第一:
-
-上面我们说的如果你已经push到线上代码库, reset 删除指定commit以后,你git push可能导致一大堆冲突.但是revert 并不会.
-
-第二:
-
-如果在日后现有分支和历史分支需要合并的时候,reset 恢复部分的代码依然会出现在历史分支里.但是revert 方向提交的commit 并不会出现在历史分支里.
-
-第三:
-
-reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的HEAD 是一直向前的.
-</code></pre>
+        <ol>
+<li>? 可选链</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">obj?.prop       <span class="comment">// optional static property access</span></span><br><span class="line">obj?.[expr]     <span class="comment">// optional dynamic property access</span></span><br><span class="line">func?.(...args) <span class="comment">// optional function or method call</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>空值合并运算符（??）是一个逻辑运算符</p>
+<p> 当左侧操作数为 null 或 undefined 时，其返回右侧的操作数。否则返回左侧的操作数</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> foo = <span class="literal">null</span> ?? <span class="string">'default string'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo);</span><br><span class="line"><span class="comment">// expected output: "default string"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> baz = <span class="number">0</span> ?? <span class="number">42</span>;</span><br><span class="line"><span class="built_in">console</span>.log(baz);</span><br><span class="line"><span class="comment">// expected output: 0</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -375,8 +332,8 @@ reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/17/粘包分析/" rel="next" title="粘包分析">
-                <i class="fa fa-chevron-left"></i> 粘包分析
+              <a href="/2020/01/22/你必须理解14个JS函数/" rel="next" title="你必须理解14个JS函数">
+                <i class="fa fa-chevron-left"></i> 你必须理解14个JS函数
               </a>
             
           </div>
@@ -384,10 +341,6 @@ reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/22/虚拟机网络模式/" rel="prev" title="虚拟机网络模式">
-                虚拟机网络模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -439,17 +392,8 @@ reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -500,22 +444,6 @@ reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#回滚"><span class="nav-number">1.</span> <span class="nav-text">回滚</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-没有push"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.没有push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-已经push"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.已经push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit"><span class="nav-number">1.0.3.</span> <span class="nav-text">git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
