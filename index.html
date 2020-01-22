@@ -229,6 +229,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/01/22/你必须理解14个JS函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/22/你必须理解14个JS函数/" itemprop="url">你必须理解14个JS函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-22T10:47:15+08:00">
+                2020-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>Determine the specific type of any object</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toRawType</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> _toString = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line">    <span class="keyword">let</span> str = _toString.call(obj);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str.slice(<span class="number">8</span>, <span class="number">-1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Caching function calculation results</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cached</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// Create an object to store the results returned after each function execution.</span></span><br><span class="line">  <span class="keyword">const</span> cache = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Returns the wrapped function</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">cachedFn</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the cache is not hit, the function will be executed</span></span><br><span class="line">    <span class="keyword">if</span> ( !cache[str] ) &#123;</span><br><span class="line">        <span class="keyword">let</span> result = fn(str);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Store the result of the function execution in the cache</span></span><br><span class="line">        cache[str] = result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cache[str]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Implement Array.prototype.map</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="keyword">const</span> selfMap = <span class="function"><span class="keyword">function</span> (<span class="params">fn, context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.prototype.slice.call(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">let</span> mappedArr = <span class="built_in">Array</span>()</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!arr.hasOwnProperty(i)) <span class="keyword">continue</span>;</span><br><span class="line">        mappedArr[i] = fn.call(context, arr[i], i, <span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mappedArr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Array.prototype.selfMap = selfMap;</p>
+<ol start="4">
+<li>Implement Array.prototype.filter</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selfFilter = <span class="function"><span class="keyword">function</span> (<span class="params">fn, context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.prototype.slice.call(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">let</span> filteredArr = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!arr.hasOwnProperty(i)) <span class="keyword">continue</span>;</span><br><span class="line">         fn.call(context, arr[i], i, <span class="keyword">this</span>) &amp;&amp; filteredArr.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> filteredArr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.selfFilter = selfFilter;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>Implement Array.prototype.some</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selfSome = <span class="function"><span class="keyword">function</span> (<span class="params">fn, context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.prototype.slice.call(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">if</span>(!arr.length) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!arr.hasOwnProperty(i)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">let</span> res = fn.call(context,arr[i],i,<span class="keyword">this</span>)</span><br><span class="line">        <span class="keyword">if</span>(res)<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.selfSome = selfSome;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>Implement Array.prototype.reduce</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> selfReduce = <span class="function"><span class="keyword">function</span> (<span class="params">fn, initialValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.prototype.slice.call(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">let</span> res</span><br><span class="line">    <span class="keyword">let</span> startIndex</span><br><span class="line">    <span class="keyword">if</span> (initialValue === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!arr.hasOwnProperty(i)) <span class="keyword">continue</span></span><br><span class="line">            startIndex = i</span><br><span class="line">            res = arr[i]</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res = initialValue</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = ++startIndex || <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!arr.hasOwnProperty(i)) <span class="keyword">continue</span></span><br><span class="line">        res = fn.call(<span class="literal">null</span>, res, arr[i], i, <span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.selfReduce = selfReduce;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>Implement Array.prototype.flat</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> selfFlat = <span class="function"><span class="keyword">function</span> (<span class="params">depth = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.prototype.slice.call(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">if</span> (depth === <span class="number">0</span>) <span class="keyword">return</span> arr</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">pre, cur</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(cur)) &#123;</span><br><span class="line">            <span class="keyword">return</span> [...pre, ...selfFlat.call(cur, depth - <span class="number">1</span>)]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> [...pre, cur]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, [])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.selfFlat = selfFlat;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>Currying</li>
+</ol>
+<p>柯里化是一种将具有多个参数的函数评估为具有单个参数的函数序列的技术  </p>
+<p>换句话说，当一个函数不是一次获取所有参数，而是获取第一个参数并返回一个新函数，<br>这个新函数获取第二个参数并返回一个新函数，这个新函数获取第三个参数，以此类推，直到所有参数都被满足  </p>
+<p>优点:</p>
+<pre><code>1. 有助于您避免一次又一次地传递相同的变量
+
+2. 它有助于创建高阶函数。它对事件处理非常有帮助
+
+3. 可以轻松地配置和重用
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b,c</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">return</span> a + b + c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) --&gt; <span class="number">6</span> </span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>) --&gt; <span class="literal">NaN</span></span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>) --&gt; <span class="number">6</span> <span class="comment">//Extra parameters will be ignored.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 形参 0 1</span></span><br><span class="line">    <span class="keyword">if</span> (fn.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> fn;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> generator = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 形参 = 实参</span></span><br><span class="line">        <span class="keyword">if</span> (fn.length === args.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> fn(...args)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 形参 != 实参</span></span><br><span class="line">            <span class="keyword">return</span> <span class="function">(<span class="params">...args2</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> generator(...args, ...args2)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> generator</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li><p>Debouncing 防抖</p>
+<p> 防抖只是为了减少不必要的耗时计算，从而提高浏览器的性能。在某些场景中，某些功能需要更多时间来执行某个操作。例如，以电子商务网站的搜索栏为例</p>
+<p> 例如在搜索栏输入 “Tutorix study kit, 每输入一个字符就会调用api</p>
+<p> 会调用17次api 如果人数多 会造成服务器性能降低</p>
+<p> 在这个场景中，防抖将设置两个击键之间的时间间隔(假设为2秒)。</p>
+<p> 如果两次击键之间的时间超过2秒，那么只会发生Api调用。</p>
+<p> 在这两秒中，用户可以至少输入一些字符，从而减少这些字符的Api调用。</p>
+<p> 由于Api调用减少了，浏览器性能将得到提高。必须注意的是，每次击键都会更新deb函数</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> debounce = (func, time = <span class="number">17</span>, options = &#123;</span><br><span class="line">    leading: <span class="literal">true</span>,</span><br><span class="line">    context: <span class="literal">null</span></span><br><span class="line">&#125;) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">const</span> _debounce = <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">            clearTimeout(timer)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (options.leading &amp;&amp; !timer) &#123;</span><br><span class="line">            timer = setTimeout(<span class="literal">null</span>, time)</span><br><span class="line">            func.apply(options.context, args)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                func.apply(options.context, args)</span><br><span class="line">                timer = <span class="literal">null</span></span><br><span class="line">            &#125;, time)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    _debounce.cancel = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">        timer = <span class="literal">null</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> _debounce</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li><p>Throttling 节流</p>
+<p>节流将改变功能，使其在一个时间间隔内最多可激发一次。 </p>
+<p>例如，无论用户单击按钮多少次，节流将仅在1000毫秒内执行一次功能</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> throttle = (func, time = <span class="number">17</span>, options = &#123;</span><br><span class="line">    leading: <span class="literal">true</span>,</span><br><span class="line">    trailing: <span class="literal">false</span>,</span><br><span class="line">    context: <span class="literal">null</span></span><br><span class="line">&#125;) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> previous = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>).getTime()</span><br><span class="line">    <span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">const</span> _throttle = <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!options.leading) &#123;</span><br><span class="line">            <span class="keyword">if</span> (timer) <span class="keyword">return</span></span><br><span class="line">            timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                timer = <span class="literal">null</span></span><br><span class="line">                func.apply(options.context, args)</span><br><span class="line">            &#125;, time)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (now - previous &gt; time) &#123;</span><br><span class="line">            func.apply(options.context, args)</span><br><span class="line">            previous = now</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (options.trailing) &#123;</span><br><span class="line">            clearTimeout(timer)</span><br><span class="line">            timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                func.apply(options.context, args)</span><br><span class="line">            &#125;, time)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    _throttle.cancel = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        previous = <span class="number">0</span>;</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = <span class="literal">null</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> _throttle</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="11">
+<li>Lazy Load Images</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// getBoundingClientRect</span></span><br><span class="line"><span class="keyword">let</span> imgList1 = [...document.querySelectorAll(<span class="string">".get_bounding_rect"</span>)]</span><br><span class="line"><span class="keyword">let</span> num = imgList1.length</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> lazyLoad1 = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> deleteIndexList = []</span><br><span class="line">        imgList1.forEach(<span class="function">(<span class="params">img,index</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> rect = img.getBoundingClientRect()</span><br><span class="line">            <span class="keyword">if</span> (rect.top &lt; <span class="built_in">window</span>.innerHeight) &#123;</span><br><span class="line">                img.src = img.dataset.src</span><br><span class="line">                <span class="comment">// Add picture to delete list after loading successfully</span></span><br><span class="line">                deleteIndexList.push(index)</span><br><span class="line">                count++</span><br><span class="line">                <span class="keyword">if</span> (count === num) &#123;</span><br><span class="line">                    <span class="comment">//When all pictures are loaded, unbind scroll event</span></span><br><span class="line">                    <span class="built_in">document</span>.removeEventListener(<span class="string">'scroll'</span>,lazyLoad1)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">// Delete loaded pictures</span></span><br><span class="line">        imgList1 = imgList1.filter(<span class="function">(<span class="params">_,index</span>)=&gt;</span>!deleteIndexList.includes(index))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>Array random disorder</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Randomly select one of all elements after the current element to exchange with the current element</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> randomIndex = i + <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (arr.length - i));</span><br><span class="line">        [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate a new array, randomly take an element from the original array and put it into the new array</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle2</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> _arr = []</span><br><span class="line">    <span class="keyword">while</span> (arr.length) &#123;</span><br><span class="line">        <span class="keyword">let</span> randomIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (arr.length))</span><br><span class="line">        _arr.push(arr.splice(randomIndex, <span class="number">1</span>)[<span class="number">0</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="13">
+<li>Singleton 单例模式</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">proxy</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> instance;</span><br><span class="line">    <span class="keyword">let</span> handler = &#123;</span><br><span class="line">        construct(target, args) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!instance) &#123;</span><br><span class="line">                <span class="comment">// Create an instance if there is not exist</span></span><br><span class="line">                instance = <span class="built_in">Reflect</span>.construct(func,args)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(func, handler)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> SingletonPerson = proxy(Person)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> SingletonPerson(<span class="string">'zhl'</span>, <span class="number">22</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> SingletonPerson(<span class="string">'cyw'</span>, <span class="number">22</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person1 === person2) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ol start="14">
+<li>Implement JSON.stringfy</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> isString = <span class="function"><span class="params">value</span> =&gt;</span> <span class="keyword">typeof</span> value === <span class="string">'string'</span>;</span><br><span class="line"><span class="keyword">const</span> isSymbol = <span class="function"><span class="params">value</span> =&gt;</span> <span class="keyword">typeof</span> value === <span class="string">'symbol'</span></span><br><span class="line"><span class="keyword">const</span> isUndefined = <span class="function"><span class="params">value</span> =&gt;</span> <span class="keyword">typeof</span> value === <span class="string">'undefined'</span></span><br><span class="line"><span class="keyword">const</span> isDate = <span class="function"><span class="params">obj</span> =&gt;</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Date]'</span></span><br><span class="line"><span class="keyword">const</span> isFunction = <span class="function"><span class="params">obj</span> =&gt;</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Function]'</span>;</span><br><span class="line"><span class="keyword">const</span> isComplexDataType = <span class="function"><span class="params">value</span> =&gt;</span> (<span class="keyword">typeof</span> value === <span class="string">'object'</span> || <span class="keyword">typeof</span> value === <span class="string">'function'</span>) &amp;&amp; value !== <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">const</span> isValidBasicDataType = <span class="function"><span class="params">value</span> =&gt;</span> value !== <span class="literal">undefined</span> &amp;&amp; !isSymbol(value); </span><br><span class="line"><span class="keyword">const</span> isValidObj = <span class="function"><span class="params">obj</span> =&gt;</span> <span class="built_in">Array</span>.isArray(obj) || <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Object]'</span>;</span><br><span class="line"><span class="keyword">const</span> isInfinity = <span class="function"><span class="params">value</span> =&gt;</span> value === <span class="literal">Infinity</span> || value === -<span class="literal">Infinity</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Symbol,undefined,function in array will become null</span></span><br><span class="line"><span class="comment">// Infinity,NaN will also become null</span></span><br><span class="line"><span class="keyword">const</span> processSpecialValueInArray = <span class="function"><span class="params">value</span> =&gt;</span></span><br><span class="line">    isSymbol(value) || isFunction(value) || isUndefined(value) || isInfinity(value) || <span class="built_in">isNaN</span>(value) ? <span class="literal">null</span> : value;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Handling property values according to JSON specification</span></span><br><span class="line"><span class="keyword">const</span> processValue = <span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (isInfinity(value) || <span class="built_in">isNaN</span>(value)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (isString(value)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`"<span class="subst">$&#123;value&#125;</span>"`</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line">&#125;;<span class="comment">// obj.loop = obj</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> jsonStringify = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Closure + WeakMap prevent circular references</span></span><br><span class="line">    <span class="keyword">let</span> wp = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//It is the function in the closure that recursively calls jsonstrify, not the jsonstrify function declared by const</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">jsonStringify</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (wp.get(obj)) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Converting circular structure to JSON'</span>);</span><br><span class="line">        <span class="keyword">let</span> res = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isComplexDataType(obj)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj.toJSON) <span class="keyword">return</span> obj.toJSON; </span><br><span class="line">            <span class="keyword">if</span> (!isValidObj(obj)) &#123; </span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            wp.set(obj, obj);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(obj)) &#123;</span><br><span class="line">                res += <span class="string">"["</span>;</span><br><span class="line">                <span class="keyword">let</span> temp = [];</span><br><span class="line">                obj.forEach(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">                    temp.push(</span><br><span class="line">                        isComplexDataType(value) &amp;&amp; !isFunction(value) ?</span><br><span class="line">                            jsonStringify(value) :</span><br><span class="line">                            <span class="string">`<span class="subst">$&#123;processSpecialValueInArray(value, <span class="literal">true</span>)&#125;</span>`</span></span><br><span class="line">                    )</span><br><span class="line">                &#125;);</span><br><span class="line">                res += <span class="string">`<span class="subst">$&#123;temp.join(<span class="string">','</span>)&#125;</span>]`</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res += <span class="string">"&#123;"</span>;</span><br><span class="line">                <span class="keyword">let</span> temp = [];</span><br><span class="line">                <span class="built_in">Object</span>.keys(obj).forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (isComplexDataType(obj[key])) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (isValidObj(obj[key])) &#123;</span><br><span class="line">                            temp.push(<span class="string">`"<span class="subst">$&#123;key&#125;</span>":<span class="subst">$&#123;jsonStringify(obj[key])&#125;</span>`</span>)</span><br><span class="line">                        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isDate(obj[key])) &#123; </span><br><span class="line">                            temp.push(<span class="string">`"<span class="subst">$&#123;key&#125;</span>":"<span class="subst">$&#123;obj[key].toISOString()&#125;</span>"`</span>)</span><br><span class="line">                        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isFunction(obj[key])) &#123; </span><br><span class="line">                            temp.push(<span class="string">`"<span class="subst">$&#123;key&#125;</span>":&#123;&#125;`</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isValidBasicDataType(obj[key])) &#123;</span><br><span class="line">                        temp.push(<span class="string">`"<span class="subst">$&#123;key&#125;</span>":<span class="subst">$&#123;processValue(obj[key])&#125;</span>`</span>)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                res += <span class="string">`<span class="subst">$&#123;temp.join(<span class="string">','</span>)&#125;</span>&#125;`</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isSymbol(obj)) &#123; </span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> obj</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;&#125;)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s = <span class="built_in">Symbol</span>(<span class="string">'s'</span>)</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    str: <span class="string">"123"</span>,</span><br><span class="line">    arr: [<span class="number">1</span>, &#123;<span class="attr">e</span>: <span class="number">1</span>&#125;, s, () =&gt; &#123;</span><br><span class="line">    &#125;, <span class="literal">undefined</span>,<span class="literal">Infinity</span>,<span class="literal">NaN</span>],</span><br><span class="line">    obj: &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    <span class="literal">Infinity</span>: -<span class="literal">Infinity</span>,</span><br><span class="line">    nan: <span class="literal">NaN</span>,</span><br><span class="line">    undef: <span class="literal">undefined</span>,</span><br><span class="line">    symbol: s,</span><br><span class="line">    date: <span class="keyword">new</span> <span class="built_in">Date</span>(),</span><br><span class="line">    reg: <span class="regexp">/123/g</span>,</span><br><span class="line">    func: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    dom: <span class="built_in">document</span>.querySelector(<span class="string">'body'</span>),</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(jsonStringify(obj));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj));</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/01/06/Timing-breakdown-phases-explained/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1877,257 +2071,6 @@ console.log(&apos;example partial application&apos;, d)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/13-npm-tricks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/04/13-npm-tricks/" itemprop="url">13-npm-tricks</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T13:47:10+08:00">
-                2019-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-基本快捷键"><a href="#1-基本快捷键" class="headerlink" title="1. 基本快捷键"></a>1. 基本快捷键</h2><pre><code>初始化  npm i
-
-测试   npm t
-
-帮助   npm -h 
-
-全局   npm -g
-
-开发依赖  npm -D 
-
-初始化默认 npm init -y / npm init -f 
-
-安装默认是 npm install --save -S 
-
---no-save
-</code></pre><h2 id="2-少用快捷键"><a href="#2-少用快捷键" class="headerlink" title="2. 少用快捷键"></a>2. 少用快捷键</h2><pre><code>可选保存    --save-optional . Shortcut: -O
-
-保存精确版本 --save-exact. Shortcut: -E
-</code></pre><h2 id="3-The-Root-Shortcut"><a href="#3-The-Root-Shortcut" class="headerlink" title="3. The Root Shortcut"></a>3. The Root Shortcut</h2><pre><code>package.json main字段保存是 入口文件
-</code></pre><h2 id="4-设置npm-init-默认值"><a href="#4-设置npm-init-默认值" class="headerlink" title="4. 设置npm init 默认值"></a>4. 设置npm init 默认值</h2><pre><code>npm config set init.author.name  &quot;Joe Bloggs&quot;
-npm config set init.author.email &quot;joebloggs@gmail.com&quot;
-npm config set init.author.url   &quot;joebloggs.com&quot;
-npm config set init.license      &quot;MIT&quot;
-
-npm config edit
-
-npm config edit    -g
-</code></pre><h2 id="5-跨平台兼容的脚本"><a href="#5-跨平台兼容的脚本" class="headerlink" title="5. 跨平台兼容的脚本"></a>5. 跨平台兼容的脚本</h2><pre><code>通过 cross-env 包
-
-npm i -D cross-env
-
-{
-    &quot;scripts&quot;: {
-        &quot;build&quot;: &quot;cross-env NODE_ENV=production webpack --config build/webpack.config.js&quot;
-    }
-}
-
-rimraf can be installed globally to run cross-platform scripts
-The UNIX command rm -rf for node.
-
-ShellJS is a portable implementation of Unix shell commands on top of the Node.js API
-</code></pre><h2 id="6-并行运行脚本"><a href="#6-并行运行脚本" class="headerlink" title="6. 并行运行脚本"></a>6. 并行运行脚本</h2><pre><code>1. &amp;&amp;  
-
-2. concurrently 
-
-3. npm-run-all 
-
-npm i -D concurrently
-{
-    &quot;start&quot;: &quot;concurrently \&quot;command1 arg\&quot; \&quot;command2 arg\&quot;&quot;
-}
-</code></pre><h2 id="7-运行脚本在不同文件夹"><a href="#7-运行脚本在不同文件夹" class="headerlink" title="7. 运行脚本在不同文件夹"></a>7. 运行脚本在不同文件夹</h2><pre><code>有时候, 在一个app有多个package.json在不同文件夹中
-如果在根目录下访问这些ackage.json中的脚本 而不是通过指定路径的方式
-就是很方便 下面这种两种方法可以解决
-
-1. cd folder &amp;&amp; npm start &amp;&amp; cd ..
-
-2. 优雅方式是用 --prefix
-
-    npm start --prefix path/to/your/folder
-
-    如果同时启动前后端文件夹中脚本
-
-    &quot;start&quot;: &quot;concurrently \&quot;(npm start --prefix client)\&quot; \&quot;(npm start --prefix server)\&quot;&quot;
-</code></pre><h2 id="8-端口准备完毕后运行脚本"><a href="#8-端口准备完毕后运行脚本" class="headerlink" title="8. 端口准备完毕后运行脚本"></a>8. 端口准备完毕后运行脚本</h2><pre><code>Electron打开页面 等待react工程启动完毕后
-
-&quot;dev&quot;: &quot;concurrently \&quot;cross-env BROWSER=none npm run start\&quot; \&quot;wait-on http://localhost:3000 &amp;&amp; electron .\&quot;&quot;
-
-另外，React默认会打开一个浏览器窗口，但是对于Electron子开发而言，这是不必要的。 我们可以通过传递环境变量BROWSER=none来禁用此行为，该变量前面带有cross-env以实现跨平台兼容性
-</code></pre><h2 id="9-列出并选择可选的脚本"><a href="#9-列出并选择可选的脚本" class="headerlink" title="9. 列出并选择可选的脚本"></a>9. 列出并选择可选的脚本</h2><pre><code>安装 npm i -g ntl
-
-ntl 会列出package.json中的脚本
-</code></pre><h2 id="10-Run-Pre-and-Post-Scripts"><a href="#10-Run-Pre-and-Post-Scripts" class="headerlink" title="10. Run Pre and Post Scripts"></a>10. Run Pre and Post Scripts</h2><pre><code>prebuild and postbuildwhich allow you to define code to run either before or after your build script
-
-in fact pre and post can be added before any script, including custom ones
-</code></pre><h2 id="11-Control-Your-App’s-Version"><a href="#11-Control-Your-App’s-Version" class="headerlink" title="11. Control Your App’s Version"></a>11. Control Your App’s Version</h2><pre><code>npm version plus major , minor or patch
-
-// 1.0.0 当前版本
-
-npm version patch
-// 1.0.1
-
-npm version minor
-// 1.1.0
-
-npm version major
-// 2.0.0
-
-{
-    &quot;predeploy&quot;: &quot;npm version patch&quot;
-}
-</code></pre><h2 id="12-Edit-package-json-from-the-Command-Line"><a href="#12-Edit-package-json-from-the-Command-Line" class="headerlink" title="12. Edit package.json from the Command Line"></a>12. Edit package.json from the Command Line</h2><pre><code>npm install -g json
-
-json -I -f package.json -e &apos;this.scripts.foo=&quot;bar&quot;&apos;
-</code></pre><h2 id="13-Set-and-Open-Your-Repository-Automatically"><a href="#13-Set-and-Open-Your-Repository-Automatically" class="headerlink" title="13. Set and Open Your Repository Automatically"></a>13. Set and Open Your Repository Automatically</h2><pre><code>获取远程仓库地址
-
-    git config --get remote.origin.url
-
-package.json中添加仓库地址
-
-json -I -f package.json -e &quot;this.repository=\&quot;$(git config --get remote.origin.url)\&quot;&quot;
-</code></pre><h2 id="13-Create-a-Custom-npm-init-Script"><a href="#13-Create-a-Custom-npm-init-Script" class="headerlink" title="13. Create a Custom npm init Script"></a>13. Create a Custom npm init Script</h2><pre><code>npm config set init-module ~\.npm-init.js
-
-.npm-init.js
-
-    module.exports = {
-        name: prompt(&apos;package name&apos;, basename || package.name),
-        version: prompt(&apos;version&apos;, &apos;0.0.0&apos;),
-        decription: prompt(&apos;description&apos;, &apos;&apos;),  
-        main: prompt(&apos;entry point&apos;, &apos;index.js&apos;),
-        repository: prompt(&apos;git repository&apos;, &apos;&apos;),
-        keywords: prompt(function (s) { return s.split(/\s+/) }),
-        author: prompt(&apos;author&apos;, &apos;Joe Bloggs &lt;joe.bloggs@gmail.com&gt; (joebloggs.com)&apos;),
-        license: prompt(&apos;license&apos;, &apos;ISC&apos;)
-    }
-</code></pre><h2 id="14-Push-Your-First-Commit-to-GitHub-with-a-Custom-npm-init-Script"><a href="#14-Push-Your-First-Commit-to-GitHub-with-a-Custom-npm-init-Script" class="headerlink" title="14. Push Your First Commit to GitHub with a Custom npm init Script"></a>14. Push Your First Commit to GitHub with a Custom npm init Script</h2><pre><code>const { execSync } = require(&apos;child_process&apos;);
-
-function run(func) {
-    console.log(execSync(func).toString())
-}
-
-repository: prompt(&apos;github repository url&apos;, &apos;&apos;, function (url) {
-    if (url) {
-        run(&apos;touch README.md&apos;);
-        run(&apos;git init&apos;);
-        run(&apos;git add README.md&apos;);
-        run(&apos;git commit -m &quot;first commit&quot;&apos;);
-        run(`git remote add origin ${url}`);
-        run(&apos;git push -u origin master&apos;);
-    }
-    return url;
-})
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2178,7 +2121,7 @@ repository: prompt(&apos;github repository url&apos;, &apos;&apos;, function (ur
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

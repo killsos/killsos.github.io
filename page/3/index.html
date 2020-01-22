@@ -229,6 +229,254 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/js面试10点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/js面试10点/" itemprop="url">js面试10点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:46:33+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-js编程方式"><a href="#1-js编程方式" class="headerlink" title="1 js编程方式"></a>1 js编程方式</h2><ul>
+<li><p>JavaScript是一种多范式语言，支持命令式/过程式编程以及OOP（面向对象编程）和函数式编程 JavaScript支持原型继承的OOP</p>
+<pre><code>范式  过程式/命令式    面向对象    函数式
+
+面向对象 prototype 
+
+函数式 闭包  函数一等类  lambdas 
+</code></pre></li>
+</ul>
+<h2 id="2-函数式编程"><a href="#2-函数式编程" class="headerlink" title="2 函数式编程"></a>2 函数式编程</h2><ul>
+<li>函数式编程通过组合数学函数来生成程序，并避免共享状态和可变数据</li>
+<li>Lisp（在1958年指定）是最早支持函数式编程的语言之一，并且受到lambda演算的极大启发。</li>
+<li>Lisp和许多Lisp家庭语言在今天仍然很普遍</li>
+</ul>
+<ol>
+<li><p>纯函数/函数纯度。</p>
+</li>
+<li><p>避免副作用。</p>
+</li>
+<li><p>简单的功能组成。</p>
+</li>
+<li><p>功能语言的示例：Lisp，ML，Haskell，Erlang，Clojure，Elm，F Sharp，OCaml等</p>
+</li>
+<li><p>提到支持FP的功能：一流的功能，高阶功能，作为参数/值的功能</p>
+</li>
+</ol>
+<h2 id="3-经典继承和原型继承有什么区别？"><a href="#3-经典继承和原型继承有什么区别？" class="headerlink" title="3.经典继承和原型继承有什么区别？"></a>3.经典继承和原型继承有什么区别？</h2><ol>
+<li><p>类继承：实例从类继承（如蓝图-类的描述），并创建子类关系：分层类分类法。</p>
+<pre><code>实例通常通过带有`new`关键字的构造函数来实例化。
+类继承可以使用也可以不使用ES6中的`class`关键字。
+</code></pre></li>
+<li><p>原型继承：实例直接从其他对象继承。</p>
+<pre><code>通常通过工厂函数或Object.create（）实例化实例。
+实例可以由许多不同的对象组成，从而可以轻松地进行选择性继承。
+</code></pre></li>
+<li><p>类：创建紧密耦合 或层次结构/分类法。  原型：提及串联继承，原型委托，功能继承，对象组成。</p>
+</li>
+</ol>
+<h2 id="4-函数式程序设计与面向对象程序设计的优缺点是什么？"><a href="#4-函数式程序设计与面向对象程序设计的优缺点是什么？" class="headerlink" title="4. 函数式程序设计与面向对象程序设计的优缺点是什么？"></a>4. 函数式程序设计与面向对象程序设计的优缺点是什么？</h2><ul>
+<li><p>OOP优点：易于理解对象的基本概念，并易于解释方法调用的含义。OOP倾向于使用命令式而不是声明式，其读起来就像一组简单的指令供计算机遵循。</p>
+</li>
+<li><p>OOP缺点：OOP通常取决于共享状态。对象和行为通常在同一实体上固定在一起，可以由具有不确定顺序的任意数量的函数随机访问，这可能导致不良行为，例如竞态条件。</p>
+</li>
+<li><p>FP优点：使用功能范式，程序员避免了任何共享状态或副作用，从而消除了由多个功能争夺同一资源引起的错误。</p>
+<p>  通过使用无点样式（又称为默认编程）等功能，与OOP相比，对于那些更普遍可重用的代码，功能往往会得到根本简化，并且易于重组。</p>
+<p>  FP还倾向于使用声明性和指示性样式，它们不会详细说明操作的分步说明，而是专注于执行操作，让底层函数负责操作方式。</p>
+<p>  这为重构和性能优化留出了极大的自由度，甚至允许您通过很少的代码更改就可以用效率更高的算法替换整个算法。例如，记住或使用懒惰的评估代替急切的评估</p>
+<p>  利用纯函数的计算也很容易在多个处理器或分布式计算集群之间扩展，而不必担心线程资源冲突，竞争条件等。</p>
+</li>
+<li><p>FP缺点：过度利用FP功能（如无点样式和较大的组合）可能会降低可读性，因为生成的代码通常被更抽象地指定，更简洁且不太具体。</p>
+<p>  比函数编程更熟悉OO和命令式编程，因此即使是函数式编程中的常见习语也会使新团队成员感到困惑。FP的学习曲线比OOP陡得多</p>
+<p>  这是因为OOP的广泛普及使OOP的语言和学习材料变得更具对话性，而FP的语言往往更具学术性和形式性。</p>
+<p>  FP概念经常被编写为使用lambda演算，代数和范畴论中的惯用语和记号，所有这些都需要先了解这些领域的知识基础。</p>
+</li>
+<li><p>提到共享状态带来的麻烦，争夺相同资源的不同事物，等等……</p>
+</li>
+<li><p>意识到FP能够从根本上简化许多应用程序的能力</p>
+</li>
+<li><p>意识到学习曲线的差异</p>
+</li>
+<li><p>阐明副作用及其对程序可维护性的影响</p>
+</li>
+<li><p>意识到功能强大的代码库可能具有陡峭的学习曲线</p>
+</li>
+<li><p>意识到，与同等的FP代码库相比，高度面向对象的代码库可以极大地抵抗更改并且非常脆弱</p>
+</li>
+<li><p>意识到不变性会带来极其可访问和可延展的程序状态历史记录，从而允许轻松添加无限的撤消/重做，倒带/重播，时间旅行调试等功能</p>
+</li>
+<li><p>在这两种范例中都可以实现不变性，但是共享状态对象的泛滥使OOP的实现变得复杂</p>
+</li>
+</ul>
+<h2 id="5-When-is-classical-inheritance-an-appropriate-choice"><a href="#5-When-is-classical-inheritance-an-appropriate-choice" class="headerlink" title="5. When is classical inheritance an appropriate choice?"></a>5. When is classical inheritance an appropriate choice?</h2><h2 id="6-原型继承何时合适？"><a href="#6-原型继承何时合适？" class="headerlink" title="6.原型继承何时合适？"></a>6.原型继承何时合适？</h2><ul>
+<li><p>原型继承有多种类型：</p>
+<ol>
+<li><p>委托（即原型链）</p>
+</li>
+<li><p>串联的（即mixins，<code>Object.assign（）</code>）</p>
+</li>
+<li><p>函数式的（不要与函数式编程混淆。用于创建私有状态/封装的闭包的函数）</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="7-“偏向于类继承而不是对象继承”是什么意思？"><a href="#7-“偏向于类继承而不是对象继承”是什么意思？" class="headerlink" title="7.“偏向于类继承而不是对象继承”是什么意思？"></a>7.“偏向于类继承而不是对象继承”是什么意思？</h2><pre><code>这摘自“设计模式：可重用的面向对象软件的元素”。这意味着应该通过将较小的功能单元组装到新对象中，而不是从类继承并创建对象分类法来实现代码重用
+
+换句话说，使用can-do，has-a或uses-a关系代替is-a关系。
+</code></pre><ul>
+<li>避免类层次结构。</li>
+<li>避免脆性基类问题。</li>
+<li>避免紧密耦合。</li>
+<li>避免使用严格的分类法（强迫is-a关系对于新用例最终是错误的）。</li>
+<li>避免大猩猩香蕉问题（“您想要的是香蕉，得到的是拿着香蕉的大猩猩，以及整个丛林”）。</li>
+<li>使代码更灵活。</li>
+</ul>
+<h2 id="8-什么是双向数据绑定和单向数据流，它们有何不同？"><a href="#8-什么是双向数据绑定和单向数据流，它们有何不同？" class="headerlink" title="8.什么是双向数据绑定和单向数据流，它们有何不同？"></a>8.什么是双向数据绑定和单向数据流，它们有何不同？</h2><ul>
+<li>双向数据绑定意味着将UI字段动态绑定到模型数据，这样，当UI字段更改时，模型数据也会随之更改，反之亦然。</li>
+<li>单向数据流的一种方式意味着模型是事实的唯一来源。UI中的更改会触发消息，向用户发送信号通知模型（或在React中store）的意图。只有模型才有权更改应用程序的状态。结果是数据始终沿单一方向流动，这使它更易于理解。</li>
+<li><p>单向数据流是确定性的一种方式，而双向绑定可能会引起副作用，而这些副作用很难理解和理解。</p>
+</li>
+<li><p>React是单向数据流的新典范示例，因此提到React是一个很好的信号。</p>
+</li>
+<li>Cycle.js是另一种流行的单向数据流实现。</li>
+<li>Angular是使用双向绑定的流行框架</li>
+</ul>
+<h2 id="9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures"><a href="#9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures" class="headerlink" title="9. What are the pros and cons of monolithic vs microservice architectures?"></a>9. What are the pros and cons of monolithic vs microservice architectures?</h2><ul>
+<li><p>整体架构意味着您的应用程序是作为一个内聚的代码单元编写的，其组件被设计为可以协同工作，共享相同的内存空间和资源</p>
+</li>
+<li><p>微服务架构意味着您的应用程序由许多较小的独立应用程序组成，这些应用程序可以在自己的内存空间中运行，并且可以在可能的许多不同机器上彼此独立地扩展</p>
+</li>
+<li><p>整体式优点：整体式架构的主要优势在于，大多数应用程序通常具有大量的跨领域问题，例如日志记录，速率限制以及诸如审计跟踪和DOS保护之类的安全功能。<br>  当所有事情都通过同一个应用程序运行时，很容易将组件与那些跨领域的问题联系起来。由于共享内存访问比进程间通信（IPC）更快，因此也可能具有性能优势。</p>
+</li>
+<li><p>整体式劣势：随着应用程序的发展，整体式应用程序服务趋于紧密耦合和纠缠，从而难以出于独立缩放或代码可维护性等目的隔离服务。<br>  整体架构也很难理解，因为当您查看特定的服务或控制器时，可能存在不明显的依赖关系，副作用和魔力。</p>
+</li>
+<li><p>微服务的优点：微服务架构通常组织得更好，因为每个微服务都有非常具体的工作，并且与其他组件的工作无关。<br>解耦的服务也更易于重组和重新配置，以服务于不同应用程序的目的（例如，服务于Web客户端和公共API）<br>根据它们的组织方式，它们还可以具有性能优势，因为可以隔离热服务并独立于应用程序的其余部分进行扩展</p>
+</li>
+<li><p>微服务的弊端：在构建新的微服务架构时，您可能会发现很多跨领域的问题，而这些问题在设计时并未预料到。<br>  单一的应用程序可以建立共享的魔术助手或中间件来处理此类跨领域的问题，而无需付出太多努力。<br>  在微服务架构中，您要么需要为每个横切关注点承担单独模块的开销，要么将横切关注点封装在所有流量都通过的另一个服务层中。<br>  最终，即使是单一的体系结构也倾向于通过外部服务层路由流量，以解决跨领域的问题，<br>  但是采用整体体系结构，有可能将这项工作的成本推迟到项目更加成熟之前。<br>  微服务经常部署在自己的虚拟机或容器上，从而导致VM争用工作激增。<br>  这些任务通常使用集装箱车队管理工具自动执行。</p>
+<ul>
+<li>尽管与单一应用程序相比，初始成本较高，但对微服务仍持积极态度。</li>
+<li>意识到微服务从长远来看往往具有更好的性能和扩展性。关于微服务与整体应用程序的实践。</li>
+<li>对应用程序进行结构设计，以使服务在代码级别上彼此独立，但一开始就很容易将其作为整体应用程序捆绑在一起。</li>
+<li>微服务的间接成本可以延迟，直到支付价格变得更加实际为止。</li>
+</ul>
+<h2 id="10-什么是异步编程，为什么它在JavaScript中很重要？"><a href="#10-什么是异步编程，为什么它在JavaScript中很重要？" class="headerlink" title="10.什么是异步编程，为什么它在JavaScript中很重要？"></a>10.什么是异步编程，为什么它在JavaScript中很重要？</h2><pre><code>同步编程意味着，除非有条件和函数调用，否则代码将自上而下依次执行，从而阻止长时间运行的任务（例如网络请求和磁盘I / O）。
+异步编程意味着引擎在事件循环中运行。当需要阻止操作时，请求将启动，并且代码将继续运行而不会阻止结果。当响应准备就绪时，将触发一个中断，这将导致事件处理程序运行，并在此处继续控制流程。
+这样，单个程序线程可以处理许多并发操作。用户界面本质上是异步的，它们花费大部分时间等待用户输入来中断事件循环并触发事件处理程序。
+默认情况下，Node是异步的，这意味着服务器的工作方式几乎相同，在循环中等待网络请求，并在处理第一个请求时接受更多的传入请求。
+这在JavaScript中很重要，因为它非常适合用户界面代码，并且对服务器性能非常有益。
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/Error实践技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2004,153 +2252,6 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/07/12/PATH的顺序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/PATH的顺序/" itemprop="url">PATH的顺序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:04:16+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="PATH的顺序"><a href="#PATH的顺序" class="headerlink" title="PATH的顺序"></a>PATH的顺序</h2><pre><code>/etc/profile 
-
-/etc/paths 
-
-~/.bash_profile 
-
-~/.bash_login 
-
-~/.profile 
-
-~/.bashrc
-</code></pre><ol start="2">
-<li>最好的设置 .bash_profile</li>
-</ol>
-<ol start="3">
-<li><p>设定 export PATH=${PATH}:/test/folder</p>
-</li>
-<li><p>系统级</p>
-<p> /etc/profile 和 /etc/paths 是系统级别的</p>
-</li>
-<li><p>用户级</p>
-<p> ~/.bash_profile </p>
-<p> ~/.bash_login </p>
-<p> ~/.profile </p>
-<p> ~/.bashrc</p>
-</li>
-</ol>
-<h2 id="1-etc-profile-建议不修改这个文件"><a href="#1-etc-profile-建议不修改这个文件" class="headerlink" title="1 /etc/profile 建议不修改这个文件"></a>1 /etc/profile 建议不修改这个文件</h2><pre><code>全局（公有）配置，不管是哪个用户，登录时都会读取该文件
-</code></pre><h2 id="2-etc-paths-全局建议修改这个文件"><a href="#2-etc-paths-全局建议修改这个文件" class="headerlink" title="2 /etc/paths 全局建议修改这个文件"></a>2 /etc/paths 全局建议修改这个文件</h2><h2 id="3-etc-bashrc-（一般在这个文件中添加系统级环境变量）"><a href="#3-etc-bashrc-（一般在这个文件中添加系统级环境变量）" class="headerlink" title="3 /etc/bashrc （一般在这个文件中添加系统级环境变量）"></a>3 /etc/bashrc （一般在这个文件中添加系统级环境变量）</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2201,7 +2302,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
