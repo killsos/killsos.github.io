@@ -229,6 +229,474 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/12/web性能测试优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/12/web性能测试优化/" itemprop="url">web性能测试优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T09:44:59+08:00">
+                2019-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-lighthouse"><a href="#1-lighthouse" class="headerlink" title="1. lighthouse"></a>1. lighthouse</h2><pre><code>npm i -g lighthouse
+</code></pre><h2 id="2-FP、FCP、FMP与LCP"><a href="#2-FP、FCP、FMP与LCP" class="headerlink" title="2. FP、FCP、FMP与LCP"></a>2. FP、FCP、FMP与LCP</h2><pre><code>FP（全称“First Paint”，翻译为“首次绘制”） 是时间线上的第一个“时间点”
+
+它代表浏览器第一次向屏幕传输像素的时间，也就是页面在屏幕上首次发生视觉变化的时间
+
+FP不包含默认背景绘制，但包含非默认的背景绘制
+
+
+FCP（全称“First Contentful Paint”，翻译为“首次内容绘制”）
+它代表浏览器第一次向屏幕绘制 “内容”
+
+注意：只有首次绘制文本、图片（包含背景图）、非白色的canvas或SVG时才被算作FCP
+
+FP与FCP这两个指标之间的主要区别是：FP是当浏览器开始绘制内容到屏幕上的时候
+
+只要在视觉上开始发生变化，无论是什么内容触发的视觉变化，在这一刻，这个时间点，叫做FP
+
+相比之下，FCP指的是浏览器首次绘制来自DOM的内容。例如：文本，图片，SVG，canvas元素等，这个时间点叫FCP。
+
+FP和FCP可能是相同的时间，也可能是先FP后FCP
+</code></pre><h2 id="FMP"><a href="#FMP" class="headerlink" title="FMP"></a>FMP</h2><pre><code>FMP（全称“First Meaningful Paint”，翻译为“首次有效绘制”） 表示页面的“主要内容”开始出现在屏幕上的时间点。它是我们测量用户加载体验的主要指标。
+
+FMP本质上是通过一个算法来猜测某个时间点可能是FMP，所以有时候不准
+</code></pre><h2 id="LCP"><a href="#LCP" class="headerlink" title="LCP"></a>LCP</h2><pre><code>LCP（全称“Largest Contentful Paint”） 表示可视区“内容”最大的可见元素开始出现在屏幕上的时间点
+了解和测量网站真实的性能其实非常困难，像load和DOMContentLoaded不会告诉我们用户什么时候可以在屏幕上看到内容
+而FP和FCP又只能捕获整个渲染过程的最开始，FMP更好一点，但是它的算法比较复杂，而且前面说了，有时候不准
+根据W3C Web性能工作组的讨论和Google的研究，发现测量页面主要内容的可见时间有一种更精准且简单的方法是查看什么时候渲染最大元素
+</code></pre><h2 id="TTI"><a href="#TTI" class="headerlink" title="TTI"></a>TTI</h2><pre><code>TTI（全称“Time to Interactive”，翻译为“可交互时间”） 表示网页第一次 完全达到可交互状态 的时间点。可交互状态指的是页面上的UI组件是可以交互的
+
+（可以响应按钮的点击或在文本框输入文字等），不仅如此，此时主线程已经达到“流畅”的程度，主线程的任务均不超过50毫秒。
+
+TTI很重要，因为TTI可以让我们了解我们的产品需要多久可以真正达到“可用”的状态
+</code></pre><h2 id="TTFB"><a href="#TTFB" class="headerlink" title="TTFB"></a>TTFB</h2><pre><code>TTFB（全称“Time to First Byte”） 表示浏览器接收第一个字节的时间
+</code></pre><h2 id="FCI"><a href="#FCI" class="headerlink" title="FCI"></a>FCI</h2><pre><code>全称“First CPU Idle”） 是对TTI的一种补充，TTI可以告诉我们页面什么时候完全达到可用，但是我们不知道浏览器第一次可以响应用户输入是什么时候。
+我们不知道网页的“最小可交互时间”是多少，最小可交互时间是说网页的首屏已经达到了可交互的状态了，但整个页面可能还没达到。
+从名字也可以看出这个指标的意思，第一次CPU空闲，主线程空闲就代表可以接收用户的响应了。
+更通俗的理解TTI与FCI的区别：FCI代表浏览器真正的第一次可以响应用户的输入，而TTI代表浏览器已经可以持续性的响应用户的输入
+</code></pre><h2 id="FID"><a href="#FID" class="headerlink" title="FID"></a>FID</h2><pre><code>全称“First Input Delay”，翻译为“首次输入延迟”） 顾名思义，FID指的是用户首次与产品进行交互时，我们产品可以在多长时间给出反馈
+TTI可以告诉我们网页什么时候可以开始流畅地响应用户的交互，但是如果用户在TTI的时间内，没有与网页产生交互，那么TTI其实是影响不到用户的
+TTI是不需要用户参与的指标，但如果我们真的想知道TTI对用户的影响，我们需要FID。不同的用户可能会在TTI之前开始与网页产生交互
+也可能在TTI之后才与网页产生交互。所以对于不同的用户它的FID是不同的。如果在TTI之前用户就已经与网页产生了交互
+那么它的FID时间就比较长，而如果在TTI之后才第一次与网页产生交互，那么他的FID时间就短。
+
+捕获FID比较简单，我们只需要在网页的head标签里注册一个事件（click、mousedown、keydown、touchstart、pointerdown）
+然后在事件响应函数中使用当前时间减去事件对象被创建的时间即可
+
+performance.now() - event.timeStamp
+</code></pre><h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><pre><code>DCL 表示DomContentloaded事件触发的时间。
+L 表示onLoad事件触发的时间。
+DomContentloaded事件与onLoad事件的区别是，浏览器解析HTML这个操作完成后立刻触发DomContentloaded事件
+而只有页面所有资源都加载完毕后（比如图片，CSS），才会触发onLoad事件
+</code></pre><h2 id="Speed-Index"><a href="#Speed-Index" class="headerlink" title="Speed Index"></a>Speed Index</h2><pre><code>表示显示页面可见部分的平均时间（注意，是真正的可见，用户可以立马看见的，屏幕外的部分不算），数值越小说明速度越快
+它主要用于测量页面内容在视觉上填充的速度。通常会使用这个指标来进行性能的比较。比如优化前和优化后
+我们的产品与竞品的性能比较等。但是只能用于 粗略 的比较，不同的产品侧重点完全不同
+所以还是需要根据自己产品所侧重的方向，并结合其他指标来进行更详细的对比
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/12/图片懒加载小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/12/图片懒加载小结/" itemprop="url">图片懒加载小结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T09:14:31+08:00">
+                2019-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-如何判断图片出现在当前视口"><a href="#1-如何判断图片出现在当前视口" class="headerlink" title="1. 如何判断图片出现在当前视口"></a>1. 如何判断图片出现在当前视口</h2><p>监听window.scroll事件  通过clientTop，offsetTop，clientHeight 以及 scrollTop 都是一些元素高度的属性 判断是否出现当前视口</p>
+<pre><code>&lt;img data-src=&quot;imgurl.jpg&quot;&gt;
+首先设置一个临时属性 data-src，加载时再使用 src 代替 data-src
+</code></pre><h2 id="2-如何判断图片出现在了当前视口"><a href="#2-如何判断图片出现在了当前视口" class="headerlink" title="2. 如何判断图片出现在了当前视口"></a>2. 如何判断图片出现在了当前视口</h2><pre><code>Element.getBoundingClientRect() 方法返回元素的大小及其相对于视口的位置
+
+// clientHeight 代表当前视口的高度
+img.getBoundingClientRect().top &lt; document.documentElement.clientHeight
+
+监听 window.scroll 事件也优化  通过节流提高性能 一般使用 lodash.throttle 
+</code></pre><h2 id="3-如何判断图片出现在了当前视口"><a href="#3-如何判断图片出现在了当前视口" class="headerlink" title="3. 如何判断图片出现在了当前视口"></a>3. 如何判断图片出现在了当前视口</h2><pre><code>最新API IntersectionObserver 能够监听元素是否到了当前视口的事件，一步到位
+
+事件回调的参数是 IntersectionObserverEntry 的集合，代表关于是否在可见视口的一系列值
+其中，entry.isIntersecting 代表目标元素可见
+
+const observer = new IntersectionObserver((changes) =&gt; {
+// changes: 目标元素集合
+changes.forEach((change) =&gt; {
+    // intersectionRatio
+    if (change.isIntersecting) {
+    const img = change.target
+    img.src = img.dataset.src
+    observer.unobserve(img)
+    }
+})
+})
+
+observer.observe(img);
+
+IntersectionObserver 除了给图片做懒加载外，还可以对单页应用资源做预加载
+
+如在 next.js v9 中，会对视口内的资源做预加载，可以参考 next 9 production optimizations
+</code></pre><h2 id="4-loading-”lazy”"><a href="#4-loading-”lazy”" class="headerlink" title="4. loading=”lazy”"></a>4. loading=”lazy”</h2><pre><code>&lt;img src=&quot;celebration.jpg&quot; loading=&quot;lazy&quot; alt=&quot;...&quot; /&gt;
+&lt;iframe src=&quot;video-player.html&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;
+
+lazy还可以用在 iframe
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/05/js两大基石/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/05/js两大基石/" itemprop="url">js两大基石</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T15:22:39+08:00">
+                2019-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基石"><a href="#基石" class="headerlink" title="基石"></a>基石</h2><ol>
+<li><p>原型继承</p>
+<pre><code>对象没有类 原型委托
+</code></pre></li>
+<li><p>函数式编程</p>
+<pre><code>通过lambdas 和 闭包
+</code></pre></li>
+</ol>
+<h2 id="创建对象方法"><a href="#创建对象方法" class="headerlink" title="创建对象方法"></a>创建对象方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1= &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="built_in">Object</span>.create(prototype, &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="built_in">Object</span>.assign()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj4 = <span class="built_in">Object</span>.create()</span><br></pre></td></tr></table></figure>
+<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><pre><code>1. The `new` keyword is used to invoke a constructor. What it actually does is:
+
+2. Create a new instance
+
+3. Bind `this` to the new instance
+
+4. Reference the new object’s delegate [[Prototype]] to the object referenced by the constructor function’s `prototype` property.
+
+5. Reference the new object’s .constructor property to the constructor that was invoked.
+Names the object type after the constructor, which you’ll notice mostly in the debugging console. You’ll see `[Object Foo]`, for example, instead of `[Object object]`.
+
+6. Allows `instanceof` to check whether or not an object’s prototype reference is the same object referenced by the .prototype property of the constructor.
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/闭包最终一击/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1618,444 +2086,6 @@ console.log(obj.foo);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/02/像素-2k-4k-高清/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/02/像素-2k-4k-高清/" itemprop="url">像素-2k-4k-高清</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-02T13:44:17+08:00">
-                2019-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="逻辑像素-物理像素"><a href="#逻辑像素-物理像素" class="headerlink" title="逻辑像素 物理像素"></a>逻辑像素 物理像素</h2><h2 id="高清"><a href="#高清" class="headerlink" title="高清"></a>高清</h2><pre><code>屏幕横纵比16:9成为主流分辨率后，1280x720的分辨率成功定义了市场主流分辨率需求。
-液晶屏厂家将它命名为high-definition，可以翻译为高解析度或者高清晰度
-</code></pre><h2 id="全高清屏幕-Full-HD-Resolution-Screen"><a href="#全高清屏幕-Full-HD-Resolution-Screen" class="headerlink" title="全高清屏幕 Full HD Resolution Screen"></a>全高清屏幕 Full HD Resolution Screen</h2><pre><code>1080p的称呼和全高清可以完全划等号
-1080p全高清屏幕的像素点为2073 * 600个
-</code></pre><h2 id="4K-UHD-Ultra-HD-Resolution-Screen"><a href="#4K-UHD-Ultra-HD-Resolution-Screen" class="headerlink" title="4K  UHD Ultra HD Resolution Screen"></a>4K  UHD Ultra HD Resolution Screen</h2><pre><code>UHD屏幕对应为2160p，也就是分辨率3840 x 2160
-
-因主流电视采用1920 x 1080的全高清分辨率
-3840 x 2160分辨率的像素数量刚好是全高清分辨率的4倍
-所以电视市场将1080p作为基数1K而直接喊出4K。
-久而久之，约定俗成的UHD就等同于了4K
-</code></pre><h2 id="屏幕"><a href="#屏幕" class="headerlink" title="屏幕"></a>屏幕</h2><p><img src="../images/screens.png" alt="屏幕"></p>
-<h2 id="ppi"><a href="#ppi" class="headerlink" title="ppi"></a>ppi</h2><p><img src="../images/ppi.png" alt="ppi"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/26/html-height100-意味着什么/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/26/html-height100-意味着什么/" itemprop="url">html-height100%意味着什么?</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-26T10:01:33+08:00">
-                2019-11-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="浏览器-html-body"><a href="#浏览器-html-body" class="headerlink" title="浏览器 html body"></a>浏览器 html body</h2><pre><code>首先要确定html不代表浏览器 只是渲染树的最顶层的节点 是不是根节点是一个疑问
-
-html {background: red}
-
-这段代码就证明了 上面的话 你会看见浏览器是背景色是红色
-但是实际上html宽度是100% height是0px 但是背景色是红色 这就是一个悖论
-高度是0 为何能显示背景色是红色
-由此 可以推测 html上面还有根节点 就是浏览器
-浏览器默认使用html的背景色渲染
-</code></pre><h2 id="height-100"><a href="#height-100" class="headerlink" title="height:100%"></a>height:100%</h2><pre><code>html {background: red; height: 100%}
-body {background: green;}
-
-背景色还是红色 但是此时是html的背景色  因为html现在高度继承浏览器的高度
-拖动就可以证明
-
-html {background: red; height: 100%}
-body {background: green;height: 100%}
-
-上面就意味着 html继承浏览器的高度 body继承了html的高度
-背景色是绿色
-
-进一步
-html
-    body
-        div#container
-
-html {background: red; height: 100%}
-body {background: green;height: 100%}
-#container {background: blue, height: 100%}
-
-现在显示是蓝色 #container的高度刚好是浏览器的高度
-这就是 html继承浏览器的高度  body继承了html的高度  #container继承body的高度
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>html默认是没有高度 height100%就会继承浏览器的高度
-
-同时又一个发现 html的border只有上下 没有左右
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/what-is-closure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/what-is-closure/" itemprop="url">what-is-closure?</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T14:31:02+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="closure-闭包"><a href="#closure-闭包" class="headerlink" title="closure 闭包"></a>closure 闭包</h2><p>什么是封闭？闭包是捆绑在一起（封闭）的函数及其周围状态（词汇环境）的组合。<br>换句话说，闭包使您可以从内部函数访问外部函数的范围。<br>在JavaScript中，每次创建函数时都会在函数创建时创建闭包。<br>要使用闭包，请在另一个函数中定义一个函数并将其公开。<br>要公开一个函数，请将其返回或传递给另一个函数。<br>即使返回了外部函数，内部函数也可以访问外部函数范围内的变量。  </p>
-<p>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).<br>In other words, a closure gives you access to an outer function’s scope from an inner function.<br>In JavaScript, closures are created every time a function is created, at function creation time.<br>To use a closure, define a function inside another function and expose it. To expose a function, return it or pass it to another function.<br>The inner function will have access to the variables in the outer function scope, even after the outer function has returned.  </p>
-<p>在JavaScript中，闭包是用于实现数据隐私的主要机制。    </p>
-<p>当使用闭包进行数据保密时，包含的变量仅在包含（外部）函数的范围内。    </p>
-<p>除了通过对象的特权方法之外，您无法从外部范围获取数据。    </p>
-<p>在JavaScript中，闭包范围内定义的任何公开方法都具有特权。  </p>
-<p>In JavaScript, closures are the primary mechanism used to enable data privacy.   </p>
-<p>When you use closures for data privacy, the enclosed variables are only in scope within the containing (outer) function.     </p>
-<p>You can’t get at the data from an outside scope except through the object’s privileged methods.     </p>
-<p>In JavaScript, any exposed method defined within the closure scope is privileged. </p>
-<pre><code>const getSecret = (secret) =&gt; {
-    return {
-        get: () =&gt; secret
-    };
-    };
-
-    test(&apos;Closure for object privacy.&apos;, assert =&gt; {
-    const msg = &apos;.get() should have access to the closure.&apos;;
-    const expected = 1;
-    const obj = getSecret(1);
-
-    const actual = obj.get();
-
-    try {
-        assert.ok(secret, &apos;This throws an error.&apos;);
-    } catch (e) {
-        assert.ok(true, `The secret var is only available
-        to privileged methods.`);
-    }
-
-    assert.equal(actual, expected, msg);
-    assert.end();
-});
-</code></pre><p><a href="https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8" target="_blank" rel="noopener">参考文章</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2106,7 +2136,7 @@ body {background: green;height: 100%}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
