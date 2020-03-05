@@ -79,6 +79,7 @@
 
 
 
+<meta name="keywords" content="javascript 前端">
 <meta property="og:type" content="website">
 <meta property="og:title" content="killsos">
 <meta property="og:url" content="http://jsonload.com/page/6/index.html">
@@ -215,6 +216,744 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/git-reset-revert/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/git-reset-revert/" itemprop="url">git reset revert</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T20:45:48+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h2><pre><code>大致分为下面2种情况
+</code></pre><h4 id="1-没有push"><a href="#1-没有push" class="headerlink" title="1.没有push"></a>1.没有push</h4><pre><code>这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题
+准备取消提交,用到下面命令
+
+git reset [--soft | --mixed | --hard
+
+--mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.
+
+git reset 默认是 --mixed 模式   
+git reset --mixed  等价于  git reset
+
+--soft
+保留源码,只回退到commit 信息到某个版本
+不涉及index的回退,如果还需要提交,直接commit即可.
+
+--hard
+源码也会回退到某个版本,commit和index 都回回退到某个版本
+(注意,这种方式是改变本地代码仓库源码)
+</code></pre><h4 id="2-已经push"><a href="#2-已经push" class="headerlink" title="2.已经push"></a>2.已经push</h4><pre><code>对于已经把代码push到线上仓库,你回退本地代码其实也想同时回退线上代码
+
+回滚到某个指定的版本,线上,线下代码保持一致.你要用到下面的命令
+
+git revert用于反转提交,执行evert命令时要求工作树必须是干净的
+
+git revert用一个新提交来消除一个历史提交所做的任何修改
+
+revert 之后你的本地代码会回滚到指定的历史版本
+
+这时你再 git push 既可以把线上的代码更新
+
+revert 使用,需要先找到你想回滚版本唯一的commit标识代码
+
+可以用 git log 或者在adgit搭建的web环境历史提交记录里查看
+
+git revert c011eb3c20ba6fb38cc94fe5a8dda366a3990c61
+
+通常,前几位即可
+
+git revert c011eb3
+</code></pre><h4 id="git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit"><a href="#git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit" class="headerlink" title="git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit"></a>git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit</h4><pre><code>看似达到的效果是一样的,其实完全不同.
+
+第一:
+
+上面我们说的如果你已经push到线上代码库, reset 删除指定commit以后,你git push可能导致一大堆冲突.但是revert 并不会.
+
+第二:
+
+如果在日后现有分支和历史分支需要合并的时候,reset 恢复部分的代码依然会出现在历史分支里.但是revert 方向提交的commit 并不会出现在历史分支里.
+
+第三:
+
+reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的HEAD 是一直向前的.
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/粘包分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/粘包分析/" itemprop="url">粘包分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T20:13:01+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-长连接与短连接"><a href="#1-长连接与短连接" class="headerlink" title="1. 长连接与短连接"></a>1. 长连接与短连接</h2><p>1.长连接</p>
+<pre><code>Client方与Server方先建立通讯连接，连接建立后不断开， 然后再进行报文发送和接收。
+</code></pre><p>2.短连接</p>
+<pre><code>Client方与Server每进行一次报文收发交易时才进行通讯连接，交易完毕后立即断开连接。此种方式常用于一点对多点 
+通讯，比如多个Client连接一个Server.
+</code></pre><h2 id="2-什么时候需要考虑粘包问题"><a href="#2-什么时候需要考虑粘包问题" class="headerlink" title="2 什么时候需要考虑粘包问题?"></a>2 什么时候需要考虑粘包问题?</h2><pre><code>1: 如果利用tcp每次发送数据，就与对方建立连接，然后双方发送完一段数据后，就关闭连接，这样就不会出现粘包问题
+
+2: 如果发送数据无结构，如文件传输，这样发送方只管发送，接收方只管接收存储就ok，也不用考虑粘包
+</code></pre><h2 id="3-粘包出现原因"><a href="#3-粘包出现原因" class="headerlink" title="3 粘包出现原因"></a>3 粘包出现原因</h2><pre><code>在流传输中出现，UDP不会出现粘包，因为它有消息边界
+
+1 发送端需要等缓冲区满才发送出去，造成粘包
+
+2 接收方不及时接收缓冲区的包，造成多个包接收
+
+解决办法：
+
+    为了避免粘包现象，可采取以下几种措施
+
+    一 是对于发送方引起的粘包现象，用户可通过编程设置来避免，TCP提供了强制数据立即传送的操作指令push，TCP软件收到该操作指令后，就立即将本段数据发送出去，而不必等待发送缓冲区满
+
+    二 是对于接收方引起的粘包，则可通过优化程序设计、精简接收进程工作量、提高接收进程优先级等措施，使其及时接收数据，从而尽量避免出现粘包现象
+
+    三 是由接收方控制，将一包数据按结构字段，人为控制分多次接收，然后合并，通过这种手段来避免粘包
+
+TCP是个&quot;流&quot;协议,所谓流,就是没有界限的一串数据.大家可以想想河里的流水,是连成一片的,其间是没有分界线的.但一般通讯程序开发是需要定义一个个相互独立的数据包的,比如用于登陆的数据包,用于注销的数据包.由于TCP&quot;流&quot;的特性以及网络状况,在进行数据传输时会出现以下几种情况.
+
+假设我们连续调用两次send分别发送两段数据data1和data2,
+在接收端有以下几种接收情况(当然不止这几种情况,这里只列出了有代表性的情况).
+
+A.先接收到data1,然后接收到data2.
+
+B.先接收到data1的部分数据,然后接收到data1余下的部分以及data2的全部.
+
+C.先接收到了data1的全部数据和data2的部分数据,然后接收到了data2的余下的数据.
+
+D.一次性接收到了data1和data2的全部数据.
+
+对于A这种情况正是我们需要的,不再做讨论.
+
+对于B,C,D的情况就是大家经常说的&quot;粘包&quot;,就需要我们把接收到的数据进行拆包
+拆成一个个独立的数据包.为了拆包就必须在发送端进行封包
+</code></pre><h4 id="为什么会出现B-C-D的情况"><a href="#为什么会出现B-C-D的情况" class="headerlink" title="为什么会出现B.C.D的情况."></a>为什么会出现B.C.D的情况.</h4><pre><code>&quot;粘包&quot;可发生在发送端也可发生在接收端.
+
+1.由Nagle算法造成的发送端的粘包:Nagle算法是一种改善网络传输效率的算法.
+简单的说,当我们提交一段数据给TCP发送时,TCP并不立刻发送此段数据
+而是等待一小段时间,看看在等待期间是否还有要发送的数据
+若有则会一次把这两段数据发送出去.这是对Nagle算法一个简单的解释
+详细的请看相关书籍.象C和D的情况就有可能是Nagle算法造成的.
+
+2.接收端接收不及时造成的接收端粘包:TCP会把接收到的数据存在自己的缓冲区中
+然后通知应用层取数据.当应用层由于某些原因不能及时的把TCP的数据取出来
+就会造成TCP缓冲区中存放了几段数据
+</code></pre><p><a href="https://blog.csdn.net/tiandijun/article/details/41961785" title="Title" target="_blank" rel="noopener">good </a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/git-commit-规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/git-commit-规范/" itemprop="url">git commit 规范</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T11:40:49+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Commit-message-的作用"><a href="#1-Commit-message-的作用" class="headerlink" title="1 Commit message 的作用"></a>1 Commit message 的作用</h2><h4 id="1）提供更多的历史信息，方便快速浏览"><a href="#1）提供更多的历史信息，方便快速浏览" class="headerlink" title="1）提供更多的历史信息，方便快速浏览"></a>1）提供更多的历史信息，方便快速浏览</h4><pre><code>$ git log &lt;last tag&gt; HEAD --pretty=format:%s
+</code></pre><h4 id="2）可以过滤某些commit（比如文档改动），便于快速查找信息"><a href="#2）可以过滤某些commit（比如文档改动），便于快速查找信息" class="headerlink" title="2）可以过滤某些commit（比如文档改动），便于快速查找信息"></a>2）可以过滤某些commit（比如文档改动），便于快速查找信息</h4><pre><code>$ git log &lt;last release&gt; HEAD --grep feature
+</code></pre><h4 id="3）可以直接从commit生成Change-log"><a href="#3）可以直接从commit生成Change-log" class="headerlink" title="3）可以直接从commit生成Change log"></a>3）可以直接从commit生成Change log</h4><pre><code>Change Log 是发布新版本时，用来说明与上一个版本差异的文档
+</code></pre><h2 id="2-Commit-message-的格式"><a href="#2-Commit-message-的格式" class="headerlink" title="2 Commit message 的格式"></a>2 Commit message 的格式</h2><pre><code>每次提交，Commit message 都包括三个部分：Header，Body 和 Footer
+
+&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+// 空一行
+&lt;body&gt;
+// 空一行
+&lt;footer&gt;
+</code></pre><h4 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h4><pre><code>Header部分只有一行，包括三个字段：type（必需）、scope（可选）和subject（必需）
+
+1）type
+
+type用于说明 commit 的类别，只允许使用下面7个标识
+
+feat：新功能（feature）
+
+fix：修补bug
+
+docs：文档（documentation）
+
+style： 格式（不影响代码运行的变动）
+
+refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+
+test：增加测试
+
+chore：构建过程或辅助工具的变动
+
+如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中
+其他情况（docs、chore、style、refactor、test）由你决定
+要不要放入 Change log，建议是不要
+
+2）scope
+
+scope用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
+
+3）subject
+
+subject是 commit 目的的简短描述，不超过50个字符。
+
+以动词开头，使用第一人称现在时，比如change，而不是changed或changes
+第一个字母小写
+结尾不加句号（.）
+</code></pre><h4 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h4><pre><code>Body 部分是对本次 commit 的详细描述，可以分成多行
+
+范例
+
+More detailed explanatory text, if necessary.  Wrap it to 
+about 72 characters or so. 
+
+Further paragraphs come after blank lines.
+
+- Bullet points are okay, too
+- Use a hanging indent
+
+有两个注意点
+
+1）使用第一人称现在时，比如使用change而不是changed或changes
+
+2）应该说明代码变动的动机，以及与以前行为的对比
+</code></pre><h4 id="Footer"><a href="#Footer" class="headerlink" title="Footer"></a>Footer</h4><pre><code>Footer 部分只用于两种情况
+
+1）不兼容变动
+
+如果当前代码与上一个版本不兼容
+
+则 Footer 部分以BREAKING CHANGE开头
+
+后面是对变动的描述、以及变动理由和迁移方法
+
+2）关闭 Issue
+
+如果当前 commit 针对某个issue
+
+那么可以在 Footer 部分关闭这个 issue
+
+Closes #234
+</code></pre><h4 id="Revert"><a href="#Revert" class="headerlink" title="Revert"></a>Revert</h4><pre><code>如果当前 commit 用于撤销以前的 commit
+
+则必须以revert:开头，后面跟着被撤销 Commit 的 Header
+
+revert: feat(pencil): add &apos;graphiteWidth&apos; option
+
+This reverts commit 667ecc1654a317a13331b17617d973392f415f02
+
+Body部分的格式是固定的，必须写成This reverts commit &amp;lt;hash&gt;.
+
+其中的hash是被撤销 commit 的 SHA 标识符
+</code></pre><h4 id="Commitizen"><a href="#Commitizen" class="headerlink" title="Commitizen"></a>Commitizen</h4><pre><code>Commitizen是一个撰写合格 Commit message 的工具
+
+安装命令    $ npm install -g commitizen
+
+在项目目录里，运行下面的命令
+
+$ commitizen init cz-conventional-changelog --save --save-exact
+
+以后，凡是用到git commit命令，一律改为使用git cz
+
+这时，就会出现选项，用来生成符合格式的 Commit message
+</code></pre><h4 id="validate-commit-msg"><a href="#validate-commit-msg" class="headerlink" title="validate-commit-msg"></a>validate-commit-msg</h4><pre><code>validate-commit-msg 用于检查 Node 项目的 Commit message 是否符合格式
+
+它的安装是手动的
+
+首先，拷贝下面这个JS文件，放入你的代码库
+
+文件名可以取为validate-commit-msg.js
+
+接着，把这个脚本加入 Git 的 hook
+
+下面是在package.json里面使用 ghooks
+
+把这个脚本加为commit-msg时运行
+
+&quot;config&quot;: {
+    &quot;ghooks&quot;: {
+        &quot;commit-msg&quot;: &quot;./validate-commit-msg.js&quot;
+    }
+}
+
+然后，每次git commit的时候，这个脚本就会自动检查 Commit message 是否合格
+
+如果不合格，就会报错
+</code></pre><h4 id="生成-Change-log"><a href="#生成-Change-log" class="headerlink" title="生成 Change log"></a>生成 Change log</h4><pre><code>conventional-changelog 就是生成 Change log 的工具，运行下面的命令即可。
+
+$ npm install -g conventional-changelog
+$ cd my-project
+$ conventional-changelog -p angular -i CHANGELOG.md -w
+
+上面命令不会覆盖以前的 Change log
+
+只会在CHANGELOG.md的头部加上自从上次发布以来的变动
+
+如果你想生成所有发布的 Change log，要改为运行下面的命令
+
+$ conventional-changelog -p angular -i CHANGELOG.md -w -r 0
+
+为了方便使用，可以将其写入package.json的scripts字段。
+
+{
+    &quot;scripts&quot;: {
+        &quot;changelog&quot;: &quot;conventional-changelog -p angular -i CHANGELOG.md -w -r 0&quot;
+    }
+}
+以后，直接运行下面的命令即可。
+
+$ npm run changelog
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/github技巧-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/github技巧-01/" itemprop="url">github技巧-01</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T10:57:00+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="github-与-git-关系"><a href="#github-与-git-关系" class="headerlink" title="github 与 git 关系"></a>github 与 git 关系</h2><pre><code>git是代码管理的工具
+
+github是通过git来完成存放代码的远程仓库
+</code></pre><h4 id="Github项目变成网站"><a href="#Github项目变成网站" class="headerlink" title="Github项目变成网站"></a>Github项目变成网站</h4><pre><code>立一个gh-pages的分支，通过setting里的设置的GitHub Pages模块可以自动创建该项目的网站
+</code></pre><h3 id="trending"><a href="#trending" class="headerlink" title="trending"></a>trending</h3><pre><code>https://github.com/trending/javascript?since=daily
+
+https://github.com/trending/html?since=daily
+
+https://github.com/trending/css?since=daily
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1343,139 +2082,11 @@ $ git archive
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/05/ES201*-01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/ES201*-01/" itemprop="url">Javascript ES201* - 01</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T02:22:41+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ES核心特色</p>
-<h2 id="let-const"><a href="#let-const" class="headerlink" title="let const"></a>let const</h2><ol>
-<li>let const 具有块级作用域 var没有块级作用域</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); </span><br><span class="line"></span><br><span class="line"><span class="comment">// ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>From IIFEs to blocks</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  <span class="comment">// open IIFE</span></span><br><span class="line">    <span class="keyword">var</span> tmp = ···;</span><br><span class="line">    ···</span><br><span class="line">&#125;());  <span class="comment">// close IIFE</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(tmp); <span class="comment">// ReferenceError</span></span><br><span class="line"></span><br><span class="line">In ECMAScript <span class="number">6</span></span><br><span class="line"></span><br><span class="line">&#123;  <span class="comment">// open block</span></span><br><span class="line">    <span class="keyword">let</span> tmp = ···;</span><br><span class="line">    ···</span><br><span class="line">&#125;  <span class="comment">// close block</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(tmp); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1521,7 +2132,7 @@ $ git archive
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

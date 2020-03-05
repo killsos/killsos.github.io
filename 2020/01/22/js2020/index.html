@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="? 可选链  1234obj?.prop       // optional static property accessobj?.[expr]     // optional dynamic property accessfunc?.(...args) // optional function or method call  空值合并运算符（??）是一个逻辑运算符  当左侧操作数为 null">
+<meta name="keywords" content="javascript 前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js2020">
 <meta property="og:url" content="http://jsonload.com/2020/01/22/js2020/index.html">
 <meta property="og:site_name" content="killsos">
 <meta property="og:description" content="? 可选链  1234obj?.prop       // optional static property accessobj?.[expr]     // optional dynamic property accessfunc?.(...args) // optional function or method call  空值合并运算符（??）是一个逻辑运算符  当左侧操作数为 null">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-22T08:57:19.466Z">
+<meta property="og:updated_time" content="2020-03-04T08:39:08.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js2020">
 <meta name="twitter:description" content="? 可选链  1234obj?.prop       // optional static property accessobj?.[expr]     // optional dynamic property accessfunc?.(...args) // optional function or method call  空值合并运算符（??）是一个逻辑运算符  当左侧操作数为 null">
@@ -309,6 +310,17 @@
 </li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> foo = <span class="literal">null</span> ?? <span class="string">'default string'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo);</span><br><span class="line"><span class="comment">// expected output: "default string"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> baz = <span class="number">0</span> ?? <span class="number">42</span>;</span><br><span class="line"><span class="built_in">console</span>.log(baz);</span><br><span class="line"><span class="comment">// expected output: 0</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>globalThis</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getGlobal = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> self !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> self; &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> <span class="built_in">window</span>; &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> global !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> global; &#125;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'no global object found'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> globals = getGlobal()</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>Nullish coalescing ??</li>
+</ol>
+<p>If the property is null or undefined, then the right-side expression is returned;<br>f not, then it ignores if it is evaluated as falsy or truthy and returns it.</p>
+<p><code>`</code>javascript<br>const response = {<br>  settings: {<br>    nullValue: null,<br>    height: 400,<br>    animationDuration: 0,<br>    headerText: ‘’,<br>    showSplashScreen: false<br>  }<br>};</p>
+<p>const undefinedValue = response.settings.undefinedValue ?? ‘some other default’; // result: ‘some other default’<br><code>`</code>javascript</p>
+
       
     </div>
     
@@ -412,7 +424,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,6 +79,7 @@
 
 
 
+<meta name="keywords" content="javascript 前端">
 <meta property="og:type" content="website">
 <meta property="og:title" content="killsos">
 <meta property="og:url" content="http://jsonload.com/index.html">
@@ -215,6 +216,569 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/05/A-List-of-Interesting-Operators-in-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/05/A-List-of-Interesting-Operators-in-JavaScript/" itemprop="url">A List of Interesting Operators in JavaScript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T08:25:37+08:00">
+                2020-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Exclamation-Mark-—-Logical-NOT"><a href="#1-Exclamation-Mark-—-Logical-NOT" class="headerlink" title="1. Exclamation Mark (!)— Logical NOT"></a>1. Exclamation Mark (!)— Logical NOT</h2><p>If the value is true or truthy, then !value is false or falsy, and vice versa</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">!<span class="number">1</span> <span class="comment">// false</span></span><br><span class="line">!<span class="number">-1</span> <span class="comment">// false</span></span><br><span class="line">!<span class="number">0</span> <span class="comment">// true</span></span><br><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// false</span></span><br><span class="line">!&#123;&#125; <span class="comment">// false</span></span><br><span class="line">!<span class="string">''</span> <span class="comment">// true</span></span><br><span class="line">!<span class="literal">NaN</span> <span class="comment">// true</span></span><br><span class="line">!<span class="literal">null</span> <span class="comment">// true</span></span><br><span class="line">!<span class="literal">undefined</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-Double-Exclamation-Mark-—-Double-Logical-NOT"><a href="#2-Double-Exclamation-Mark-—-Double-Logical-NOT" class="headerlink" title="2. Double Exclamation Mark (!!) — Double Logical NOT"></a>2. Double Exclamation Mark (!!) — Double Logical NOT</h2><p> It’s the same as putting an extra exclamation mark(!) to a !value that is already converted to a Boolean value.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">!!<span class="literal">true</span> <span class="comment">// true</span></span><br><span class="line">!!&#123;&#125; <span class="comment">// true</span></span><br><span class="line">!!(<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>)) <span class="comment">// true</span></span><br><span class="line">!!<span class="literal">false</span> <span class="comment">// false</span></span><br><span class="line">!!<span class="string">''</span> <span class="comment">// false</span></span><br><span class="line">!!<span class="built_in">Boolean</span>(<span class="literal">false</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-Double-Asterisks-—-Exponentiation"><a href="#3-Double-Asterisks-—-Exponentiation" class="headerlink" title="3. Double Asterisks (**) — Exponentiation"></a>3. Double Asterisks (**) — Exponentiation</h2><ul>
+<li>same as Math.pow(x, y), which is equal to x^y</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">2</span> ** <span class="number">3</span> === <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 8</span></span><br><span class="line">-(<span class="number">2</span> ** <span class="number">2</span>) === -<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">2</span>) <span class="comment">// -4</span></span><br><span class="line"><span class="number">10</span> ** <span class="number">-1</span> === <span class="built_in">Math</span>.pow(<span class="number">10</span>, <span class="number">-1</span>) <span class="comment">// 0.1</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-Tilde-—-Bitwise-NOT"><a href="#4-Tilde-—-Bitwise-NOT" class="headerlink" title="4. Tilde(~) — Bitwise NOT"></a>4. Tilde(~) — Bitwise NOT</h2><p>The formula is actually dead simple.</p>
+<p>If an integer is K, ~K becomes -(K + 1)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~<span class="number">9</span> =&gt; -<span class="function">(<span class="params"><span class="number">9</span> + <span class="number">1</span></span>) =&gt;</span> <span class="number">-10</span></span><br><span class="line">~<span class="number">-10</span> =&gt; -<span class="function">(<span class="params"><span class="number">-10</span> + <span class="number">1</span></span>) =&gt;</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-Double-Tilde-—-Math-floor-amp-Math-trunc"><a href="#5-Double-Tilde-—-Math-floor-amp-Math-trunc" class="headerlink" title="5. Double Tilde(~~) — Math.floor &amp; Math.trunc"></a>5. Double Tilde(~~) — Math.floor &amp; Math.trunc</h2><p>正数 效果  等于  Math.floor</p>
+<p>负数 效果  等于  Math.trunc</p>
+<p>~~对于整数 速度 快于 Math.floor</p>
+<h2 id="6-Double-Period-With-toString"><a href="#6-Double-Period-With-toString" class="headerlink" title="6. Double Period(..) With toString"></a>6. Double Period(..) With toString</h2><p>快速将十进制数 转为 二进制 八进制 十六进制数<br>一般用Number.toString(2,8,16)</p>
+<p>本质是将一个数字型字面量转为Number对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">5.</span>.toString(<span class="number">2</span>) <span class="comment">// '101'</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="number">5</span>).toString(<span class="number">2</span>) === <span class="number">5.</span>.toString(<span class="number">2</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="IIFE-With-Operators"><a href="#IIFE-With-Operators" class="headerlink" title="IIFE With Operators"></a>IIFE With Operators</h2><p>Immediately Invoked Function Expression 自执行函数表达式</p>
+<p>通用</p>
+<p>(function() {<br>  // do your work<br>})();</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">-<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">~~<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">!!<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>工作原理</li>
+</ul>
+<p>any operators that run and evaluate an operand can run functions coming after<br>since functions also have to be run<br>and evaluated for their operators, such as ! or ~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/05/add链式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/05/add链式/" itemprop="url">add链式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T08:08:02+08:00">
+                2020-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="add-1-2-3"><a href="#add-1-2-3" class="headerlink" title="add(1)(2)(3)"></a>add(1)(2)(3)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sum = x;</span><br><span class="line">  <span class="keyword">let</span> tmp = <span class="function"><span class="keyword">function</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">    sum += y;</span><br><span class="line">    <span class="keyword">return</span> tmp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  tmp.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>`</code>javascript<br>function add(x) {<br>  let tmp = function (y) {<br>    return add(x + y);<br>  }</p>
+<p>  tmp.toString = function () {<br>    return x<br>  }</p>
+<p>  return tmp;<br>}<br><code>`</code>9</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/04/How-the-new-‘Top-Level-Await’-feature-works-in-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/04/How-the-new-‘Top-Level-Await’-feature-works-in-JavaScript/" itemprop="url">How the new ‘Top Level Await’ feature works in JavaScript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T16:12:30+08:00">
+                2020-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>以前，为了使用await，代码需要放在一个标记为async的函数中。<br>这意味着你不能在任何函数符号之外使用await。顶级的wait使模块能够像异步函数一样工作  </p>
+<p>模块是异步的，并且具有导入和导出，这些模块也在顶层表示。</p>
+<p>实际的含义是，如果您想提供一个依赖于某些异步任务的模块来执行某项操作，那么您实际上没有好的选择。</p>
+<p>顶级await可以解决此问题，并使开发人员可以在异步函数之外使用await关键字。</p>
+<p>通过顶层等待，ECMAScript模块可以等待资源，从而导致其他导入资源的模块在开始评估其主体之前等待，</p>
+<p>或者如果模块加载失败或用作加载第一个模块，也可以将其用作加载依赖项回退 资源下载。</p>
+<p>ps</p>
+<ol>
+<li><p>顶层等待仅在顶层模块上起作用。 不支持经典脚本或非异步功能。</p>
+</li>
+<li><p>截至撰写本文时，ECMAScript第3阶段</p>
+</li>
+</ol>
+<h2 id="用例"><a href="#用例" class="headerlink" title="用例"></a>用例</h2><p>在顶层等待的情况下，下一个代码将按您期望的方式在模块中工作</p>
+<ol>
+<li>Using a fallback if module loading fails</li>
+</ol>
+<p>以下示例尝试从first.com加载JavaScript模块，如果失败则返回至</p>
+<p>//module.mjs</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="built_in">module</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="built_in">module</span>= <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">'https://first.com/libs.com/module1'</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">  <span class="built_in">module</span>= <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">'https://second.com/libs/module1'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.使用加载速度最快的资源</p>
+<p>此处res变量通过首先完成的下载来初始化。</p>
+<p>//module.mjs</p>
+<p>const resPromises = [<br>    donwloadFromResource1Site,<br>    donwloadFromResource2Site<br> ];</p>
+<p>const res = await Promise.any(resPromises);</p>
+<ol start="3">
+<li>Resource initialization</li>
+</ol>
+<p>顶级的await允许您在模块中等待承诺，就好像它们被包装在异步函数中一样。<br>这对于执行应用程序初始化非常有用</p>
+<p>//module.mjs</p>
+<p>import { dbConnector} from ‘./dbUtils.js’<br>//connect() return a promise</p>
+<p>const connection = await dbConnector.connect();<br>export default function(){connection.list()}</p>
+<ol start="4">
+<li>Loading modules dynamically</li>
+</ol>
+<p>这允许模块使用运行时值来确定依赖项</p>
+<p>//module.mjs</p>
+<p>const params = new URLSearchParams(window.location.search);<br>const lang = params.get(‘lang’);<br>const messages = await import(<code>./messages-${lang}.mjs</code>)</p>
+<ol start="5">
+<li>Using await outside async functions in DevTools</li>
+</ol>
+<p>在使用async / await之前，尝试在async函数之外使用<br>await会导致：“ SyntaxError：await仅在async函数中有效”现在，<br>可以使用它而无需将其放在async函数中</p>
+<p>这已在chrome 80和firefox 72.0.2 DevTools中进行了测试。<br>但是，此功能是非标准功能，无法在nodejs中使用。</p>
+<p>const helloPromise = new Promise((resolve)=&gt;{<br>  setTimeout(()=&gt; resolve(‘Hello world!’), 5000);<br>})<br>const result =  await helloPromise;<br>console.log(result);</p>
+<p>//5 seconds later…:</p>
+<p>Implementations<br>V8 with flag: — — harmony-top-level-await<br>Webpack (experimental support in 5.0.0)<br>Parser support has been added to Babel (babel/plugin-syntax-top-level-await).//Hello world!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/04/Phases-of-the-Node-JS-Event-Loop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/04/Phases-of-the-Node-JS-Event-Loop/" itemprop="url">Phases of the Node JS Event Loop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T15:17:06+08:00">
+                2020-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="node-poll"><a href="#node-poll" class="headerlink" title="node  poll"></a>node  poll</h2><p>轮询阶段处理我们执行的所有输入/输出操作</p>
+<p>您编写的所有同步JavaScript代码都将在事件循环的轮询阶段执行</p>
+<p>当事件循环处于其迭代的轮询阶段时，将执行所有代码</p>
+<p>轮询阶段处理的不仅仅是IO操作</p>
+<h2 id="node-check"><a href="#node-check" class="headerlink" title="node  check"></a>node  check</h2><p>setImmediate</p>
+<h2 id="node-close-callback"><a href="#node-close-callback" class="headerlink" title="node  close callback"></a>node  close callback</h2><h2 id="node-timer"><a href="#node-timer" class="headerlink" title="node  timer"></a>node  timer</h2><p>setTimeout</p>
+<p>setTimeout和setImmediate之间的区别</p>
+<p>在这一点上，您可能一直想知道没有第二个参数的setTimeout和setImmediate之间有什么区别。</p>
+<p>答案：</p>
+<p>setImmediate和setTimeout（延迟为0ms）都在下一个事件循环迭代之前运行代码。 但是，有一个要考虑的重点：</p>
+<p>setImmediate的优先级高于setTimeout。</p>
+<h2 id="node-pending-callbacks"><a href="#node-pending-callbacks" class="headerlink" title="node  pending callbacks"></a>node  pending callbacks</h2><h2 id="node-idle-prepare"><a href="#node-idle-prepare" class="headerlink" title="node idle prepare"></a>node idle prepare</h2><h2 id="process-nextTick"><a href="#process-nextTick" class="headerlink" title="process.nextTick"></a>process.nextTick</h2><p>在事件循环的每个阶段执行之后，并且在开始事件循环的下一阶段之前，将执行nextTickQueue，但正式地它不是事件循环的一部分</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -771,6 +1335,17 @@
 </li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> foo = <span class="literal">null</span> ?? <span class="string">'default string'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo);</span><br><span class="line"><span class="comment">// expected output: "default string"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> baz = <span class="number">0</span> ?? <span class="number">42</span>;</span><br><span class="line"><span class="built_in">console</span>.log(baz);</span><br><span class="line"><span class="comment">// expected output: 0</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>globalThis</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getGlobal = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> self !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> self; &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> <span class="built_in">window</span>; &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> global !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> global; &#125;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'no global object found'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> globals = getGlobal()</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>Nullish coalescing ??</li>
+</ol>
+<p>If the property is null or undefined, then the right-side expression is returned;<br>f not, then it ignores if it is evaluated as falsy or truthy and returns it.</p>
+<p><code>`</code>javascript<br>const response = {<br>  settings: {<br>    nullValue: null,<br>    height: 400,<br>    animationDuration: 0,<br>    headerText: ‘’,<br>    showSplashScreen: false<br>  }<br>};</p>
+<p>const undefinedValue = response.settings.undefinedValue ?? ‘some other default’; // result: ‘some other default’<br><code>`</code>javascript</p>
+
           
         
       
@@ -1157,715 +1732,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/01/06/dragimage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/06/dragimage/" itemprop="url">dragimage</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-06T08:53:05+08:00">
-                2020-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  #drop-region &#123;</span><br><span class="line">	background-color: #fff;</span><br><span class="line">	border-radius:<span class="number">20</span>px;</span><br><span class="line">	box-shadow:<span class="number">0</span> <span class="number">0</span> <span class="number">35</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.05</span>);</span><br><span class="line">	width:<span class="number">400</span>px;</span><br><span class="line">	padding:<span class="number">60</span>px <span class="number">40</span>px;</span><br><span class="line">	text-align: center;</span><br><span class="line">	cursor:pointer;</span><br><span class="line">	transition:<span class="number">.3</span>s;</span><br><span class="line">&#125;</span><br><span class="line">#drop-region:hover &#123;</span><br><span class="line">	box-shadow:<span class="number">0</span> <span class="number">0</span> <span class="number">45</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#image-preview &#123;</span><br><span class="line">	margin-top:<span class="number">20</span>px;</span><br><span class="line">&#125;</span><br><span class="line">#image-preview .image-view &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">	position:relative;</span><br><span class="line">	margin-right: <span class="number">13</span>px;</span><br><span class="line">	margin-bottom: <span class="number">13</span>px;</span><br><span class="line">&#125;</span><br><span class="line">#image-preview .image-view img &#123;</span><br><span class="line">    max-width: <span class="number">100</span>px;</span><br><span class="line">    max-height: <span class="number">100</span>px;</span><br><span class="line">&#125;</span><br><span class="line">#image-preview .overlay &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: <span class="number">100</span>%;</span><br><span class="line">    top: <span class="number">0</span>;</span><br><span class="line">    right: <span class="number">0</span>;</span><br><span class="line">    z-index: <span class="number">2</span>;</span><br><span class="line">    background: rgba(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">&lt;body style="padding:100px;background-color:#fafafa;font-family: 'Segoe UI', sans-serif;"&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;div id="drop-region"&gt;</span></span><br><span class="line"><span class="regexp">	&lt;div class="drop-message"&gt;</span></span><br><span class="line"><span class="regexp">		Drag &amp; Drop images or click to upload</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">	&lt;div id=<span class="string">"image-preview"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">let dropRegion = document.getElementById("drop-region"), /</span><span class="regexp">/ where files are dropped + file selector is opened</span></span><br><span class="line"><span class="regexp">	imagePreviewRegion = document.getElementById("image-preview"); 	/</span><span class="regexp">/ where images are previewed</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ open file selector when clicked on the drop region</span></span><br><span class="line"><span class="regexp">let fakeInput = document.createElement("input");</span></span><br><span class="line"><span class="regexp">fakeInput.type = "file";</span></span><br><span class="line"><span class="regexp">fakeInput.accept = "image/</span>*<span class="string">";</span></span><br><span class="line"><span class="string">fakeInput.multiple = true;</span></span><br><span class="line"><span class="string">dropRegion.addEventListener('click', function() &#123;</span></span><br><span class="line"><span class="string">	fakeInput.click();</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fakeInput.addEventListener("</span>change<span class="string">", function() &#123;</span></span><br><span class="line"><span class="string">	let files = fakeInput.files;</span></span><br><span class="line"><span class="string">	handleFiles(files);</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function preventDefault(e) &#123;</span></span><br><span class="line"><span class="string">	e.preventDefault();</span></span><br><span class="line"><span class="string">  	e.stopPropagation();</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">dropRegion.addEventListener('dragenter', preventDefault, false)</span></span><br><span class="line"><span class="string">dropRegion.addEventListener('dragleave', preventDefault, false)</span></span><br><span class="line"><span class="string">dropRegion.addEventListener('dragover', preventDefault, false)</span></span><br><span class="line"><span class="string">dropRegion.addEventListener('drop', preventDefault, false)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function handleDrop(e) &#123;</span></span><br><span class="line"><span class="string">	let dt = e.dataTransfer,</span></span><br><span class="line"><span class="string">		files = dt.files;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	if (files.length) &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		handleFiles(files);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	&#125; else &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		// check for img</span></span><br><span class="line"><span class="string">		let html = dt.getData('text/html'),</span></span><br><span class="line"><span class="string">	        match = html &amp;&amp; /\bsrc="</span>?([^<span class="string">"\s]+)"</span>?\s*<span class="regexp">/.exec(html),</span></span><br><span class="line"><span class="regexp">	        url = match &amp;&amp; match[1];</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">	    if (url) &#123;</span></span><br><span class="line"><span class="regexp">	        uploadImageFromURL(url);</span></span><br><span class="line"><span class="regexp">	        return;</span></span><br><span class="line"><span class="regexp">	    &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">	function uploadImageFromURL(url) &#123;</span></span><br><span class="line"><span class="regexp">		var img = new Image;</span></span><br><span class="line"><span class="regexp">        var c = document.createElement("canvas");</span></span><br><span class="line"><span class="regexp">        var ctx = c.getContext("2d");</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        img.onload = function() &#123;</span></span><br><span class="line"><span class="regexp">            c.width = this.naturalWidth;     /</span><span class="regexp">/ update canvas size to match image</span></span><br><span class="line"><span class="regexp">            c.height = this.naturalHeight;</span></span><br><span class="line"><span class="regexp">            ctx.drawImage(this, 0, 0);       /</span><span class="regexp">/ draw in image</span></span><br><span class="line"><span class="regexp">            c.toBlob(function(blob) &#123;        /</span><span class="regexp">/ get content as PNG blob</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            	/</span><span class="regexp">/ call our main function</span></span><br><span class="line"><span class="regexp">                handleFiles( [blob] );</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            &#125;, "image/</span>png<span class="string">");</span></span><br><span class="line"><span class="string">        &#125;;</span></span><br><span class="line"><span class="string">        img.onerror = function() &#123;</span></span><br><span class="line"><span class="string">            alert("</span><span class="built_in">Error</span> <span class="keyword">in</span> uploading<span class="string">");</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        img.crossOrigin = "</span><span class="string">";              // if from different origin</span></span><br><span class="line"><span class="string">        img.src = url;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">dropRegion.addEventListener('drop', handleDrop, false);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function handleFiles(files) &#123;</span></span><br><span class="line"><span class="string">	for (var i = 0, len = files.length; i &lt; len; i++) &#123;</span></span><br><span class="line"><span class="string">		if (validateImage(files[i]))</span></span><br><span class="line"><span class="string">			previewAnduploadImage(files[i]);</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function validateImage(image) &#123;</span></span><br><span class="line"><span class="string">	// check the type</span></span><br><span class="line"><span class="string">	var validTypes = ['image/jpeg', 'image/png', 'image/gif'];</span></span><br><span class="line"><span class="string">	if (validTypes.indexOf( image.type ) === -1) &#123;</span></span><br><span class="line"><span class="string">		alert("</span>Invalid File Type<span class="string">");</span></span><br><span class="line"><span class="string">		return false;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	// check the size</span></span><br><span class="line"><span class="string">	var maxSizeInBytes = 10 * 10e6; // 10MB</span></span><br><span class="line"><span class="string">	if (image.size &gt; maxSizeInBytes) &#123;</span></span><br><span class="line"><span class="string">		alert("</span>File too large<span class="string">");</span></span><br><span class="line"><span class="string">		return false;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	return true;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function previewAnduploadImage(image) &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	// container</span></span><br><span class="line"><span class="string">	var imgView = document.createElement("</span>div<span class="string">");</span></span><br><span class="line"><span class="string">	imgView.className = "</span>image-view<span class="string">";</span></span><br><span class="line"><span class="string">	imagePreviewRegion.appendChild(imgView);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	// previewing image</span></span><br><span class="line"><span class="string">	var img = document.createElement("</span>img<span class="string">");</span></span><br><span class="line"><span class="string">	imgView.appendChild(img);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	// progress overlay</span></span><br><span class="line"><span class="string">	var overlay = document.createElement("</span>div<span class="string">");</span></span><br><span class="line"><span class="string">	overlay.className = "</span>overlay<span class="string">";</span></span><br><span class="line"><span class="string">	imgView.appendChild(overlay);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	// read the image...</span></span><br><span class="line"><span class="string">	var reader = new FileReader();</span></span><br><span class="line"><span class="string">	reader.onload = function(e) &#123;</span></span><br><span class="line"><span class="string">		img.src = e.target.result;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	reader.readAsDataURL(image);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	// create FormData</span></span><br><span class="line"><span class="string">	var formData = new FormData();</span></span><br><span class="line"><span class="string">	formData.append('image', image);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	// upload the image</span></span><br><span class="line"><span class="string">	var uploadLocation = 'https://api.imgbb.com/1/upload';</span></span><br><span class="line"><span class="string">	formData.append('key', 'bb63bee9d9846c8d5b7947bcdb4b3573');</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	var ajax = new XMLHttpRequest();</span></span><br><span class="line"><span class="string">	ajax.open("</span>POST<span class="string">", uploadLocation, true);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	ajax.onreadystatechange = function(e) &#123;</span></span><br><span class="line"><span class="string">		if (ajax.readyState === 4) &#123;</span></span><br><span class="line"><span class="string">			if (ajax.status === 200) &#123;</span></span><br><span class="line"><span class="string">				// done!</span></span><br><span class="line"><span class="string">			&#125; else &#123;</span></span><br><span class="line"><span class="string">				// error!</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	ajax.upload.onprogress = function(e) &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		// change progress</span></span><br><span class="line"><span class="string">		// (reduce the width of overlay)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		var perc = (e.loaded / e.total * 100) || 100,</span></span><br><span class="line"><span class="string">			width = 100 - perc;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		overlay.style.width = width;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	ajax.send(formData);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/13/ES7-ES8-ES9-ES10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/13/ES7-ES8-ES9-ES10/" itemprop="url">ES7-ES8-ES9-ES10</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T17:46:07+08:00">
-                2019-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>Array.prototype.includes()方法</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="string">'8'</span>, <span class="literal">NaN</span>, <span class="number">-0</span>]</span><br><span class="line">arr.includes(<span class="number">1</span>) <span class="comment">// true</span></span><br><span class="line">arr.includes(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// false 该方法的第二个参数表示搜索的起始位置，默认为0</span></span><br><span class="line">arr.includes(<span class="string">'1'</span>) <span class="comment">// false</span></span><br><span class="line">arr.includes(<span class="literal">NaN</span>) <span class="comment">// true</span></span><br><span class="line">arr.includes(+<span class="number">0</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">indexOf()</span><br><span class="line"></span><br><span class="line">find() 和 findIndex()</span><br><span class="line"></span><br><span class="line">数组实例的find方法，用于找出第一个符合条件的数组成员。另外，这两个方法都可以发现<span class="literal">NaN</span>，弥补了数组的indexOf方法的不足。</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>求幂运算符 **</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(2**10);// 输出1024</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>Async/Await<br>await 后面一定是Promise 对象，如果不是会自动包装成Promise对象  </li>
-</ol>
-<p>根据MDN定义，async是一个通过异步执行并隐式返回Promise作为结果的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">async function foo () &#123;</span><br><span class="line">  return &apos;123&apos;</span><br><span class="line">&#125;</span><br><span class="line">foo().then(val =&gt; &#123;</span><br><span class="line">  console.log(val) // 123</span><br><span class="line">&#125;)</span><br><span class="line">上述代码，我们可以看到调用async 声明的foo 函数返回了一个Promise对象，等价于下面代码：</span><br><span class="line"></span><br><span class="line">async function foo () &#123;</span><br><span class="line">  return Promise.resolve(&apos;123&apos;)</span><br><span class="line">&#125;</span><br><span class="line">foo().then(val =&gt; &#123;</span><br><span class="line">  console.log(val) // 123</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>Object.values()，Object.entries()</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ES5 引入了Object.keys方法，返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。</span><br><span class="line">ES8引入了跟Object.keys配套的Object.values和Object.entries，作为遍历一个对象的补充手段，供for...of循环使用。</span><br><span class="line">Object.values方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值</span><br><span class="line"></span><br><span class="line">需要注意的是，如果属性名为数值的属性，是按照数值大小，从小到大遍历的，因此返回的顺序是b、c、a</span><br><span class="line"></span><br><span class="line">Object.entries()方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>String padding</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String.prototype.padStart 和 String.prototype.padEnd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">String.padStart(targetLength,[padString])</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>Object.getOwnPropertyDescriptors()</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ES5的Object.getOwnPropertyDescriptor()方法会返回某个对象属性的描述对象（descriptor）</span><br><span class="line"></span><br><span class="line">ES8 引入了Object.getOwnPropertyDescriptors()方法，返回指定对象所有自身属性（非继承属性）的描述对象</span><br><span class="line"></span><br><span class="line">该方法的引入目的，主要是为了解决Object.assign()无法正确拷贝get属性和set属性的问题</span><br><span class="line"></span><br><span class="line">Object.assign方法总是拷贝一个属性的值，而不会拷贝它背后的赋值方法或取值方法。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这时Object.getOwnPropertyDescriptors()方法配合Object.defineProperties()方法，就可以实现正确拷贝。</span><br><span class="line"></span><br><span class="line">const source = &#123;</span><br><span class="line">  set foo (value) &#123;</span><br><span class="line">    console.log(value)</span><br><span class="line">  &#125;,</span><br><span class="line">  get bar () &#123;</span><br><span class="line">    return &apos;123&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">const target2 = &#123;&#125;</span><br><span class="line">Object.defineProperties(target2, Object.getOwnPropertyDescriptors(source))</span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li>for await of<br>for of方法能够遍历具有Symbol.iterator接口的同步迭代器数据，但是不能遍历异步迭代器。<br>ES9新增的for await of可以用来遍历具有Symbol.asyncIterator方法的数据结构，也就是异步迭代器，<br>且会等待前一个成员的状态改变后才会遍历到下一个成员，相当于async函数内部的await  </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// for of遍历</span><br><span class="line">function Gen (time) &#123;</span><br><span class="line">  return new Promise(function (resolve, reject) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">      resolve(time)</span><br><span class="line">    &#125;, time)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">async function test () &#123;</span><br><span class="line">  let arr = [Gen(2000), Gen(100), Gen(3000)]</span><br><span class="line">  for await (let item of arr) &#123;</span><br><span class="line">    console.log(Date.now(), item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line">// 1575536194608 2000</span><br><span class="line">// 1575536194608 100</span><br><span class="line">// 1575536195608 3000</span><br></pre></td></tr></table></figure>
-<ol start="8">
-<li>Object Rest Spread</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const input = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2,</span><br><span class="line">  c: 1</span><br><span class="line">&#125;</span><br><span class="line">const output = &#123;</span><br><span class="line">  ...input,</span><br><span class="line">  c: 3</span><br><span class="line">&#125;</span><br><span class="line">console.log(output) // &#123;a: 1, b: 2, c: 3&#125;</span><br></pre></td></tr></table></figure>
-<ol start="9">
-<li>Promise.prototype.finally()</li>
-</ol>
-<h2 id="10-新的正则表达式特性"><a href="#10-新的正则表达式特性" class="headerlink" title="10. 新的正则表达式特性"></a>10. 新的正则表达式特性</h2><ol>
-<li>s(dotAll)flag</li>
-</ol>
-<p>正则表达式中，点（.）是一个特殊字符，代表任意的单个字符，但是有两个例外。<br>一个是四个字节的 UTF-16 字符，这个可以用u修饰符解决；<br>另一个是行终止符,如换行符(\n)或回车符(\r),这个可以通过ES9的s(dotAll)flag，<br>在原正则表达式基础上添加s表示:  </p>
-<p>console.log(/foo.bar/.test(‘foo\nbar’)) // false<br>console.log(/foo.bar/s.test(‘foo\nbar’)) // true  </p>
-<p>那如何判断当前正则是否使用了 dotAll 模式呢？  </p>
-<p>const re = /foo.bar/s // Or, <code>const re = new RegExp(&#39;foo.bar&#39;, &#39;s&#39;);</code>.  </p>
-<p>console.log(re.test(‘foo\nbar’)) // true  </p>
-<p>console.log(re.dotAll) // true  </p>
-<p>console.log(re.flags) // ‘s’</p>
-<ol start="2">
-<li>命名捕获组<br>在一些正则表达式模式中，使用数字进行匹配可能会令人混淆。例如，使用正则表达式/(\d{4})-(\d{2})-(\d{2})/来匹配日期。<br>因为美式英语中的日期表示法和英式英语中的日期表示法不同，所以很难区分哪一组表示日期，哪一组表示月份:  </li>
-</ol>
-<p>const re = /(\d{4})-(\d{2})-(\d{2})/;<br>const match= re.exec(‘2019-01-01’);<br>console.log(match[0]);    // → 2019-01-01<br>console.log(match[1]);    // → 2019<br>console.log(match[2]);    // → 01<br>console.log(match[3]);    // → 01<br>ES9引入了命名捕获组，允许为每一个组匹配指定一个名字，既便于阅读代码，又便于引用。  </p>
-<p>const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;<br>const match = re.exec(‘2019-01-01’);<br>console.log(match.groups);          // → {year: “2019”, month: “01”, day: “01”}<br>console.log(match.groups.year);     // → 2019<br>console.log(match.groups.month);    // → 01<br>console.log(match.groups.day);      // → 01</day></month></year></p>
-<p>上面代码中，“命名捕获组”在圆括号内部，模式的头部添加“问号 + 尖括号 + 组名”（?），然后就可以在exec方法返回结果的groups属性上引用该组名。</p>
-<p>命名捕获组也可以使用在replace()方法中，例如将日期转换为美国的 MM-DD-YYYY 格式：</p>
-<p>const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/<br>const usDate = ‘2018-04-30’.replace(re, ‘$<month>-$<day>-$<year>‘)<br>console.log(usDate) // 04-30-2018</year></day></month></day></month></year></p>
-<ol start="3">
-<li>Lookbehind 后行断言</li>
-</ol>
-<p>JavaScript 语言的正则表达式，只支持先行断言，不支持后行断言，先行断言我们可以简单理解为”先遇到一个条件，再判断后面是否满足”，如下面例子：   </p>
-<p>let test = ‘hello world’<br>console.log(test.match(/hello(?=\sworld)/))<br>// [“hello”, index: 0, input: “hello world”, groups: undefined]<br>但有时我们想判断前面是 world 的 hello，这个代码是实现不了的。在 ES9 就支持这个后行断言了：</p>
-<p>let test = ‘world hello’<br>console.log(test.match(/(?&lt;=world\s)hello/))<br>// [“hello”, index: 6, input: “world hello”, groups: undefined]<br>(?&lt;…)是后行断言的符号，(?..)是先行断言的符号，然后结合 =(等于)、!(不等)、\1(捕获匹配)。</p>
-<ol start="4">
-<li>Unicode属性转义<br>ES2018 引入了一种新的类的写法\p{…}和\P{…}，允许正则表达式匹配符合 Unicode 某种属性的所有字符。<br>比如你可以使用\p{Number}来匹配所有的Unicode数字，例如，假设你想匹配的Unicode字符㉛字符串:  </li>
-</ol>
-<p>const str = ‘㉛’;<br>console.log(/\d/u.test(str));    // → false<br>console.log(/\p{Number}/u.test(str));     // → true<br>同样的，你可以使用\p{Alphabetic}来匹配所有的Unicode单词字符:</p>
-<p>const str = ‘ض’;<br>console.log(/\p{Alphabetic}/u.test(str));     // → true<br>// the \w shorthand cannot match ض<br>console.log(/\w/u.test(str));    // → false<br>同样有一个负向的Unicode属性转义模板 \P{…}</p>
-<p>console.log(/\P{Number}/u.test(‘㉛’));    // → false<br>console.log(/\P{Number}/u.test(‘ض’));    // → true<br>console.log(/\P{Alphabetic}/u.test(‘㉛’));    // → true<br>console.log(/\P{Alphabetic}/u.test(‘ض’));    // → false<br>除了字母和数字之外，Unicode属性转义中还可以使用其他一些属性</p>
-<h2 id="11-Array-prototype-flat"><a href="#11-Array-prototype-flat" class="headerlink" title="11.  Array.prototype.flat()"></a>11.  Array.prototype.flat()</h2><p>flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回  </p>
-<p>newArray = arr.flat(depth)<br>// depth是指定要提取嵌套数组的结构深度，默认值为 1      </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numbers1 = [1, 2, [3, 4, [5, 6]]]</span><br><span class="line">console.log(numbers1.flat())// [1, 2, 3, 4, [5, 6]]</span><br><span class="line">const numbers2 = [1, 2, [3, 4, [5, 6]]]</span><br><span class="line">console.log(numbers2.flat(2))// [1, 2, 3, 4, 5, 6]</span><br></pre></td></tr></table></figure>
-<h2 id="12-Array-prototype-flatMap"><a href="#12-Array-prototype-flatMap" class="headerlink" title="12. Array.prototype.flatMap()"></a>12. Array.prototype.flatMap()</h2><p>首先使用映射函数映射每个元素，然后将结果压缩成一个新数组。<br>从方法的名字上也可以看出来它包含两部分功能一个是 map，一个是 flat（深度为1）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3]</span><br><span class="line">console.log(arr.map(item =&gt; [item * 2]).flat()) // [2, 4, 6]</span><br><span class="line">console.log(arr.flatMap(item =&gt; [item * 2])) // [2, 4, 6]</span><br><span class="line"></span><br><span class="line">实际上flatMap是综合了map和flat的操作，所以它也只能打平一层。</span><br></pre></td></tr></table></figure>
-<h2 id="13-Object-fromEntries"><a href="#13-Object-fromEntries" class="headerlink" title="13. Object.fromEntries()"></a>13. Object.fromEntries()</h2><p>Object.fromEntries 这个新的API实现了与 Object.entries 相反的操作。这使得根据对象的 entries 很容易得到 object。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const object = &#123; x: 23, y:24 &#125;;</span><br><span class="line">const entries = Object.entries(object); // [[&apos;x&apos;, 23], [&apos;y&apos;, 24]]</span><br><span class="line">const result = Object.fromEntries(entries); // &#123; x: 23, y: 24 &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="14-String-trimStart-和-String-trimEnd"><a href="#14-String-trimStart-和-String-trimEnd" class="headerlink" title="14. String.trimStart 和 String.trimEnd"></a>14. String.trimStart 和 String.trimEnd</h2><h2 id="15-String-prototype-matchAll"><a href="#15-String-prototype-matchAll" class="headerlink" title="15. String.prototype.matchAll"></a>15. String.prototype.matchAll</h2><p>现在通过ES9的String.prototype.matchAll方法，可以一次性取出所有匹配  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function collectGroup1 (regExp, str) &#123;</span><br><span class="line">  let results = []</span><br><span class="line">  for (const match of str.matchAll(regExp)) &#123;</span><br><span class="line">    results.push(match[1])</span><br><span class="line">  &#125;</span><br><span class="line">  return results</span><br><span class="line">&#125;</span><br><span class="line">console.log(collectGroup1(/&quot;([^&quot;]*)&quot;/g, `&quot;foo&quot; and &quot;bar&quot; and &quot;baz&quot;`))</span><br><span class="line">// [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]</span><br></pre></td></tr></table></figure>
-<h2 id="16-try…catch"><a href="#16-try…catch" class="headerlink" title="16. try…catch"></a>16. try…catch</h2><p>在ES10中，try-catch语句中的参数变为了一个可选项。以前我们写catch语句时，必须传递一个异常参数。<br>这就意味着，即便我们在catch里面根本不需要用到这个异常参数也必须将其传递进去</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">这里 err 是必须的参数，在 ES10 可以省略这个参数：</span><br><span class="line"></span><br><span class="line">// ES10</span><br><span class="line">try &#123;</span><br><span class="line">  console.log(&apos;Foobar&apos;)</span><br><span class="line">&#125; catch &#123;</span><br><span class="line">  console.error(&apos;Bar&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="17-BigInt"><a href="#17-BigInt" class="headerlink" title="17. BigInt"></a>17. BigInt</h2><p>JS中Number采用IEEE 754中双精度浮点数 采用64位(8字节)存储一个浮点数  </p>
-<p>0 - 51位 存储 尾数  采用二级制 科学记号  mantissa   52   </p>
-<p>52 - 62位 存储 指数  exponent    11</p>
-<p>63位 符号位 sign bit   1  </p>
-<p><img src="../images/fp.png" alt="双精度浮点数"></p>
-<p>格式：符号位+指数位+尾数位<br>符号位S：第 1 位是正负数符号位（sign），0代表正数，1代表负数  </p>
-<p>指数位E：中间的 11 位存储指数（exponent），用来表示次方数  </p>
-<p>科学计数法中指数E是可以为负数的，在表示负的指数时IEEE754标准引入了一个偏移量1023(3ff)<br>在存储指数时加上该偏移量把负数E转成正数。这就导致11位的指数能够表示指数的范围是[-1023, 1024]</p>
-<p>尾数位M：最后的 52 位是尾数（mantissa），超出的部分自动进一舍零，没有填满的部分自动补0<br>如10进制数400.12，用10进制科学计数法表示为：4.0012*10^2,。其中”0012”就是尾数部分。</p>
-<p><img src="../images/fp1.png" alt="双精度浮点数"></p>
-<p>注意以上的公式遵循科学计数法的规范，在十进制是为0&lt;M&lt;10，到二进行就是0&lt;M&lt;2。也就是说整数部分只能是1，<br>所以可以被舍去，只保留后面的小数部分。如 4.5 转换成二进制就是 100.1，科学计数法表示是 1.001*2^2，<br>舍去1后 M = 001。E是一个无符号整数，因为长度是11位，取值范围是 0~2047。但是科学计数法中的指数是可以为负数的，<br>所以再减去一个中间数 1023，[0,1022]表示为负，[1024,2047] 表示为正。如4.5 的指数E = 1025，尾数M为 001。  </p>
-<p>单精度浮点数 32位  1符号位 sign bit +  8指数位 exponent + 23尾数位mantissa</p>
-<p>现在ES10引入了一种新的数据类型 BigInt（大整数），来解决这个问题。BigInt 只用来表示整数，没有位数的限制，任何位数的整数都可以精确表示<br>创建 BigInt 类型的值也非常简单，只需要在数字后面加上 n 即可。例如，123 变为 123n。<br>也可以使用全局方法 BigInt(value) 转化，入参 value 为数字或数字字符串</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> aNumber = <span class="number">111</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> aBigInt = BigInt(aNumber);</span><br><span class="line"></span><br><span class="line">aBigInt === <span class="number">111</span>n <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> aBigInt === <span class="string">'bigint'</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">111</span> <span class="comment">// "number"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">111</span>n <span class="comment">// "bigint"</span></span><br></pre></td></tr></table></figure>
-<p>如果算上 BigInt，JavaScript 中原始类型就从 6 个变为了 7 个。</p>
-<p>Boolean<br>Null<br>Undefined<br>Number<br>String<br>Symbol (new in ECMAScript 2015)<br>BigInt (new in ECMAScript 2019)</p>
-<p>再加上一个 引用类型 Object</p>
-<h2 id="18-Symbol-prototype-description"><a href="#18-Symbol-prototype-description" class="headerlink" title="18. Symbol.prototype.description"></a>18. Symbol.prototype.description</h2><p>我们知道，Symbol 的描述只被存储在内部的 [[Description]]，没有直接对外暴露<br>我们只有调用 Symbol 的 toString() 时才可以读取这个属性：</p>
-<p>Symbol(‘desc’).description;  // “desc”<br>Symbol(‘’).description;      // “”<br>Symbol().description;        // undefined</p>
-<h2 id="19-Function-prototype-toString"><a href="#19-Function-prototype-toString" class="headerlink" title="19.Function.prototype.toString()"></a>19.Function.prototype.toString()</h2><p>ES2019中，Function.toString()发生了变化。之前执行这个方法时，得到的字符串是去空白符号的。而现在，得到的字符串呈现出原本源码的样子</p>
-<p>function sum(a, b) {<br>  return a + b;<br>}<br>console.log(sum.toString());<br>// function sum(a, b) {<br>//  return a + b;<br>// }</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/13/面试题01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/13/面试题01/" itemprop="url">面试题01</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T17:35:27+08:00">
-                2019-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-如何判断左右小括号是否全部匹配。如"><a href="#1-如何判断左右小括号是否全部匹配。如" class="headerlink" title="1. 如何判断左右小括号是否全部匹配。如 ( ( ))()((((()))))"></a>1. 如何判断左右小括号是否全部匹配。如 ( ( ))()((((()))))</h2><p>思路：利用栈，先进后出的特性  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> judgeBracketsMatch = <span class="function">(<span class="params">s</span>)=&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> result = [];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; s.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] === <span class="string">'('</span>)&#123;</span><br><span class="line">                result.push(s[i])</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(s[i] === <span class="string">')'</span>)&#123;</span><br><span class="line">                result.pop()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(result.length)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-下面代码中的-a-在什么情况下会打印1？"><a href="#2-下面代码中的-a-在什么情况下会打印1？" class="headerlink" title="2. 下面代码中的 a 在什么情况下会打印1？"></a>2. 下面代码中的 a 在什么情况下会打印1？</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = ?</span><br><span class="line"><span class="keyword">if</span>(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">思路：重写 valueOf 方法 参考答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line"> value: <span class="number">0</span>,</span><br><span class="line"> valueOf()&#123;</span><br><span class="line">  <span class="keyword">return</span> ++<span class="keyword">this</span>.value</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="3-如何理解回流和重绘"><a href="#3-如何理解回流和重绘" class="headerlink" title="3. 如何理解回流和重绘"></a>3. 如何理解回流和重绘</h2><p>回流：当我们对 DOM 的修改引发了 DOM 几何尺寸的变化（比如修改元素的宽、高或隐藏元素等）时，浏览器需要重新计算元素的几何属性<br>（其他元素的几何属性和位置也会因此受到影响），然后再将计算的结果绘制出来。这个过程就是回流（也叫重排）。</p>
-<p>重绘：当我们对 DOM 的修改导致了样式的变化、却并未影响其几何属性（比如修改了颜色或背景色）时，浏览器不需重新计算元素的几何属性、<br>直接为该元素绘制新的样式（跳过了上图所示的回流环节）。这个过程叫做重绘。由此我们可以看出，重绘不一定导致回流，回流一定会导致重绘。</p>
-<h2 id="4-常见的会导致回流的元素："><a href="#4-常见的会导致回流的元素：" class="headerlink" title="4. 常见的会导致回流的元素："></a>4. 常见的会导致回流的元素：</h2><ol>
-<li>常见的几何属性有 width、height、padding、margin、left、top、border 等等。<br>最容易被忽略的操作：获取一些需要通过即时计算得到的属性,当你要用到像这样的属性：<br>offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、<br>clientTop、clientLeft、clientWidth、clientHeight 时，浏览器为了获取这些值，也会进行回流。<br>当我们调用了 getComputedStyle 方法，或者 IE 里的 currentStyle 时，也会触发回流。原理是一样的，都为求一个“即时性”和“准确性”。  </li>
-</ol>
-<ol start="2">
-<li><p>避免方式：<br>避免逐条改变样式，使用类名去合并样式<br>将 DOM “离线”,使用DocumentFragment<br>提升为合成层,如使用will-change<br>#divId {<br>will-change: transform;<br>}</p>
-</li>
-<li><p>优点</p>
-</li>
-</ol>
-<p>合成层的位图，会交由 GPU 合成，比 CPU 处理要快<br>当需要 repaint 时，只需要 repaint 本身，不会影响到其他的层<br>对于 transform 和 opacity 效果，不会触发 layout 和 paint</p>
-<ol start="4">
-<li>注意：<br>部分浏览器缓存了一个 flush 队列，把我们触发的回流与重绘任务都塞进去，待到队列里的任务多起来、或者达到了一定的时间间隔，或者“不得已”的时候，<br>再将这些任务一口气出队。但是当我们访问一些即使属性时，浏览器会为了获得此时此刻的、最准确的属性值，而提前将 flush 队列的任务出队。</li>
-</ol>
-<h2 id="5-实现一个LazyMan，可以按照以下方式调用"><a href="#5-实现一个LazyMan，可以按照以下方式调用" class="headerlink" title="5. 实现一个LazyMan，可以按照以下方式调用"></a>5. 实现一个LazyMan，可以按照以下方式调用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">实现一个LazyMan，可以按照以下方式调用:</span><br><span class="line">LazyMan(<span class="string">'Hank'</span>)输出:</span><br><span class="line">Hi! This is Hank!</span><br><span class="line">LazyMan(<span class="string">'Hank'</span>).sleep(<span class="number">10</span>).eat(<span class="string">'dinner'</span>)输出</span><br><span class="line">Hi! This is Hank!</span><br><span class="line"><span class="comment">//等待10秒..</span></span><br><span class="line">Wake up after <span class="number">10</span></span><br><span class="line">Eat dinner~</span><br><span class="line">LazyMan(<span class="string">'Hank'</span>).sleep(<span class="number">10</span>).eat(<span class="string">'dinner'</span>).eat(<span class="string">'supper'</span>)输出</span><br><span class="line">Hi This is Hank!</span><br><span class="line">Eat dinner~</span><br><span class="line">Eat supper~</span><br><span class="line">LazyMan(<span class="string">'Hank'</span>).sleepFirst(<span class="number">5</span>).eat(<span class="string">'supper'</span>)输出</span><br><span class="line"><span class="comment">//等待5秒</span></span><br><span class="line">Wake up after <span class="number">5</span></span><br><span class="line">Hi This is Hank!</span><br><span class="line">Eat supper~</span><br><span class="line">以此类推</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">LazyMan</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(<span class="keyword">this</span> <span class="keyword">instanceof</span> LazyMan))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> LazyMan(name)</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">next</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`Hi This is <span class="subst">$&#123;name&#125;</span>!`</span>)</span><br><span class="line">      next()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.cbs = [cb];</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.next()</span><br><span class="line">  &#125;,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">LazyMan.prototype.eat = <span class="function"><span class="keyword">function</span> (<span class="params">food</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cb = <span class="function">(<span class="params">next</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Eat <span class="subst">$&#123;food&#125;</span>~`</span>)</span><br><span class="line">        next()</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">this</span>.cbs.push(cb);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line">LazyMan.prototype.sleepFirst = <span class="function"><span class="keyword">function</span> (<span class="params">time</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cb = <span class="function">(<span class="params">next</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            next()</span><br><span class="line">        &#125;,time*<span class="number">1000</span>) </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">this</span>.cbs.unshift(cb);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line">LazyMan.prototype.sleep = <span class="function"><span class="keyword">function</span>(<span class="params">time</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cb = <span class="function">(<span class="params">next</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            next()</span><br><span class="line">        &#125;,time*<span class="number">1000</span>) </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">this</span>.cbs.push(cb);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line">LazyMan.prototype.next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.cbs.length &lt;= <span class="number">0</span>)<span class="keyword">return</span></span><br><span class="line">    <span class="keyword">const</span> first = <span class="keyword">this</span>.cbs.shift()</span><br><span class="line">    first(<span class="keyword">this</span>.next.bind(<span class="keyword">this</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/12/web性能时间片timeslicing/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/12/web性能时间片timeslicing/" itemprop="url">web性能时间片timeslicing</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T10:19:17+08:00">
-                2019-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-perface"><a href="#1-perface" class="headerlink" title="1. perface"></a>1. perface</h2><p>从用户的输入，再到显示器在视觉上给用户的输出，这一过程如果超过100ms，那么用户会察觉到网页的卡顿，所以为了解决这个问题<br>每个任务不能超过50ms，W3C性能工作组在LongTask规范中也将超过50ms的任务定义为长任务</p>
-<h2 id="FPS"><a href="#FPS" class="headerlink" title="FPS"></a>FPS</h2><pre><code>60HZ = 每秒刷新60次
-
-FPS(Frames Per Second) = 60
-
-(1 秒 = 1000 毫秒) / 60 帧 = 16.7 毫秒/帧
-</code></pre><p>所以为了避免长任务，一种方案是使用Web Worker，将长任务放在Worker线程中执行，缺点是无法访问DOM，而另一种方案是使用时间切片。</p>
-<h2 id="什么是时间切片"><a href="#什么是时间切片" class="headerlink" title="什么是时间切片"></a>什么是时间切片</h2><p>时间切片的核心思想是：如果任务不能在50毫秒内执行完，那么为了不阻塞主线程，这个任务应该让出主线程的控制权，使浏览器可以处理其他任务。<br>让出控制权意味着停止执行当前任务，让浏览器去执行其他任务，随后再回来继续执行没有执行完的任务。  </p>
-<p>所以时间切片的目的是不阻塞主线程，而实现目的的技术手段是将一个长任务拆分成很多个不超过50ms的小任务分散在宏任务队列中执行。  </p>
-<p>上图可以看到主线程中有一个长任务，这个任务会阻塞主线程。使用时间切片将它切割成很多个小任务后，如下图所示。</p>
-<p>可以看到现在的主线程有很多密密麻麻的小任务，我们将它放大后如下图所示。</p>
-<p>可以看到每个小任务中间是有空隙的，代表着任务执行了一小段时间后，将让出主线程的控制权，让浏览器执行其他的任务。</p>
-<p>使用时间切片的缺点是，任务运行的总时间变长了，这是因为它每处理完一个小任务后，主线程会空闲出来，并且在下一个小任务开始处理之前有一小段延迟。</p>
-<p>但是为了避免卡死浏览器，这种取舍是很有必要的。</p>
-<p>使用时间切片的缺点是，任务运行的总时间变长了，这是因为它每处理完一个小任务后，主线程会空闲出来，并且在下一个小任务开始处理之前有一小段延迟。</p>
-<p>但是为了避免卡死浏览器，这种取舍是很有必要的。</p>
-<h2 id="如何使用时间切片"><a href="#如何使用时间切片" class="headerlink" title="如何使用时间切片"></a>如何使用时间切片</h2><pre><code>时间切片是一种概念，也可以理解为一种技术方案，它不是某个API的名字，也不是某个工具的名字。
-
-事实上，时间切片充分利用了“异步”，在早期，可以使用定时器来实现，例如：
-
-btn.onclick = function () {
-    someThing(); // 执行了50毫秒
-    setTimeout(function () {
-        otherThing(); // 执行了50毫秒
-    });
-};
-
-上面代码当按钮被点击时，本应执行100毫秒的任务现在被拆分成了两个50毫秒的任务。
-
-在实际应用中，我们可以进行一些封装，封装后的使用效果类似下面这样：
-
-btn.onclick = ts([someThing, otherThing], function () {
-    console.log(&apos;done~&apos;);
-});
-
-当然，关于ts这个函数的API的设计并不是本文的重点，这里想说明的是，在早期可以利用定时器来实现“时间切片”。
-
-ES6带来了迭代器的概念，并提供了生成器Generator函数用来生成迭代器对象，虽然Generator函数最正统的用法是生成迭代器对象，但这不妨我们利用它的特性做一些其他的事情。
-
-Generator函数提供了yield关键字，这个关键字可以让函数暂停执行。然后通过迭代器对象的next方法让函数继续执行。
-
-利用这个特性，我们可以设计出更方便使用的时间切片，例如：
-
-btn.onclick = ts(function* () {
-    someThing(); // 执行了50毫秒
-    yield;
-    otherThing(); // 执行了50毫秒
-});
-
-可以看到，我们只需要使用yield这个关键字就可以将本应执行100毫秒的任务拆分成了两个50毫秒的任务。
-
-我们甚至可以将yield关键字放在循环里：
-
-btn.onclick = ts(function* () {
-    while (true) {
-        someThing(); // 执行了50毫秒
-        yield;
-    }
-});
-上面代码我们写了一个死循环，但依然不会阻塞主线程，浏览器也不会卡死
-</code></pre><h2 id="基于生成器的ts实现原理"><a href="#基于生成器的ts实现原理" class="headerlink" title="基于生成器的ts实现原理"></a>基于生成器的ts实现原理</h2><p>通过前面的例子，我们会发现基于Generator的时间切片非常好用，但其实ts函数的实现原理非常简单，一个最简单的ts函数只需要九行代码。</p>
-<pre><code>function ts (gen) {
-if (typeof gen === &apos;function&apos;) gen = gen()
-if (!gen || typeof gen.next !== &apos;function&apos;) return
-return function next() {
-    const res = gen.next()
-    if (res.done) return
-    setTimeout(next)
-}
-}
-</code></pre><p>代码虽然全部只有9行，关键代码只有3、4行，但这几行代码充分利用了事件循环机制以及Generator函数的特性。  </p>
-<p>创造出这样的代码我还是很开心的。  </p>
-<p>上面代码核心思想是：通过yield关键字可以将任务暂停执行，从而让出主线程的控制权；通过定时器可以将“未完成的任务”重新放在任务队列中继续执行。</p>
-<p>避免把任务分解的过于零碎<br>使用yield来切割任务非常方便，但如果切割的粒度特别细，反而效率不高。假设我们的任务执行100ms，最好的方式是切割成两个执行50ms的任务，<br>而不是切割成100个执行1ms的任务。假设被切割的任务之间的间隔为4ms，那么切割成100个执行1ms的任务的总执行时间为：</p>
-<p>(1 + 4) * 100 = 500ms<br>如果切割成两个执行时间为50ms的任务，那么总执行时间为：</p>
-<p>(50 + 4) * 2 = 108ms<br>可以看到，在不影响用户体验的情况下，下面的总执行时间要比前面的少了4.6倍。</p>
-<p>保证切割的任务刚好接近50ms，可以在用户使用yield时自行评估，也可以在ts函数中根据任务的执行时间判断是否应该一次性执行多个任务。</p>
-<p>我们将ts函数稍微改进一下：</p>
-<pre><code>function ts (gen) {
-if (typeof gen === &apos;function&apos;) gen = gen()
-if (!gen || typeof gen.next !== &apos;function&apos;) return
-    return function next() {
-        const start = performance.now()
-        let res = null
-        do {
-        res = gen.next()
-        } while(!res.done &amp;&amp; performance.now() - start &lt; 25);
-
-        if (res.done) return
-        setTimeout(next)
-    }
-}
-</code></pre><p>现在我们测试下：</p>
-<pre><code>ts(function* () {
-const start = performance.now()
-while (performance.now() - start &lt; 1000) {
-    console.log(11)
-    yield
-}
-console.log(&apos;done!&apos;)
-})();
-</code></pre><p>这段代码在之前的版本中，在我的电脑上可以打印出 215 次 11，在后面的版本中可以打印出 6300 次 11，说明在总时间相同的情况下，可以执行更多的任务。</p>
-<p>再看另一个例子：</p>
-<pre><code>ts(function* () {
-for (let i = 0; i &lt; 10000; i++) {
-    console.log(11)
-    yield
-}
-console.log(&apos;done!&apos;)
-})();
-</code></pre><p>在我的电脑上，这段代码在之前的版本中，被切割成一万个小任务，总执行时间为 46秒，在之后的版本中，被切割成 52 个小任务，总执行时间为 1.5秒。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1911,7 +1782,7 @@ console.log(&apos;done!&apos;)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

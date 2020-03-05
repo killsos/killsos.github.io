@@ -79,6 +79,7 @@
 
 
 
+<meta name="keywords" content="javascript 前端">
 <meta property="og:type" content="website">
 <meta property="og:title" content="killsos">
 <meta property="og:url" content="http://jsonload.com/page/4/index.html">
@@ -215,6 +216,780 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/停止用i-在循环中/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/停止用i-在循环中/" itemprop="url">停止用i++在循环中</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T09:37:12+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="why-i-may-be-better-than-i-in-most-situations"><a href="#why-i-may-be-better-than-i-in-most-situations" class="headerlink" title="why ++i may be better than i++ in most situations"></a>why ++i may be better than i++ in most situations</h2><ul>
+<li><p>Post-Increment (i++)</p>
+<pre><code>int j = i;
+i = i + 1;
+return j;
+由于后递增运算符必须返回i的原始值，而不是返回递增值i + 1，因此它必须存储i的旧版本。
+这意味着它通常不必要地使用额外的内存来存储该值，因为在大多数情况下，我们实际上并不使用旧版本的i，而只是将其丢弃
+</code></pre></li>
+<li><p>Pre-Increment (++i)</p>
+<pre><code>i = i + 1;
+return i;
+值得注意的是，在这里，我们不必保存i的旧值-我们可以简单地将其添加并返回。
+这与for循环中的典型用例更加契合，因为在这种情况下我们很少需要i的旧值。
+只要您不需要所要递增的值的前一个值，则预增量运算符就会好于或等于后增量运算符
+</code></pre></li>
+</ul>
+<pre><code>在看到后增量和前增量之间的差异之后，您可能会注意到，由于i的缓存值从未在后增量中使用，因此编译器将优化该行，使两个运算符等效。
+对于基本类型（例如整数），最可能是这样。
+但是，对于更复杂的类型，例如用户定义的类型或带有+操作重载的迭代器，编译器可能无法安全地优化缓存操作
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/什么时候用或不用箭头函数/" itemprop="url">什么时候用或不用箭头函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T08:57:23+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="arrow-function"><a href="#arrow-function" class="headerlink" title="arrow function"></a>arrow function</h2><p>. 省略{}</p>
+<p>. 省略 return </p>
+<ol>
+<li><p>No parameters</p>
+<pre><code>() =&gt; 42
+
+甚至可以省略括号
+
+_ =&gt; 42
+</code></pre></li>
+<li><p>single parameter</p>
+<pre><code>x =&gt; 42  || (x) =&gt; 42
+</code></pre></li>
+</ol>
+<ol start="3">
+<li><p>Multiple parameters</p>
+<pre><code>(x, y) =&gt; 42
+</code></pre></li>
+</ol>
+<ol start="4">
+<li><p>Statements (as opposed to expressions)</p>
+<pre><code>需要花括号
+
+需要return
+</code></pre></li>
+<li><p>“Block body”</p>
+</li>
+<li><p>Object literals</p>
+<pre><code>如果想返回一个对象 需要一个大括号包起来 避免认为是语句
+
+x =&gt;({ y: x })
+</code></pre></li>
+</ol>
+<h2 id="arrow-function-Syntactically-anonymous"><a href="#arrow-function-Syntactically-anonymous" class="headerlink" title="arrow function Syntactically anonymous"></a>arrow function Syntactically anonymous</h2><ol>
+<li><p>难于调试</p>
+</li>
+<li><p>No self-referencing</p>
+<pre><code>递归
+
+event handler that needs to unbind
+</code></pre></li>
+</ol>
+<h2 id="Main-benefit-No-binding-of-‘this’"><a href="#Main-benefit-No-binding-of-‘this’" class="headerlink" title="Main benefit: No binding of ‘this’"></a>Main benefit: No binding of ‘this’</h2><pre><code>var obj = {
+    id: 42,
+    counter: function counter() {
+        setTimeout(() =&gt; {
+        console.log(this.id);
+        }, 1000);
+    }
+}; // 这是原作者举得栗子
+
+obj.counter() // this --&gt; obj
+
+实际上 arrow functio 中 this 取决于 词法作用域上父级作用域的this 如果父级作用域中this存在
+</code></pre><h2 id="When-you-should-not-use-Arrow-Functions"><a href="#When-you-should-not-use-Arrow-Functions" class="headerlink" title="When you should not use Arrow Functions"></a>When you should not use Arrow Functions</h2><ol>
+<li><p>Object methods</p>
+<pre><code>var cat = {
+    lives: 9,
+    jumps: () =&gt; {
+        this.lives--; // this 不是 对象本身
+    }
+} 
+</code></pre></li>
+<li><p>Callback functions with dynamic context</p>
+<pre><code>var button = document.getElementById(&apos;press&apos;);
+    button.addEventListener(&apos;click&apos;, () =&gt; {
+    this.classList.toggle(&apos;on&apos;);
+}); // this 不是 button
+</code></pre></li>
+<li><p>call apply bind  对于 箭头函数 是无效的</p>
+</li>
+<li><p>代码可读性差</p>
+</li>
+</ol>
+<h2 id="When-you-should-use-them"><a href="#When-you-should-use-them" class="headerlink" title="When you should use them"></a>When you should use them</h2><ol>
+<li><p>箭头函数最适合需要利用this绑定特性，而不是函数本身</p>
+</li>
+<li><p>map reducer方法中使用   the pros outweigh the cons 利大于弊</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/即将来临js特色/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/即将来临js特色/" itemprop="url">即将来临js特色</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T17:09:22+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Optional-Chaining"><a href="#1-Optional-Chaining" class="headerlink" title="1. Optional Chaining ?."></a>1. Optional Chaining ?.</h2><pre><code>const street = user.address?.street
+</code></pre><h2 id="2-Nullish-Coalescing-Operator-undefined-or-null"><a href="#2-Nullish-Coalescing-Operator-undefined-or-null" class="headerlink" title="2. Nullish Coalescing Operator  ??  undefined or null"></a>2. Nullish Coalescing Operator  ??  undefined or null</h2><pre><code>Base case. If the expression at the left-hand side of the ?? operator evaluates to undefined or null, its right-hand side is returned.
+
+const response = {
+    settings: {
+        nullValue: null,
+        height: 400,
+        animationDuration: 0,
+        headerText: &apos;&apos;,
+        showSplashScreen: false
+    }
+    };
+
+    const undefinedValue = response.settings.undefinedValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const nullValue = response.settings.nullValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const headerText = response.settings.headerText ?? &apos;Hello, world!&apos;; // result: &apos;&apos;
+    const animationDuration = response.settings.animationDuration ?? 300; // result: 0
+    const showSplashScreen = response.settings.showSplashScreen ?? true; // result: false
+</code></pre><h2 id="3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型"><a href="#3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型" class="headerlink" title="3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型"></a>3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型</h2><pre><code>IEEE754 64-bit floats  BigInt 可以表示 2^53
+
+63 符号位
+
+62-53 指数位
+
+0-52 精度位
+
+const x = Number.MAX_SAFE_INTEGER;
+// ↪ 9007199254740991, this is 1 less than 2^53
+
+const y = x + 1;
+// ↪ 9007199254740992, ok, checks out
+
+const z = x + 2
+// ↪ 9007199254740992, wait, that’s the same as above!
+
+A BigInt is created by appending n to the end of the integer or by calling the constructor:
+
+const theBiggestInt = 9007199254740991n;
+
+const alsoHuge = BigInt(9007199254740991);
+// ↪ 9007199254740991n
+
+const hugeButString = BigInt(&apos;9007199254740991&apos;);
+// ↪ 9007199254740991n
+</code></pre><h2 id="4-类静态"><a href="#4-类静态" class="headerlink" title="4. 类静态"></a>4. 类静态</h2><ul>
+<li>静态公有属性</li>
+</ul>
+<pre><code>class CustomDate {
+// ...
+static epoch = new CustomDate(0);
+}
+
+/* or */
+
+class CustomDate {
+// ...
+}
+CustomDate.epoch = new CustomDate(0);
+</code></pre><ul>
+<li><p>静态私有属性</p>
+<pre><code>class C {
+    static #x = 42;
+    x(){
+        return C.#x;
+    }
+}
+return new C().x() === 42;
+</code></pre></li>
+<li><p>静态私有方法 </p>
+</li>
+<li><p>静态计算属性</p>
+<pre><code>class C {
+    static [&apos;x&apos;] = 42;
+}
+return C.x === 42;
+</code></pre></li>
+</ul>
+<h2 id="5-类实例"><a href="#5-类实例" class="headerlink" title="5. 类实例"></a>5. 类实例</h2><ul>
+<li><p>类实例私有属性 / 类实例私有方法</p>
+<pre><code>class Counter extends HTMLElement {
+        #xValue = 0; // 类实例私有属性
+
+        get #x() { return #xValue; } // 类实例私有方法
+        set #x(value) { // setter // 类实例私有方法
+            this.#xValue = value;
+            window.requestAnimationFrame(this.#render.bind(this));
+        }
+
+        #clicked() { // 类实例私有方法
+            this.#x++;
+        }
+
+        constructor() {
+            super();
+            this.onclick = this.#clicked.bind(this);
+        }
+
+        connectedCallback() { this.#render(); }
+
+        #render() { // 类实例私有方法
+            this.textContent = this.#x.toString();
+        }
+    }
+    window.customElements.define(&apos;num-counter&apos;, Counter);
+</code></pre></li>
+</ul>
+<p><a href="https://medium.com/better-programming/new-upcoming-javascript-features-2019-2020-and-beyond-5c426f31ec97" target="_blank" rel="noopener">原始位置</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/2019的9个js技巧/" itemprop="url">2019的9个js技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T16:33:11+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-async-await"><a href="#1-async-await" class="headerlink" title="1. async await"></a>1. async await</h2><pre><code>async function getData() {
+    const result = await axios.get(&apos;https://dube.io/service/ping&apos;)
+    const data = result.data
+
+    console.log(&apos;data&apos;, data)
+
+    return data
+}
+
+getData()
+</code></pre><h2 id="2-async-control-flow"><a href="#2-async-control-flow" class="headerlink" title="2. async control flow"></a>2. async control flow</h2><ul>
+<li><p>for of</p>
+<pre><code>import axios from &apos;axios&apos;
+
+let myData = [{id: 0}, {id: 1}, {id: 2}, {id: 3}]
+
+async function fetchData(dataSet) {
+    for(entry of dataSet) {
+        const result = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`)
+        const newData = result.data
+        updateData(newData)
+
+        console.log(myData)
+    }
+}
+
+function updateData(newData) {
+    myData = myData.map(el =&gt; {
+        if(el.id === newData.id) return newData
+        return el
+    })
+}
+
+fetchData(myData)
+</code></pre></li>
+<li><p>Promise.all</p>
+</li>
+</ul>
+<h2 id="3-Destructuring-amp-default-values"><a href="#3-Destructuring-amp-default-values" class="headerlink" title="3. Destructuring &amp; default values"></a>3. Destructuring &amp; default values</h2><h2 id="4-Truthy-amp-falsy-values"><a href="#4-Truthy-amp-falsy-values" class="headerlink" title="4. Truthy &amp; falsy values"></a>4. Truthy &amp; falsy values</h2><pre><code>    Falsy
+        strings with the length of 0
+        the number 0
+        false
+        undefined
+        null
+        NaN
+
+
+    Truthy
+        empty arrays
+        empty objects
+        Everything else
+
+比较 == 不要用 严格比较  ===
+</code></pre><h2 id="5-Logical-and-ternary-operators"><a href="#5-Logical-and-ternary-operators" class="headerlink" title="5. Logical and ternary operators"></a>5. Logical and ternary operators</h2><pre><code>console.log(0 &amp;&amp; {a: 1}) // 0
+console.log(false &amp;&amp; &apos;a&apos;) // false
+console.log(&apos;2&apos; &amp;&amp; 5) // 5
+console.log([] || false) // []
+console.log(NaN || null) // null
+console.log(true || &apos;a&apos;) // true
+</code></pre><ul>
+<li><p>三运算符</p>
+<ol>
+<li><p>比较结果是 true false  </p>
+</li>
+<li><p>true 返回第一个  </p>
+</li>
+<li><p>false 返回第二个  </p>
+<p> const lang = ‘German’<br> console.log(lang === ‘German’ ? ‘Hallo’ : ‘Hello’) // Hallo<br> console.log(lang ? ‘Ja’ : ‘Yes’) // Ja<br> console.log(lang === ‘French’ ? ‘Bon soir’ : ‘Good evening’) // Good evening</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="6-Optional-chaining"><a href="#6-Optional-chaining" class="headerlink" title="6. Optional chaining ?."></a>6. Optional chaining ?.</h2><pre><code>const data = myObj?.firstProp?.secondProp?.actualData
+</code></pre><h2 id="7-Class-properties-amp-binding"><a href="#7-Class-properties-amp-binding" class="headerlink" title="7. Class properties &amp; binding"></a>7. Class properties &amp; binding</h2><pre><code>class Counter extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { count: 0 }
+    }
+
+    render() {
+        return(
+            &lt;div&gt;
+                &lt;h1&gt;{this.state.count}&lt;/h1&gt;  
+                &lt;button onClick={this._increaseCount}&gt;Increase Count&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+    // 类属性 自动绑定this
+    _increaseCount = () =&gt; {
+        this.setState({ count: this.state.count + 1 })
+    }
+}
+</code></pre><h2 id="8-Use-parcel"><a href="#8-Use-parcel" class="headerlink" title="8. Use parcel"></a>8. Use parcel</h2><h2 id="9-动手写自己代码-清楚原理"><a href="#9-动手写自己代码-清楚原理" class="headerlink" title="9. 动手写自己代码 清楚原理"></a>9. 动手写自己代码 清楚原理</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1292,615 +2067,11 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/18/命令行工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/18/命令行工具/" itemprop="url">命令行工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T23:53:53+08:00">
-                2019-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="mas"><a href="#mas" class="headerlink" title="mas"></a>mas</h2><ul>
-<li>对应Appstroe</li>
-</ul>
-<p><a href="https://github.com/mas-cli/mas" target="_blank" rel="noopener">https://github.com/mas-cli/mas</a></p>
-<h2 id="gitsome"><a href="#gitsome" class="headerlink" title="gitsome"></a>gitsome</h2><ul>
-<li>一个非常实用的 GitHub 命令行工具</li>
-</ul>
-<p><a href="https://github.com/donnemartin/gitsome" target="_blank" rel="noopener">https://github.com/donnemartin/gitsome</a></p>
-<h2 id="thefuck"><a href="#thefuck" class="headerlink" title="thefuck"></a>thefuck</h2><ul>
-<li>在你输错命令后，fuck 一下，自动帮你更正命令，解气又实用</li>
-</ul>
-<p><a href="https://github.com/nvbn/thefuck" target="_blank" rel="noopener">https://github.com/nvbn/thefuck</a></p>
-<h2 id="Httpie"><a href="#Httpie" class="headerlink" title="Httpie"></a>Httpie</h2><ul>
-<li>一个 HTTP 命令行客户端</li>
-</ul>
-<p><a href="https://github.com/jakubroztocil/httpie" target="_blank" rel="noopener">https://github.com/jakubroztocil/httpie</a></p>
-<h2 id="transfer-sh"><a href="#transfer-sh" class="headerlink" title="transfer.sh"></a>transfer.sh</h2><ul>
-<li>可通过简单的命令行来快速完成文件共享操作</li>
-</ul>
-<p><a href="https://github.com/dutchcoders/transfer.sh" target="_blank" rel="noopener">https://github.com/dutchcoders/transfer.sh</a></p>
-<h2 id="stegify"><a href="#stegify" class="headerlink" title="stegify"></a>stegify</h2><ul>
-<li>能将任意文件隐藏到图片里面的命令行工具</li>
-</ul>
-<p><a href="https://github.com/DimitarPetrov/stegify" target="_blank" rel="noopener">https://github.com/DimitarPetrov/stegify</a></p>
-<h2 id="gtop"><a href="#gtop" class="headerlink" title="gtop"></a>gtop</h2><ul>
-<li>终端的系统显示工具</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm install gtop -g</span><br></pre></td></tr></table></figure>
-<h2 id="lazygit"><a href="#lazygit" class="headerlink" title="lazygit"></a>lazygit</h2><ul>
-<li>git终端</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazygit</span><br></pre></td></tr></table></figure>
-<h2 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h2><ul>
-<li>git终端</li>
-</ul>
-<h2 id="fx"><a href="#fx" class="headerlink" title="fx"></a>fx</h2><ul>
-<li>优化了终端命令行JSON 查阅体验</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install fx</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/08/httpie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/08/httpie/" itemprop="url">httpie</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T01:16:05+08:00">
-                2019-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="httpie"><a href="#httpie" class="headerlink" title="httpie"></a>httpie</h2><pre><code>一个http客户端
-</code></pre><h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p><a href="https://httpie.org/doc#examples" target="_blank" rel="noopener">https://httpie.org/doc#examples</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/let-const-块级作用-执行上下文/" itemprop="url">let/const 块级作用域 执行上下文</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T01:34:00+08:00">
-                2019-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x,y</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">let</span> c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(c);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="执行上下文1"><a href="#执行上下文1" class="headerlink" title="执行上下文1"></a>执行上下文1</h2><p><img src="../images/EC1.jpg" alt>   </p>
-<h2 id="执行上下文2"><a href="#执行上下文2" class="headerlink" title="执行上下文2"></a>执行上下文2</h2><p><img src="../images/EC2.jpg" alt> </p>
-<h2 id="执行上下文3"><a href="#执行上下文3" class="headerlink" title="执行上下文3"></a>执行上下文3</h2><p><img src="../images/EC3.jpg" alt>  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>每一个块级作用域都会生成一个新的执行上下文
-this 取决于 父级作用域的this  
-可以通过 调试 bar.call(o,1,2) 来验证
-
-变量对象 variable object 包含 let const 声明的变量或者常量
-但是注意TDZ 
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/16/说人话的深拷贝/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/16/说人话的深拷贝/" itemprop="url">说人话的深拷贝</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-16T16:55:30+08:00">
-                2019-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="类型判断方法"><a href="#类型判断方法" class="headerlink" title="类型判断方法"></a>类型判断方法</h2><pre><code>1. typeof
-
-2. instanceof
-
-3. Object.prototype.toString.call()
-
-4. 对象.constructor
-</code></pre><h2 id="typeof-7种类型"><a href="#typeof-7种类型" class="headerlink" title="typeof 7种类型"></a>typeof 7种类型</h2><pre><code>typeof 1 // number
-
-typeof &apos;a&apos; // string
-
-typeof true // boolean
-
-typeof undefined // undefined
-
-typeof function a(){} // function
-
-typeof {} // object
-
-typeof symbol() // symbol
-</code></pre><h2 id="instanceof-主要对象的细化"><a href="#instanceof-主要对象的细化" class="headerlink" title="instanceof 主要对象的细化"></a>instanceof 主要对象的细化</h2><pre><code>[] instanceof Array
-
-/1/g instanceof RegExp
-</code></pre><h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><pre><code>Object.prototype.toString.call([]) // &quot;[object Array]&quot;
-</code></pre><h2 id="深克隆的实现"><a href="#深克隆的实现" class="headerlink" title="深克隆的实现"></a>深克隆的实现</h2><pre><code>function deepClone(data){
-
-    // 1. typeof 非对象类型
-    // number string boolean undefined function  symbol
-
-    if (typeof data !== &apos;obejct&apos;) return data;
-
-    // 2. null
-    if (data === null) return data;
-
-    // 3. string number boolean包对象
-    if (data instanceof String) return new String(data);
-    if (data instanceof Number) return new Number(data);
-    if (data instanceof Boolean) return new Boolean(data);
-
-    // 4. 日期 正则
-    if (data instanceof Date) return new Date(data);
-    if (data instanceof RegExp) return new RegExp(data);
-
-    // 5. WeakSet WeakMap
-    if (data instanceof WeakSet) return data;
-    if (data instanceof WeakMap) return data;
-
-    // 6. Array Object Set Map
-    let cloner = new data.constructor();
-
-    // Set
-    if (data instanceof Set) {
-        return cloner = new Set([...data])
-    }
-
-    // Map
-    if (data instanceof Map) {
-        for (let key of data.keys()) {
-            let cloneKey = deepClone(key);
-            cloner[cloneKey] = deepClone(data.get(key));
-        }
-        return cloner;
-    }
-
-    // Array Object
-
-    for (let key in data) {
-        if (data.hasOwnPropery(key)) {
-            cloner[key] = deepClone(data[key])
-        }
-    }
-
-    return cloner
-
-}
-</code></pre><h2 id="symbol-WeakSet-WeakMap"><a href="#symbol-WeakSet-WeakMap" class="headerlink" title="symbol WeakSet WeakMap"></a>symbol WeakSet WeakMap</h2><pre><code>symbol(&apos;1&apos;) === symbol(&apos;1&apos;) // false
-
- WeakSet WeakMap 不支持遍历
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1946,7 +2117,7 @@ typeof symbol() // symbol
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
