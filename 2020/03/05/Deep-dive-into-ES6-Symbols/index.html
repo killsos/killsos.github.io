@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Symbol 类型12345678910111213141516171819202122232425262728typeof Symbol()&apos;symbol&apos;Symbol() == Symbol()// FalseSymbol(&apos;abacaba&apos;) == Symbol(&apos;abacaba&apos;)// False// Butconst s = Symbol(&apos;sym&apos;);s == s// Truecons">
+<meta name="keywords" content="javascript 前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep dive into ES6 Symbols">
+<meta property="og:url" content="http://jsonload.com/2020/03/05/Deep-dive-into-ES6-Symbols/index.html">
+<meta property="og:site_name" content="killsos">
+<meta property="og:description" content="Symbol 类型12345678910111213141516171819202122232425262728typeof Symbol()&apos;symbol&apos;Symbol() == Symbol()// FalseSymbol(&apos;abacaba&apos;) == Symbol(&apos;abacaba&apos;)// False// Butconst s = Symbol(&apos;sym&apos;);s == s// Truecons">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-03-05T06:30:06.073Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep dive into ES6 Symbols">
+<meta name="twitter:description" content="Symbol 类型12345678910111213141516171819202122232425262728typeof Symbol()&apos;symbol&apos;Symbol() == Symbol()// FalseSymbol(&apos;abacaba&apos;) == Symbol(&apos;abacaba&apos;)// False// Butconst s = Symbol(&apos;sym&apos;);s == s// Truecons">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jsonload.com/2020/03/05/Deep-dive-into-ES6-Symbols/">
+
+
+
+
+
+  <title>Deep dive into ES6 Symbols | killsos</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">killsos</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人情似水分高下 世事如云任卷舒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/05/Deep-dive-into-ES6-Symbols/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deep dive into ES6 Symbols</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T11:03:34+08:00">
+                2020-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Symbol-类型"><a href="#Symbol-类型" class="headerlink" title="Symbol 类型"></a>Symbol 类型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>()</span><br><span class="line"><span class="string">'symbol'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>() == <span class="built_in">Symbol</span>()</span><br><span class="line"><span class="comment">// False</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>(<span class="string">'abacaba'</span>) == <span class="built_in">Symbol</span>(<span class="string">'abacaba'</span>)</span><br><span class="line"><span class="comment">// False</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// But</span></span><br><span class="line"><span class="keyword">const</span> s = <span class="built_in">Symbol</span>(<span class="string">'sym'</span>);</span><br><span class="line">s == s</span><br><span class="line"><span class="comment">// True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sym1 = <span class="built_in">Symbol</span>.for(<span class="string">'some-key'</span>); <span class="comment">// Symbol is created in global registry</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Elsewhere in project:</span></span><br><span class="line"><span class="keyword">const</span> sym2 = <span class="built_in">Symbol</span>.for(<span class="string">'some-key'</span>); <span class="comment">// Symbol is retrieved from global registry</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// They are the same symbol:</span></span><br><span class="line"><span class="built_in">console</span>.log(sym1 === sym2); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// You can even access the key property:</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(sym1)); <span class="comment">// some-key</span></span><br></pre></td></tr></table></figure>
+<p>symbol 是 基本数据类型   </p>
+<p>Symbol() 是构造函数</p>
+<p>提出symbol的目的就是返回一个唯一值</p>
+<p>Symbnol.for(‘key’)<br>全局注册</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>.prototype.for = <span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// Safely getting the global registry</span></span><br><span class="line">  <span class="keyword">const</span> symbolRegistry = <span class="built_in">window</span>.symbolRegistry || &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Checking if this symbol exists</span></span><br><span class="line">  <span class="keyword">if</span> (symbolRegisty.hasOwnProperty(key)) &#123;</span><br><span class="line">    <span class="keyword">return</span> symbolRegistry[key];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// It does not, creating a new one</span></span><br><span class="line">  <span class="keyword">const</span> newSymbol = <span class="built_in">Symbol</span>();</span><br><span class="line">  symbolRegistry[key] = newSymbol;</span><br><span class="line">  <span class="built_in">window</span>.symbolRegistry = symbolRegistry;</span><br><span class="line">  <span class="keyword">return</span> newSymbol;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>symbol绝大多数时候用来作为一个对象的属性<br>相对于一般属性优点在于不被枚举 例如 for..of<br>可以方便元编程和定义内部或者隐藏的对象方法</p>
+<p>元编程的特色 例如可迭代对象 Symbol.iterator<br>有些对象可以转为原始类型 例如字符串 数字<br>那是因为有一个Symbol.toPrimitive函数来完成</p>
+<p>ToPrimitive 算法在执行时，会被传递一个参数 hint，<br>表示这是一个什么类型的运算（也可以叫运算的期望值），<br>根据这个 hint 参数，ToPrimitive 算法来决定内部的执行逻辑。</p>
+<p>hint 参数的取值只能是下列 3 者之一：</p>
+<p>  string<br>  number<br>  default</p>
+<p>转换算法</p>
+<p>当对象发生到基本类型值的转换时，会按照下面的逻辑调用对象上的方法：</p>
+<p>1. 如果存在，调用 obj<a href="hint">Symbol.toPrimitive</a>；</p>
+<p>2. 否则，如果 hint 取值是 “string”：</p>
+<pre><code>无论是否存在，调用 obj.toString() 和 obj.valueOf()
+</code></pre><p>3.  否则（也就是 hint 取值是 “number” 或 “default” 的情况）：</p>
+<pre><code>无论是否存在，调用 obj.valueOf() 和 obj.toString()
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> Person = &#123;</span><br><span class="line">  name: <span class="string">"John"</span>,</span><br><span class="line">  age: <span class="number">10</span>,</span><br><span class="line"></span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive](hint) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`hint: <span class="subst">$&#123;hint&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">alert(Person) <span class="comment">// hint: string</span></span><br><span class="line">+Person <span class="comment">// hint: number</span></span><br><span class="line">Person + <span class="number">500</span> <span class="comment">// hint: default</span></span><br></pre></td></tr></table></figure>
+<p>Symbol.toPrimitive 和 toString/valueOf 方法</p>
+<p>  并不要求 Symbol.toPrimitive 和 toString/valueOf 方法必须返回 hint 参数值所暗示的类型值</p>
+<p>但要注意下面两点：</p>
+<p>  Symbol.toPrimitive 和 toString 方法的返回值必须是基本类型值</p>
+<p>  valueOf 方法除了可以返回基本类型值，也可以返回其他类型值</p>
+<p>// Iteration symbols<br>Symbol.iterator<br>Symbol.asyncIterator</p>
+<p>Symbol.asyncIterator 符号指定了一个对象的默认异步迭代器。如果一个对象设置了这个属性，它就是异步可迭代对象，可用于for await…of循环。</p>
+<p>// RegEx symbols<br>Symbol.match<br>Symbol.matchAll<br>Symbol.replace<br>Symbol.search<br>Symbol.split</p>
+<p>// Other symbols<br>Symbol.hasInstance</p>
+<p>Symbol.hasInstance用于判断某对象是否为某构造器的实例。因此你可以用它自定义 instanceof 操作符在某个类上的行为</p>
+<p>Symbol.hasInstance 属性的属性<br>writable        false<br>enumerable      false<br>configurable     false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyArray</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">static</span> [<span class="built_in">Symbol</span>.hasInstance](instance) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.isArray(instance);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log([] <span class="keyword">instanceof</span> MyArray); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>Symbol.isConcatSpreadable</p>
+<p>  内置的Symbol.isConcatSpreadable符号用于配置某对象作为Array.prototype.concat()方法的参数时是否展开其数组元素。</p>
+<p>Symbol.unscopables</p>
+<p>  Symbol.unscopables 指用于指定对象值，其对象自身和继承的从关联对象的 with 环境绑定中排除的属性名称</p>
+<p>Symbol.species</p>
+<p>  Symbol.species 是个函数值属性，其被构造函数用以创建派生对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Array1</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">get</span> [Symbol.species]() &#123; <span class="keyword">return</span> <span class="built_in">Array</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Symbol.toPrimitive</p>
+<p>  是作为对象的函数值属性存在的，当一个对象转换为对应的原始值时，会调用此函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object1 = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive](hint) &#123;</span><br><span class="line">    <span class="keyword">if</span> (hint == <span class="string">'number'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">42</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Symbol.toStringTag</p>
+<p>  Symbol.toStringTag 是一个内置 symbol，它通常作为对象的属性键使用，对应的属性值应该为字符串类型<br>  这个字符串用来表示该对象的自定义类型标签，通常只有内置的 Object.prototype.toString() 方法会去<br>  读取这个标签并把它包含在自己的返回值里  </p>
+<p>  Object.prototype.toString.call(‘foo’);     // “[object String]”<br>  Object.prototype.toString.call([1, 2]);    // “[object Array]”<br>  Object.prototype.toString.call(3);         // “[object Number]”<br>  Object.prototype.toString.call(true);      // “[object Boolean]”<br>  Object.prototype.toString.call(undefined); // “[object Undefined]”<br>  Object.prototype.toString.call(null);      // “[object Null]”<br>  Object.prototype.toString.call(new Map());       // “[object Map]”<br>  Object.prototype.toString.call(function* () {}); // “[object GeneratorFunction]”<br>  Object.prototype.toString.call(Promise.resolve()); // “[object Promise]”</p>
+<p>自己创建的类不会有这份特殊待遇，toString() 找不到 toStringTag 属性时只好返回默认的 Object 标签：</p>
+<p>class ValidatorClass {}</p>
+<p>Object.prototype.toString.call(new ValidatorClass()); // “[object Object]”  </p>
+<p>加上 toStringTag 属性，你的类也会有自定义的类型标签了：</p>
+<p>class ValidatorClass {<br>  get <a href>Symbol.toStringTag</a> {<br>    return “Validator”;<br>  }<br>}</p>
+<p>Object.prototype.toString.call(new ValidatorClass()); // “[object Validator]”</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/05/A-List-of-Interesting-Operators-in-JavaScript/" rel="next" title="A List of Interesting Operators in JavaScript">
+                <i class="fa fa-chevron-left"></i> A List of Interesting Operators in JavaScript
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">killsos.ql@gmail.com</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol-类型"><span class="nav-number">1.</span> <span class="nav-text">Symbol 类型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">killsos.ql@gmail.com</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

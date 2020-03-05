@@ -230,6 +230,232 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/Error实践技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/Error实践技巧/" itemprop="url">Error实践技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:19:27+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><pre><code>class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;ValidationError&apos;
+        this.message = message
+    }
+}
+
+class PermissionError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;PermissionError&apos;
+        this.message = message
+    }
+}
+
+class DatabaseError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;DatabaseError&apos;
+        this.message = message
+    }
+}
+
+module.exports = {
+    ValidationError,
+    PermissionError,
+    DatabaseError
+} 
+
+const { ValidationError } = require(&apos;./error&apos;);
+
+function myFunction(input) {
+    if (!input)
+        throw new ValidationError(&apos;A validation error&apos;)
+    return input
+}
+
+try {
+    myFunction(null)
+} catch (e) {
+    if (e.name === &apos;ValidationError&apos;) {
+        console.log(&quot;Handle input validation error&quot;)
+    } else {
+        console.log(&quot;Handle other errors&quot;)
+    }
+}
+</code></pre><h2 id="Returning-Error-objects-from-Promises"><a href="#Returning-Error-objects-from-Promises" class="headerlink" title="Returning Error objects from Promises"></a>Returning Error objects from Promises</h2><ol>
+<li><p>return error when rejecting a Promise</p>
+<pre><code>const { ValidationError } = require(&apos;./error&apos;)
+function myFunction(input) {
+    return new Promise((resolve, reject) =&gt; {
+        if (!input)
+        return reject(new ValidationError(&apos;A validation error&apos;))
+        resolve(input)
+    })
+}
+</code></pre></li>
+<li><p>Promise.catch</p>
+</li>
+</ol>
+<h2 id="Serializing-Error-objects-in-JSON"><a href="#Serializing-Error-objects-in-JSON" class="headerlink" title="Serializing Error objects in JSON"></a>Serializing Error objects in JSON</h2><p>By default, Error objects seralize to JSON with output like this:  </p>
+<pre><code>{ name: &apos;ValidationError&apos; }
+</code></pre><p>可以重写序列化方法toJSON() </p>
+<pre><code>class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;ValidationError&apos;
+        this.message = message
+    }
+
+    toJSON() {
+        return {
+        error: {
+            name: this.name,
+            message: this.message,
+            stacktrace: this.stack
+        }
+        }
+    }
+}
+
+ps: 对象不是JSON 一个对象stringify首先第一步是一个对象的调用toJSON方法 将对象转为JSON 然后执行JSON.stringify方法
+</code></pre><h2 id="new-Error-message-fileName-lineNumber"><a href="#new-Error-message-fileName-lineNumber" class="headerlink" title="new Error([message[, fileName[,lineNumber]]])"></a>new Error([message[, fileName[,lineNumber]]])</h2><pre><code>message
+可选。人类可阅读的错误描述信息。
+
+fileName 
+可选。被创建的Error对象的fileName属性值。默认是调用Error构造器代码所在的文件 的名字。
+
+lineNumber 
+可选。被创建的Error对象的lineNumber属性值。默认是调用Error构造器代码所在的文件的行号。
+
+作为函数使用 不需要new  const x = Error(&apos;I was created using a function call!&apos;);
+
+6种类型
+
+    EvalError       表示错误的原因：与 eval() 有关
+
+    InternalError   代表Javascript引擎内部错误 如: &quot;递归太多&quot;
+
+    RangeError      表示错误的原因：数值变量或参数超出其有效范围
+
+    SyntaxError     语法错误
+
+    TypeError       类型错误   变量或参数不属于有效类型
+
+    URIError        给 encodeURI()或  decodeURl()传递的参数无效
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/停止用i-在循环中/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1926,147 +2152,6 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/20/swift-UIApplicationMain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/swift-UIApplicationMain/" itemprop="url">swift @UIApplicationMain</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T01:42:20+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="程序如何开始的"><a href="#程序如何开始的" class="headerlink" title="程序如何开始的"></a>程序如何开始的</h2><p>C 系列语言中，程序的入口都是 main 函数  </p>
-<p>一个 Objective-C 的 iOS app 项目在新建时  </p>
-<p>Xcode 会给我们创建好一个 main.m 的文件</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#<span class="keyword">import</span> "AppDelegate.h"</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="type">NSStringFromClass</span>([<span class="type">AppDelegate</span> <span class="class"><span class="keyword">class</span>]));</span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>复制代码我们调用了 UIKit 的 UIApplicationMain 方法  </p>
-<p>这个方法根据第三个参数初始化一个 UIApplication 或者它的子类对象开始接收事件  </p>
-<p>当传入 nil 时则使用默认的 UIApplication   </p>
-<p>最后一个参数指定了 AppDelegate 类作为应用的委托  </p>
-<p>用来接收与应用生命周期相关的委托方法。</p>
-<p>虽然这个方法标明要返回一个 int，但其实它并不会真正的返回   </p>
-<p>而是一直存在于内存中，直到用户或者系统将应用强制终止。  </p>
-<h2 id="swift-中的对应情况"><a href="#swift-中的对应情况" class="headerlink" title="swift 中的对应情况"></a>swift 中的对应情况</h2><p>创建一个 swift 的项目之后  </p>
-<p>我们发现所有的文件中并没有一个类似于 Objective-C 中的 main.m 文件  也没有 main 函数   </p>
-<p>唯一和 main 有关系的就是在 AppDelegate 中有一个 @UIApplicationMain 标签  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">@UIApplicationMain</span><br><span class="line">class AppDelegate: UIResponder, UIApplicationDelegate &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个标签的作用就是将标注的类作为委托，创建一个 UIApplication 并启动整个程序。  </p>
-<p>一般情况我们不需要对这个标签做任何修改，但如果我们想使用 UIApplication 的子类 </p>
-<p>而不是它本身，我们就要自定义一个 main.swift 文件了</p>
-<p>（记得删除 @UIApplicationMain 标签）</p>
-<p>这个文件我们不需要定义作用域，直接写代码就OK。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(<span class="number">_</span> event: UIEvent)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Event sent:\(event)"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(</span><br><span class="line">    <span class="type">CommandLine</span>.argc,</span><br><span class="line">    <span class="type">UnsafeMutableRawPointer</span>(<span class="type">CommandLine</span>.unsafeArgv)</span><br><span class="line">        .bindMemory(</span><br><span class="line">            to: <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">Int8</span>&gt;.<span class="keyword">self</span>,</span><br><span class="line">            capacity: <span class="type">Int</span>(<span class="type">CommandLine</span>.argc)),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">MyApplication</span>.<span class="keyword">self</span>),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>.<span class="keyword">self</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>这样每次发送事件（点击按钮之类的）我们都可以监听到了</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2117,7 +2202,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
