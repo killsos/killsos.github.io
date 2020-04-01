@@ -230,6 +230,232 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/即将来临js特色/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/即将来临js特色/" itemprop="url">即将来临js特色</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T17:09:22+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Optional-Chaining"><a href="#1-Optional-Chaining" class="headerlink" title="1. Optional Chaining ?."></a>1. Optional Chaining ?.</h2><pre><code>const street = user.address?.street
+</code></pre><h2 id="2-Nullish-Coalescing-Operator-undefined-or-null"><a href="#2-Nullish-Coalescing-Operator-undefined-or-null" class="headerlink" title="2. Nullish Coalescing Operator  ??  undefined or null"></a>2. Nullish Coalescing Operator  ??  undefined or null</h2><pre><code>Base case. If the expression at the left-hand side of the ?? operator evaluates to undefined or null, its right-hand side is returned.
+
+const response = {
+    settings: {
+        nullValue: null,
+        height: 400,
+        animationDuration: 0,
+        headerText: &apos;&apos;,
+        showSplashScreen: false
+    }
+    };
+
+    const undefinedValue = response.settings.undefinedValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const nullValue = response.settings.nullValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const headerText = response.settings.headerText ?? &apos;Hello, world!&apos;; // result: &apos;&apos;
+    const animationDuration = response.settings.animationDuration ?? 300; // result: 0
+    const showSplashScreen = response.settings.showSplashScreen ?? true; // result: false
+</code></pre><h2 id="3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型"><a href="#3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型" class="headerlink" title="3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型"></a>3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型</h2><pre><code>IEEE754 64-bit floats  BigInt 可以表示 2^53
+
+63 符号位
+
+62-53 指数位
+
+0-52 精度位
+
+const x = Number.MAX_SAFE_INTEGER;
+// ↪ 9007199254740991, this is 1 less than 2^53
+
+const y = x + 1;
+// ↪ 9007199254740992, ok, checks out
+
+const z = x + 2
+// ↪ 9007199254740992, wait, that’s the same as above!
+
+A BigInt is created by appending n to the end of the integer or by calling the constructor:
+
+const theBiggestInt = 9007199254740991n;
+
+const alsoHuge = BigInt(9007199254740991);
+// ↪ 9007199254740991n
+
+const hugeButString = BigInt(&apos;9007199254740991&apos;);
+// ↪ 9007199254740991n
+</code></pre><h2 id="4-类静态"><a href="#4-类静态" class="headerlink" title="4. 类静态"></a>4. 类静态</h2><ul>
+<li>静态公有属性</li>
+</ul>
+<pre><code>class CustomDate {
+// ...
+static epoch = new CustomDate(0);
+}
+
+/* or */
+
+class CustomDate {
+// ...
+}
+CustomDate.epoch = new CustomDate(0);
+</code></pre><ul>
+<li><p>静态私有属性</p>
+<pre><code>class C {
+    static #x = 42;
+    x(){
+        return C.#x;
+    }
+}
+return new C().x() === 42;
+</code></pre></li>
+<li><p>静态私有方法 </p>
+</li>
+<li><p>静态计算属性</p>
+<pre><code>class C {
+    static [&apos;x&apos;] = 42;
+}
+return C.x === 42;
+</code></pre></li>
+</ul>
+<h2 id="5-类实例"><a href="#5-类实例" class="headerlink" title="5. 类实例"></a>5. 类实例</h2><ul>
+<li><p>类实例私有属性 / 类实例私有方法</p>
+<pre><code>class Counter extends HTMLElement {
+        #xValue = 0; // 类实例私有属性
+
+        get #x() { return #xValue; } // 类实例私有方法
+        set #x(value) { // setter // 类实例私有方法
+            this.#xValue = value;
+            window.requestAnimationFrame(this.#render.bind(this));
+        }
+
+        #clicked() { // 类实例私有方法
+            this.#x++;
+        }
+
+        constructor() {
+            super();
+            this.onclick = this.#clicked.bind(this);
+        }
+
+        connectedCallback() { this.#render(); }
+
+        #render() { // 类实例私有方法
+            this.textContent = this.#x.toString();
+        }
+    }
+    window.customElements.define(&apos;num-counter&apos;, Counter);
+</code></pre></li>
+</ul>
+<p><a href="https://medium.com/better-programming/new-upcoming-javascript-features-2019-2020-and-beyond-5c426f31ec97" target="_blank" rel="noopener">原始位置</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1782,135 +2008,6 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/let-const-块级作用-执行上下文/" itemprop="url">let/const 块级作用域 执行上下文</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T01:34:00+08:00">
-                2019-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x,y</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">let</span> c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(c);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="执行上下文1"><a href="#执行上下文1" class="headerlink" title="执行上下文1"></a>执行上下文1</h2><p><img src="../images/EC1.jpg" alt>   </p>
-<h2 id="执行上下文2"><a href="#执行上下文2" class="headerlink" title="执行上下文2"></a>执行上下文2</h2><p><img src="../images/EC2.jpg" alt> </p>
-<h2 id="执行上下文3"><a href="#执行上下文3" class="headerlink" title="执行上下文3"></a>执行上下文3</h2><p><img src="../images/EC3.jpg" alt>  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>每一个块级作用域都会生成一个新的执行上下文
-this 取决于 父级作用域的this  
-可以通过 调试 bar.call(o,1,2) 来验证
-
-变量对象 variable object 包含 let const 声明的变量或者常量
-但是注意TDZ 
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1961,7 +2058,7 @@ this 取决于 父级作用域的this
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

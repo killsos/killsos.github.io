@@ -230,6 +230,220 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/04/01/Clean-Code-Applied-to-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/01/Clean-Code-Applied-to-JavaScript/" itemprop="url">Clean Code Applied to JavaScript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-01T10:13:41+08:00">
+                2020-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-start"><a href="#1-start" class="headerlink" title="1. start"></a>1. start</h2><ol>
+<li><p>Code smell and refactoring 代码风格与重构</p>
+</li>
+<li><p>technical debt 技术债务</p>
+</li>
+<li><p>可读性</p>
+<p> 代码格式</p>
+</li>
+<li><p>develop in English</p>
+</li>
+<li><p>团队风格</p>
+<p>   空格或Tab</p>
+<p>   函数名称后是否空格</p>
+<p>   分号</p>
+<p>   编辑器 EditorConfig</p>
+<p>   eslint</p>
+<p>   代码格式工具 Prettier</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">root = <span class="literal">true</span></span><br><span class="line">[*]</span><br><span class="line">end_of_line = lf</span><br><span class="line">insert_final_newline = <span class="literal">true</span></span><br><span class="line">[*.&#123;js,py&#125;]</span><br><span class="line">charset = utf<span class="number">-8</span></span><br><span class="line">[*.py]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = <span class="number">4</span></span><br><span class="line">[Makefile]</span><br><span class="line">indent_style = tab</span><br><span class="line">[*.js]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = <span class="number">2</span></span><br><span class="line">[&#123;package.json,.travis.yml&#125;]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-变量"><a href="#2-变量" class="headerlink" title="2 变量"></a>2 变量</h2><ol>
+<li><p>Use Intention Revealing Names  见名知意</p>
+</li>
+<li><p>Use Pronounceable Names</p>
+</li>
+<li><p>Don’t Use the Variable’s Type in the Name</p>
+</li>
+<li><p>Use the Same Vocabulary for the Same Variable’s Type</p>
+</li>
+<li><p>Don’t Add Unneeded Context</p>
+</li>
+<li><p>Don’t Use Magic Numbers and Strings</p>
+</li>
+</ol>
+<h2 id="3-函数"><a href="#3-函数" class="headerlink" title="3 函数"></a>3 函数</h2><ol>
+<li><p>尽量是纯函数 提高复用性</p>
+</li>
+<li><p>Use Default Arguments Instead of Short Circuiting or Conditionals<br>使用默认参数</p>
+</li>
+<li><p>Function Arguments (Two or Fewer, Ideally)<br>尽量减少函数参数 如果参数过多 可以对象传参</p>
+</li>
+<li><p>Avoid Side Effects — Global Variables<br>避免全局变量</p>
+</li>
+<li><p>Avoid Side Effects — Objects Mutables</p>
+</li>
+</ol>
+<p>通过代码的不同部分使用同一对象修改数据时，可能会出现更多的副作用。  </p>
+<p>使我们失去软件开发的许多优势（避免使用此功能）的主要副作用之一是对象的修改。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> addItemToCart = <span class="function">(<span class="params">cart, item</span>) =&gt;</span> &#123;</span><br><span class="line">  cart.push(&#123; item, <span class="attr">date</span>: <span class="built_in">Date</span>.now() &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对原有数据cart没有修改 没有副作用</span></span><br><span class="line"><span class="keyword">const</span> addItemToCart = <span class="function">(<span class="params">cart, item</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> […cart, &#123;</span><br><span class="line">    item,</span><br><span class="line">    date: <span class="built_in">Date</span>.now(),</span><br><span class="line">  &#125;];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">6. Functions Should Do One Thing 函数单一职责 降耦</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">7. Functions Should Only Be One Level of Abstraction</span></span><br><span class="line"><span class="string">设计功能时，我们还必须满足的另一个要求是，每个功能只能有一个抽象级别</span></span><br></pre></td></tr></table></figure>
+<p>function parseBetterJSAlternative(code) {<br>  const REGEXES = [<br>    // …<br>  ];</p>
+<p> const statements = code.split(‘ ‘);<br> const tokens = [];<br> REGEXES.forEach((REGEX) =&gt; {<br>   statements.forEach((statement) =&gt; {<br>     // …<br>   });<br> });</p>
+<p> const ast = [];<br> tokens.forEach((token) =&gt; {<br>   // lex…<br> });</p>
+<p> ast.forEach((node) =&gt; {<br>   // parse…<br> });<br>}</p>
+<p>// improve</p>
+<p>const REGEXES = [ // …];</p>
+<p>function tokenize(code) {<br>  const statements = code.split(‘ ‘);<br>  const tokens = [];<br>  REGEXES.forEach((REGEX) =&gt; {<br>    statements.forEach((statement) =&gt; {<br>      tokens.push( /<em> … </em>/ );<br>    });<br>  });<br> return tokens;<br>}</p>
+<p>function lexer(tokens) {<br> const ast = [];<br> tokens.forEach((token) =&gt; ast.push( /<em> </em>/ ));<br> return ast;<br>}</p>
+<p>function parseBetterJSAlternative(code) {<br> const tokens = tokenize(code);<br> const ast = lexer(tokens);<br> ast.forEach((node) =&gt; // parse…);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">8. Favor Functional Programming</span><br><span class="line"></span><br><span class="line">纯函数优点</span><br><span class="line"></span><br><span class="line">1.纯函数更容易推论。  </span><br><span class="line"></span><br><span class="line">2.测试更加容易，纯函数非常适合基于属性的测试之类的技术。  </span><br><span class="line"></span><br><span class="line">3.调试更容易。  </span><br><span class="line"></span><br><span class="line">4.程序更安全。  </span><br><span class="line"></span><br><span class="line">5.程序是在较高级别上编写的，因此更易于理解。  </span><br><span class="line"></span><br><span class="line">6.功能签名更有意义。  </span><br><span class="line"></span><br><span class="line">7.并行/并行编程更容易。   </span><br><span class="line"></span><br><span class="line">9. Use Method Chaining 链式调用</span><br><span class="line"></span><br><span class="line">## Comments 注释</span><br><span class="line"></span><br><span class="line">1. Only Comment Things That Have Business Logic Complexity</span><br><span class="line"></span><br><span class="line">仅评论具有业务逻辑复杂性的事物</span><br><span class="line"></span><br><span class="line">2. Don’t Have Journal Comments</span><br><span class="line"></span><br><span class="line">3. Avoid Positional Markers</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## Exceptions</span><br><span class="line">异常是质量软件开发中必不可少的部分，因为我们将控制意外或未实施的情况</span><br><span class="line"></span><br><span class="line">1. Prefer Exceptions to Returning Error Codes</span><br><span class="line"></span><br><span class="line">  1. 不耦合的业务逻辑和错误控制。这是两个需要解决的不同问题，必须加以区分和区别对待。</span><br><span class="line"></span><br><span class="line">  2. 减少代码中的冗长，使其更容易阅读。</span><br><span class="line"></span><br><span class="line">  3. 错误代码的责任已经委托给编程语言，编程语言必须为我们服务，反之亦然</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">class Laptop &#123;</span><br><span class="line"> sendShutDown() &#123;</span><br><span class="line">   const deviceID = getID(DEVICE_LAPTOP);</span><br><span class="line">   if (deviceID !== DEVICE_STATUS.INVALID) &#123;</span><br><span class="line">     const laptop = DB.findOne(deviceID);</span><br><span class="line">     if (laptop.getStatus() !== DEVICE_SUSPENDED) &#123;</span><br><span class="line">       pauseDevice(deviceID);</span><br><span class="line">       clearDeviceWorkQueue(deviceID);</span><br><span class="line">       closeDevice(deviceID);</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">       logger.log(‘Device suspended. Unable to shut down’);</span><br><span class="line">     &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">     logger.log(‘Invalid handle for: ‘ + DEVICE_LAPTOP.toString());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Clean</span><br><span class="line">/*</span><br><span class="line"> The code is better because the algorithm</span><br><span class="line"> and error handling, are now separated.</span><br><span class="line">*/</span><br><span class="line">class Laptop &#123;</span><br><span class="line">  sendShutDown() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      tryToShutDown();</span><br><span class="line">    &#125; catch (error) &#123;</span><br><span class="line">      logger.log(error);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  tryToShutDown() &#123;</span><br><span class="line">    const deviceID = getID(DEVICE_LAPTOP);</span><br><span class="line">    const laptop = DB.findOne(deviceID);</span><br><span class="line">    pauseDevice(deviceID);</span><br><span class="line">    clearDeviceWorkQueue(deviceID);</span><br><span class="line">    closeDevice(deviceID);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getID(deviceID) &#123;</span><br><span class="line">    throw new DeviceShutDownError(‘Invalid handle for: ‘ +   deviceID.toString());</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Don’t Ignore Caught Errors</li>
+</ol>
+<p>2.1. Please don t do the ostrich technique</p>
+<p>请不要做鸵鸟技术</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"> functionThatMightThrow();</span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"> functionThatMightThrow();</span><br><span class="line">&#125; <span class="keyword">catch</span> (error)&#123;</span><br><span class="line"> <span class="built_in">console</span>.error(error);</span><br><span class="line"> notifyUserOfError(error);</span><br><span class="line"> reportErrorToService(error);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Don’t Ignore Rejected Promises</li>
+</ol>
+<ol start="4">
+<li>Exceptions Hierarchy</li>
+</ol>
+<ol start="5">
+<li>Provide Context With Exceptions</li>
+</ol>
+<h2 id="Avoid-Conditional-Complexity-避免条件的复杂性"><a href="#Avoid-Conditional-Complexity-避免条件的复杂性" class="headerlink" title="Avoid Conditional Complexity 避免条件的复杂性"></a>Avoid Conditional Complexity 避免条件的复杂性</h2><ol>
+<li>Don t Use Flags As Function Parameters</li>
+</ol>
+<p>不要使用标志作为函数参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Dirty</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">book</span>(<span class="params">customer, isPremium</span>) </span>&#123;</span><br><span class="line"> <span class="comment">// …</span></span><br><span class="line"> <span class="keyword">if</span> (isPremium) &#123;</span><br><span class="line">   premiumLogic();</span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   regularLogic();</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Clean (Declarative way)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bookPremium</span> (<span class="params">customer</span>) </span>&#123;</span><br><span class="line"> premiumLogic();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bookRegular</span> (<span class="params">customer</span>) </span>&#123;</span><br><span class="line"> retularLogic();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Encapsulate Conditionals<br>封装条件</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (platform.state === <span class="string">'fetching'</span> &amp;&amp; isEmpty(cart)) &#123;</span><br><span class="line"> <span class="comment">// …</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showLoading</span>(<span class="params">platform, cart</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> platform.state === <span class="string">'fetching'</span> &amp;&amp; isEmpty(cart);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (showLoading(platform, cart)) &#123;</span><br><span class="line"> <span class="comment">// …</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Replace Nested Conditionals With Guard Clauses<br>不要使用else语句</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPayAmount</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> result;</span><br><span class="line"> <span class="keyword">if</span> (isDead)&#123;</span><br><span class="line">   result = deadAmount();</span><br><span class="line"> &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">   <span class="keyword">if</span> (isSeparated)&#123;</span><br><span class="line">     result = separatedAmount();</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">if</span> (isRetired)&#123;</span><br><span class="line">       result = retiredAmount();</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">       result = normalPayAmount();</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// improve</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPayAmount</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (isDead) <span class="keyword">return</span> deadAmount();</span><br><span class="line"> <span class="keyword">if</span> (isSeparated) <span class="keyword">return</span> separatedAmount();</span><br><span class="line"> <span class="keyword">if</span> (isRetired) <span class="keyword">return</span> retiredAmount();</span><br><span class="line"> <span class="keyword">return</span> normalPayAmount();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>Null-Object Pattern<br>不断检查对象是否为空，并根据此检查是否显示默认操作。 该模式称为空对象模式  </li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"> sound() &#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">'bark'</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">[<span class="string">'dog'</span>, <span class="literal">null</span>].map(<span class="function">(<span class="params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">if</span>(animal !== <span class="literal">null</span>) &#123;</span><br><span class="line">     sound();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// improve</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"> sound() &#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">'bark'</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NullAnimal</span> </span>&#123;</span><br><span class="line"> sound() &#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAnimal</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> type === <span class="string">'dog'</span> ? <span class="keyword">new</span> Dog() : <span class="keyword">new</span> NullAnimal();</span><br><span class="line">&#125;</span><br><span class="line">[<span class="string">'dog'</span>, <span class="literal">null</span>].map(<span class="function">(<span class="params">animal</span>) =&gt;</span> getAnimal(animal).sound());</span><br><span class="line"><span class="comment">// Returns ["bark", null]</span></span><br></pre></td></tr></table></figure>
+<h2 id="Remove-Conditionals-Using-Polymorphism"><a href="#Remove-Conditionals-Using-Polymorphism" class="headerlink" title="Remove Conditionals Using Polymorphism"></a>Remove Conditionals Using Polymorphism</h2><p>使用多态性替换条件语句</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Auto</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">Auto.prototype.getProperty = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">   <span class="keyword">case</span> BIKE:</span><br><span class="line">     <span class="keyword">return</span> getBaseProperty();</span><br><span class="line">   <span class="keyword">case</span> CAR:</span><br><span class="line">     <span class="keyword">return</span> getBaseProperty() - getLoadFactor();</span><br><span class="line">   <span class="keyword">case</span> BUS:</span><br><span class="line">     <span class="keyword">return</span> (isNailed) ? <span class="number">0</span> : getBaseProperty(voltage);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Should be unreachable"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// improve</span></span><br><span class="line"></span><br><span class="line">abstract <span class="class"><span class="keyword">class</span> <span class="title">Auto</span> </span>&#123;</span><br><span class="line"> abstract getProperty();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bike</span> <span class="keyword">extends</span> <span class="title">Auto</span> </span>&#123;</span><br><span class="line"> getProperty() &#123;</span><br><span class="line">   <span class="keyword">return</span> getBaseProperty();</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">extends</span> <span class="title">Auto</span> </span>&#123;</span><br><span class="line"> getProperty() &#123;</span><br><span class="line">   <span class="keyword">return</span> getBaseProperty() - getLoadFactor();</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bus</span> <span class="keyword">extends</span> <span class="title">Auto</span> </span>&#123;</span><br><span class="line"> getProperty() &#123;</span><br><span class="line">   <span class="keyword">return</span> (isNailed) ? <span class="number">0</span> : getBaseProperty(voltage);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Somewhere in client code</span></span><br><span class="line">speed = auto.getProperty();</span><br></pre></td></tr></table></figure>
+<h2 id="Remove-Conditionals-Using-the-Strategy-Pattern-Composition-Command-Pattern"><a href="#Remove-Conditionals-Using-the-Strategy-Pattern-Composition-Command-Pattern" class="headerlink" title="Remove Conditionals Using the Strategy Pattern (Composition)/Command Pattern"></a>Remove Conditionals Using the Strategy Pattern (Composition)/Command Pattern</h2><p>使用策略模式（组合）/命令模式替换条件语句</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logMessage</span>(<span class="params">message = <span class="string">"CRITICAL::The system …"</span></span>)</span>&#123;</span><br><span class="line"> <span class="keyword">const</span> parts = message.split(<span class="string">"::"</span>);</span><br><span class="line"> <span class="keyword">const</span> level = parts[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">switch</span> (level) &#123;</span><br><span class="line"> <span class="keyword">case</span> <span class="string">'NOTICE'</span>:</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"Notice"</span>)</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line"> <span class="keyword">case</span> <span class="string">'CRITICAL'</span>:</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"Critical"</span>);</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line"> <span class="keyword">case</span> <span class="string">'CATASTROPHE'</span>:</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"Castastrophe"</span>);</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// improve</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> strategies = &#123;</span><br><span class="line"> criticalStrategy,</span><br><span class="line"> noticeStrategy,</span><br><span class="line"> catastropheStrategy,</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logMessage</span>(<span class="params">message = <span class="string">"CRITICAL::The system …"</span></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">const</span> [level, messageLog] = message.split(<span class="string">"::"</span>);</span><br><span class="line"> <span class="keyword">const</span> strategy = <span class="string">`<span class="subst">$&#123;level.toLowerCase()&#125;</span>Strategy`</span>;</span><br><span class="line"> <span class="keyword">const</span> output = strategies[strategy](messageLog);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">criticalStrategy</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"Critical: "</span> + param);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">noticeStrategy</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"Notice: "</span> + param);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">catastropheStrategy</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"Catastrophe: "</span> + param);</span><br><span class="line">&#125;</span><br><span class="line">logMessage();</span><br><span class="line">logMessage(<span class="string">"CATASTROPHE:: A big Catastrophe"</span>);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/27/What-is-a-Blob/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -303,6 +517,7 @@
           
             <h2 id="What-is-a-Blob"><a href="#What-is-a-Blob" class="headerlink" title="What is a Blob?"></a>What is a Blob?</h2><p>Blob is  <strong>Binary Large Object</strong></p>
 <p>Blob不是JavaScript的特殊性。 最初，创建Blob是为了在数据库管理系统中使用。<br>该类型是在1970年代创建的，用于存储太大的音频，图像或视频之类的大文件，无法存储在常规数据库字段中。<br>该术语实际上是指“二进制大对象”。</p>
+<p>Blob接口的stream() 方法返回一个ReadableStream对象，读取它将返回包含在Blob中的数据。</p>
 <p>在JavaScript中，Blob用于将文件表示为不可变的原始数据<br>在控制台中，我们在上一个示例中创建的Blob如下所示</p>
 <p><img src="../images/blob1.png" alt="Blob in console">  </p>
 <p>如您所见，Blob具有两个属性：size和type。 大小是数据的大小（以字节为单位）。<br>该类型是应该包含MIME类型的字符串。 创建Blob时我没有给出任何类型，但是我应该做这样的事情：</p>
@@ -1544,154 +1759,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/How-memory-management-works-in-JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/13/How-memory-management-works-in-JavaScript/" itemprop="url">How memory management works in JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T15:28:33+08:00">
-                2020-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-JavaScript内存管理说明"><a href="#1-JavaScript内存管理说明" class="headerlink" title="1. JavaScript内存管理说明"></a>1. JavaScript内存管理说明</h2><p>理解JS内存 记住两个规则</p>
-<ol>
-<li>Primitive types (string, number, boolean) are passed as a copy to function arguments.  </li>
-</ol>
-<p>基本数据类型是值拷贝 对于函数调用</p>
-<ol start="2">
-<li>Objects are passed as a reference to function arguments</li>
-</ol>
-<p>对象是引用拷贝 对于函数调用</p>
-<ol start="3">
-<li>Functions and arrays (and null, but it’s a bug kept for historical reasons and it’s not really mutable as the two others) are considered as Objects by JavaScript</li>
-</ol>
-<p>函数 和 数组 null 也是引用拷贝  对于函数调用</p>
-<p>区分办法 typeof</p>
-<h2 id="2-引用如何在JavaScript中工作以及如何解释它"><a href="#2-引用如何在JavaScript中工作以及如何解释它" class="headerlink" title="2. 引用如何在JavaScript中工作以及如何解释它"></a>2. 引用如何在JavaScript中工作以及如何解释它</h2><p>const someObject = { a: 5 };</p>
-<p>变量someObject的引用指向了{ a: 5 }对象引用</p>
-<h2 id="3-Javascript闭包和引用"><a href="#3-Javascript闭包和引用" class="headerlink" title="3. Javascript闭包和引用"></a>3. Javascript闭包和引用</h2><p>A closure is a function that remembers its outer variables and can access them.<br>In JavaScript, almost all functions are naturally closures.</p>
-<p>In programming languages, a closure, also lexical closure or function closure,<br>is a technique for implementing lexically scoped name binding in a language with first-class functions.<br>Operationally, a closure is a record storing a function[a] together with an environment.   </p>
-<p>The environment is a mapping associating each free variable of the function<br>(variables that are used locally, but defined in an enclosing scope) with<br>the value or reference to which the name was bound when the closure was created.  </p>
-<p>Unlike a plain function, a closure allows the function to access those captured variables through<br>the closure’s copies of their values or references, even when the function is invoked outside their scope.</p>
-<p>作用域分为 词法作用域(静态作用域) 和 动态作用域  </p>
-<p>词法作用域（静态作用域）lexical scope static scope 是在 书写代码 或者说定义时确定的  </p>
-<p>动态作用域 dynamic scope 是在运行时确定的  </p>
-<p>词法作用域关注函数在何处声明  </p>
-<p>动态作用域关注函数从何处调用，其作用域链是基于运行时的调用栈的  </p>
-<p>大多数现在程序设计语言都是采用静态作用域规则</p>
-<p>只有为数不多的几种语言采用动态作用域规则，包括APL、Snobol和Lisp的早期方言</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  print a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function bar() &#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  foo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var a = 1;</span><br><span class="line">bar()</span><br><span class="line"></span><br><span class="line">静态 输出 1</span><br><span class="line">动态 输出 2</span><br></pre></td></tr></table></figure>
-<h2 id="JavaScript中的闭包分配与变异"><a href="#JavaScript中的闭包分配与变异" class="headerlink" title="JavaScript中的闭包分配与变异"></a>JavaScript中的闭包分配与变异</h2><p>由于闭包和回调是JavaScript编程和事件驱动的编程的核心，因此您将需要大量时间依赖于此类事物。  </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1742,7 +1809,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

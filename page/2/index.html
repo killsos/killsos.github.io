@@ -230,6 +230,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/How-memory-management-works-in-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/13/How-memory-management-works-in-JavaScript/" itemprop="url">How memory management works in JavaScript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T15:28:33+08:00">
+                2020-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-JavaScript内存管理说明"><a href="#1-JavaScript内存管理说明" class="headerlink" title="1. JavaScript内存管理说明"></a>1. JavaScript内存管理说明</h2><p>理解JS内存 记住两个规则</p>
+<ol>
+<li>Primitive types (string, number, boolean) are passed as a copy to function arguments.  </li>
+</ol>
+<p>基本数据类型是值拷贝 对于函数调用</p>
+<ol start="2">
+<li>Objects are passed as a reference to function arguments</li>
+</ol>
+<p>对象是引用拷贝 对于函数调用</p>
+<ol start="3">
+<li>Functions and arrays (and null, but it’s a bug kept for historical reasons and it’s not really mutable as the two others) are considered as Objects by JavaScript</li>
+</ol>
+<p>函数 和 数组 null 也是引用拷贝  对于函数调用</p>
+<p>区分办法 typeof</p>
+<h2 id="2-引用如何在JavaScript中工作以及如何解释它"><a href="#2-引用如何在JavaScript中工作以及如何解释它" class="headerlink" title="2. 引用如何在JavaScript中工作以及如何解释它"></a>2. 引用如何在JavaScript中工作以及如何解释它</h2><p>const someObject = { a: 5 };</p>
+<p>变量someObject的引用指向了{ a: 5 }对象引用</p>
+<h2 id="3-Javascript闭包和引用"><a href="#3-Javascript闭包和引用" class="headerlink" title="3. Javascript闭包和引用"></a>3. Javascript闭包和引用</h2><p>A closure is a function that remembers its outer variables and can access them.<br>In JavaScript, almost all functions are naturally closures.</p>
+<p>In programming languages, a closure, also lexical closure or function closure,<br>is a technique for implementing lexically scoped name binding in a language with first-class functions.<br>Operationally, a closure is a record storing a function[a] together with an environment.   </p>
+<p>The environment is a mapping associating each free variable of the function<br>(variables that are used locally, but defined in an enclosing scope) with<br>the value or reference to which the name was bound when the closure was created.  </p>
+<p>Unlike a plain function, a closure allows the function to access those captured variables through<br>the closure’s copies of their values or references, even when the function is invoked outside their scope.</p>
+<p>作用域分为 词法作用域(静态作用域) 和 动态作用域  </p>
+<p>词法作用域（静态作用域）lexical scope static scope 是在 书写代码 或者说定义时确定的  </p>
+<p>动态作用域 dynamic scope 是在运行时确定的  </p>
+<p>词法作用域关注函数在何处声明  </p>
+<p>动态作用域关注函数从何处调用，其作用域链是基于运行时的调用栈的  </p>
+<p>大多数现在程序设计语言都是采用静态作用域规则</p>
+<p>只有为数不多的几种语言采用动态作用域规则，包括APL、Snobol和Lisp的早期方言</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  print a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function bar() &#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  foo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var a = 1;</span><br><span class="line">bar()</span><br><span class="line"></span><br><span class="line">静态 输出 1</span><br><span class="line">动态 输出 2</span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript中的闭包分配与变异"><a href="#JavaScript中的闭包分配与变异" class="headerlink" title="JavaScript中的闭包分配与变异"></a>JavaScript中的闭包分配与变异</h2><p>由于闭包和回调是JavaScript编程和事件驱动的编程的核心，因此您将需要大量时间依赖于此类事物。  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/5-Uses-of-the-ES6-Spread-Operator-…/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1516,171 +1664,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/04/How-the-new-‘Top-Level-Await’-feature-works-in-JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/04/How-the-new-‘Top-Level-Await’-feature-works-in-JavaScript/" itemprop="url">How the new ‘Top Level Await’ feature works in JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T16:12:30+08:00">
-                2020-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>以前，为了使用await，代码需要放在一个标记为async的函数中。<br>这意味着你不能在任何函数符号之外使用await。顶级的wait使模块能够像异步函数一样工作  </p>
-<p>模块是异步的，并且具有导入和导出，这些模块也在顶层表示。</p>
-<p>实际的含义是，如果您想提供一个依赖于某些异步任务的模块来执行某项操作，那么您实际上没有好的选择。</p>
-<p>顶级await可以解决此问题，并使开发人员可以在异步函数之外使用await关键字。</p>
-<p>通过顶层等待，ECMAScript模块可以等待资源，从而导致其他导入资源的模块在开始评估其主体之前等待，</p>
-<p>或者如果模块加载失败或用作加载第一个模块，也可以将其用作加载依赖项回退 资源下载。</p>
-<p>ps</p>
-<ol>
-<li><p>顶层等待仅在顶层模块上起作用。 不支持经典脚本或非异步功能。</p>
-</li>
-<li><p>截至撰写本文时，ECMAScript第3阶段</p>
-</li>
-</ol>
-<h2 id="用例"><a href="#用例" class="headerlink" title="用例"></a>用例</h2><p>在顶层等待的情况下，下一个代码将按您期望的方式在模块中工作</p>
-<ol>
-<li>Using a fallback if module loading fails</li>
-</ol>
-<p>以下示例尝试从first.com加载JavaScript模块，如果失败则返回至</p>
-<p>//module.mjs</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="built_in">module</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="built_in">module</span>= <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">'https://first.com/libs.com/module1'</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">  <span class="built_in">module</span>= <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">'https://second.com/libs/module1'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.使用加载速度最快的资源</p>
-<p>此处res变量通过首先完成的下载来初始化。</p>
-<p>//module.mjs</p>
-<p>const resPromises = [<br>    donwloadFromResource1Site,<br>    donwloadFromResource2Site<br> ];</p>
-<p>const res = await Promise.any(resPromises);</p>
-<ol start="3">
-<li>Resource initialization</li>
-</ol>
-<p>顶级的await允许您在模块中等待承诺，就好像它们被包装在异步函数中一样。<br>这对于执行应用程序初始化非常有用</p>
-<p>//module.mjs</p>
-<p>import { dbConnector} from ‘./dbUtils.js’<br>//connect() return a promise</p>
-<p>const connection = await dbConnector.connect();<br>export default function(){connection.list()}</p>
-<ol start="4">
-<li>Loading modules dynamically</li>
-</ol>
-<p>这允许模块使用运行时值来确定依赖项</p>
-<p>//module.mjs</p>
-<p>const params = new URLSearchParams(window.location.search);<br>const lang = params.get(‘lang’);<br>const messages = await import(<code>./messages-${lang}.mjs</code>)</p>
-<ol start="5">
-<li>Using await outside async functions in DevTools</li>
-</ol>
-<p>在使用async / await之前，尝试在async函数之外使用<br>await会导致：“ SyntaxError：await仅在async函数中有效”现在，<br>可以使用它而无需将其放在async函数中</p>
-<p>这已在chrome 80和firefox 72.0.2 DevTools中进行了测试。<br>但是，此功能是非标准功能，无法在nodejs中使用。</p>
-<p>const helloPromise = new Promise((resolve)=&gt;{<br>  setTimeout(()=&gt; resolve(‘Hello world!’), 5000);<br>})<br>const result =  await helloPromise;<br>console.log(result);</p>
-<p>//5 seconds later…:</p>
-<p>Implementations<br>V8 with flag: — — harmony-top-level-await<br>Webpack (experimental support in 5.0.0)<br>Parser support has been added to Babel (babel/plugin-syntax-top-level-await).//Hello world!</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1731,7 +1714,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
