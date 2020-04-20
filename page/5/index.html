@@ -230,6 +230,272 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/javascript4种语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/03/javascript4种语句/" itemprop="url">javascript4种语句</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T17:06:43+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-空语句"><a href="#1-空语句" class="headerlink" title="1. 空语句"></a>1. 空语句</h2><pre><code>用一个; 表示空语句
+var litmus = &apos;neutral&apos;;
+var pH; 
+
+if(pH&gt;0 &amp;&amp; pH&lt;7)
+    litmus = &apos;acidic&apos;;
+else if(pH===7)
+    ;       /* empty statement */
+else if(pH&gt;7 &amp;&amp; pH&lt;15)
+    litmus = &apos;basic&apos;;
+else
+    throw &quot;Invalid pH value&quot;;
+</code></pre><h2 id="2-debugger语句"><a href="#2-debugger语句" class="headerlink" title="2. debugger语句"></a>2. debugger语句</h2><h2 id="3-labeled语句"><a href="#3-labeled语句" class="headerlink" title="3. labeled语句"></a>3. labeled语句</h2><pre><code>break continue
+
+goto
+</code></pre><h2 id="4-with语句"><a href="#4-with语句" class="headerlink" title="4. with语句"></a>4. with语句</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/" itemprop="url">使用ES6符号隐藏对象属性/属性的后备变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T16:43:19+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="The-Problem-Hiding-The-Backing-Variable"><a href="#The-Problem-Hiding-The-Backing-Variable" class="headerlink" title="The Problem: Hiding The Backing Variable"></a>The Problem: Hiding The Backing Variable</h2><pre><code>1. this._foo 
+</code></pre><h2 id="Hiding-Via-Closures"><a href="#Hiding-Via-Closures" class="headerlink" title="Hiding Via Closures"></a>Hiding Via Closures</h2><pre><code>function defineProperty(obj, key, value) {
+    Object.defineProperty(obj, key, {
+        get() {
+            return value;
+        },
+        set(newValue) {
+            value = newValue;
+        }
+    })
+</code></pre><h2 id="Hiding-The-Backing-Variable-With-ES6-Symbols"><a href="#Hiding-The-Backing-Variable-With-ES6-Symbols" class="headerlink" title="Hiding The Backing Variable With ES6 Symbols"></a>Hiding The Backing Variable With ES6 Symbols</h2><pre><code>Symbol(“foo”)
+
+Object.getOwnPropertySymbols() returns an array of Symbols that are stored on the object
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/Symbols/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1827,348 +2093,11 @@ lineNumber
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/停止用i-在循环中/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/停止用i-在循环中/" itemprop="url">停止用i++在循环中</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T09:37:12+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="why-i-may-be-better-than-i-in-most-situations"><a href="#why-i-may-be-better-than-i-in-most-situations" class="headerlink" title="why ++i may be better than i++ in most situations"></a>why ++i may be better than i++ in most situations</h2><ul>
-<li><p>Post-Increment (i++)</p>
-<pre><code>int j = i;
-i = i + 1;
-return j;
-由于后递增运算符必须返回i的原始值，而不是返回递增值i + 1，因此它必须存储i的旧版本。
-这意味着它通常不必要地使用额外的内存来存储该值，因为在大多数情况下，我们实际上并不使用旧版本的i，而只是将其丢弃
-</code></pre></li>
-<li><p>Pre-Increment (++i)</p>
-<pre><code>i = i + 1;
-return i;
-值得注意的是，在这里，我们不必保存i的旧值-我们可以简单地将其添加并返回。
-这与for循环中的典型用例更加契合，因为在这种情况下我们很少需要i的旧值。
-只要您不需要所要递增的值的前一个值，则预增量运算符就会好于或等于后增量运算符
-</code></pre></li>
-</ul>
-<pre><code>在看到后增量和前增量之间的差异之后，您可能会注意到，由于i的缓存值从未在后增量中使用，因此编译器将优化该行，使两个运算符等效。
-对于基本类型（例如整数），最可能是这样。
-但是，对于更复杂的类型，例如用户定义的类型或带有+操作重载的迭代器，编译器可能无法安全地优化缓存操作
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/什么时候用或不用箭头函数/" itemprop="url">什么时候用或不用箭头函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T08:57:23+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="arrow-function"><a href="#arrow-function" class="headerlink" title="arrow function"></a>arrow function</h2><p>. 省略{}</p>
-<p>. 省略 return </p>
-<ol>
-<li><p>No parameters</p>
-<pre><code>() =&gt; 42
-
-甚至可以省略括号
-
-_ =&gt; 42
-</code></pre></li>
-<li><p>single parameter</p>
-<pre><code>x =&gt; 42  || (x) =&gt; 42
-</code></pre></li>
-</ol>
-<ol start="3">
-<li><p>Multiple parameters</p>
-<pre><code>(x, y) =&gt; 42
-</code></pre></li>
-</ol>
-<ol start="4">
-<li><p>Statements (as opposed to expressions)</p>
-<pre><code>需要花括号
-
-需要return
-</code></pre></li>
-<li><p>“Block body”</p>
-</li>
-<li><p>Object literals</p>
-<pre><code>如果想返回一个对象 需要一个大括号包起来 避免认为是语句
-
-x =&gt;({ y: x })
-</code></pre></li>
-</ol>
-<h2 id="arrow-function-Syntactically-anonymous"><a href="#arrow-function-Syntactically-anonymous" class="headerlink" title="arrow function Syntactically anonymous"></a>arrow function Syntactically anonymous</h2><ol>
-<li><p>难于调试</p>
-</li>
-<li><p>No self-referencing</p>
-<pre><code>递归
-
-event handler that needs to unbind
-</code></pre></li>
-</ol>
-<h2 id="Main-benefit-No-binding-of-‘this’"><a href="#Main-benefit-No-binding-of-‘this’" class="headerlink" title="Main benefit: No binding of ‘this’"></a>Main benefit: No binding of ‘this’</h2><pre><code>var obj = {
-    id: 42,
-    counter: function counter() {
-        setTimeout(() =&gt; {
-        console.log(this.id);
-        }, 1000);
-    }
-}; // 这是原作者举得栗子
-
-obj.counter() // this --&gt; obj
-
-实际上 arrow functio 中 this 取决于 词法作用域上父级作用域的this 如果父级作用域中this存在
-</code></pre><h2 id="When-you-should-not-use-Arrow-Functions"><a href="#When-you-should-not-use-Arrow-Functions" class="headerlink" title="When you should not use Arrow Functions"></a>When you should not use Arrow Functions</h2><ol>
-<li><p>Object methods</p>
-<pre><code>var cat = {
-    lives: 9,
-    jumps: () =&gt; {
-        this.lives--; // this 不是 对象本身
-    }
-} 
-</code></pre></li>
-<li><p>Callback functions with dynamic context</p>
-<pre><code>var button = document.getElementById(&apos;press&apos;);
-    button.addEventListener(&apos;click&apos;, () =&gt; {
-    this.classList.toggle(&apos;on&apos;);
-}); // this 不是 button
-</code></pre></li>
-<li><p>call apply bind  对于 箭头函数 是无效的</p>
-</li>
-<li><p>代码可读性差</p>
-</li>
-</ol>
-<h2 id="When-you-should-use-them"><a href="#When-you-should-use-them" class="headerlink" title="When you should use them"></a>When you should use them</h2><ol>
-<li><p>箭头函数最适合需要利用this绑定特性，而不是函数本身</p>
-</li>
-<li><p>map reducer方法中使用   the pros outweigh the cons 利大于弊</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2214,7 +2143,7 @@ obj.counter() // this --&gt; obj
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
