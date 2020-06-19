@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/javascript4种语句/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/How-memory-management-works-in-JavaScript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/03/javascript4种语句/" itemprop="url">javascript4种语句</a></h1>
+                <a class="post-title-link" href="/2020/03/13/How-memory-management-works-in-JavaScript/" itemprop="url">How memory management works in JavaScript</a></h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T17:06:43+08:00">
-                2019-12-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T15:28:33+08:00">
+                2020-03-13
               </time>
             
 
@@ -301,588 +301,35 @@
       
         
           
-            <h2 id="1-空语句"><a href="#1-空语句" class="headerlink" title="1. 空语句"></a>1. 空语句</h2><pre><code>用一个; 表示空语句
-var litmus = &apos;neutral&apos;;
-var pH; 
-
-if(pH&gt;0 &amp;&amp; pH&lt;7)
-    litmus = &apos;acidic&apos;;
-else if(pH===7)
-    ;       /* empty statement */
-else if(pH&gt;7 &amp;&amp; pH&lt;15)
-    litmus = &apos;basic&apos;;
-else
-    throw &quot;Invalid pH value&quot;;
-</code></pre><h2 id="2-debugger语句"><a href="#2-debugger语句" class="headerlink" title="2. debugger语句"></a>2. debugger语句</h2><h2 id="3-labeled语句"><a href="#3-labeled语句" class="headerlink" title="3. labeled语句"></a>3. labeled语句</h2><pre><code>break continue
-
-goto
-</code></pre><h2 id="4-with语句"><a href="#4-with语句" class="headerlink" title="4. with语句"></a>4. with语句</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/" itemprop="url">使用ES6符号隐藏对象属性/属性的后备变量</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T16:43:19+08:00">
-                2019-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="The-Problem-Hiding-The-Backing-Variable"><a href="#The-Problem-Hiding-The-Backing-Variable" class="headerlink" title="The Problem: Hiding The Backing Variable"></a>The Problem: Hiding The Backing Variable</h2><pre><code>1. this._foo 
-</code></pre><h2 id="Hiding-Via-Closures"><a href="#Hiding-Via-Closures" class="headerlink" title="Hiding Via Closures"></a>Hiding Via Closures</h2><pre><code>function defineProperty(obj, key, value) {
-    Object.defineProperty(obj, key, {
-        get() {
-            return value;
-        },
-        set(newValue) {
-            value = newValue;
-        }
-    })
-</code></pre><h2 id="Hiding-The-Backing-Variable-With-ES6-Symbols"><a href="#Hiding-The-Backing-Variable-With-ES6-Symbols" class="headerlink" title="Hiding The Backing Variable With ES6 Symbols"></a>Hiding The Backing Variable With ES6 Symbols</h2><pre><code>Symbol(“foo”)
-
-Object.getOwnPropertySymbols() returns an array of Symbols that are stored on the object
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/Symbols/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/03/Symbols/" itemprop="url">Symbols</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T12:28:09+08:00">
-                2019-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/javascript中getter与setter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/03/javascript中getter与setter/" itemprop="url">javascript中getter与setter</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T09:34:20+08:00">
-                2019-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Getter与Setter是用来获得或者设置变量值得函数或者方法<br>Getter与Setter的概念是在计算机编程中一个普遍的概念<br>几乎所有高级编程语言<br>几乎所有的高级编程语言都带有一组用于实现getter和setter的语法，包括JavaScipt  </p>
-<p>在这篇文章 我们将能懂getters setters是什么 如何建立和使用他们在Javascript  </p>
-<h2 id="Getters-setters与封装"><a href="#Getters-setters与封装" class="headerlink" title="Getters-setters与封装"></a>Getters-setters与封装</h2><p>Getters-setters总是会与封装联系在一起<br>封装可以用两种方式来理解  </p>
+            <h2 id="1-JavaScript内存管理说明"><a href="#1-JavaScript内存管理说明" class="headerlink" title="1. JavaScript内存管理说明"></a>1. JavaScript内存管理说明</h2><p>理解JS内存 记住两个规则</p>
 <ol>
-<li><p>首先 它是数据获取者、设置者和修改者的集合 这种限定在某些操作的时候是非常有意义的<br> 例如验证 在数据保存和展示之前 getter和setter提供了完美解决</p>
-</li>
-<li><p>依据封装是为了隐藏数据 使得外部不能访问内部数据 除了通过getter和setter 这样避免了程序中其他代码重写数据</p>
-</li>
+<li>Primitive types (string, number, boolean) are passed as a copy to function arguments.  </li>
 </ol>
-<h2 id="创建Getters-setters"><a href="#创建Getters-setters" class="headerlink" title="创建Getters-setters"></a>创建Getters-setters</h2><ol>
-<li>通过方法</li>
+<p>基本数据类型是值拷贝 对于函数调用</p>
+<ol start="2">
+<li>Objects are passed as a reference to function arguments</li>
 </ol>
-<p>由于getter和setter本质改变和设置值的函数 </p>
-<pre><code>var obj = {
-    foo:    &apos;this is the value of foo&apos;,
-    getFoo: function() {
-                return this.foo;
-    ,
-    setFoo: function(val) {
-                this.foo = val;
-    }
-}
-
-    console.log(obj.getFoo());
-    // &quot;this is the value of foo&quot;
-
-    obj.setFoo(&apos;hello&apos;);
-
-    console.log(obj.getFoo());
-    // &quot;hello&quot;
-    This is the simples  
-</code></pre><ol start="2">
-<li><p>通过关键字</p>
-<pre><code>通过关键字get/set是官方和健壮的做法
-
-var obj = {
-    fooVal: &apos;this is the value of foo&apos;,
-    get foo() {
-        return this.fooVal;
-    },
-    set foo(val) {
-        this.fooVal = val;
-    }
-}
-
-    console.log(obj.foo);
-    // &quot;this is the value of foo&quot;
-
-    obj.foo = &apos;hello&apos;;
-
-    console.log(obj.foo);
-    // &quot;hello&quot;
-</code></pre></li>
+<p>对象是引用拷贝 对于函数调用</p>
+<ol start="3">
+<li>Functions and arrays (and null, but it’s a bug kept for historical reasons and it’s not really mutable as the two others) are considered as Objects by JavaScript</li>
 </ol>
-<p>注意，数据只能存储在与getter-setter方法不同的属性名(fooVal)下，因为持有getter-setter方法的属性也不能持有数据。  </p>
-<h2 id="Overwrite-prevention-重写保护"><a href="#Overwrite-prevention-重写保护" class="headerlink" title="Overwrite prevention 重写保护"></a>Overwrite prevention 重写保护</h2><p>如果因为某种原因选择第一种 想使属性通过getter-setter方法并且是一个只读属性<br>可以通过Object.defineProperties<br>Object.defineProperties, Object.defineProperty and Reflect.defineProperty automatically configure to writable: false which means read-only:</p>
-<pre><code>/* Overwrite prevention */
-var obj = {
-foo: &apos;this is the value of foo&apos;
-};
-
-Object.defineProperties(obj, {
-&apos;getFoo&apos;: {
-    value: function () {
-        return this.foo;
-    }
-},
-&apos;setFoo&apos;: {
-    value: function (val) {
-        this.foo = val;
-    }
-}
-});
-
-obj.getFoo = 66;
-// getFoo is not going to be overwritten!
-
-console.log(obj.getFoo());
-// &quot;this is the value of foo&quot;
-</code></pre><h2 id="getter和setter中的操作"><a href="#getter和setter中的操作" class="headerlink" title="getter和setter中的操作"></a>getter和setter中的操作</h2><pre><code>var obj = {
-n: 67,
-get id() {
-    return &apos;The ID is: &apos; + this.n;
-},
-set id(val) {
-    if (typeof val === &apos;number&apos;)
-        this.n = val;
-}
-}
-
-console.log(obj.id);
-// &quot;The ID is: 67&quot;
-
-obj.id = 893;
-
-console.log(obj.id);
-// &quot;The ID is: 893&quot;
-
-obj.id = &apos;hello&apos;;
-
-console.log(obj.id);
-// &quot;The ID is: 893&quot;
-</code></pre><h2 id="通过getter与setter保护数据"><a href="#通过getter与setter保护数据" class="headerlink" title="通过getter与setter保护数据"></a>通过getter与setter保护数据</h2><ul>
-<li><p>Unprotected data</p>
-<pre><code>var obj = {
-    fooVal: &apos;this is the value of foo&apos;,
-    get foo() {
-        return this.fooVal;
-    },
-    set foo(val) {
-        this.fooVal = val;
-    }
-}
-
-obj.fooVal = &apos;hello&apos;;
-
-console.log(obj.foo);
-// &quot;hello&quot;
-</code></pre></li>
-</ul>
-<p>保护数据通过块级作用域或者函数作用域  </p>
-<ol>
-<li>块级作用域 通过let</li>
-</ol>
-<p>创建块级作用域一种方法是通过{}中创建</p>
-<pre><code>/* BLOCK SCOPE, leave the braces alone! */
-
-{
-    let fooVal = &apos;this is the value of foo&apos;;
-    var obj = {
-        get foo() {
-            return fooVal;
-        },
-        set foo(val) {
-            fooVal = val
-        }
-    }
-}
-
-fooVal = &apos;hello&apos;;
-// not going to affect the fooVal inside the block
-
-console.log(obj.foo);
-// &quot;this is the value of foo&quot;
-</code></pre><ol start="2">
-<li>函数作用域</li>
-</ol>
-<p>The more common way to protect the data with scoping is by keeping the data inside a function and returning an object with the getters and setters from that function.  </p>
-<pre><code>function myobj(){
-    var fooVal = &apos;this is the value of foo&apos;;
-    return {
-        get foo() {
-            return fooVal;
-        },
-        set foo(val) {
-            fooVal = val
-        }
-    }
-}
-
-fooVal = &apos;hello&apos;;
-// not going to affect our original fooVal
-
-var obj = myobj();
-
-console.log(obj.foo);
-// &quot;this is the value of foo&quot;
-</code></pre><ol start="3">
-<li>Data protection without scoping</li>
-</ol>
-<p>如果数据具有一个不太容易复制的变量/属性名称，则没有人（甚至我们自己）也不会通过为该变量/属性名称分配一些值来覆盖它  </p>
-<pre><code>var obj = {
-    s89274934764: &apos;this is the value of foo&apos;,
-    get foo() {
-        return this.s89274934764;
-    },
-    set foo(val) {
-        this.s89274934764 = val;
-    }
-}
-
-console.log(obj.foo);
-// &quot;this is the value of foo&quot;
-</code></pre><ol start="4">
-<li><p>通过闭包</p>
-<pre><code>function reactive(obj, prop, value){
-    Object.defineProperty(obj, prop,{
-        get() {
-            return value
-        },
-        set(newValue) {
-            value = newValue;
-        }   
-    })
-}
-</code></pre></li>
-</ol>
+<p>函数 和 数组 null 也是引用拷贝  对于函数调用</p>
+<p>区分办法 typeof</p>
+<h2 id="2-引用如何在JavaScript中工作以及如何解释它"><a href="#2-引用如何在JavaScript中工作以及如何解释它" class="headerlink" title="2. 引用如何在JavaScript中工作以及如何解释它"></a>2. 引用如何在JavaScript中工作以及如何解释它</h2><p>const someObject = { a: 5 };</p>
+<p>变量someObject的引用指向了{ a: 5 }对象引用</p>
+<h2 id="3-Javascript闭包和引用"><a href="#3-Javascript闭包和引用" class="headerlink" title="3. Javascript闭包和引用"></a>3. Javascript闭包和引用</h2><p>A closure is a function that remembers its outer variables and can access them.<br>In JavaScript, almost all functions are naturally closures.</p>
+<p>In programming languages, a closure, also lexical closure or function closure,<br>is a technique for implementing lexically scoped name binding in a language with first-class functions.<br>Operationally, a closure is a record storing a function[a] together with an environment.   </p>
+<p>The environment is a mapping associating each free variable of the function<br>(variables that are used locally, but defined in an enclosing scope) with<br>the value or reference to which the name was bound when the closure was created.  </p>
+<p>Unlike a plain function, a closure allows the function to access those captured variables through<br>the closure’s copies of their values or references, even when the function is invoked outside their scope.</p>
+<p>作用域分为 词法作用域(静态作用域) 和 动态作用域  </p>
+<p>词法作用域（静态作用域）lexical scope static scope 是在 书写代码 或者说定义时确定的  </p>
+<p>动态作用域 dynamic scope 是在运行时确定的  </p>
+<p>词法作用域关注函数在何处声明  </p>
+<p>动态作用域关注函数从何处调用，其作用域链是基于运行时的调用栈的  </p>
+<p>大多数现在程序设计语言都是采用静态作用域规则</p>
+<p>只有为数不多的几种语言采用动态作用域规则，包括APL、Snobol和Lisp的早期方言</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  print a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function bar() &#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  foo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var a = 1;</span><br><span class="line">bar()</span><br><span class="line"></span><br><span class="line">静态 输出 1</span><br><span class="line">动态 输出 2</span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript中的闭包分配与变异"><a href="#JavaScript中的闭包分配与变异" class="headerlink" title="JavaScript中的闭包分配与变异"></a>JavaScript中的闭包分配与变异</h2><p>由于闭包和回调是JavaScript编程和事件驱动的编程的核心，因此您将需要大量时间依赖于此类事物。  </p>
 
           
         
@@ -931,7 +378,7 @@ console.log(obj.foo);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/02/像素-2k-4k-高清/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/5-Uses-of-the-ES6-Spread-Operator-…/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -950,7 +397,7 @@ console.log(obj.foo);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/02/像素-2k-4k-高清/" itemprop="url">像素-2k-4k-高清</a></h1>
+                <a class="post-title-link" href="/2020/03/13/5-Uses-of-the-ES6-Spread-Operator-…/" itemprop="url">5 Uses of the ES6 Spread Operator (…)</a></h1>
         
 
         <div class="post-meta">
@@ -962,8 +409,8 @@ console.log(obj.foo);
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-02T13:44:17+08:00">
-                2019-12-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T15:09:21+08:00">
+                2020-03-13
               </time>
             
 
@@ -1002,18 +449,15 @@ console.log(obj.foo);
       
         
           
-            <h2 id="逻辑像素-物理像素"><a href="#逻辑像素-物理像素" class="headerlink" title="逻辑像素 物理像素"></a>逻辑像素 物理像素</h2><h2 id="高清"><a href="#高清" class="headerlink" title="高清"></a>高清</h2><pre><code>屏幕横纵比16:9成为主流分辨率后，1280x720的分辨率成功定义了市场主流分辨率需求。
-液晶屏厂家将它命名为high-definition，可以翻译为高解析度或者高清晰度
-</code></pre><h2 id="全高清屏幕-Full-HD-Resolution-Screen"><a href="#全高清屏幕-Full-HD-Resolution-Screen" class="headerlink" title="全高清屏幕 Full HD Resolution Screen"></a>全高清屏幕 Full HD Resolution Screen</h2><pre><code>1080p的称呼和全高清可以完全划等号
-1080p全高清屏幕的像素点为2073 * 600个
-</code></pre><h2 id="4K-UHD-Ultra-HD-Resolution-Screen"><a href="#4K-UHD-Ultra-HD-Resolution-Screen" class="headerlink" title="4K  UHD Ultra HD Resolution Screen"></a>4K  UHD Ultra HD Resolution Screen</h2><pre><code>UHD屏幕对应为2160p，也就是分辨率3840 x 2160
-
-因主流电视采用1920 x 1080的全高清分辨率
-3840 x 2160分辨率的像素数量刚好是全高清分辨率的4倍
-所以电视市场将1080p作为基数1K而直接喊出4K。
-久而久之，约定俗成的UHD就等同于了4K
-</code></pre><h2 id="屏幕"><a href="#屏幕" class="headerlink" title="屏幕"></a>屏幕</h2><p><img src="../images/screens.png" alt="屏幕"></p>
-<h2 id="ppi"><a href="#ppi" class="headerlink" title="ppi"></a>ppi</h2><p><img src="../images/ppi.png" alt="ppi"></p>
+            <h2 id="主要对象"><a href="#主要对象" class="headerlink" title="主要对象"></a>主要对象</h2><p>可以iterator的对象 例如 数组 对象</p>
+<h2 id="1-拷贝数组"><a href="#1-拷贝数组" class="headerlink" title="1. 拷贝数组"></a>1. 拷贝数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'John'</span>,<span class="string">'James'</span>,<span class="string">'Ben'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newNamesArray = [...names];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newNamesArray); <span class="comment">// ['John','James','Ben']</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-拼接数组"><a href="#2-拼接数组" class="headerlink" title="2. 拼接数组"></a>2. 拼接数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="string">'H'</span>, <span class="string">'I'</span>, <span class="string">'J'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = [...arr1, ...arr2];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// ['A', 'B', 'C', 'H', 'I', 'J']</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-Spreading-elements-together-with-an-individual-element"><a href="#3-Spreading-elements-together-with-an-individual-element" class="headerlink" title="3. Spreading elements together with an individual element"></a>3. Spreading elements together with an individual element</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'Apple'</span>,<span class="string">'Pineapple'</span>,<span class="string">'Banana'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newFruits = [<span class="string">'Mango'</span>, ...fruits];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newFruits); <span class="comment">// ['Mango', 'Apple','Pineapple','Banana']</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-函数调用"><a href="#4-函数调用" class="headerlink" title="4. 函数调用"></a>4. 函数调用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'John'</span>,<span class="string">'James'</span>,<span class="string">'Ben'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getNames = <span class="function">(<span class="params">f1, f2, f3</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`Names: <span class="subst">$&#123;f1&#125;</span>, <span class="subst">$&#123;f2&#125;</span> and <span class="subst">$&#123;f3&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">getNames(...names); <span class="comment">// Names: John, James and Ben</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-Spread-syntax-for-object-literals"><a href="#5-Spread-syntax-for-object-literals" class="headerlink" title="5. Spread syntax for object literals"></a>5. Spread syntax for object literals</h2><p>不能深度拷贝</p>
+<p>类似于 Object.assign()  </p>
+<p>右侧覆盖左侧   </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o1 = &#123;</span><br><span class="line">  name: <span class="number">1</span>,</span><br><span class="line">  age: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o2 = &#123;</span><br><span class="line">  name: <span class="number">3</span>,</span><br><span class="line">  age: <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o3 = &#123;...o1, ...o2&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(o3)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//  age: 4,</span></span><br><span class="line"><span class="comment">//  name: 3</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -1062,7 +506,7 @@ console.log(obj.foo);
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/26/html-height100-意味着什么/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/对else说no/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1081,7 +525,7 @@ console.log(obj.foo);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/26/html-height100-意味着什么/" itemprop="url">html-height100%意味着什么?</a></h1>
+                <a class="post-title-link" href="/2020/03/13/对else说no/" itemprop="url">对else说no</a></h1>
         
 
         <div class="post-meta">
@@ -1093,8 +537,8 @@ console.log(obj.foo);
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-26T10:01:33+08:00">
-                2019-11-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T14:52:16+08:00">
+                2020-03-13
               </time>
             
 
@@ -1133,194 +577,10 @@ console.log(obj.foo);
       
         
           
-            <h2 id="浏览器-html-body"><a href="#浏览器-html-body" class="headerlink" title="浏览器 html body"></a>浏览器 html body</h2><pre><code>首先要确定html不代表浏览器 只是渲染树的最顶层的节点 是不是根节点是一个疑问
-
-html {background: red}
-
-这段代码就证明了 上面的话 你会看见浏览器是背景色是红色
-但是实际上html宽度是100% height是0px 但是背景色是红色 这就是一个悖论
-高度是0 为何能显示背景色是红色
-由此 可以推测 html上面还有根节点 就是浏览器
-浏览器默认使用html的背景色渲染
-</code></pre><h2 id="height-100"><a href="#height-100" class="headerlink" title="height:100%"></a>height:100%</h2><pre><code>html {background: red; height: 100%}
-body {background: green;}
-
-背景色还是红色 但是此时是html的背景色  因为html现在高度继承浏览器的高度
-拖动就可以证明
-
-html {background: red; height: 100%}
-body {background: green;height: 100%}
-
-上面就意味着 html继承浏览器的高度 body继承了html的高度
-背景色是绿色
-
-进一步
-html
-    body
-        div#container
-
-html {background: red; height: 100%}
-body {background: green;height: 100%}
-#container {background: blue, height: 100%}
-
-现在显示是蓝色 #container的高度刚好是浏览器的高度
-这就是 html继承浏览器的高度  body继承了html的高度  #container继承body的高度
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>html默认是没有高度 height100%就会继承浏览器的高度
-
-同时又一个发现 html的border只有上下 没有左右
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/what-is-closure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/what-is-closure/" itemprop="url">what-is-closure?</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T14:31:02+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="closure-闭包"><a href="#closure-闭包" class="headerlink" title="closure 闭包"></a>closure 闭包</h2><p>什么是封闭？闭包是捆绑在一起（封闭）的函数及其周围状态（词汇环境）的组合。<br>换句话说，闭包使您可以从内部函数访问外部函数的范围。<br>在JavaScript中，每次创建函数时都会在函数创建时创建闭包。<br>要使用闭包，请在另一个函数中定义一个函数并将其公开。<br>要公开一个函数，请将其返回或传递给另一个函数。<br>即使返回了外部函数，内部函数也可以访问外部函数范围内的变量。  </p>
-<p>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).<br>In other words, a closure gives you access to an outer function’s scope from an inner function.<br>In JavaScript, closures are created every time a function is created, at function creation time.<br>To use a closure, define a function inside another function and expose it. To expose a function, return it or pass it to another function.<br>The inner function will have access to the variables in the outer function scope, even after the outer function has returned.  </p>
-<p>在JavaScript中，闭包是用于实现数据隐私的主要机制。    </p>
-<p>当使用闭包进行数据保密时，包含的变量仅在包含（外部）函数的范围内。    </p>
-<p>除了通过对象的特权方法之外，您无法从外部范围获取数据。    </p>
-<p>在JavaScript中，闭包范围内定义的任何公开方法都具有特权。  </p>
-<p>In JavaScript, closures are the primary mechanism used to enable data privacy.   </p>
-<p>When you use closures for data privacy, the enclosed variables are only in scope within the containing (outer) function.     </p>
-<p>You can’t get at the data from an outside scope except through the object’s privileged methods.     </p>
-<p>In JavaScript, any exposed method defined within the closure scope is privileged. </p>
-<pre><code>const getSecret = (secret) =&gt; {
-    return {
-        get: () =&gt; secret
-    };
-    };
-
-    test(&apos;Closure for object privacy.&apos;, assert =&gt; {
-    const msg = &apos;.get() should have access to the closure.&apos;;
-    const expected = 1;
-    const obj = getSecret(1);
-
-    const actual = obj.get();
-
-    try {
-        assert.ok(secret, &apos;This throws an error.&apos;);
-    } catch (e) {
-        assert.ok(true, `The secret var is only available
-        to privileged methods.`);
-    }
-
-    assert.equal(actual, expected, msg);
-    assert.end();
-});
-</code></pre><p><a href="https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8" target="_blank" rel="noopener">参考文章</a></p>
+            <h2 id="why"><a href="#why" class="headerlink" title="why"></a>why</h2><p>为了避免使用if / else if，请仅使用if语句，以花一些时间来确保if组的输入条件互斥，以使答案不依赖于执行顺序  </p>
+<h2 id="1-Don’t-use-if-else-keyword"><a href="#1-Don’t-use-if-else-keyword" class="headerlink" title="1. Don’t use if-else keyword"></a>1. Don’t use if-else keyword</h2><p>通过全部使用if语句来代替</p>
+<h2 id="2-We-will-use-the-State-Pattern-to-remove-all-if-else-keyword-in-these-codes"><a href="#2-We-will-use-the-State-Pattern-to-remove-all-if-else-keyword-in-these-codes" class="headerlink" title="2. We will use the State Pattern to remove all if-else keyword in these codes"></a>2. We will use the State Pattern to remove all if-else keyword in these codes</h2><p>Traffic Light: Green (1 minute) → Yellow (10 seconds)→ Red (1 minute)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> TrafficLight = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// default state = red</span></span><br><span class="line">    <span class="keyword">var</span> currentState = <span class="keyword">new</span> Green(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.change = <span class="function"><span class="keyword">function</span> (<span class="params">state</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// limits number of changes</span></span><br><span class="line">        <span class="keyword">if</span> (count++ &gt;= <span class="number">10</span>) <span class="keyword">return</span>;</span><br><span class="line">        currentState = state;</span><br><span class="line">        currentState.go();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.start = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        currentState.go();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Red = <span class="function"><span class="keyword">function</span> (<span class="params">light</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.light = light</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.go = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log((<span class="string">"Red --&gt; for 1 minute"</span>))</span><br><span class="line">        light.change(<span class="keyword">new</span> Green(light));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Yellow = <span class="function"><span class="keyword">function</span> (<span class="params">light</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.light = light;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.go = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Yellow --&gt; for 10 seconds"</span>)</span><br><span class="line">        light.change(<span class="keyword">new</span> Red(light));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Green = <span class="function"><span class="keyword">function</span> (<span class="params">light</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.light = light;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.go = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Green --&gt; for 1 minute"</span>);</span><br><span class="line">        light.change(<span class="keyword">new</span> Yellow(light));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1369,7 +629,7 @@ body {background: green;height: 100%}
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/js小知识点/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/JS小特点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1388,7 +648,7 @@ body {background: green;height: 100%}
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/22/js小知识点/" itemprop="url">js小知识点</a></h1>
+                <a class="post-title-link" href="/2020/03/13/JS小特点/" itemprop="url">JS小特点</a></h1>
         
 
         <div class="post-meta">
@@ -1400,8 +660,8 @@ body {background: green;height: 100%}
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T11:40:03+08:00">
-                2019-11-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T10:28:14+08:00">
+                2020-03-13
               </time>
             
 
@@ -1440,151 +700,21 @@ body {background: green;height: 100%}
       
         
           
-            <h2 id="1-void"><a href="#1-void" class="headerlink" title="1. void"></a>1. void</h2><pre><code>JavaScript具有一元void运算符。
-您可能已经看到它用作void（0）或void 0。
-它在生活中有一个单一目的-评估表达式的正确位置并返回未定义的表达式。
-习惯使用“ 0”。
-您不一定必须使用“ 0”，它可以是任何有效的表达式，例如void &lt;expression&gt;，并且仍返回undefined
+            <h2 id="1-this指向"><a href="#1-this指向" class="headerlink" title="1. this指向"></a>1. this指向</h2><p>记住一点 看调用 不看定义 注意bind</p>
+<h2 id="2-函数调用"><a href="#2-函数调用" class="headerlink" title="2. 函数调用"></a>2. 函数调用</h2><p>  函数调用  方法调用  类调用  call/apply</p>
+<h2 id="3-块级作用域"><a href="#3-块级作用域" class="headerlink" title="3. 块级作用域"></a>3. 块级作用域</h2><p>  ES6之后新增的  let  const</p>
+<h2 id="4-奇怪的类型强制行为"><a href="#4-奇怪的类型强制行为" class="headerlink" title="4. 奇怪的类型强制行为"></a>4. 奇怪的类型强制行为</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="literal">true</span> + <span class="function"><span class="params">false</span> =&gt;</span> <span class="number">1</span> <span class="comment">// coerced to number</span></span><br><span class="line">[<span class="string">'1'</span>, <span class="string">'2'</span>] + [<span class="string">'3'</span>, <span class="string">'4'</span>] =&gt; <span class="string">'1,23,4'</span> <span class="comment">// coerced to string</span></span><br><span class="line"><span class="string">'1'</span> + <span class="number">1</span> = <span class="string">'11'</span> <span class="comment">// coerced to string</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> + <span class="number">1</span> =&gt; <span class="number">2</span></span><br><span class="line"><span class="number">1</span> + <span class="string">'1'</span> =&gt; <span class="number">11</span></span><br><span class="line"><span class="string">'1'</span> + <span class="number">1</span> =&gt; <span class="number">11</span></span><br><span class="line"><span class="string">'1'</span> + <span class="string">'1'</span> =&gt; <span class="number">11</span></span><br><span class="line"></span><br><span class="line">+<span class="string">'1'</span> + +<span class="string">'1'</span> = <span class="number">2</span> <span class="comment">// using + as prefix will convert to number</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'1'</span>) <span class="comment">// equals 1</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'1px'</span>) <span class="comment">// equals 1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'1'</span>) <span class="comment">// equals 1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'1px'</span>) <span class="comment">// equals NaN</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-防止强制类型转换"><a href="#5-防止强制类型转换" class="headerlink" title="5. 防止强制类型转换"></a>5. 防止强制类型转换</h2><p>Falsy Values: 6种<br>false<br>0<br>empty strings (‘’ or “”)<br>null<br>undefined<br>NaN</p>
+<p>Everything else is truthy</p>
+<h2 id="6-Not-handling-errors-properly-or-null-and-undefined"><a href="#6-Not-handling-errors-properly-or-null-and-undefined" class="headerlink" title="6. Not handling errors properly (or null and undefined)"></a>6. Not handling errors properly (or null and undefined)</h2><p>Error Handling: via Promises</p>
+<p>Error Handling: via RXJS   </p>
+<p>someHTTPStream.pipe(<br>                map(val =&gt; val || null),<br>                catchError(err =&gt; console.log(err))<br>               );</p>
+<p>Error Handling: via try..catch</p>
+<p>Null Handling: not handling null or undefined can produce an error</p>
+<p>Better Null Handling: Check for null or undefined   </p>
+<p>someHTTPStream.pipe( // expecting an array<br>                    map(val =&gt; {<br>                        if (val) {<br>                          return val.length;<br>                        }<br>                        return 0;<br>                    }));</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">[] == ![]; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">[] == ![]</span><br><span class="line"></span><br><span class="line">!运算符的优先级大于 ==，所以实际上这里还涉及到!的运算。</span><br><span class="line">这个比较简单！会将后面的值转化为布尔值。即![]变成!<span class="built_in">Boolean</span>([]), 也就是!<span class="literal">true</span>,也就是<span class="literal">false</span>。</span><br><span class="line"></span><br><span class="line">实际上是对比 [] == <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">运用上面的顺序，<span class="literal">false</span>是布尔值，所以转化为数值<span class="built_in">Number</span>(flase), 为<span class="number">0</span>。</span><br><span class="line"></span><br><span class="line">对比[] == <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">满足第三条规则[] 是对象（数组也属于对象），<span class="number">0</span>不是对象。所以ToPrimitive([])是<span class="string">""</span></span><br><span class="line"></span><br><span class="line">对比<span class="string">""</span> == <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">满足第二条规则，<span class="string">""</span> 是字符串，<span class="number">0</span>是数值，对比<span class="built_in">Number</span>(<span class="string">""</span>) == <span class="number">0</span>, 也就是 <span class="number">0</span> == <span class="number">0</span>。</span><br><span class="line"></span><br><span class="line">所以得出 [] == ![]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">!![]       <span class="comment">// true</span></span><br><span class="line">[] == <span class="literal">true</span> <span class="comment">// false</span></span><br><span class="line">!!<span class="literal">null</span>; <span class="comment">// false</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">false</span>; <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>(); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>); <span class="comment">// NaN</span></span><br><span class="line"><span class="keyword">typeof</span> []; <span class="comment">// 'object'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// 'object'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// but...</span></span><br><span class="line"><span class="literal">null</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">由Javascript规范规定的，Null和<span class="built_in">Object</span>都是javascript中的数据类型。  </span><br><span class="line"></span><br><span class="line">Null数据类型只有一个值：<span class="literal">null</span>   </span><br><span class="line"></span><br><span class="line">就像<span class="literal">undefined</span>数据类型只有一个值：<span class="literal">undefined</span>   </span><br><span class="line"></span><br><span class="line">对于Null类型的值（只有<span class="literal">null</span>），规范就是定义返回<span class="string">"object"</span>这个字符串。</span><br><span class="line"></span><br><span class="line">但是本质上Null和<span class="built_in">Object</span>不是一个数据类型，<span class="literal">null</span>值并不是以<span class="built_in">Object</span>为原型创建出来的。</span><br><span class="line"></span><br><span class="line">所以<span class="literal">null</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>是<span class="literal">false</span>。</span><br><span class="line"></span><br><span class="line">但从这里也可以看到，<span class="literal">null</span>确实是javascript中用来表示空引用的一个特殊值。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">使得它不是<span class="keyword">instanceof</span> Ojbect，而<span class="keyword">typeof</span> <span class="literal">null</span>是“object”。在语义上也是可以理解的。</span><br><span class="line"></span><br><span class="line"><span class="literal">NaN</span> === <span class="function"><span class="params">NaN</span> =&gt;</span> <span class="literal">false</span> <span class="comment">// erm...</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">NaN</span> =&gt; number <span class="comment">// so NotANumber is a number..</span></span><br></pre></td></tr></table></figure>
 
-Well, turns out, before ES5 you could actually assign a new value to the original undefined likeundefined = &quot;abc&quot; , in most browsers.
-Hence, defining the undefined!
-In those days, using void was a way to ensure, you are always returning the original undefined.
-</code></pre><h2 id="2-Constructor-Brackets-are-optional"><a href="#2-Constructor-Brackets-are-optional" class="headerlink" title="2. Constructor Brackets are optional"></a>2. Constructor Brackets are optional</h2><pre><code>构造函数后面括号可选 
-
-const date = new Date;
-
-const month = (new Date).getMonth();
-
-const MyInstance = new MyClass;
-</code></pre><h2 id="3-IIFE-Brackets-can-be-skipped"><a href="#3-IIFE-Brackets-can-be-skipped" class="headerlink" title="3. IIFE Brackets can be skipped"></a>3. IIFE Brackets can be skipped</h2><ul>
-<li><p>The syntax for IIFE (Immediately Invoked Functional Expression) was always a bit odd for me. What’s up will all the brackets?</p>
-</li>
-<li><p>事实证明，只需要这些额外的括号即可告诉JavaScript解析器即将发布的代码是函数表达式，而不是函数。可以想象，知道了这一点，有很多方法可以跳过那些多余的括号，并且仍然可以制作出有效的IIFE。</p>
-<pre><code>// normal IIEF
-(function() {
-    console.log(&apos;Normal IIEF called&apos;);
-})()
-
-// cool IIEF called
-void function() {
-    console.log(&apos;cool IIEF called&apos;);
-}()
-
-void运算符告诉解析器代码是函数表达式。
-因此，我们可以跳过函数定义的括号
-你猜怎么着？我们可以使用任何一元运算符（void，+，！，-等），但这仍然有效！
-
-// IIEF with return
-
-result = (function() {
-    // some code
-    return &quot;结果&quot;
-})()
-
-// IIEF with return
-
-result = function() {
-    // some code
-    return &quot;结果&quot;
-}()
-</code></pre></li>
-</ul>
-<h2 id="4-With-Statement"><a href="#4-With-Statement" class="headerlink" title="4. With Statement"></a>4. With Statement</h2><pre><code>with (object)
-    statement
-
-// for multiple statements add a block
-
-with (object) {
-    statement
-    statement
-    ...
-}
-
-不建议使用with 严格模式是禁止
-</code></pre><h2 id="5-The-Function-constructor"><a href="#5-The-Function-constructor" class="headerlink" title="5. The Function constructor"></a>5. The Function constructor</h2><pre><code>// Function constructor
-const multipy = new Function(&apos;x&apos;, &apos;y&apos;, &apos;return x + y&apos;);
-// 最后一个参数是代码  之前都是参数
-
-函数构造函数是JavaScript中所有构造函数的母亲。甚至Object的构造函数都是Function构造函数。
-Function自己的构造函数也是Function本身。
-
-因此，调用object.constructor.constructor ...足够的次数最终将返回JavaScript中任何对象上的Function构造函数。
-</code></pre><h2 id="6-Function-Properties"><a href="#6-Function-Properties" class="headerlink" title="6. Function Properties"></a>6. Function Properties</h2><ol>
-<li><p>Configurable Functions</p>
-<pre><code>// custom functional properties
-
-function greet () {
-    if (greet.locale === &apos;fr&apos;) {
-        console.log(&apos;Bonjour);
-    } else if (greet.locale === &apos;es&apos;) {
-        console.log(&apos;Hola);
-    } else {
-        console.log(&apos;Hello);
-    }
-}
-
-greet() // hello
-
-greet.locale = &apos;fr&apos;;
-
-greet() // Bonjour
-</code></pre></li>
-<li><p>Function with Static Variables  函数静态属性</p>
-</li>
-</ol>
-<h2 id="7-Arguments-Properties"><a href="#7-Arguments-Properties" class="headerlink" title="7. Arguments Properties"></a>7. Arguments Properties</h2><pre><code>arguments 在函数 function里一个对象 但是 arrow function 是没有的
-
-arguments.callee: Refers to the function currently invoked  指当前调用的函数
-
-arguments.callee.caller: Refers to the function that has invoked the current function 指向调用当前函数的函数
-</code></pre><h2 id="8-Tagged-Template-Literals"><a href="#8-Tagged-Template-Literals" class="headerlink" title="8. Tagged Template Literals"></a>8. Tagged Template Literals</h2><h2 id="9-Getters-amp-Setters"><a href="#9-Getters-amp-Setters" class="headerlink" title="9. Getters &amp; Setters"></a>9. Getters &amp; Setters</h2><pre><code>get fullName() {
-
-}
-
-set fullName(value) {
-
-}
-</code></pre><h2 id="10-Comma-operator-逗号运算符"><a href="#10-Comma-operator-逗号运算符" class="headerlink" title="10. Comma operator 逗号运算符"></a>10. Comma operator 逗号运算符</h2><pre><code>JavaScript具有逗号运算符。它允许我们在一行中编写多个用逗号分隔的表达式，并返回最后一个表达式的结果
-
-used Comma operator in a for loop
-
-for (var a = 0, b = 10; a &lt;= 10; a++, b--)
-
-
-有时在一行中编写多个语句时会有所帮助
-
-function getNextValue() {
-    return counter++, console.log(counter), counter
-}
-
-
-or writing short lamda functions
-
-const getSquare = x =&gt; (console.log (x), x * x)
-</code></pre><h2 id="11-加号运算符"><a href="#11-加号运算符" class="headerlink" title="11. +加号运算符"></a>11. +加号运算符</h2><pre><code>是否曾经想过将字符串快速转换为数字？
-
-只需在字符串前面加上+运算符即可。
-加号运算符还适用于负，八进制，十六进制，指数值。
-而且，它甚至可以将Date或Moment.js对象转换为时间戳
-
-+&apos;9.11&apos;              // 9.11
-+&apos;-4&apos;               // -4
-+&apos;0xFF&apos;            // 255
-+true             // 1
-+&apos;123e-5&apos;        // 0.00123
-+false          // 0
-+null          // 0
-+&apos;Infinity&apos;   // Infinity
-+&apos;1,234&apos;     // NaN
-+dateobject // timestamp
-</code></pre><h2 id="12-Bang-Bang-Operator"><a href="#12-Bang-Bang-Operator" class="headerlink" title="12. !! Bang Bang Operator"></a>12. !! Bang Bang Operator</h2><h2 id="13-Tilde-Operator"><a href="#13-Tilde-Operator" class="headerlink" title="13. ~ Tilde Operator"></a>13. ~ Tilde Operator</h2><pre><code>〜N = -(N + 1)
-
-This expression evaluates to “0” only when N == -1
-
-我们可以通过将〜放在indexOf（...）函数前面来利用此值，以对布尔值是否存在于String或Array中进行布尔检查
-
-ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。无疑，这是一种比波浪号运算符更简洁的方法来检查数组或字符串中是否存在项。
-</code></pre><h2 id="14-Labelled-statements"><a href="#14-Labelled-statements" class="headerlink" title="14. Labelled statements"></a>14. Labelled statements</h2>
           
         
       
@@ -1632,7 +762,7 @@ ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/js面试10点/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/DOM变化的监听检测/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1651,7 +781,7 @@ ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/22/js面试10点/" itemprop="url">js面试10点</a></h1>
+                <a class="post-title-link" href="/2020/03/13/DOM变化的监听检测/" itemprop="url">DOM变化的监听检测</a></h1>
         
 
         <div class="post-meta">
@@ -1663,8 +793,8 @@ ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:46:33+08:00">
-                2019-11-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T08:48:09+08:00">
+                2020-03-13
               </time>
             
 
@@ -1703,135 +833,77 @@ ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。
       
         
           
-            <h2 id="1-js编程方式"><a href="#1-js编程方式" class="headerlink" title="1 js编程方式"></a>1 js编程方式</h2><ul>
-<li><p>JavaScript是一种多范式语言，支持命令式/过程式编程以及OOP（面向对象编程）和函数式编程 JavaScript支持原型继承的OOP</p>
-<pre><code>范式  过程式/命令式    面向对象    函数式
-
-面向对象 prototype 
-
-函数式 闭包  函数一等类  lambdas 
-</code></pre></li>
-</ul>
-<h2 id="2-函数式编程"><a href="#2-函数式编程" class="headerlink" title="2 函数式编程"></a>2 函数式编程</h2><ul>
-<li>函数式编程通过组合数学函数来生成程序，并避免共享状态和可变数据</li>
-<li>Lisp（在1958年指定）是最早支持函数式编程的语言之一，并且受到lambda演算的极大启发。</li>
-<li>Lisp和许多Lisp家庭语言在今天仍然很普遍</li>
-</ul>
-<ol>
-<li><p>纯函数/函数纯度。</p>
-</li>
-<li><p>避免副作用。</p>
-</li>
-<li><p>简单的功能组成。</p>
-</li>
-<li><p>功能语言的示例：Lisp，ML，Haskell，Erlang，Clojure，Elm，F Sharp，OCaml等</p>
-</li>
-<li><p>提到支持FP的功能：一流的功能，高阶功能，作为参数/值的功能</p>
-</li>
-</ol>
-<h2 id="3-经典继承和原型继承有什么区别？"><a href="#3-经典继承和原型继承有什么区别？" class="headerlink" title="3.经典继承和原型继承有什么区别？"></a>3.经典继承和原型继承有什么区别？</h2><ol>
-<li><p>类继承：实例从类继承（如蓝图-类的描述），并创建子类关系：分层类分类法。</p>
-<pre><code>实例通常通过带有`new`关键字的构造函数来实例化。
-类继承可以使用也可以不使用ES6中的`class`关键字。
-</code></pre></li>
-<li><p>原型继承：实例直接从其他对象继承。</p>
-<pre><code>通常通过工厂函数或Object.create（）实例化实例。
-实例可以由许多不同的对象组成，从而可以轻松地进行选择性继承。
-</code></pre></li>
-<li><p>类：创建紧密耦合 或层次结构/分类法。  原型：提及串联继承，原型委托，功能继承，对象组成。</p>
-</li>
-</ol>
-<h2 id="4-函数式程序设计与面向对象程序设计的优缺点是什么？"><a href="#4-函数式程序设计与面向对象程序设计的优缺点是什么？" class="headerlink" title="4. 函数式程序设计与面向对象程序设计的优缺点是什么？"></a>4. 函数式程序设计与面向对象程序设计的优缺点是什么？</h2><ul>
-<li><p>OOP优点：易于理解对象的基本概念，并易于解释方法调用的含义。OOP倾向于使用命令式而不是声明式，其读起来就像一组简单的指令供计算机遵循。</p>
-</li>
-<li><p>OOP缺点：OOP通常取决于共享状态。对象和行为通常在同一实体上固定在一起，可以由具有不确定顺序的任意数量的函数随机访问，这可能导致不良行为，例如竞态条件。</p>
-</li>
-<li><p>FP优点：使用功能范式，程序员避免了任何共享状态或副作用，从而消除了由多个功能争夺同一资源引起的错误。</p>
-<p>  通过使用无点样式（又称为默认编程）等功能，与OOP相比，对于那些更普遍可重用的代码，功能往往会得到根本简化，并且易于重组。</p>
-<p>  FP还倾向于使用声明性和指示性样式，它们不会详细说明操作的分步说明，而是专注于执行操作，让底层函数负责操作方式。</p>
-<p>  这为重构和性能优化留出了极大的自由度，甚至允许您通过很少的代码更改就可以用效率更高的算法替换整个算法。例如，记住或使用懒惰的评估代替急切的评估</p>
-<p>  利用纯函数的计算也很容易在多个处理器或分布式计算集群之间扩展，而不必担心线程资源冲突，竞争条件等。</p>
-</li>
-<li><p>FP缺点：过度利用FP功能（如无点样式和较大的组合）可能会降低可读性，因为生成的代码通常被更抽象地指定，更简洁且不太具体。</p>
-<p>  比函数编程更熟悉OO和命令式编程，因此即使是函数式编程中的常见习语也会使新团队成员感到困惑。FP的学习曲线比OOP陡得多</p>
-<p>  这是因为OOP的广泛普及使OOP的语言和学习材料变得更具对话性，而FP的语言往往更具学术性和形式性。</p>
-<p>  FP概念经常被编写为使用lambda演算，代数和范畴论中的惯用语和记号，所有这些都需要先了解这些领域的知识基础。</p>
-</li>
-<li><p>提到共享状态带来的麻烦，争夺相同资源的不同事物，等等……</p>
-</li>
-<li><p>意识到FP能够从根本上简化许多应用程序的能力</p>
-</li>
-<li><p>意识到学习曲线的差异</p>
-</li>
-<li><p>阐明副作用及其对程序可维护性的影响</p>
-</li>
-<li><p>意识到功能强大的代码库可能具有陡峭的学习曲线</p>
-</li>
-<li><p>意识到，与同等的FP代码库相比，高度面向对象的代码库可以极大地抵抗更改并且非常脆弱</p>
-</li>
-<li><p>意识到不变性会带来极其可访问和可延展的程序状态历史记录，从而允许轻松添加无限的撤消/重做，倒带/重播，时间旅行调试等功能</p>
-</li>
-<li><p>在这两种范例中都可以实现不变性，但是共享状态对象的泛滥使OOP的实现变得复杂</p>
-</li>
-</ul>
-<h2 id="5-When-is-classical-inheritance-an-appropriate-choice"><a href="#5-When-is-classical-inheritance-an-appropriate-choice" class="headerlink" title="5. When is classical inheritance an appropriate choice?"></a>5. When is classical inheritance an appropriate choice?</h2><h2 id="6-原型继承何时合适？"><a href="#6-原型继承何时合适？" class="headerlink" title="6.原型继承何时合适？"></a>6.原型继承何时合适？</h2><ul>
-<li><p>原型继承有多种类型：</p>
-<ol>
-<li><p>委托（即原型链）</p>
-</li>
-<li><p>串联的（即mixins，<code>Object.assign（）</code>）</p>
-</li>
-<li><p>函数式的（不要与函数式编程混淆。用于创建私有状态/封装的闭包的函数）</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="7-“偏向于类继承而不是对象继承”是什么意思？"><a href="#7-“偏向于类继承而不是对象继承”是什么意思？" class="headerlink" title="7.“偏向于类继承而不是对象继承”是什么意思？"></a>7.“偏向于类继承而不是对象继承”是什么意思？</h2><pre><code>这摘自“设计模式：可重用的面向对象软件的元素”。这意味着应该通过将较小的功能单元组装到新对象中，而不是从类继承并创建对象分类法来实现代码重用
-
-换句话说，使用can-do，has-a或uses-a关系代替is-a关系。
-</code></pre><ul>
-<li>避免类层次结构。</li>
-<li>避免脆性基类问题。</li>
-<li>避免紧密耦合。</li>
-<li>避免使用严格的分类法（强迫is-a关系对于新用例最终是错误的）。</li>
-<li>避免大猩猩香蕉问题（“您想要的是香蕉，得到的是拿着香蕉的大猩猩，以及整个丛林”）。</li>
-<li>使代码更灵活。</li>
-</ul>
-<h2 id="8-什么是双向数据绑定和单向数据流，它们有何不同？"><a href="#8-什么是双向数据绑定和单向数据流，它们有何不同？" class="headerlink" title="8.什么是双向数据绑定和单向数据流，它们有何不同？"></a>8.什么是双向数据绑定和单向数据流，它们有何不同？</h2><ul>
-<li>双向数据绑定意味着将UI字段动态绑定到模型数据，这样，当UI字段更改时，模型数据也会随之更改，反之亦然。</li>
-<li>单向数据流的一种方式意味着模型是事实的唯一来源。UI中的更改会触发消息，向用户发送信号通知模型（或在React中store）的意图。只有模型才有权更改应用程序的状态。结果是数据始终沿单一方向流动，这使它更易于理解。</li>
-<li><p>单向数据流是确定性的一种方式，而双向绑定可能会引起副作用，而这些副作用很难理解和理解。</p>
-</li>
-<li><p>React是单向数据流的新典范示例，因此提到React是一个很好的信号。</p>
-</li>
-<li>Cycle.js是另一种流行的单向数据流实现。</li>
-<li>Angular是使用双向绑定的流行框架</li>
-</ul>
-<h2 id="9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures"><a href="#9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures" class="headerlink" title="9. What are the pros and cons of monolithic vs microservice architectures?"></a>9. What are the pros and cons of monolithic vs microservice architectures?</h2><ul>
-<li><p>整体架构意味着您的应用程序是作为一个内聚的代码单元编写的，其组件被设计为可以协同工作，共享相同的内存空间和资源</p>
-</li>
-<li><p>微服务架构意味着您的应用程序由许多较小的独立应用程序组成，这些应用程序可以在自己的内存空间中运行，并且可以在可能的许多不同机器上彼此独立地扩展</p>
-</li>
-<li><p>整体式优点：整体式架构的主要优势在于，大多数应用程序通常具有大量的跨领域问题，例如日志记录，速率限制以及诸如审计跟踪和DOS保护之类的安全功能。<br>  当所有事情都通过同一个应用程序运行时，很容易将组件与那些跨领域的问题联系起来。由于共享内存访问比进程间通信（IPC）更快，因此也可能具有性能优势。</p>
-</li>
-<li><p>整体式劣势：随着应用程序的发展，整体式应用程序服务趋于紧密耦合和纠缠，从而难以出于独立缩放或代码可维护性等目的隔离服务。<br>  整体架构也很难理解，因为当您查看特定的服务或控制器时，可能存在不明显的依赖关系，副作用和魔力。</p>
-</li>
-<li><p>微服务的优点：微服务架构通常组织得更好，因为每个微服务都有非常具体的工作，并且与其他组件的工作无关。<br>解耦的服务也更易于重组和重新配置，以服务于不同应用程序的目的（例如，服务于Web客户端和公共API）<br>根据它们的组织方式，它们还可以具有性能优势，因为可以隔离热服务并独立于应用程序的其余部分进行扩展</p>
-</li>
-<li><p>微服务的弊端：在构建新的微服务架构时，您可能会发现很多跨领域的问题，而这些问题在设计时并未预料到。<br>  单一的应用程序可以建立共享的魔术助手或中间件来处理此类跨领域的问题，而无需付出太多努力。<br>  在微服务架构中，您要么需要为每个横切关注点承担单独模块的开销，要么将横切关注点封装在所有流量都通过的另一个服务层中。<br>  最终，即使是单一的体系结构也倾向于通过外部服务层路由流量，以解决跨领域的问题，<br>  但是采用整体体系结构，有可能将这项工作的成本推迟到项目更加成熟之前。<br>  微服务经常部署在自己的虚拟机或容器上，从而导致VM争用工作激增。<br>  这些任务通常使用集装箱车队管理工具自动执行。</p>
+            <h2 id="1-自定义元素声明周期与DOM变化检测"><a href="#1-自定义元素声明周期与DOM变化检测" class="headerlink" title="1. 自定义元素声明周期与DOM变化检测"></a>1. 自定义元素声明周期与DOM变化检测</h2><p>使用ES6的基础创建自定义元素（Custom Elements）的时候，是可以使用其内置的生命周期，对DOM变化进行实时更新的  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HTMLEllElement</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 指定观察的属性，这样attributeChangedCallback才会起作用</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">get</span> observedAttributes() &#123; <span class="keyword">return</span> [<span class="string">'rows'</span>]; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下面4个方法为常用生命周期</span></span><br><span class="line">  connectedCallback() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义元素加入页面'</span>);</span><br><span class="line">    <span class="comment">// 执行渲染更新</span></span><br><span class="line">    <span class="keyword">this</span>._updateRendering();</span><br><span class="line">  &#125;</span><br><span class="line">  disconnectedCallback() &#123;</span><br><span class="line">    <span class="comment">// 本例子该生命周期未使用，占位示意</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义元素从页面移除'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  adoptedCallback() &#123;</span><br><span class="line">    <span class="comment">// 本例子该生命周期未使用，占位示意</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义元素转移到新页面'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  attributeChangedCallback(name, oldValue, newValue) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义元素属性发生变化'</span>);</span><br><span class="line">    <span class="keyword">this</span>._rows = newValue;</span><br><span class="line">    <span class="comment">// 执行渲染更新</span></span><br><span class="line">    <span class="keyword">this</span>._updateRendering();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 设置直接get/set rows属性的方法</span></span><br><span class="line">  <span class="keyword">get</span> rows() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._rows;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">set</span> rows(v) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setAttribute(<span class="string">'rows'</span>, v);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _updateRendering() &#123;</span><br><span class="line">    <span class="comment">// 根据变化的属性，改变组件的UI</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义x-ell标签元素为多行打点元素</span></span><br><span class="line">customElements.define(<span class="string">'x-ell'</span>, HTMLEllElement);</span><br><span class="line"></span><br><span class="line">&lt;x-ell rows=<span class="string">"2"</span>&gt;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>尽管与单一应用程序相比，初始成本较高，但对微服务仍持积极态度。</li>
-<li>意识到微服务从长远来看往往具有更好的性能和扩展性。关于微服务与整体应用程序的实践。</li>
-<li>对应用程序进行结构设计，以使服务在代码级别上彼此独立，但一开始就很容易将其作为整体应用程序捆绑在一起。</li>
-<li>微服务的间接成本可以延迟，直到支付价格变得更加实际为止。</li>
+<li><p>connectedCallback<br>每次自定义元素连接到文档中的时候会触发。每次移动节点时也会发生，并且可能在元素的内容完全解析之前发生。<br>注意，元素如果和文档失去连接也可能触发connectedCallback，所以最好先使用Node.isConnected（IE不支持）确认下。  </p>
+</li>
+<li><p>disconnectedCallback<br>每次自定义元素和文档连接中断的时候触发。  </p>
+</li>
 </ul>
-<h2 id="10-什么是异步编程，为什么它在JavaScript中很重要？"><a href="#10-什么是异步编程，为什么它在JavaScript中很重要？" class="headerlink" title="10.什么是异步编程，为什么它在JavaScript中很重要？"></a>10.什么是异步编程，为什么它在JavaScript中很重要？</h2><pre><code>同步编程意味着，除非有条件和函数调用，否则代码将自上而下依次执行，从而阻止长时间运行的任务（例如网络请求和磁盘I / O）。
-异步编程意味着引擎在事件循环中运行。当需要阻止操作时，请求将启动，并且代码将继续运行而不会阻止结果。当响应准备就绪时，将触发一个中断，这将导致事件处理程序运行，并在此处继续控制流程。
-这样，单个程序线程可以处理许多并发操作。用户界面本质上是异步的，它们花费大部分时间等待用户输入来中断事件循环并触发事件处理程序。
-默认情况下，Node是异步的，这意味着服务器的工作方式几乎相同，在循环中等待网络请求，并在处理第一个请求时接受更多的传入请求。
-这在JavaScript中很重要，因为它非常适合用户界面代码，并且对服务器性能非常有益。
-</code></pre></li>
+<ul>
+<li><p>adoptedCallback<br>每次自定义元素移动到新的文档时候触发。  </p>
+</li>
+<li><p>attributeChangedCallback  </p>
+</li>
 </ul>
+<p>每次自定义元素的属性增删改的时候会触发，不过需要先在在静态get observedAttributes方法中指定要注意更改的属性。<br>例如上面的案例就是在observedAttributes静态方法中返回了[‘rows’]，</p>
+<p>于是当rows属性发生变化时候会触发attributeChangedCallback这个生命周期</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">x-ell &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  width: <span class="number">200</span>px;</span><br><span class="line">&#125;</span><br><span class="line">HTML代码：</span><br><span class="line">&lt;x-ell rows=<span class="string">"2"</span>&gt;对于现代浏览器，例如webkit内核的浏...组合如下。&lt;<span class="regexp">/x-ell&gt;</span></span><br><span class="line"><span class="regexp">&lt;p&gt;&lt;button onClick="document.querySelector('x-ell').rows = '3';"&gt;点击设置rows为3&lt;/</span>button&gt;&lt;/p&gt;</span><br><span class="line">JS代码：</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HTMLEllElement</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 指定观察的属性，这样attributeChangedCallback才会起作用</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">get</span> observedAttributes() &#123; <span class="keyword">return</span> [<span class="string">'rows'</span>]; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// constructor中首先第一件事情就是调用 super</span></span><br><span class="line">    <span class="comment">// super指代了整个prototype或者__proto__指向的对象</span></span><br><span class="line">    <span class="comment">// 这一步免不了的</span></span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建shadow元素，实际上，从本例要实现的效果讲，</span></span><br><span class="line">    <span class="comment">// 直接元素上设置也可以，就是HTML丑了点，CSS要放在外部</span></span><br><span class="line">    <span class="comment">// 且目前火狐并不支持shadow dom可以不用</span></span><br><span class="line">    <span class="keyword">var</span> shadow = <span class="keyword">this</span>.attachShadow(&#123;</span><br><span class="line">        <span class="comment">// open外部可访问（通过element.shadowRoot），closed则不能</span></span><br><span class="line">        mode: <span class="string">'open'</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 文本内容移动到shadow dom元素中</span></span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    div.innerHTML = <span class="keyword">this</span>.innerHTML;</span><br><span class="line">    <span class="keyword">this</span>.innerHTML = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</span><br><span class="line">    shadow.appendChild(style);</span><br><span class="line">    shadow.appendChild(div);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下面4个方法为常用生命周期</span></span><br><span class="line">  connectedCallback() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义元素加入页面'</span>);</span><br><span class="line">    <span class="comment">// 执行渲染更新</span></span><br><span class="line">    <span class="keyword">this</span>._updateRendering();</span><br><span class="line">  &#125;</span><br><span class="line">  disconnectedCallback() &#123;</span><br><span class="line">    <span class="comment">// 本例子该生命周期未使用，占位示意</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义元素从页面移除'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  adoptedCallback() &#123;</span><br><span class="line">    <span class="comment">// 本例子该生命周期未使用，占位示意</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义元素转移到新页面'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  attributeChangedCallback(name, oldValue, newValue) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义元素属性发生变化'</span>);</span><br><span class="line">    <span class="keyword">this</span>._rows = newValue;</span><br><span class="line">    <span class="comment">// 执行渲染更新</span></span><br><span class="line">    <span class="keyword">this</span>._updateRendering();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> rows() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._rows;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">set</span> rows(v) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setAttribute(<span class="string">'rows'</span>, v);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _updateRendering() &#123;</span><br><span class="line">    <span class="comment">// 根据变化的属性，改变组件的UI</span></span><br><span class="line">    <span class="keyword">var</span> shadow = <span class="keyword">this</span>.shadowRoot;</span><br><span class="line">    <span class="keyword">var</span> childNodes = shadow.childNodes;</span><br><span class="line">    <span class="keyword">var</span> rows = <span class="keyword">this</span>._rows;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; childNodes.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (childNodes[i].nodeName === <span class="string">'STYLE'</span>) &#123;</span><br><span class="line">        childNodes[i].textContent = <span class="string">`div &#123;</span></span><br><span class="line"><span class="string">          display: -webkit-box;</span></span><br><span class="line"><span class="string">          -webkit-line-clamp: <span class="subst">$&#123;rows&#125;</span>;</span></span><br><span class="line"><span class="string">          -webkit-box-orient: vertical;</span></span><br><span class="line"><span class="string">          overflow: hidden;</span></span><br><span class="line"><span class="string">        &#125;`</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义x-ell标签元素为多行打点元素</span></span><br><span class="line">customElements.define(<span class="string">'x-ell'</span>, HTMLEllElement);</span><br></pre></td></tr></table></figure>
+<h2 id="2-MutationObserver与DOM变化检测"><a href="#2-MutationObserver与DOM变化检测" class="headerlink" title="2. MutationObserver与DOM变化检测"></a>2. MutationObserver与DOM变化检测</h2><p>Custom Elements自定义元素IE并不支持，如果我们想要兼容到IE11浏览器的话，<br>需要求助其他方法，则使用MutationObserver   </p>
+<p>Mutation Observer是在DOM level 4中定义的新API  </p>
+<p>该API执行逻辑是先观察，再执行，是一个异步的过程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[].slice.call(<span class="built_in">document</span>.querySelectorAll(<span class="string">'x-ell'</span>)).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">ell</span>) </span>&#123;</span><br><span class="line">    ell.render = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> rows = <span class="keyword">this</span>.rows;</span><br><span class="line">        <span class="comment">// 基于rows打点实现……</span></span><br><span class="line">        <span class="comment">// 这里代码不是本文重点，略！有兴趣可以参阅demo页面</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重新定义rows属性</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(ell, <span class="string">'rows'</span>, &#123;</span><br><span class="line">        writeable: <span class="literal">true</span>,</span><br><span class="line">        enumerable: <span class="literal">true</span>,</span><br><span class="line">        <span class="keyword">get</span>: function () &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.getAttribute(<span class="string">'rows'</span>);    </span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">set</span>: function (rows) &#123;</span><br><span class="line">            <span class="keyword">this</span>.setAttribute(<span class="string">'rows'</span>, rows);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打点显示</span></span><br><span class="line">    ell.render();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造观察ell元素的实例</span></span><br><span class="line">    <span class="keyword">var</span> observer = <span class="keyword">new</span> MutationObserver(<span class="function"><span class="keyword">function</span> (<span class="params">mutationsList</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// mutationsList参数是个MutationRecord对象数组，描述了每个发生的变化</span></span><br><span class="line">        mutationsList.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">mutation</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> target = mutation.target;</span><br><span class="line">            <span class="keyword">if</span> (!target || !target.render) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 变化的类型</span></span><br><span class="line">            <span class="keyword">switch</span>(mutation.type) &#123;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">'characterData'</span>:</span><br><span class="line">                <span class="comment">// 文本内容变化</span></span><br><span class="line">                target.render();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">'attributes'</span>:</span><br><span class="line">                <span class="comment">// rows属性值发生了变化</span></span><br><span class="line">                target.render();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 开始观察ell元素并制定观察内容</span></span><br><span class="line">    observer.observe(ell, &#123;</span><br><span class="line">        attributes: <span class="literal">true</span>,</span><br><span class="line">        subtree: <span class="literal">true</span>,</span><br><span class="line">        characterData: <span class="literal">true</span>,</span><br><span class="line">        attributeFilter: [<span class="string">'rows'</span>]    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>observer.observe(node, options)  </p>
+<p>node指观察的节点</p>
+<p>options是一个MutationObserverInit对象，属性值、类型以及描述</p>
+<p>属性    类型    描述<br>childList    Boolean    观察子节点的变动<br>attributes    Boolean    观察属性的变动<br>characterData    Boolean    观察节点内容或节点文本的变动<br>subtree    Boolean    观察所有后代节点的变动<br>attributeOldValue    Boolean    当观察到attributes变动时，是否记录变动前的属性值<br>characterDataOldValue    Boolean    当观察到characterData变动时，是否记录变动前的属性值  文本内容变化<br>attributeFilter    Array    指定需要观察的特定属性（比如[‘src’, ‘rows’]），不在此数组中的属性变化时将被忽略  </p>
+<p>new MutationObserver(callback)</p>
+<p>new MutationObserver(function (mutationsList, mutationObserver) {})<br>其中，mutationsList是一个MutationRecord对象数组，mutationObserver就是返回的MutationObserver实例本身，</p>
+<p>可以用来清空MutationRecord或者中断观察，不过实际开发用到的不多</p>
+<p>MutationRecord对象<br>mutationsList是一个MutationRecord对象数组，包含所有观察的数据  </p>
+<p>我们可以使用forEach遍历mutationsList，例如：   </p>
+<p>mutationsList.forEach(function(mutation) {<br>    // 此时mutation就是一个MutationRecord对象<br>});</p>
+<p>属性    类型    描述<br>type    String    根据变动类型的不同，值可能为attributes，characterData或者childList<br>target    Node    发生变动的DOM节点，可能是删除节点的父元素<br>addedNodes    NodeList    被添加的节点，如果没有则是null<br>removedNodes    NodeList    被删除的节点，如果没有则是null<br>previousSibling    Node    被添加或被删除的节点的前一个兄弟节点，如果没有则是null<br>nextSibling    Node    被添加或被删除的节点的后一个兄弟节点，如果没有则是null<br>attributeName    String    发生变更的属性的名称，如果没有则是null<br>attributeNamespace    String    发生变更的属性的命名空间，在SVG元素操作时比较有用，如果没有则是null<br>oldValue    String    如果type为attributes，则返回该属性变化之前的属性值；<br>如果type为characterData，则返回该节点变化之前的文本数据；如果type为childList，则返回null  </p>
+<p>MutationObserver实例的其他方法<br>var observer = new MutationObserver(callback)</p>
+<p>observer.observe(node, options)</p>
+<p>observer.takeRecords()</p>
+<p>返回观察者回调函数检测到但尚未处理的所有匹配的DOM更改的列表，使变化队列为空<br>最常见的使用情况是在断开观察者连接之前立即获取所有挂起的变化记录，以便在停止观察者时处理任何挂起的变化</p>
+<p>observer.disconnect()</p>
+<p>MutationObserver性能要更高。Mutation Events是同步执行的，它的每次调用，  </p>
+<p>都需要从事件队列中取出事件，执行，然后事件队列中移除，期间需要移动队列元素。  </p>
+<p>如果事件触发的较为频繁的话，每一次都需要执行上面的这些步骤，那么浏览器会被拖慢。   </p>
+<p>而MutationObserver所有监听操作以及相应处理都是在其他脚本执行完成之后异步执行的，  </p>
+<p>并且是所以变动触发之后，将变得记录在数组中，统一进行回调的，也就是说，  </p>
+<p>当你使用observer监听多个DOM变化时，并且这若干个DOM发生了变化，  </p>
+<p>那么observer会将变化记录到变化数组中，等待一起都结束了，  </p>
+<p>然后一次性的从变化数组中执行其对应的回调函数。</p>
+<p>因此，如果你的浏览器不需要兼容IE9，IE10浏览器，推荐使用MutationObserver实现DOM变化的检测  </p>
+<h2 id="3-Mutation-events与DOM变化检测"><a href="#3-Mutation-events与DOM变化检测" class="headerlink" title="3. Mutation events与DOM变化检测"></a>3. Mutation events与DOM变化检测</h2><p>如果你的项目需要兼容IE9，IE10浏览器，同时想要实现对DOM变化的检测，则可以试试Mutation events   </p>
+<p>DOMAttrModified   Chrome/Safari不支持<br>DOMAttributeNameChanged<br>DOMCharacterDataModified<br>DOMElementNameChanged<br>DOMNodeInserted<br>DOMNodeInsertedIntoDocument   IE不支持<br>DOMNodeRemoved<br>DOMNodeRemovedFromDocument   IE不支持<br>DOMSubtreeModified  </p>
+<p>DOMAttrModified    DOM属性发生修改<br>DOMAttributeNameChanged    DOM属性名发生变化<br>DOMCharacterDataModified    DOM文本数据发生修改<br>DOMElementNameChanged    DOM元素名发生变化<br>DOMNodeInserted    DOM节点插入<br>DOMNodeRemoved    DOM节点删除<br>DOMSubtreeModified    DOM子元素修改</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">element.addEventListener(<span class="string">"DOMNodeInserted"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// event.target就是依次插入的DOM节点</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">[].slice.call(<span class="built_in">document</span>.querySelectorAll(<span class="string">'x-ell'</span>)).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">ell</span>) </span>&#123;</span><br><span class="line">    ell.render = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> rows = <span class="keyword">this</span>.rows;</span><br><span class="line">        <span class="comment">// 基于rows打点实现……</span></span><br><span class="line">        <span class="comment">// 这里代码不是本文重点，略！有兴趣可以参阅demo页面</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重新定义rows属性</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(ell, <span class="string">'rows'</span>, &#123; <span class="comment">/* ... */</span> &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打点显示</span></span><br><span class="line">    ell.render();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 开始观察ell元素</span></span><br><span class="line">    ell.addEventListener(<span class="string">'DOMCharacterDataModified'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.render();    </span><br><span class="line">    &#125;);</span><br><span class="line">    ell.addEventListener(<span class="string">'DOMAttrModified'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.render();    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果我们想要检测到DOM元素尺寸变化，在过去是没有专门的API的，多借助window对象上绑定resize事件  </p>
+<p>但是DOM元素的尺寸变化，有时候窗体的尺寸没有变化也会触发。还有的时候窗体的尺寸变化了，  </p>
+<p>但是DOM元素的尺寸并没有变化，window对象上绑定的resize事件就有些浪费</p>
+<h2 id="4-ResizeObserver"><a href="#4-ResizeObserver" class="headerlink" title="4. ResizeObserver"></a>4. ResizeObserver</h2><p>专门用来观察DOM元素的尺寸是否发生了变化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ro = <span class="keyword">new</span> ResizeObserver( <span class="function"><span class="params">entries</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> entry <span class="keyword">of</span> entries) &#123;</span><br><span class="line">    <span class="keyword">const</span> cr = entry.contentRect;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Element:'</span>, entry.target);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Element size: <span class="subst">$&#123;cr.width&#125;</span>px x <span class="subst">$&#123;cr.height&#125;</span>px`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Element padding: <span class="subst">$&#123;cr.top&#125;</span>px ; <span class="subst">$&#123;cr.left&#125;</span>px`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 观察一个或多个元素</span></span><br><span class="line">ro.observe(ele);</span><br></pre></td></tr></table></figure>
+<p>contentRect指的是什么？   </p>
+<p>entry.contentRect返回的是一个DOMRect对象，例如的属性包括：</p>
+<p>{<br>    x: 0<br>    y: 0<br>    width: 296<br>    height: 100<br>    top: 0<br>    right: 296<br>    bottom: 100<br>    left: 0<br>}</p>
+<p>这表明contentRect返回是content box，也就是内容区域的尺寸  </p>
+<p><img src="../images/content-box.png" alt="content box"></p>
+<p>同时也从侧面说明了，如果一个元素的content box的尺寸没有发生变化，  </p>
+<p>那么也是不会触发ResizeObserver观察执行的，哪怕你改变了元素的padding值，  </p>
+<p>或者改变了元素的border-width边框尺寸，都不会认为是DOM元素尺寸变化了   </p>
+<p>例如：</p>
+<p>div {<br>    width: 200px; height:100px;<br>}  </p>
+<p>则上面这个div元素设置padding:10px，是没有不会触发ResizeObserver执行的   </p>
+<p>Firefox中另外两个对象<br>Firefox浏览器中，entry还包括下面两个属性值，borderBoxSize对象和contentBoxSize对象。</p>
+<p>entry.borderBoxSize<br>entry.contentBoxSize<br>都返回ResizeObserverSize对象，该对象展开为：    </p>
+<p> {<br>    inlineSize: 271,<br>    blockSize: 41<br>}<br>其中inlineSize表示内联元素排列方向上的尺寸，等同于CSS逻辑属性inline-size，   </p>
+<p>在默认文档流下表示宽度；blockSize表示块级元素排列方向上的尺寸，block</p>
+<p>等同于CSS逻辑属性block-size，在默认文档流下表示高度   </p>
 
           
         
@@ -1880,7 +952,7 @@ ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/Error实践技巧/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/05/JavaScript-Error-Objects/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1899,7 +971,7 @@ ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/22/Error实践技巧/" itemprop="url">Error实践技巧</a></h1>
+                <a class="post-title-link" href="/2020/03/05/JavaScript-Error-Objects/" itemprop="url">JavaScript Error Objects</a></h1>
         
 
         <div class="post-meta">
@@ -1911,8 +983,8 @@ ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:19:27+08:00">
-                2019-11-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T16:44:11+08:00">
+                2020-03-05
               </time>
             
 
@@ -1951,114 +1023,613 @@ ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。
       
         
           
-            <h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><pre><code>class ValidationError extends Error {
-    constructor(message) {
-        super(message)
-        this.name = &apos;ValidationError&apos;
-        this.message = message
-    }
-}
-
-class PermissionError extends Error {
-    constructor(message) {
-        super(message)
-        this.name = &apos;PermissionError&apos;
-        this.message = message
-    }
-}
-
-class DatabaseError extends Error {
-    constructor(message) {
-        super(message)
-        this.name = &apos;DatabaseError&apos;
-        this.message = message
-    }
-}
-
-module.exports = {
-    ValidationError,
-    PermissionError,
-    DatabaseError
-} 
-
-const { ValidationError } = require(&apos;./error&apos;);
-
-function myFunction(input) {
-    if (!input)
-        throw new ValidationError(&apos;A validation error&apos;)
-    return input
-}
-
-try {
-    myFunction(null)
-} catch (e) {
-    if (e.name === &apos;ValidationError&apos;) {
-        console.log(&quot;Handle input validation error&quot;)
-    } else {
-        console.log(&quot;Handle other errors&quot;)
-    }
-}
-</code></pre><h2 id="Returning-Error-objects-from-Promises"><a href="#Returning-Error-objects-from-Promises" class="headerlink" title="Returning Error objects from Promises"></a>Returning Error objects from Promises</h2><ol>
-<li><p>return error when rejecting a Promise</p>
-<pre><code>const { ValidationError } = require(&apos;./error&apos;)
-function myFunction(input) {
-    return new Promise((resolve, reject) =&gt; {
-        if (!input)
-        return reject(new ValidationError(&apos;A validation error&apos;))
-        resolve(input)
-    })
-}
-</code></pre></li>
-<li><p>Promise.catch</p>
+            <h2 id="Error-Object"><a href="#Error-Object" class="headerlink" title="Error Object"></a>Error Object</h2><p>6种Error</p>
+<p>  EvalError, RangeError, ReferenceError, TypeError, SyntaxError, URIError  </p>
+<p>  These all error types are inherited from Object -&gt; Error -&gt; RangeError   </p>
+<ol>
+<li><p>属性</p>
+<p>name  message  stack</p>
 </li>
 </ol>
-<h2 id="Serializing-Error-objects-in-JSON"><a href="#Serializing-Error-objects-in-JSON" class="headerlink" title="Serializing Error objects in JSON"></a>Serializing Error objects in JSON</h2><p>By default, Error objects seralize to JSON with output like this:  </p>
-<pre><code>{ name: &apos;ValidationError&apos; }
-</code></pre><p>可以重写序列化方法toJSON() </p>
-<pre><code>class ValidationError extends Error {
-    constructor(message) {
-        super(message)
-        this.name = &apos;ValidationError&apos;
-        this.message = message
-    }
+<p>a. Generic Error</p>
+<p>try{<br>    throw new Error(‘Some Error Occurred!’)<br>}<br>catch(e){<br>    console.error(‘Error Occurred. ‘ + e.name + ‘: ‘ + e.message)<br>}</p>
+<p>b. Handling Specific Error Types</p>
+<p>try{<br>    someFunction()<br>}<br>catch(e){<br>    if(e instanceof EvalError) {<br>    console.error(e.name + ‘: ‘ + e.message)<br>  }<br>  else if(e instanceof RangeError) {<br>    console.error(e.name + ‘: ‘ + e.message)<br>  }<br>  // … something else<br>}</p>
+<p>c. Custom Error Types</p>
+<p>class CustomError extends Error {<br>    constructor(description, …params) {</p>
+<p>// Passing arguments (including vendor specific ones) to parent constructor<br>    super(…params)</p>
+<p>// Maintains proper error stack trace(available only on JS V8 engine)<br>    if(Error.captureStackTrace){<br>      Error.captureStackTrace(this, CustomError)<br>    }</p>
+<p>this.name = ‘CustomError_MyError’<br>    // Custom debugging information<br>    this.description = description<br>    this.date = new Date()<br>  }<br>}</p>
+<p>try{<br>  throw new CustomError(‘Custom Error’, ‘Some Error Occurred’)<br>}<br>catch(e){<br>  console.error(e.name)           //CustomError_MyError<br>  console.error(e.description)    //Custom Error<br>  console.error(e.message)        //Some Error Occurred<br>  console.error(e.stack)          //stacktrace<br>}</p>
+<ol>
+<li>EvalError</li>
+</ol>
+<p>It indicates an error in the global function eval() has occured.</p>
+<p>new EvalError([message[, fileName[, lineNumber]]])</p>
+<p>try{<br>  throw new EvalError(‘Eval Error Occurred’);<br>}<br>catch(e){<br>  console.log(e instanceof EvalError); // true<br>  console.log(e.message);    // “Eval Error Occurred”<br>  console.log(e.name);       // “EvalError”<br>  console.log(e.stack);      // “EvalError: Eval Error Occurred…”<br>}</p>
+<ol start="2">
+<li>RangeError</li>
+</ol>
+<p>we pass a value that is not an allowed string, as per<br>String.prototype.normalize()<br>String.prototype.normalize(“-1”)</p>
+<p>Using Array constructor to create an array of illegal length<br>// RangeError: Invalid array length<br>var arr = new Array(-1);</p>
+<p>Numeric methods like</p>
+<p>Number.prototype.toExponential(),</p>
+<p>Number.prototype.toFixed(), or</p>
+<p>Number.prototype.toPrecision() receive invalid values.</p>
+<ol start="3">
+<li>ReferenceError</li>
+</ol>
+<p>当我们尝试取消引用无效的引用或引用不存在的变量时，它指示错误。</p>
+<ol start="4">
+<li>SyntaxError</li>
+</ol>
+<ol start="5">
+<li><p>TypeError</p>
+</li>
+<li><p>URIError<br>It occurs when global URI handling function was not being used in the correct way.</p>
+</li>
+</ol>
+<p>encodeURIComponent() or decodeURIComponent() functions.</p>
 
-    toJSON() {
-        return {
-        error: {
-            name: this.name,
-            message: this.message,
-            stacktrace: this.stack
-        }
-        }
-    }
-}
+          
+        
+      
+    </div>
+    
+    
+    
 
-ps: 对象不是JSON 一个对象stringify首先第一步是一个对象的调用toJSON方法 将对象转为JSON 然后执行JSON.stringify方法
-</code></pre><h2 id="new-Error-message-fileName-lineNumber"><a href="#new-Error-message-fileName-lineNumber" class="headerlink" title="new Error([message[, fileName[,lineNumber]]])"></a>new Error([message[, fileName[,lineNumber]]])</h2><pre><code>message
-可选。人类可阅读的错误描述信息。
+    
 
-fileName 
-可选。被创建的Error对象的fileName属性值。默认是调用Error构造器代码所在的文件 的名字。
+    
 
-lineNumber 
-可选。被创建的Error对象的lineNumber属性值。默认是调用Error构造器代码所在的文件的行号。
+    
 
-作为函数使用 不需要new  const x = Error(&apos;I was created using a function call!&apos;);
+    <footer class="post-footer">
+      
 
-6种类型
+      
 
-    EvalError       表示错误的原因：与 eval() 有关
+      
 
-    InternalError   代表Javascript引擎内部错误 如: &quot;递归太多&quot;
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
-    RangeError      表示错误的原因：数值变量或参数超出其有效范围
 
-    SyntaxError     语法错误
+    
+      
 
-    TypeError       类型错误   变量或参数不属于有效类型
+  
 
-    URIError        给 encodeURI()或  decodeURl()传递的参数无效
-</code></pre>
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/05/代码中命名/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/05/代码中命名/" itemprop="url">代码中命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T14:42:33+08:00">
+                2020-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Intention-Revealing-Names"><a href="#1-Intention-Revealing-Names" class="headerlink" title="1. Intention Revealing Names"></a>1. Intention Revealing Names</h2><p>名字揭示目的  见名知意</p>
+<h2 id="2-avoid-Misleading-Names"><a href="#2-avoid-Misleading-Names" class="headerlink" title="2. avoid Misleading Names"></a>2. avoid Misleading Names</h2><p>避免误导性名称</p>
+<h2 id="3-Meaning-Distinctions"><a href="#3-Meaning-Distinctions" class="headerlink" title="3. Meaning Distinctions"></a>3. Meaning Distinctions</h2><p>意义的区别</p>
+<h2 id="3-Pronounceable-Names"><a href="#3-Pronounceable-Names" class="headerlink" title="3. Pronounceable Names"></a>3. Pronounceable Names</h2><h2 id="4-Searchable-Names"><a href="#4-Searchable-Names" class="headerlink" title="4. Searchable Names"></a>4. Searchable Names</h2><h2 id="5-Stick-to-Plain-English-Letters-and-Digits"><a href="#5-Stick-to-Plain-English-Letters-and-Digits" class="headerlink" title="5. Stick to Plain English Letters and Digits"></a>5. Stick to Plain English Letters and Digits</h2><p>坚持使用简单的英文字母和数字</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/05/Deep-dive-into-ES6-Symbols/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/05/Deep-dive-into-ES6-Symbols/" itemprop="url">Deep dive into ES6 Symbols</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T11:03:34+08:00">
+                2020-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Symbol-类型"><a href="#Symbol-类型" class="headerlink" title="Symbol 类型"></a>Symbol 类型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>()</span><br><span class="line"><span class="string">'symbol'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>() == <span class="built_in">Symbol</span>()</span><br><span class="line"><span class="comment">// False</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>(<span class="string">'abacaba'</span>) == <span class="built_in">Symbol</span>(<span class="string">'abacaba'</span>)</span><br><span class="line"><span class="comment">// False</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// But</span></span><br><span class="line"><span class="keyword">const</span> s = <span class="built_in">Symbol</span>(<span class="string">'sym'</span>);</span><br><span class="line">s == s</span><br><span class="line"><span class="comment">// True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sym1 = <span class="built_in">Symbol</span>.for(<span class="string">'some-key'</span>); <span class="comment">// Symbol is created in global registry</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Elsewhere in project:</span></span><br><span class="line"><span class="keyword">const</span> sym2 = <span class="built_in">Symbol</span>.for(<span class="string">'some-key'</span>); <span class="comment">// Symbol is retrieved from global registry</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// They are the same symbol:</span></span><br><span class="line"><span class="built_in">console</span>.log(sym1 === sym2); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// You can even access the key property:</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(sym1)); <span class="comment">// some-key</span></span><br></pre></td></tr></table></figure>
+<p>symbol 是 基本数据类型   </p>
+<p>Symbol() 是构造函数</p>
+<p>提出symbol的目的就是返回一个唯一值</p>
+<p>Symbnol.for(‘key’)<br>全局注册</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>.prototype.for = <span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// Safely getting the global registry</span></span><br><span class="line">  <span class="keyword">const</span> symbolRegistry = <span class="built_in">window</span>.symbolRegistry || &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Checking if this symbol exists</span></span><br><span class="line">  <span class="keyword">if</span> (symbolRegisty.hasOwnProperty(key)) &#123;</span><br><span class="line">    <span class="keyword">return</span> symbolRegistry[key];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// It does not, creating a new one</span></span><br><span class="line">  <span class="keyword">const</span> newSymbol = <span class="built_in">Symbol</span>();</span><br><span class="line">  symbolRegistry[key] = newSymbol;</span><br><span class="line">  <span class="built_in">window</span>.symbolRegistry = symbolRegistry;</span><br><span class="line">  <span class="keyword">return</span> newSymbol;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>symbol绝大多数时候用来作为一个对象的属性<br>相对于一般属性优点在于不被枚举 例如 for..of<br>可以方便元编程和定义内部或者隐藏的对象方法</p>
+<p>元编程的特色 例如可迭代对象 Symbol.iterator<br>有些对象可以转为原始类型 例如字符串 数字<br>那是因为有一个Symbol.toPrimitive函数来完成</p>
+<p>ToPrimitive 算法在执行时，会被传递一个参数 hint，<br>表示这是一个什么类型的运算（也可以叫运算的期望值），<br>根据这个 hint 参数，ToPrimitive 算法来决定内部的执行逻辑。</p>
+<p>hint 参数的取值只能是下列 3 者之一：</p>
+<p>  string<br>  number<br>  default</p>
+<p>转换算法</p>
+<p>当对象发生到基本类型值的转换时，会按照下面的逻辑调用对象上的方法：</p>
+<p>1. 如果存在，调用 obj<a href="hint">Symbol.toPrimitive</a>；</p>
+<p>2. 否则，如果 hint 取值是 “string”：</p>
+<pre><code>无论是否存在，调用 obj.toString() 和 obj.valueOf()
+</code></pre><p>3.  否则（也就是 hint 取值是 “number” 或 “default” 的情况）：</p>
+<pre><code>无论是否存在，调用 obj.valueOf() 和 obj.toString()
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> Person = &#123;</span><br><span class="line">  name: <span class="string">"John"</span>,</span><br><span class="line">  age: <span class="number">10</span>,</span><br><span class="line"></span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive](hint) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`hint: <span class="subst">$&#123;hint&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">alert(Person) <span class="comment">// hint: string</span></span><br><span class="line">+Person <span class="comment">// hint: number</span></span><br><span class="line">Person + <span class="number">500</span> <span class="comment">// hint: default</span></span><br></pre></td></tr></table></figure>
+<p>Symbol.toPrimitive 和 toString/valueOf 方法</p>
+<p>  并不要求 Symbol.toPrimitive 和 toString/valueOf 方法必须返回 hint 参数值所暗示的类型值</p>
+<p>但要注意下面两点：</p>
+<p>  Symbol.toPrimitive 和 toString 方法的返回值必须是基本类型值</p>
+<p>  valueOf 方法除了可以返回基本类型值，也可以返回其他类型值</p>
+<p>// Iteration symbols<br>Symbol.iterator<br>Symbol.asyncIterator</p>
+<p>Symbol.asyncIterator 符号指定了一个对象的默认异步迭代器。如果一个对象设置了这个属性，它就是异步可迭代对象，可用于for await…of循环。</p>
+<p>// RegEx symbols<br>Symbol.match<br>Symbol.matchAll<br>Symbol.replace<br>Symbol.search<br>Symbol.split</p>
+<p>// Other symbols<br>Symbol.hasInstance</p>
+<p>Symbol.hasInstance用于判断某对象是否为某构造器的实例。因此你可以用它自定义 instanceof 操作符在某个类上的行为</p>
+<p>Symbol.hasInstance 属性的属性<br>writable        false<br>enumerable      false<br>configurable     false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyArray</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">static</span> [<span class="built_in">Symbol</span>.hasInstance](instance) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.isArray(instance);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log([] <span class="keyword">instanceof</span> MyArray); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>Symbol.isConcatSpreadable</p>
+<p>  内置的Symbol.isConcatSpreadable符号用于配置某对象作为Array.prototype.concat()方法的参数时是否展开其数组元素。</p>
+<p>Symbol.unscopables</p>
+<p>  Symbol.unscopables 指用于指定对象值，其对象自身和继承的从关联对象的 with 环境绑定中排除的属性名称</p>
+<p>Symbol.species</p>
+<p>  Symbol.species 是个函数值属性，其被构造函数用以创建派生对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Array1</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">get</span> [Symbol.species]() &#123; <span class="keyword">return</span> <span class="built_in">Array</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Symbol.toPrimitive</p>
+<p>  是作为对象的函数值属性存在的，当一个对象转换为对应的原始值时，会调用此函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object1 = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive](hint) &#123;</span><br><span class="line">    <span class="keyword">if</span> (hint == <span class="string">'number'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">42</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Symbol.toStringTag</p>
+<p>  Symbol.toStringTag 是一个内置 symbol，它通常作为对象的属性键使用，对应的属性值应该为字符串类型<br>  这个字符串用来表示该对象的自定义类型标签，通常只有内置的 Object.prototype.toString() 方法会去<br>  读取这个标签并把它包含在自己的返回值里  </p>
+<p>  Object.prototype.toString.call(‘foo’);     // “[object String]”<br>  Object.prototype.toString.call([1, 2]);    // “[object Array]”<br>  Object.prototype.toString.call(3);         // “[object Number]”<br>  Object.prototype.toString.call(true);      // “[object Boolean]”<br>  Object.prototype.toString.call(undefined); // “[object Undefined]”<br>  Object.prototype.toString.call(null);      // “[object Null]”<br>  Object.prototype.toString.call(new Map());       // “[object Map]”<br>  Object.prototype.toString.call(function* () {}); // “[object GeneratorFunction]”<br>  Object.prototype.toString.call(Promise.resolve()); // “[object Promise]”</p>
+<p>自己创建的类不会有这份特殊待遇，toString() 找不到 toStringTag 属性时只好返回默认的 Object 标签：</p>
+<p>class ValidatorClass {}</p>
+<p>Object.prototype.toString.call(new ValidatorClass()); // “[object Object]”  </p>
+<p>加上 toStringTag 属性，你的类也会有自定义的类型标签了：</p>
+<p>class ValidatorClass {<br>  get <a href>Symbol.toStringTag</a> {<br>    return “Validator”;<br>  }<br>}</p>
+<p>Object.prototype.toString.call(new ValidatorClass()); // “[object Validator]”</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/05/A-List-of-Interesting-Operators-in-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/05/A-List-of-Interesting-Operators-in-JavaScript/" itemprop="url">A List of Interesting Operators in JavaScript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T08:25:37+08:00">
+                2020-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Exclamation-Mark-—-Logical-NOT"><a href="#1-Exclamation-Mark-—-Logical-NOT" class="headerlink" title="1. Exclamation Mark (!)— Logical NOT"></a>1. Exclamation Mark (!)— Logical NOT</h2><p>If the value is true or truthy, then !value is false or falsy, and vice versa</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">!<span class="number">1</span> <span class="comment">// false</span></span><br><span class="line">!<span class="number">-1</span> <span class="comment">// false</span></span><br><span class="line">!<span class="number">0</span> <span class="comment">// true</span></span><br><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// false</span></span><br><span class="line">!&#123;&#125; <span class="comment">// false</span></span><br><span class="line">!<span class="string">''</span> <span class="comment">// true</span></span><br><span class="line">!<span class="literal">NaN</span> <span class="comment">// true</span></span><br><span class="line">!<span class="literal">null</span> <span class="comment">// true</span></span><br><span class="line">!<span class="literal">undefined</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-Double-Exclamation-Mark-—-Double-Logical-NOT"><a href="#2-Double-Exclamation-Mark-—-Double-Logical-NOT" class="headerlink" title="2. Double Exclamation Mark (!!) — Double Logical NOT"></a>2. Double Exclamation Mark (!!) — Double Logical NOT</h2><p> It’s the same as putting an extra exclamation mark(!) to a !value that is already converted to a Boolean value.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">!!<span class="literal">true</span> <span class="comment">// true</span></span><br><span class="line">!!&#123;&#125; <span class="comment">// true</span></span><br><span class="line">!!(<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>)) <span class="comment">// true</span></span><br><span class="line">!!<span class="literal">false</span> <span class="comment">// false</span></span><br><span class="line">!!<span class="string">''</span> <span class="comment">// false</span></span><br><span class="line">!!<span class="built_in">Boolean</span>(<span class="literal">false</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-Double-Asterisks-—-Exponentiation"><a href="#3-Double-Asterisks-—-Exponentiation" class="headerlink" title="3. Double Asterisks (**) — Exponentiation"></a>3. Double Asterisks (**) — Exponentiation</h2><ul>
+<li>same as Math.pow(x, y), which is equal to x^y</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">2</span> ** <span class="number">3</span> === <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 8</span></span><br><span class="line">-(<span class="number">2</span> ** <span class="number">2</span>) === -<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">2</span>) <span class="comment">// -4</span></span><br><span class="line"><span class="number">10</span> ** <span class="number">-1</span> === <span class="built_in">Math</span>.pow(<span class="number">10</span>, <span class="number">-1</span>) <span class="comment">// 0.1</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-Tilde-—-Bitwise-NOT"><a href="#4-Tilde-—-Bitwise-NOT" class="headerlink" title="4. Tilde(~) — Bitwise NOT"></a>4. Tilde(~) — Bitwise NOT</h2><p>The formula is actually dead simple.</p>
+<p>If an integer is K, ~K becomes -(K + 1)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~<span class="number">9</span> =&gt; -<span class="function">(<span class="params"><span class="number">9</span> + <span class="number">1</span></span>) =&gt;</span> <span class="number">-10</span></span><br><span class="line">~<span class="number">-10</span> =&gt; -<span class="function">(<span class="params"><span class="number">-10</span> + <span class="number">1</span></span>) =&gt;</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-Double-Tilde-—-Math-floor-amp-Math-trunc"><a href="#5-Double-Tilde-—-Math-floor-amp-Math-trunc" class="headerlink" title="5. Double Tilde(~~) — Math.floor &amp; Math.trunc"></a>5. Double Tilde(~~) — Math.floor &amp; Math.trunc</h2><p>正数 效果  等于  Math.floor</p>
+<p>负数 效果  等于  Math.trunc</p>
+<p>~~对于整数 速度 快于 Math.floor</p>
+<h2 id="6-Double-Period-With-toString"><a href="#6-Double-Period-With-toString" class="headerlink" title="6. Double Period(..) With toString"></a>6. Double Period(..) With toString</h2><p>快速将十进制数 转为 二进制 八进制 十六进制数<br>一般用Number.toString(2,8,16)</p>
+<p>本质是将一个数字型字面量转为Number对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">5.</span>.toString(<span class="number">2</span>) <span class="comment">// '101'</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="number">5</span>).toString(<span class="number">2</span>) === <span class="number">5.</span>.toString(<span class="number">2</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="IIFE-With-Operators"><a href="#IIFE-With-Operators" class="headerlink" title="IIFE With Operators"></a>IIFE With Operators</h2><p>Immediately Invoked Function Expression 自执行函数表达式</p>
+<p>通用</p>
+<p>(function() {<br>  // do your work<br>})();</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">-<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">~~<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">!!<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do your work</span></span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>工作原理</li>
+</ul>
+<p>any operators that run and evaluate an operand can run functions coming after<br>since functions also have to be run<br>and evaluated for their operators, such as ! or ~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/05/add链式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/05/add链式/" itemprop="url">add链式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T08:08:02+08:00">
+                2020-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="add-1-2-3"><a href="#add-1-2-3" class="headerlink" title="add(1)(2)(3)"></a>add(1)(2)(3)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sum = x;</span><br><span class="line">  <span class="keyword">let</span> tmp = <span class="function"><span class="keyword">function</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">    sum += y;</span><br><span class="line">    <span class="keyword">return</span> tmp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  tmp.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>`</code>javascript<br>function add(x) {<br>  let tmp = function (y) {<br>    return add(x + y);<br>  }</p>
+<p>  tmp.toString = function () {<br>    return x<br>  }</p>
+<p>  return tmp;<br>}<br><code>`</code>9</p>
+
           
         
       
@@ -2097,7 +1668,7 @@ lineNumber
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2143,7 +1714,7 @@ lineNumber
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

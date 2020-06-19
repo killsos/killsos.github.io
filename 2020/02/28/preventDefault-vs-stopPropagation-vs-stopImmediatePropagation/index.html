@@ -305,7 +305,7 @@
 </ol>
 <p>事件冒泡和事件捕获是事件（例如，点击事件，键事件等）在DOM结构中移动的不同方式</p>
 <p>为了理解这一点，让我们考虑以下HTML元素伪代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"parent"</span> (onClick)=<span class="string">"console.log('parent')"</span>&gt;</span><br><span class="line">    &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"child"</span> (onClick)=<span class="string">"console.log('child')"</span>&gt;&lt;/button&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"parent"</span> (onClick)=<span class="string">"console.log('parent')"</span>&gt;</span><br><span class="line">    &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"child"</span> (onClick)=<span class="string">"console.log('child')"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
 <p>事件捕获意味着当我们单击按钮时，单击事件将从顶部开始并移至子级。 结果，单击按钮将打印  parent  —&gt; child</p>
 <p>事件冒泡与事件捕获相反。在事件冒泡时，事件将从子元素开始并向上移动到父元素。因此，单击按钮将打印 child  —&gt; parent</p>
 <p>理解了事件冒泡和事件捕获之后，我们就可以了解</p>
@@ -439,7 +439,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

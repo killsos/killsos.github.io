@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/18/命令行工具/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/13/面试题01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/18/命令行工具/" itemprop="url">命令行工具</a></h1>
+                <a class="post-title-link" href="/2019/12/13/面试题01/" itemprop="url">面试题01</a></h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T23:53:53+08:00">
-                2019-06-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T17:35:27+08:00">
+                2019-12-13
               </time>
             
 
@@ -301,45 +301,25 @@
       
         
           
-            <h2 id="mas"><a href="#mas" class="headerlink" title="mas"></a>mas</h2><ul>
-<li>对应Appstroe</li>
-</ul>
-<p><a href="https://github.com/mas-cli/mas" target="_blank" rel="noopener">https://github.com/mas-cli/mas</a></p>
-<h2 id="gitsome"><a href="#gitsome" class="headerlink" title="gitsome"></a>gitsome</h2><ul>
-<li>一个非常实用的 GitHub 命令行工具</li>
-</ul>
-<p><a href="https://github.com/donnemartin/gitsome" target="_blank" rel="noopener">https://github.com/donnemartin/gitsome</a></p>
-<h2 id="thefuck"><a href="#thefuck" class="headerlink" title="thefuck"></a>thefuck</h2><ul>
-<li>在你输错命令后，fuck 一下，自动帮你更正命令，解气又实用</li>
-</ul>
-<p><a href="https://github.com/nvbn/thefuck" target="_blank" rel="noopener">https://github.com/nvbn/thefuck</a></p>
-<h2 id="Httpie"><a href="#Httpie" class="headerlink" title="Httpie"></a>Httpie</h2><ul>
-<li>一个 HTTP 命令行客户端</li>
-</ul>
-<p><a href="https://github.com/jakubroztocil/httpie" target="_blank" rel="noopener">https://github.com/jakubroztocil/httpie</a></p>
-<h2 id="transfer-sh"><a href="#transfer-sh" class="headerlink" title="transfer.sh"></a>transfer.sh</h2><ul>
-<li>可通过简单的命令行来快速完成文件共享操作</li>
-</ul>
-<p><a href="https://github.com/dutchcoders/transfer.sh" target="_blank" rel="noopener">https://github.com/dutchcoders/transfer.sh</a></p>
-<h2 id="stegify"><a href="#stegify" class="headerlink" title="stegify"></a>stegify</h2><ul>
-<li>能将任意文件隐藏到图片里面的命令行工具</li>
-</ul>
-<p><a href="https://github.com/DimitarPetrov/stegify" target="_blank" rel="noopener">https://github.com/DimitarPetrov/stegify</a></p>
-<h2 id="gtop"><a href="#gtop" class="headerlink" title="gtop"></a>gtop</h2><ul>
-<li>终端的系统显示工具</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm install gtop -g</span><br></pre></td></tr></table></figure>
-<h2 id="lazygit"><a href="#lazygit" class="headerlink" title="lazygit"></a>lazygit</h2><ul>
-<li>git终端</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazygit</span><br></pre></td></tr></table></figure>
-<h2 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h2><ul>
-<li>git终端</li>
-</ul>
-<h2 id="fx"><a href="#fx" class="headerlink" title="fx"></a>fx</h2><ul>
-<li>优化了终端命令行JSON 查阅体验</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install fx</span><br></pre></td></tr></table></figure>
+            <h2 id="1-如何判断左右小括号是否全部匹配。如"><a href="#1-如何判断左右小括号是否全部匹配。如" class="headerlink" title="1. 如何判断左右小括号是否全部匹配。如 ( ( ))()((((()))))"></a>1. 如何判断左右小括号是否全部匹配。如 ( ( ))()((((()))))</h2><p>思路：利用栈，先进后出的特性  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> judgeBracketsMatch = <span class="function">(<span class="params">s</span>)=&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> result = [];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; s.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] === <span class="string">'('</span>)&#123;</span><br><span class="line">                result.push(s[i])</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(s[i] === <span class="string">')'</span>)&#123;</span><br><span class="line">                result.pop()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(result.length)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-下面代码中的-a-在什么情况下会打印1？"><a href="#2-下面代码中的-a-在什么情况下会打印1？" class="headerlink" title="2. 下面代码中的 a 在什么情况下会打印1？"></a>2. 下面代码中的 a 在什么情况下会打印1？</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = ?</span><br><span class="line"><span class="keyword">if</span>(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">思路：重写 valueOf 方法 参考答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line"> value: <span class="number">0</span>,</span><br><span class="line"> valueOf()&#123;</span><br><span class="line">  <span class="keyword">return</span> ++<span class="keyword">this</span>.value</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-如何理解回流和重绘"><a href="#3-如何理解回流和重绘" class="headerlink" title="3. 如何理解回流和重绘"></a>3. 如何理解回流和重绘</h2><p>回流：当我们对 DOM 的修改引发了 DOM 几何尺寸的变化（比如修改元素的宽、高或隐藏元素等）时，浏览器需要重新计算元素的几何属性<br>（其他元素的几何属性和位置也会因此受到影响），然后再将计算的结果绘制出来。这个过程就是回流（也叫重排）。</p>
+<p>重绘：当我们对 DOM 的修改导致了样式的变化、却并未影响其几何属性（比如修改了颜色或背景色）时，浏览器不需重新计算元素的几何属性、<br>直接为该元素绘制新的样式（跳过了上图所示的回流环节）。这个过程叫做重绘。由此我们可以看出，重绘不一定导致回流，回流一定会导致重绘。</p>
+<h2 id="4-常见的会导致回流的元素："><a href="#4-常见的会导致回流的元素：" class="headerlink" title="4. 常见的会导致回流的元素："></a>4. 常见的会导致回流的元素：</h2><ol>
+<li>常见的几何属性有 width、height、padding、margin、left、top、border 等等。<br>最容易被忽略的操作：获取一些需要通过即时计算得到的属性,当你要用到像这样的属性：<br>offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、<br>clientTop、clientLeft、clientWidth、clientHeight 时，浏览器为了获取这些值，也会进行回流。<br>当我们调用了 getComputedStyle 方法，或者 IE 里的 currentStyle 时，也会触发回流。原理是一样的，都为求一个“即时性”和“准确性”。  </li>
+</ol>
+<ol start="2">
+<li><p>避免方式：<br>避免逐条改变样式，使用类名去合并样式<br>将 DOM “离线”,使用DocumentFragment<br>提升为合成层,如使用will-change<br>#divId {<br>will-change: transform;<br>}</p>
+</li>
+<li><p>优点</p>
+</li>
+</ol>
+<p>合成层的位图，会交由 GPU 合成，比 CPU 处理要快<br>当需要 repaint 时，只需要 repaint 本身，不会影响到其他的层<br>对于 transform 和 opacity 效果，不会触发 layout 和 paint</p>
+<ol start="4">
+<li>注意：<br>部分浏览器缓存了一个 flush 队列，把我们触发的回流与重绘任务都塞进去，待到队列里的任务多起来、或者达到了一定的时间间隔，或者“不得已”的时候，<br>再将这些任务一口气出队。但是当我们访问一些即使属性时，浏览器会为了获得此时此刻的、最准确的属性值，而提前将 flush 队列的任务出队。</li>
+</ol>
+<h2 id="5-实现一个LazyMan，可以按照以下方式调用"><a href="#5-实现一个LazyMan，可以按照以下方式调用" class="headerlink" title="5. 实现一个LazyMan，可以按照以下方式调用"></a>5. 实现一个LazyMan，可以按照以下方式调用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">实现一个LazyMan，可以按照以下方式调用:</span><br><span class="line">LazyMan(<span class="string">'Hank'</span>)输出:</span><br><span class="line">Hi! This is Hank!</span><br><span class="line">LazyMan(<span class="string">'Hank'</span>).sleep(<span class="number">10</span>).eat(<span class="string">'dinner'</span>)输出</span><br><span class="line">Hi! This is Hank!</span><br><span class="line"><span class="comment">//等待10秒..</span></span><br><span class="line">Wake up after <span class="number">10</span></span><br><span class="line">Eat dinner~</span><br><span class="line">LazyMan(<span class="string">'Hank'</span>).sleep(<span class="number">10</span>).eat(<span class="string">'dinner'</span>).eat(<span class="string">'supper'</span>)输出</span><br><span class="line">Hi This is Hank!</span><br><span class="line">Eat dinner~</span><br><span class="line">Eat supper~</span><br><span class="line">LazyMan(<span class="string">'Hank'</span>).sleepFirst(<span class="number">5</span>).eat(<span class="string">'supper'</span>)输出</span><br><span class="line"><span class="comment">//等待5秒</span></span><br><span class="line">Wake up after <span class="number">5</span></span><br><span class="line">Hi This is Hank!</span><br><span class="line">Eat supper~</span><br><span class="line">以此类推</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">LazyMan</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(<span class="keyword">this</span> <span class="keyword">instanceof</span> LazyMan))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> LazyMan(name)</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">const</span> cb = <span class="function">(<span class="params">next</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`Hi This is <span class="subst">$&#123;name&#125;</span>!`</span>)</span><br><span class="line">      next()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.cbs = [cb];</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.next()</span><br><span class="line">  &#125;,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">LazyMan.prototype.eat = <span class="function"><span class="keyword">function</span> (<span class="params">food</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cb = <span class="function">(<span class="params">next</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Eat <span class="subst">$&#123;food&#125;</span>~`</span>)</span><br><span class="line">        next()</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">this</span>.cbs.push(cb);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line">LazyMan.prototype.sleepFirst = <span class="function"><span class="keyword">function</span> (<span class="params">time</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cb = <span class="function">(<span class="params">next</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            next()</span><br><span class="line">        &#125;,time*<span class="number">1000</span>) </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">this</span>.cbs.unshift(cb);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line">LazyMan.prototype.sleep = <span class="function"><span class="keyword">function</span>(<span class="params">time</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cb = <span class="function">(<span class="params">next</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            next()</span><br><span class="line">        &#125;,time*<span class="number">1000</span>) </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">this</span>.cbs.push(cb);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line">LazyMan.prototype.next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.cbs.length &lt;= <span class="number">0</span>)<span class="keyword">return</span></span><br><span class="line">    <span class="keyword">const</span> first = <span class="keyword">this</span>.cbs.shift()</span><br><span class="line">    first(<span class="keyword">this</span>.next.bind(<span class="keyword">this</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -387,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/08/httpie/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/12/web性能时间片timeslicing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -406,7 +386,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/08/httpie/" itemprop="url">httpie</a></h1>
+                <a class="post-title-link" href="/2019/12/12/web性能时间片timeslicing/" itemprop="url">web性能时间片timeslicing</a></h1>
         
 
         <div class="post-meta">
@@ -418,8 +398,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T01:16:05+08:00">
-                2019-06-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T10:19:17+08:00">
+                2019-12-12
               </time>
             
 
@@ -458,334 +438,291 @@
       
         
           
-            <h2 id="httpie"><a href="#httpie" class="headerlink" title="httpie"></a>httpie</h2><pre><code>一个http客户端
-</code></pre><h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p><a href="https://httpie.org/doc#examples" target="_blank" rel="noopener">https://httpie.org/doc#examples</a></p>
+            <h2 id="1-perface"><a href="#1-perface" class="headerlink" title="1. perface"></a>1. perface</h2><p>从用户的输入，再到显示器在视觉上给用户的输出，这一过程如果超过100ms，那么用户会察觉到网页的卡顿，所以为了解决这个问题<br>每个任务不能超过50ms，W3C性能工作组在LongTask规范中也将超过50ms的任务定义为长任务</p>
+<h2 id="FPS"><a href="#FPS" class="headerlink" title="FPS"></a>FPS</h2><pre><code>60HZ = 每秒刷新60次
 
-          
-        
-      
-    </div>
-    
-    
-    
+FPS(Frames Per Second) = 60
 
-    
+(1 秒 = 1000 毫秒) / 60 帧 = 16.7 毫秒/帧
+</code></pre><p>所以为了避免长任务，一种方案是使用Web Worker，将长任务放在Worker线程中执行，缺点是无法访问DOM，而另一种方案是使用时间切片。</p>
+<h2 id="什么是时间切片"><a href="#什么是时间切片" class="headerlink" title="什么是时间切片"></a>什么是时间切片</h2><p>时间切片的核心思想是：如果任务不能在50毫秒内执行完，那么为了不阻塞主线程，这个任务应该让出主线程的控制权，使浏览器可以处理其他任务。<br>让出控制权意味着停止执行当前任务，让浏览器去执行其他任务，随后再回来继续执行没有执行完的任务。  </p>
+<p>所以时间切片的目的是不阻塞主线程，而实现目的的技术手段是将一个长任务拆分成很多个不超过50ms的小任务分散在宏任务队列中执行。  </p>
+<p>上图可以看到主线程中有一个长任务，这个任务会阻塞主线程。使用时间切片将它切割成很多个小任务后，如下图所示。</p>
+<p>可以看到现在的主线程有很多密密麻麻的小任务，我们将它放大后如下图所示。</p>
+<p>可以看到每个小任务中间是有空隙的，代表着任务执行了一小段时间后，将让出主线程的控制权，让浏览器执行其他的任务。</p>
+<p>使用时间切片的缺点是，任务运行的总时间变长了，这是因为它每处理完一个小任务后，主线程会空闲出来，并且在下一个小任务开始处理之前有一小段延迟。</p>
+<p>但是为了避免卡死浏览器，这种取舍是很有必要的。</p>
+<p>使用时间切片的缺点是，任务运行的总时间变长了，这是因为它每处理完一个小任务后，主线程会空闲出来，并且在下一个小任务开始处理之前有一小段延迟。</p>
+<p>但是为了避免卡死浏览器，这种取舍是很有必要的。</p>
+<h2 id="如何使用时间切片"><a href="#如何使用时间切片" class="headerlink" title="如何使用时间切片"></a>如何使用时间切片</h2><pre><code>时间切片是一种概念，也可以理解为一种技术方案，它不是某个API的名字，也不是某个工具的名字。
 
-    
+事实上，时间切片充分利用了“异步”，在早期，可以使用定时器来实现，例如：
 
-    
+btn.onclick = function () {
+    someThing(); // 执行了50毫秒
+    setTimeout(function () {
+        otherThing(); // 执行了50毫秒
+    });
+};
 
-    <footer class="post-footer">
-      
+上面代码当按钮被点击时，本应执行100毫秒的任务现在被拆分成了两个50毫秒的任务。
 
-      
+在实际应用中，我们可以进行一些封装，封装后的使用效果类似下面这样：
 
-      
+btn.onclick = ts([someThing, otherThing], function () {
+    console.log(&apos;done~&apos;);
+});
 
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+当然，关于ts这个函数的API的设计并不是本文的重点，这里想说明的是，在早期可以利用定时器来实现“时间切片”。
 
+ES6带来了迭代器的概念，并提供了生成器Generator函数用来生成迭代器对象，虽然Generator函数最正统的用法是生成迭代器对象，但这不妨我们利用它的特性做一些其他的事情。
 
-    
-      
+Generator函数提供了yield关键字，这个关键字可以让函数暂停执行。然后通过迭代器对象的next方法让函数继续执行。
 
-  
+利用这个特性，我们可以设计出更方便使用的时间切片，例如：
 
-  
-  
-  
+btn.onclick = ts(function* () {
+    someThing(); // 执行了50毫秒
+    yield;
+    otherThing(); // 执行了50毫秒
+});
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
+可以看到，我们只需要使用yield这个关键字就可以将本应执行100毫秒的任务拆分成了两个50毫秒的任务。
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+我们甚至可以将yield关键字放在循环里：
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/let-const-块级作用-执行上下文/" itemprop="url">let/const 块级作用域 执行上下文</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T01:34:00+08:00">
-                2019-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x,y</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">let</span> c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(c);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="执行上下文1"><a href="#执行上下文1" class="headerlink" title="执行上下文1"></a>执行上下文1</h2><p><img src="../images/EC1.jpg" alt>   </p>
-<h2 id="执行上下文2"><a href="#执行上下文2" class="headerlink" title="执行上下文2"></a>执行上下文2</h2><p><img src="../images/EC2.jpg" alt> </p>
-<h2 id="执行上下文3"><a href="#执行上下文3" class="headerlink" title="执行上下文3"></a>执行上下文3</h2><p><img src="../images/EC3.jpg" alt>  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>每一个块级作用域都会生成一个新的执行上下文
-this 取决于 父级作用域的this  
-可以通过 调试 bar.call(o,1,2) 来验证
-
-变量对象 variable object 包含 let const 声明的变量或者常量
-但是注意TDZ 
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/16/说人话的深拷贝/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/16/说人话的深拷贝/" itemprop="url">说人话的深拷贝</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-16T16:55:30+08:00">
-                2019-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="类型判断方法"><a href="#类型判断方法" class="headerlink" title="类型判断方法"></a>类型判断方法</h2><pre><code>1. typeof
-
-2. instanceof
-
-3. Object.prototype.toString.call()
-
-4. 对象.constructor
-</code></pre><h2 id="typeof-7种类型"><a href="#typeof-7种类型" class="headerlink" title="typeof 7种类型"></a>typeof 7种类型</h2><pre><code>typeof 1 // number
-
-typeof &apos;a&apos; // string
-
-typeof true // boolean
-
-typeof undefined // undefined
-
-typeof function a(){} // function
-
-typeof {} // object
-
-typeof symbol() // symbol
-</code></pre><h2 id="instanceof-主要对象的细化"><a href="#instanceof-主要对象的细化" class="headerlink" title="instanceof 主要对象的细化"></a>instanceof 主要对象的细化</h2><pre><code>[] instanceof Array
-
-/1/g instanceof RegExp
-</code></pre><h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><pre><code>Object.prototype.toString.call([]) // &quot;[object Array]&quot;
-</code></pre><h2 id="深克隆的实现"><a href="#深克隆的实现" class="headerlink" title="深克隆的实现"></a>深克隆的实现</h2><pre><code>function deepClone(data){
-
-    // 1. typeof 非对象类型
-    // number string boolean undefined function  symbol
-
-    if (typeof data !== &apos;obejct&apos;) return data;
-
-    // 2. null
-    if (data === null) return data;
-
-    // 3. string number boolean包对象
-    if (data instanceof String) return new String(data);
-    if (data instanceof Number) return new Number(data);
-    if (data instanceof Boolean) return new Boolean(data);
-
-    // 4. 日期 正则
-    if (data instanceof Date) return new Date(data);
-    if (data instanceof RegExp) return new RegExp(data);
-
-    // 5. WeakSet WeakMap
-    if (data instanceof WeakSet) return data;
-    if (data instanceof WeakMap) return data;
-
-    // 6. Array Object Set Map
-    let cloner = new data.constructor();
-
-    // Set
-    if (data instanceof Set) {
-        return cloner = new Set([...data])
+btn.onclick = ts(function* () {
+    while (true) {
+        someThing(); // 执行了50毫秒
+        yield;
     }
-
-    // Map
-    if (data instanceof Map) {
-        for (let key of data.keys()) {
-            let cloneKey = deepClone(key);
-            cloner[cloneKey] = deepClone(data.get(key));
-        }
-        return cloner;
-    }
-
-    // Array Object
-
-    for (let key in data) {
-        if (data.hasOwnPropery(key)) {
-            cloner[key] = deepClone(data[key])
-        }
-    }
-
-    return cloner
-
+});
+上面代码我们写了一个死循环，但依然不会阻塞主线程，浏览器也不会卡死
+</code></pre><h2 id="基于生成器的ts实现原理"><a href="#基于生成器的ts实现原理" class="headerlink" title="基于生成器的ts实现原理"></a>基于生成器的ts实现原理</h2><p>通过前面的例子，我们会发现基于Generator的时间切片非常好用，但其实ts函数的实现原理非常简单，一个最简单的ts函数只需要九行代码。</p>
+<pre><code>function ts (gen) {
+if (typeof gen === &apos;function&apos;) gen = gen()
+if (!gen || typeof gen.next !== &apos;function&apos;) return
+return function next() {
+    const res = gen.next()
+    if (res.done) return
+    setTimeout(next)
 }
-</code></pre><h2 id="symbol-WeakSet-WeakMap"><a href="#symbol-WeakSet-WeakMap" class="headerlink" title="symbol WeakSet WeakMap"></a>symbol WeakSet WeakMap</h2><pre><code>symbol(&apos;1&apos;) === symbol(&apos;1&apos;) // false
+}
+</code></pre><p>代码虽然全部只有9行，关键代码只有3、4行，但这几行代码充分利用了事件循环机制以及Generator函数的特性。  </p>
+<p>创造出这样的代码我还是很开心的。  </p>
+<p>上面代码核心思想是：通过yield关键字可以将任务暂停执行，从而让出主线程的控制权；通过定时器可以将“未完成的任务”重新放在任务队列中继续执行。</p>
+<p>避免把任务分解的过于零碎<br>使用yield来切割任务非常方便，但如果切割的粒度特别细，反而效率不高。假设我们的任务执行100ms，最好的方式是切割成两个执行50ms的任务，<br>而不是切割成100个执行1ms的任务。假设被切割的任务之间的间隔为4ms，那么切割成100个执行1ms的任务的总执行时间为：</p>
+<p>(1 + 4) * 100 = 500ms<br>如果切割成两个执行时间为50ms的任务，那么总执行时间为：</p>
+<p>(50 + 4) * 2 = 108ms<br>可以看到，在不影响用户体验的情况下，下面的总执行时间要比前面的少了4.6倍。</p>
+<p>保证切割的任务刚好接近50ms，可以在用户使用yield时自行评估，也可以在ts函数中根据任务的执行时间判断是否应该一次性执行多个任务。</p>
+<p>我们将ts函数稍微改进一下：</p>
+<pre><code>function ts (gen) {
+if (typeof gen === &apos;function&apos;) gen = gen()
+if (!gen || typeof gen.next !== &apos;function&apos;) return
+    return function next() {
+        const start = performance.now()
+        let res = null
+        do {
+        res = gen.next()
+        } while(!res.done &amp;&amp; performance.now() - start &lt; 25);
 
- WeakSet WeakMap 不支持遍历
+        if (res.done) return
+        setTimeout(next)
+    }
+}
+</code></pre><p>现在我们测试下：</p>
+<pre><code>ts(function* () {
+const start = performance.now()
+while (performance.now() - start &lt; 1000) {
+    console.log(11)
+    yield
+}
+console.log(&apos;done!&apos;)
+})();
+</code></pre><p>这段代码在之前的版本中，在我的电脑上可以打印出 215 次 11，在后面的版本中可以打印出 6300 次 11，说明在总时间相同的情况下，可以执行更多的任务。</p>
+<p>再看另一个例子：</p>
+<pre><code>ts(function* () {
+for (let i = 0; i &lt; 10000; i++) {
+    console.log(11)
+    yield
+}
+console.log(&apos;done!&apos;)
+})();
+</code></pre><p>在我的电脑上，这段代码在之前的版本中，被切割成一万个小任务，总执行时间为 46秒，在之后的版本中，被切割成 52 个小任务，总执行时间为 1.5秒。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/12/web性能测试优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/12/web性能测试优化/" itemprop="url">web性能测试优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T09:44:59+08:00">
+                2019-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-lighthouse"><a href="#1-lighthouse" class="headerlink" title="1. lighthouse"></a>1. lighthouse</h2><pre><code>npm i -g lighthouse
+</code></pre><h2 id="2-FP、FCP、FMP与LCP"><a href="#2-FP、FCP、FMP与LCP" class="headerlink" title="2. FP、FCP、FMP与LCP"></a>2. FP、FCP、FMP与LCP</h2><pre><code>FP（全称“First Paint”，翻译为“首次绘制”） 是时间线上的第一个“时间点”
+
+它代表浏览器第一次向屏幕传输像素的时间，也就是页面在屏幕上首次发生视觉变化的时间
+
+FP不包含默认背景绘制，但包含非默认的背景绘制
+
+
+FCP（全称“First Contentful Paint”，翻译为“首次内容绘制”）
+它代表浏览器第一次向屏幕绘制 “内容”
+
+注意：只有首次绘制文本、图片（包含背景图）、非白色的canvas或SVG时才被算作FCP
+
+FP与FCP这两个指标之间的主要区别是：FP是当浏览器开始绘制内容到屏幕上的时候
+
+只要在视觉上开始发生变化，无论是什么内容触发的视觉变化，在这一刻，这个时间点，叫做FP
+
+相比之下，FCP指的是浏览器首次绘制来自DOM的内容。例如：文本，图片，SVG，canvas元素等，这个时间点叫FCP。
+
+FP和FCP可能是相同的时间，也可能是先FP后FCP
+</code></pre><h2 id="FMP"><a href="#FMP" class="headerlink" title="FMP"></a>FMP</h2><pre><code>FMP（全称“First Meaningful Paint”，翻译为“首次有效绘制”） 表示页面的“主要内容”开始出现在屏幕上的时间点。它是我们测量用户加载体验的主要指标。
+
+FMP本质上是通过一个算法来猜测某个时间点可能是FMP，所以有时候不准
+</code></pre><h2 id="LCP"><a href="#LCP" class="headerlink" title="LCP"></a>LCP</h2><pre><code>LCP（全称“Largest Contentful Paint”） 表示可视区“内容”最大的可见元素开始出现在屏幕上的时间点
+了解和测量网站真实的性能其实非常困难，像load和DOMContentLoaded不会告诉我们用户什么时候可以在屏幕上看到内容
+而FP和FCP又只能捕获整个渲染过程的最开始，FMP更好一点，但是它的算法比较复杂，而且前面说了，有时候不准
+根据W3C Web性能工作组的讨论和Google的研究，发现测量页面主要内容的可见时间有一种更精准且简单的方法是查看什么时候渲染最大元素
+</code></pre><h2 id="TTI"><a href="#TTI" class="headerlink" title="TTI"></a>TTI</h2><pre><code>TTI（全称“Time to Interactive”，翻译为“可交互时间”） 表示网页第一次 完全达到可交互状态 的时间点。可交互状态指的是页面上的UI组件是可以交互的
+
+（可以响应按钮的点击或在文本框输入文字等），不仅如此，此时主线程已经达到“流畅”的程度，主线程的任务均不超过50毫秒。
+
+TTI很重要，因为TTI可以让我们了解我们的产品需要多久可以真正达到“可用”的状态
+</code></pre><h2 id="TTFB"><a href="#TTFB" class="headerlink" title="TTFB"></a>TTFB</h2><pre><code>TTFB（全称“Time to First Byte”） 表示浏览器接收第一个字节的时间
+</code></pre><h2 id="FCI"><a href="#FCI" class="headerlink" title="FCI"></a>FCI</h2><pre><code>全称“First CPU Idle”） 是对TTI的一种补充，TTI可以告诉我们页面什么时候完全达到可用，但是我们不知道浏览器第一次可以响应用户输入是什么时候。
+我们不知道网页的“最小可交互时间”是多少，最小可交互时间是说网页的首屏已经达到了可交互的状态了，但整个页面可能还没达到。
+从名字也可以看出这个指标的意思，第一次CPU空闲，主线程空闲就代表可以接收用户的响应了。
+更通俗的理解TTI与FCI的区别：FCI代表浏览器真正的第一次可以响应用户的输入，而TTI代表浏览器已经可以持续性的响应用户的输入
+</code></pre><h2 id="FID"><a href="#FID" class="headerlink" title="FID"></a>FID</h2><pre><code>全称“First Input Delay”，翻译为“首次输入延迟”） 顾名思义，FID指的是用户首次与产品进行交互时，我们产品可以在多长时间给出反馈
+TTI可以告诉我们网页什么时候可以开始流畅地响应用户的交互，但是如果用户在TTI的时间内，没有与网页产生交互，那么TTI其实是影响不到用户的
+TTI是不需要用户参与的指标，但如果我们真的想知道TTI对用户的影响，我们需要FID。不同的用户可能会在TTI之前开始与网页产生交互
+也可能在TTI之后才与网页产生交互。所以对于不同的用户它的FID是不同的。如果在TTI之前用户就已经与网页产生了交互
+那么它的FID时间就比较长，而如果在TTI之后才第一次与网页产生交互，那么他的FID时间就短。
+
+捕获FID比较简单，我们只需要在网页的head标签里注册一个事件（click、mousedown、keydown、touchstart、pointerdown）
+然后在事件响应函数中使用当前时间减去事件对象被创建的时间即可
+
+performance.now() - event.timeStamp
+</code></pre><h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><pre><code>DCL 表示DomContentloaded事件触发的时间。
+L 表示onLoad事件触发的时间。
+DomContentloaded事件与onLoad事件的区别是，浏览器解析HTML这个操作完成后立刻触发DomContentloaded事件
+而只有页面所有资源都加载完毕后（比如图片，CSS），才会触发onLoad事件
+</code></pre><h2 id="Speed-Index"><a href="#Speed-Index" class="headerlink" title="Speed Index"></a>Speed Index</h2><pre><code>表示显示页面可见部分的平均时间（注意，是真正的可见，用户可以立马看见的，屏幕外的部分不算），数值越小说明速度越快
+它主要用于测量页面内容在视觉上填充的速度。通常会使用这个指标来进行性能的比较。比如优化前和优化后
+我们的产品与竞品的性能比较等。但是只能用于 粗略 的比较，不同的产品侧重点完全不同
+所以还是需要根据自己产品所侧重的方向，并结合其他指标来进行更详细的对比
 </code></pre>
           
         
@@ -834,7 +771,7 @@ typeof symbol() // symbol
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/08/进化/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/12/图片懒加载小结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -853,7 +790,7 @@ typeof symbol() // symbol
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/08/进化/" itemprop="url">进化</a></h1>
+                <a class="post-title-link" href="/2019/12/12/图片懒加载小结/" itemprop="url">图片懒加载小结</a></h1>
         
 
         <div class="post-meta">
@@ -865,8 +802,8 @@ typeof symbol() // symbol
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-08T21:44:11+08:00">
-                2019-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T09:14:31+08:00">
+                2019-12-12
               </time>
             
 
@@ -905,19 +842,41 @@ typeof symbol() // symbol
       
         
           
-            <h2 id="一份完备的事后分析报告"><a href="#一份完备的事后分析报告" class="headerlink" title="一份完备的事后分析报告"></a>一份完备的事后分析报告</h2><pre><code>1. 概述
+            <h2 id="1-如何判断图片出现在当前视口"><a href="#1-如何判断图片出现在当前视口" class="headerlink" title="1. 如何判断图片出现在当前视口"></a>1. 如何判断图片出现在当前视口</h2><p>监听window.scroll事件  通过clientTop，offsetTop，clientHeight 以及 scrollTop 都是一些元素高度的属性 判断是否出现当前视口</p>
+<pre><code>&lt;img data-src=&quot;imgurl.jpg&quot;&gt;
+首先设置一个临时属性 data-src，加载时再使用 src 代替 data-src
+</code></pre><h2 id="2-如何判断图片出现在了当前视口"><a href="#2-如何判断图片出现在了当前视口" class="headerlink" title="2. 如何判断图片出现在了当前视口"></a>2. 如何判断图片出现在了当前视口</h2><pre><code>Element.getBoundingClientRect() 方法返回元素的大小及其相对于视口的位置
 
-2. 从发现问题 调查问题 到 解决问题的时间线
+// clientHeight 代表当前视口的高度
+img.getBoundingClientRect().top &lt; document.documentElement.clientHeight
 
-3. 事件发生的主要原因
+监听 window.scroll 事件也优化  通过节流提高性能 一般使用 lodash.throttle 
+</code></pre><h2 id="3-如何判断图片出现在了当前视口"><a href="#3-如何判断图片出现在了当前视口" class="headerlink" title="3. 如何判断图片出现在了当前视口"></a>3. 如何判断图片出现在了当前视口</h2><pre><code>最新API IntersectionObserver 能够监听元素是否到了当前视口的事件，一步到位
 
-4. 影响和损失估计
+事件回调的参数是 IntersectionObserverEntry 的集合，代表关于是否在可见视口的一系列值
+其中，entry.isIntersecting 代表目标元素可见
 
-5. 立即解决问题的一系列措施
+const observer = new IntersectionObserver((changes) =&gt; {
+// changes: 目标元素集合
+changes.forEach((change) =&gt; {
+    // intersectionRatio
+    if (change.isIntersecting) {
+    const img = change.target
+    img.src = img.dataset.src
+    observer.unobserve(img)
+    }
+})
+})
 
-6. 预防事件再次发生的一系列措施
+observer.observe(img);
 
-7. 吸取经验教训
+IntersectionObserver 除了给图片做懒加载外，还可以对单页应用资源做预加载
+
+如在 next.js v9 中，会对视口内的资源做预加载，可以参考 next 9 production optimizations
+</code></pre><h2 id="4-loading-”lazy”"><a href="#4-loading-”lazy”" class="headerlink" title="4. loading=”lazy”"></a>4. loading=”lazy”</h2><pre><code>&lt;img src=&quot;celebration.jpg&quot; loading=&quot;lazy&quot; alt=&quot;...&quot; /&gt;
+&lt;iframe src=&quot;video-player.html&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;
+
+lazy还可以用在 iframe
 </code></pre>
           
         
@@ -966,7 +925,7 @@ typeof symbol() // symbol
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/08/javascript之美-mixin/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/05/js两大基石/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -985,7 +944,7 @@ typeof symbol() // symbol
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/08/javascript之美-mixin/" itemprop="url">javascript之美 mixin</a></h1>
+                <a class="post-title-link" href="/2019/12/05/js两大基石/" itemprop="url">js两大基石</a></h1>
         
 
         <div class="post-meta">
@@ -997,8 +956,8 @@ typeof symbol() // symbol
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-08T17:21:35+08:00">
-                2019-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T15:22:39+08:00">
+                2019-12-05
               </time>
             
 
@@ -1037,345 +996,27 @@ typeof symbol() // symbol
       
         
           
-            <h2 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * mixin的目标对象是上下文对象this</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> withCircle =  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.area = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  &#125;</span><br><span class="line">    <span class="keyword">this</span>.grow = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  &#125;</span><br><span class="line">    <span class="keyword">this</span>.shrink = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> withClickable =  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.hover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'hover'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.press = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'press'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.release = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'release'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.fire = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">      <span class="keyword">this</span>.action.fire();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> RoundButton = <span class="function"><span class="keyword">function</span> (<span class="params">radius, labal,aciton</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.radius = radius;</span><br><span class="line">    <span class="keyword">this</span>.labal = labal;</span><br><span class="line">    <span class="keyword">this</span>.aciton = aciton;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// mixin式绑定 将withCircle withClickable工具 </span></span><br><span class="line"><span class="comment">// 混入 掺入给RoundButton.prototype</span></span><br><span class="line"></span><br><span class="line">withCircle.call(RoundButton.prototype);</span><br><span class="line"></span><br><span class="line">withClickable.call(RoundButton.prototype);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 总结</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *  好处 </span></span><br><span class="line"><span class="comment"> *      轻量级的一站式函数服务 </span></span><br><span class="line"><span class="comment"> *      </span></span><br><span class="line"><span class="comment"> *      没有影响原型的constructor属性</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *      代码简洁  </span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *      this总是执行函数集的接受者而不是我们不需要的抽象对象</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *  坏处</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *  缺点</span></span><br><span class="line"><span class="comment"> *      </span></span><br><span class="line"><span class="comment"> *      mixin函数会覆盖目标对象碰巧与之重名的属性</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *      解决办法 为现有属性加锁 writable</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *        advice方法 就是面向切面编程</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">after</span>(<span class="params">name,fn</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>[name]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">            <span class="keyword">this</span>[name]();</span><br><span class="line">            fn.call(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">            fn.call(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * extend 只是简单复制 不是克隆</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">dest, source</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">        <span class="keyword">if</span> (source.hasOwnProperty(key)) &#123;</span><br><span class="line">            dest[key]= source[key];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/06/执行上下文-变量对象-作用域-闭包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/06/执行上下文-变量对象-作用域-闭包/" itemprop="url">执行上下文 变量对象 作用域 闭包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-06T10:33:47+08:00">
-                2019-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><pre><code>执行上下文 是 一个动态概念
-
-也就是说 只有在代码执行的时候生成
-</code></pre><h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><pre><code>1. 当前上下文中的所有的通过var声明的变量 不包括通过let const 强调一下 声明这两个字
-
-2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中
-
-3. 当前上下文中的所有函数声明 注意不包括函数表达式
-
-4. let const 声明变量在作用域上
-</code></pre><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><pre><code>作用域 是 一个 静态概念
-
-是在代码的编译阶段就生成的
-
-每一个函数在编译阶段就会添加一个[[scopes]]属性
-
-let const 声明变量 与 var 不同就在这里:
-
-    let const声明变量不会预解析 也就是不会保存到变量对象中
-
-    而是保存到一个作用域scope中 并且是 这个scope是块级作用域
-</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>没有this  就用函数声明的位置this
-
-没有argments 
-
-没有super new.targe
-
-不能new调用 没有[[constructor]]方法
-
-没有原型
-
-本质 箭头函数 使用 父级执行上下文
-
-所有就说明没有this 使用父级执行上下文中的this
-</code></pre><h2 id="call-apply-bind"><a href="#call-apply-bind" class="headerlink" title="call apply bind"></a>call apply bind</h2><pre><code>call apply 为了绑定函数执行上下文中this arments
-
-bind 为了绑定函数的执行上下文this argments 
-
-bind 返回一个新函数
-
-如果bind绑定arments 返回的新函数不能传参
-
-如果bind没有绑定arments 返回的新函数可以传参
-</code></pre><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><pre><code>当前执行上下文A中的变量对象和作用域中没有的变量
-
-而是调用父级们执行上下文中的变量对象或者scope 就形成 闭包
-</code></pre><h2 id="块级作用域-代码演示"><a href="#块级作用域-代码演示" class="headerlink" title="块级作用域 代码演示"></a>块级作用域 代码演示</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt;<span class="number">3</span>; index++) &#123;</span><br><span class="line">    arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">代码编译时候变成下面的代码</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt;<span class="number">2</span>; index++) &#123;</span><br><span class="line">    <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">    arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index + o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>执行上下文有一下情况会生成
-
-    1. 全局环境
-
-    2. 函数环境
-
-    3. eavl  依赖于执行位置
-
-    4. vm    全新
-
-    5. new Function   全新
-
-执行上下文一般包括含 变量对象  作用域  this
-
-执行栈中栈顶的执行上下文的变量对象 称之为 活动对象
-
-变量对象
-
-    argumets对象
-
-    var 声明变量
-
-    function 函数声明
-
-scope
-
-    let const 声明变量
-
-    私有属性 Parent 
-
-this
-
-    是给调用者影响函数执行的一个窗口
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//eval("console.log(a)");  // 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"console.log(a)"</span>);</span><br><span class="line"></span><br><span class="line">fn()  <span class="comment">// a is not defined</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/execution context.png" alt="execution context" title="Title">  </p>
-<p><img src="/images/execution-context-code.png" alt="execution-context-code" title="Title"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">理解块级作用域的代码</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let a 声明后</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/04/编程字体/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/04/编程字体/" itemprop="url">编程字体</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-04T22:56:43+08:00">
-                2019-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="编程字体"><a href="#编程字体" class="headerlink" title="编程字体"></a>编程字体</h2><pre><code>Ubuntu Mono
-
-Menlo
-
-Fira Code 
-
-Meslo
-
-Source Code Pro
-
-San Francisco Mono
-
-YaHei Consolas Hybrid
-
-Ubuntu Monospace
-
-Courier New
+            <h2 id="基石"><a href="#基石" class="headerlink" title="基石"></a>基石</h2><ol>
+<li><p>原型继承</p>
+<pre><code>对象没有类 原型委托
+</code></pre></li>
+<li><p>函数式编程</p>
+<pre><code>通过lambdas 和 闭包
+</code></pre></li>
+</ol>
+<h2 id="创建对象方法"><a href="#创建对象方法" class="headerlink" title="创建对象方法"></a>创建对象方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1= &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="built_in">Object</span>.create(prototype, &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="built_in">Object</span>.assign()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj4 = <span class="built_in">Object</span>.create()</span><br></pre></td></tr></table></figure>
+<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><pre><code>1. The `new` keyword is used to invoke a constructor. What it actually does is:
+
+2. Create a new instance
+
+3. Bind `this` to the new instance
+
+4. Reference the new object’s delegate [[Prototype]] to the object referenced by the constructor function’s `prototype` property.
+
+5. Reference the new object’s .constructor property to the constructor that was invoked.
+Names the object type after the constructor, which you’ll notice mostly in the debugging console. You’ll see `[Object Foo]`, for example, instead of `[Object object]`.
+
+6. Allows `instanceof` to check whether or not an object’s prototype reference is the same object referenced by the .prototype property of the constructor.
 </code></pre>
           
         
@@ -1424,7 +1065,7 @@ Courier New
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/闭包最终一击/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1443,7 +1084,7 @@ Courier New
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/30/CORS跨域请求之简单请求与非简单请求/" itemprop="url">CORS跨域请求之简单请求与非简单请求</a></h1>
+                <a class="post-title-link" href="/2019/12/04/闭包最终一击/" itemprop="url">闭包最终一击</a></h1>
         
 
         <div class="post-meta">
@@ -1455,8 +1096,8 @@ Courier New
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T16:04:52+08:00">
-                2019-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T14:49:18+08:00">
+                2019-12-04
               </time>
             
 
@@ -1495,38 +1136,218 @@ Courier New
       
         
           
-            <h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><pre><code>就是使用设定的请求方式请求数据
-</code></pre><h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><pre><code>则是在使用设定的请求方式请求数据之前
-先发送一个OPTIONS请求 
-看服务端是否允许客户端发送非简单请
-只有&quot;预检&quot;通过后才会再发送一次请求用于数据传输
-</code></pre><h2 id="简单请求与非简单请求的区别"><a href="#简单请求与非简单请求的区别" class="headerlink" title="简单请求与非简单请求的区别"></a>简单请求与非简单请求的区别</h2><pre><code>* 请求方式:HEAD,GET,POST
-* 请求头信息:
-    Accept
-    Accept-Language
-    Content-Language
-    Last-Event-ID
-    Content-Type 对应的值是以下三个中的任意一个
-        application/x-www-form-urlencoded
-        multipart/form-data
-        text/plain
+            <h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><pre><code>1. 全局代码  默认环境执行
 
-只有同时满足以上两个条件时,才是简单请求,否则为非简单请求
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据
+2. 函数代码  生成一个函数上下文
 
-服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
+3. let const花括号  块级作用域
+</code></pre><h2 id="函数执行上下文"><a href="#函数执行上下文" class="headerlink" title="函数执行上下文"></a>函数执行上下文</h2><pre><code>1. js执行一个函数 首先创建一个新执行上下文  用于执行函数内部代码的局部上下文
 
-“预检”请求时，允许请求方式则需服务器设置响应头：Access-Control-Request-Method
+2. 局部上下文会有自己变量集合 同时这些变量对上下文也是局部的
 
-“预检”请求时，允许请求头则需服务器设置响应头：Access-Control-Request-Headers
+3. 新创建的执行上下文会处在调用栈最顶层
 
-“预检”缓存时间，服务器设置响应头：Access-Control-Max-Age
+4. 调用栈可以认为是保存程序执行的上下文的机器
 
-虽然可以通过设置响应头和响应方式等支持非简单请求
+如果函数执行中遇到 return 或者 } 就认为函数结束了
 
-但是不到万不得已的情况,不能允许客户端发送非简单请求
+函数结束之后会发生下面的步骤:
 
-因为非简单请求会使服务器比简单请求的多一倍的压力
+    1. 函数的局部执行上下文会被从调用栈抛出
+
+    2. 函数将返回值返给调用执行上文
+
+    3. 调用执行上下文也是一个执行上下文只是函数调用者 可能是全局上下文或局部上下文
+
+    4. 调用执行上下文来处理这个返回值
+
+    5. 如果没有返回值 默认是undefined
+
+    6. 局部执行上下文会被销毁
+
+    7. 局部执行上下文的结果是 局部执行上下文中声明局部变量也会被销毁
+
+    8. 这些变量将不会被找到了 这也是为何被称之为 局部变量
+</code></pre><h2 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h2><pre><code>1: let a = 3
+2: function addTwo(x) {
+3:   let ret = x + 2
+4:   return ret
+5: }
+6: let b = addTwo(a)
+7: console.log(b)
+
+
+第一个行 创建全局变量a  并且赋值为3
+
+第2行至第5行 在全局执行上下文中声明一个全局变量 addTwo 
+并且一个函数赋值给addTwo
+
+addTwo函数内代码没有被执行
+
+第6行 在全局执行上下文创建一个变量b 值为undefined
+
+这时候遇见一个赋值操作符 准备将一个新值赋给变量b
+
+再进一步是一个函数调用  函数调用如果有return返回值给b 如果没有就是undefined
+
+现在我们看函数addTwo调用中过程
+
+注意javascript函数调用过程的参数 字面量是值传递方式 对象是引用方式传值
+
+在执行函数执行过程第一步先创建新的局部执行上下文 我们起一个addTwo execution contex的名字 这个执行上下文压入到调用栈中 
+
+函数addTwo执行的局部执行上下文创建后第一件事情是 查看函数的参数
+在addTwo函数中有一个参数x 并且值为3 
+
+接着addTwo执行上下文会查找var声明变量和函数声明 进行预解析
+
+变量ret用let关键字声明的 所以不会预解析
+
+执行到第3行时候 首先声明了变量ret 并且初始值为undefined 在局部执行上线文中
+
+接着在局部执行上下文中查找变量x 并且查找到了 其值为3
+
+第二个操作数是2  运算之后为5 赋值给变量ret
+
+第4行是返回变量ret 在局部执行上下文查找ret 找到之后 返回其值 5
+
+addTwo函数将5返回之后 addTwo就执行完毕了
+
+函数addTwo执行完毕之后 变量x 和 ret 也会消失 不再存在 
+
+对应创建创建的局部执行上下文也会销毁 同时会被调用栈
+
+addTwo局部执行上下文会将返回值 返给 调用执行上下文
+
+此时调用执行上下文是全局执行上下文 因为addTwo被调用是从全局执行上文中调用的
+
+这是再继续执行就是 将addTwo局部执行上下文的返回值 赋值给变量b
+</code></pre><h2 id="词法作用域-lexical-scope"><a href="#词法作用域-lexical-scope" class="headerlink" title="词法作用域 lexical scope"></a>词法作用域 lexical scope</h2><p>理解词法作用域 我们看下面的例子</p>
+<pre><code>1: let val1 = 2
+2: function multiplyThis(n) {
+3:   let ret = n * val1
+4:   return ret
+5: }
+6: let multiplied = multiplyThis(6)
+7: console.log(&apos;example of scope:&apos;, multiplied)
+
+在这里主要局部执行上下文中变量和全局执行上下文中变量是如何查找的
+
+如果在局部执行上下文中没有发现的变量 可以在调用执行上下文中继续查找
+
+然后不断向上查找 一直到全局执行上下文
+
+1. 全局执行上下文声明变量x 并赋值2
+
+2. 2-5行声明一个新变量 multiThis 并且赋值一个函数
+
+3. 在全局执行上下文中声明变量multiplied
+
+4. 找到全局执行上下文中变量multiThis 执行这个函数变量 赋值参数为6
+
+5. 函数调用 会 生成一个新执行上下文 并且这是一个局部执行上下文
+
+6. 在局部执行上下文声明一个变量n 并赋值6
+
+7. 声明变量ret 
+
+8. 执行乘法运算 n是局部执行上下文中的变量可以找到 val1在局部执行上下文没有
+然后去调用执行上下文继续查找 一直到全局执行上下文
+
+9. multiplyThis执行完毕后 销毁局部执行上下文和局部变量 ret n
+
+10. 将返回值 返回给 调用执行上下文
+
+函数有权访问调用执行上下文中变量的现象叫做 词法作用域 ## 这是原作者的看法
+我认为词法作用域 一个函数访问权限取决于函数定义 而不是执行的时候
+
+词法作用域 是根据 函数声明的位置 决定 函数访问父级作用域的现象
+
+而不是函数执行位置来决定
+</code></pre><h2 id="函数返回函数"><a href="#函数返回函数" class="headerlink" title="函数返回函数"></a>函数返回函数</h2><pre><code>1: let val = 7
+2: function createAdder() {
+3:   function addNumbers(a, b) {
+4:     let ret = a + b
+5:     return ret
+6:   }
+7:   return addNumbers
+8: }
+9: let adder = createAdder()
+10: let sum = adder(val, 8)
+11: console.log(&apos;example of function returning a function: &apos;, sum)
+
+1. 在全局执行上下文中声明变量 val 并且赋值给7
+
+2. 在全局执行上下文中声明一个变量createAdder 并且将一个函数赋值这个变量
+
+3. 第9行 在全局变量声明变量adder 临时赋值undefined给这个变量adder
+
+4. 接着执行函数createAdder 这时候去全局执行上下文寻找变量createAdder 然后调用
+
+5. 函数调用 一个新的局部执行上下文被创建 然后在局部执行上下文创建局部变量 v8将新局部执行上下文压入调用栈
+
+6. 接着是函数声明  创建一个局部变量addNumbers在局部执行上下文中 addNumbers仅存在局部执行上下文中
+   addNumbers存储一个函数
+
+7. 第7行返回变量addNumbers存储的值  一个函数可以返回任何 也包含函数 
+   createAdder函数执行完毕后 与其对应的执行上下文 也会被从调用栈中移除
+
+8. 第10行中 在全局上下文中创建一个新变量 sum 临时赋值为undefined
+
+...
+</code></pre><h2 id="closure"><a href="#closure" class="headerlink" title="closure"></a>closure</h2><pre><code>理解闭包 首先能懂两个概念 词法作用域 和  执行上下文
+
+函数 与对其状态-即词法环境lexical environment的引用共同构成闭包（closure）
+
+也就是说，闭包可以让你从内部函数访问外部函数作用域。
+
+在JavaScript，函数在每次创建时生成闭包
+
+总结 闭包 是 对函数与对其词法作用域的引用
+
+1: function createCounter() {
+2:   let counter = 0
+3:   const myFunction = function() {
+4:     counter = counter + 1
+5:     return counter
+6:   }
+7:   return myFunction
+8: }
+9: const increment = createCounter()
+10: const c1 = increment()
+11: const c2 = increment()
+12: const c3 = increment()
+13: console.log(&apos;example increment&apos;, c1, c2, c3)
+
+1. 全局作用域中创建一个函数变量createCounter
+
+2. 全局作用域中创建一个常量 increment 初始值undefined
+
+3. 执行createCounter函数 创建一个局部执行上下文 返回一个函数给变量increment
+
+4. 在创建新的局部执行上下文中 声明一个新变量counter 赋值0
+
+5. 接着声明一个常量myFunction 并将一个函数赋值给常量myFunction
+
+6. 将常量myFunction的值 一个函数 赋值给 变量increment
+
+7. 同时局部作用域中 myFunction 和 counter 被销毁 // 原作者的idea
+
+8. 第10行 创建一个变量c1  寻找increment函数变量 并执行
+
+9. increment函数执行 会创建一个新局部执行上下文  寻找变量counter 在当前局部执行上下文
+
+10. 在这个局部执行上下文中没有声明任何变量  全局执上下文也没有counter这个变量
+
+11. 这时候该闭包亮相了  闭包中包含变量counter 并且初始值为0
+
+...
+</code></pre><h2 id="重要的闭包"><a href="#重要的闭包" class="headerlink" title="重要的闭包"></a>重要的闭包</h2><pre><code>let c = 4
+const addX = x =&gt; n =&gt; n + x
+const addThree = addX(3)
+let d = addThree(c)
+console.log(&apos;example partial application&apos;, d)
+</code></pre><h2 id="自己总结"><a href="#自己总结" class="headerlink" title="自己总结"></a>自己总结</h2><pre><code>闭包 是词法声明位置的词法作用域和调用作用域共同的引用
 </code></pre>
           
         
@@ -1575,7 +1396,7 @@ Courier New
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/22/虚拟机网络模式/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/13-npm-tricks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1594,7 +1415,7 @@ Courier New
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/22/虚拟机网络模式/" itemprop="url">虚拟机网络模式</a></h1>
+                <a class="post-title-link" href="/2019/12/04/13-npm-tricks/" itemprop="url">13-npm-tricks</a></h1>
         
 
         <div class="post-meta">
@@ -1606,8 +1427,8 @@ Courier New
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-22T00:21:13+08:00">
-                2019-03-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T13:47:10+08:00">
+                2019-12-04
               </time>
             
 
@@ -1646,82 +1467,523 @@ Courier New
       
         
           
-            <h2 id="虚拟机有三种网络模式"><a href="#虚拟机有三种网络模式" class="headerlink" title="虚拟机有三种网络模式"></a>虚拟机有三种网络模式</h2><pre><code>1. 桥接
+            <h2 id="1-基本快捷键"><a href="#1-基本快捷键" class="headerlink" title="1. 基本快捷键"></a>1. 基本快捷键</h2><pre><code>初始化  npm i
 
-2. NAT
+测试   npm t
 
-3. Host-Only
-</code></pre><h2 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h2><pre><code>桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接
+帮助   npm -h 
 
-物理网卡和虚拟网卡在拓扑图上处于同等地位
+全局   npm -g
 
-那么物理网卡和虚拟网卡就相当于处于同一个网段
+开发依赖  npm -D 
 
-虚拟交换机就相当于一台现实网络中的交换机
+初始化默认 npm init -y / npm init -f 
 
-所以两个网卡的IP地址也要设置为同一网段   
-</code></pre><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><pre><code>NAT模式中  就是让虚拟机借助NAT(网络地址转换)功能
+安装默认是 npm install --save -S 
 
-通过宿主机器所在的网络来访问公网
+--no-save
+</code></pre><h2 id="2-少用快捷键"><a href="#2-少用快捷键" class="headerlink" title="2. 少用快捷键"></a>2. 少用快捷键</h2><pre><code>可选保存    --save-optional . Shortcut: -O
 
-NAT模式中   虚拟机的网卡和物理网卡的网络 不在同一个网络
+保存精确版本 --save-exact. Shortcut: -E
+</code></pre><h2 id="3-The-Root-Shortcut"><a href="#3-The-Root-Shortcut" class="headerlink" title="3. The Root Shortcut"></a>3. The Root Shortcut</h2><pre><code>package.json main字段保存是 入口文件
+</code></pre><h2 id="4-设置npm-init-默认值"><a href="#4-设置npm-init-默认值" class="headerlink" title="4. 设置npm init 默认值"></a>4. 设置npm init 默认值</h2><pre><code>npm config set init.author.name  &quot;Joe Bloggs&quot;
+npm config set init.author.email &quot;joebloggs@gmail.com&quot;
+npm config set init.author.url   &quot;joebloggs.com&quot;
+npm config set init.license      &quot;MIT&quot;
 
-虚拟机的网卡  是在vmware提供的一个虚拟网络
+npm config edit
 
-NAT和桥接的比较:
+npm config edit    -g
+</code></pre><h2 id="5-跨平台兼容的脚本"><a href="#5-跨平台兼容的脚本" class="headerlink" title="5. 跨平台兼容的脚本"></a>5. 跨平台兼容的脚本</h2><pre><code>通过 cross-env 包
 
-    1   NAT模式和桥接模式虚拟机都可以上外网
+npm i -D cross-env
 
-    2   由于NAT的网络在vmware提供的一个虚拟网络里
-        所以局域网其他主机是无法访问虚拟机的  而宿主机可以访问虚拟机
-        虚拟机可以访问局域网的所有主机
-        因为真实的局域网相对于NAT的虚拟网络
-        就是NAT的虚拟网络的外网
+{
+    &quot;scripts&quot;: {
+        &quot;build&quot;: &quot;cross-env NODE_ENV=production webpack --config build/webpack.config.js&quot;
+    }
+}
 
-    3   桥接模式下 多个虚拟机之间可以互相访问
-        NAT模式下 多个虚拟机之间也可以相互访问
+rimraf can be installed globally to run cross-platform scripts
+The UNIX command rm -rf for node.
 
-如果你建一个虚拟机 只是给自己用 不需要给局域网其他人用  那么可以选择NAT
+ShellJS is a portable implementation of Unix shell commands on top of the Node.js API
+</code></pre><h2 id="6-并行运行脚本"><a href="#6-并行运行脚本" class="headerlink" title="6. 并行运行脚本"></a>6. 并行运行脚本</h2><pre><code>1. &amp;&amp;  
 
-毕竟NAT模式下的虚拟系统的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP服务器提供的
+2. concurrently 
 
-只要虚拟机的网路配置是DHCP  那么你不需要进行任何其他的配置
+3. npm-run-all 
 
-只需要宿主机器能访问互联网即可  就可以让虚拟机联网了    
-</code></pre><h2 id="Host-Only"><a href="#Host-Only" class="headerlink" title="Host-Only"></a>Host-Only</h2><pre><code>在Host-Only模式下 虚拟网络是一个全封闭的网络
+npm i -D concurrently
+{
+    &quot;start&quot;: &quot;concurrently \&quot;command1 arg\&quot; \&quot;command2 arg\&quot;&quot;
+}
+</code></pre><h2 id="7-运行脚本在不同文件夹"><a href="#7-运行脚本在不同文件夹" class="headerlink" title="7. 运行脚本在不同文件夹"></a>7. 运行脚本在不同文件夹</h2><pre><code>有时候, 在一个app有多个package.json在不同文件夹中
+如果在根目录下访问这些ackage.json中的脚本 而不是通过指定路径的方式
+就是很方便 下面这种两种方法可以解决
 
-它唯一能够访问的就是主机
+1. cd folder &amp;&amp; npm start &amp;&amp; cd ..
 
-其实Host-Only网络和NAT网络很相似 不同的地方就是Host-Only网络没有NAT服务
+2. 优雅方式是用 --prefix
 
-所以虚拟网络不能连接到Internet
+    npm start --prefix path/to/your/folder
 
-主机和虚拟机之间的通信是通过VMware Network Adepter VMnet1虚拟网卡来实现的
+    如果同时启动前后端文件夹中脚本
 
-Host-Only的宗旨就是建立一个与外界隔绝的内部网络 来提高内网的安全性
+    &quot;start&quot;: &quot;concurrently \&quot;(npm start --prefix client)\&quot; \&quot;(npm start --prefix server)\&quot;&quot;
+</code></pre><h2 id="8-端口准备完毕后运行脚本"><a href="#8-端口准备完毕后运行脚本" class="headerlink" title="8. 端口准备完毕后运行脚本"></a>8. 端口准备完毕后运行脚本</h2><pre><code>Electron打开页面 等待react工程启动完毕后
 
-这个功能或许对普通用户来说没有多大意义
+&quot;dev&quot;: &quot;concurrently \&quot;cross-env BROWSER=none npm run start\&quot; \&quot;wait-on http://localhost:3000 &amp;&amp; electron .\&quot;&quot;
 
-但大型服务商会常常利用这个功能
+另外，React默认会打开一个浏览器窗口，但是对于Electron子开发而言，这是不必要的。 我们可以通过传递环境变量BROWSER=none来禁用此行为，该变量前面带有cross-env以实现跨平台兼容性
+</code></pre><h2 id="9-列出并选择可选的脚本"><a href="#9-列出并选择可选的脚本" class="headerlink" title="9. 列出并选择可选的脚本"></a>9. 列出并选择可选的脚本</h2><pre><code>安装 npm i -g ntl
 
-如果你想为VMnet1网段提供路由功能
+ntl 会列出package.json中的脚本
+</code></pre><h2 id="10-Run-Pre-and-Post-Scripts"><a href="#10-Run-Pre-and-Post-Scripts" class="headerlink" title="10. Run Pre and Post Scripts"></a>10. Run Pre and Post Scripts</h2><pre><code>prebuild and postbuildwhich allow you to define code to run either before or after your build script
 
-那就需要使用RRAS    而不能使用XP或2000的ICS
+in fact pre and post can be added before any script, including custom ones
+</code></pre><h2 id="11-Control-Your-App’s-Version"><a href="#11-Control-Your-App’s-Version" class="headerlink" title="11. Control Your App’s Version"></a>11. Control Your App’s Version</h2><pre><code>npm version plus major , minor or patch
 
-因为ICS会把内网的IP地址改为192.168.0.1
+// 1.0.0 当前版本
 
-但虚拟机是不会给VMnet1虚拟网卡分配这个地址的
+npm version patch
+// 1.0.1
 
-那么主机和虚拟机之间就不能通信了
-</code></pre><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><pre><code>在VMware的3中网络模式中 NAT模式是最简单的
+npm version minor
+// 1.1.0
 
-基本不需要手动配置IP地址等相关参数 至于桥接模式则需要额外的IP地址
+npm version major
+// 2.0.0
 
-如果是在内网环境中还很容易
+{
+    &quot;predeploy&quot;: &quot;npm version patch&quot;
+}
+</code></pre><h2 id="12-Edit-package-json-from-the-Command-Line"><a href="#12-Edit-package-json-from-the-Command-Line" class="headerlink" title="12. Edit package.json from the Command Line"></a>12. Edit package.json from the Command Line</h2><pre><code>npm install -g json
 
-如果是ADSL宽带就比较麻烦了
+json -I -f package.json -e &apos;this.scripts.foo=&quot;bar&quot;&apos;
+</code></pre><h2 id="13-Set-and-Open-Your-Repository-Automatically"><a href="#13-Set-and-Open-Your-Repository-Automatically" class="headerlink" title="13. Set and Open Your Repository Automatically"></a>13. Set and Open Your Repository Automatically</h2><pre><code>获取远程仓库地址
 
-ISP一般是不会大方的多提供一个公网IP的
+    git config --get remote.origin.url
+
+package.json中添加仓库地址
+
+json -I -f package.json -e &quot;this.repository=\&quot;$(git config --get remote.origin.url)\&quot;&quot;
+</code></pre><h2 id="13-Create-a-Custom-npm-init-Script"><a href="#13-Create-a-Custom-npm-init-Script" class="headerlink" title="13. Create a Custom npm init Script"></a>13. Create a Custom npm init Script</h2><pre><code>npm config set init-module ~\.npm-init.js
+
+.npm-init.js
+
+    module.exports = {
+        name: prompt(&apos;package name&apos;, basename || package.name),
+        version: prompt(&apos;version&apos;, &apos;0.0.0&apos;),
+        decription: prompt(&apos;description&apos;, &apos;&apos;),  
+        main: prompt(&apos;entry point&apos;, &apos;index.js&apos;),
+        repository: prompt(&apos;git repository&apos;, &apos;&apos;),
+        keywords: prompt(function (s) { return s.split(/\s+/) }),
+        author: prompt(&apos;author&apos;, &apos;Joe Bloggs &lt;joe.bloggs@gmail.com&gt; (joebloggs.com)&apos;),
+        license: prompt(&apos;license&apos;, &apos;ISC&apos;)
+    }
+</code></pre><h2 id="14-Push-Your-First-Commit-to-GitHub-with-a-Custom-npm-init-Script"><a href="#14-Push-Your-First-Commit-to-GitHub-with-a-Custom-npm-init-Script" class="headerlink" title="14. Push Your First Commit to GitHub with a Custom npm init Script"></a>14. Push Your First Commit to GitHub with a Custom npm init Script</h2><pre><code>const { execSync } = require(&apos;child_process&apos;);
+
+function run(func) {
+    console.log(execSync(func).toString())
+}
+
+repository: prompt(&apos;github repository url&apos;, &apos;&apos;, function (url) {
+    if (url) {
+        run(&apos;touch README.md&apos;);
+        run(&apos;git init&apos;);
+        run(&apos;git add README.md&apos;);
+        run(&apos;git commit -m &quot;first commit&quot;&apos;);
+        run(`git remote add origin ${url}`);
+        run(&apos;git push -u origin master&apos;);
+    }
+    return url;
+})
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/自执行匿名函数本质/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/04/自执行匿名函数本质/" itemprop="url">自执行匿名函数本质</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T11:17:41+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/javascript4种语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/03/javascript4种语句/" itemprop="url">javascript4种语句</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T17:06:43+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-空语句"><a href="#1-空语句" class="headerlink" title="1. 空语句"></a>1. 空语句</h2><pre><code>用一个; 表示空语句
+var litmus = &apos;neutral&apos;;
+var pH; 
+
+if(pH&gt;0 &amp;&amp; pH&lt;7)
+    litmus = &apos;acidic&apos;;
+else if(pH===7)
+    ;       /* empty statement */
+else if(pH&gt;7 &amp;&amp; pH&lt;15)
+    litmus = &apos;basic&apos;;
+else
+    throw &quot;Invalid pH value&quot;;
+</code></pre><h2 id="2-debugger语句"><a href="#2-debugger语句" class="headerlink" title="2. debugger语句"></a>2. debugger语句</h2><h2 id="3-labeled语句"><a href="#3-labeled语句" class="headerlink" title="3. labeled语句"></a>3. labeled语句</h2><pre><code>break continue
+
+goto
+</code></pre><h2 id="4-with语句"><a href="#4-with语句" class="headerlink" title="4. with语句"></a>4. with语句</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/" itemprop="url">使用ES6符号隐藏对象属性/属性的后备变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T16:43:19+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="The-Problem-Hiding-The-Backing-Variable"><a href="#The-Problem-Hiding-The-Backing-Variable" class="headerlink" title="The Problem: Hiding The Backing Variable"></a>The Problem: Hiding The Backing Variable</h2><pre><code>1. this._foo 
+</code></pre><h2 id="Hiding-Via-Closures"><a href="#Hiding-Via-Closures" class="headerlink" title="Hiding Via Closures"></a>Hiding Via Closures</h2><pre><code>function defineProperty(obj, key, value) {
+    Object.defineProperty(obj, key, {
+        get() {
+            return value;
+        },
+        set(newValue) {
+            value = newValue;
+        }
+    })
+</code></pre><h2 id="Hiding-The-Backing-Variable-With-ES6-Symbols"><a href="#Hiding-The-Backing-Variable-With-ES6-Symbols" class="headerlink" title="Hiding The Backing Variable With ES6 Symbols"></a>Hiding The Backing Variable With ES6 Symbols</h2><pre><code>Symbol(“foo”)
+
+Object.getOwnPropertySymbols() returns an array of Symbols that are stored on the object
 </code></pre>
           
         
@@ -1761,7 +2023,7 @@ ISP一般是不会大方的多提供一个公网IP的
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1807,7 +2069,7 @@ ISP一般是不会大方的多提供一个公网IP的
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

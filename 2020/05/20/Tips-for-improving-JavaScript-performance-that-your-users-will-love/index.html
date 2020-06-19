@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. Use local variables使用本地变量 禁止全局变量 2. Use browser cache使用浏览器缓存 localStorage sessionStorage  indexedDB WebSQL Cookiesmanifest.jsonCacheStorage 接口表示 Cache 对象的存储。它提供了一个 ServiceWorker 、其它类型worker或者 windo">
+<meta name="keywords" content="javascript 前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tips for improving JavaScript performance that your users will love">
+<meta property="og:url" content="http://jsonload.com/2020/05/20/Tips-for-improving-JavaScript-performance-that-your-users-will-love/index.html">
+<meta property="og:site_name" content="killsos">
+<meta property="og:description" content="1. Use local variables使用本地变量 禁止全局变量 2. Use browser cache使用浏览器缓存 localStorage sessionStorage  indexedDB WebSQL Cookiesmanifest.jsonCacheStorage 接口表示 Cache 对象的存储。它提供了一个 ServiceWorker 、其它类型worker或者 windo">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-21T01:29:36.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tips for improving JavaScript performance that your users will love">
+<meta name="twitter:description" content="1. Use local variables使用本地变量 禁止全局变量 2. Use browser cache使用浏览器缓存 localStorage sessionStorage  indexedDB WebSQL Cookiesmanifest.jsonCacheStorage 接口表示 Cache 对象的存储。它提供了一个 ServiceWorker 、其它类型worker或者 windo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jsonload.com/2020/05/20/Tips-for-improving-JavaScript-performance-that-your-users-will-love/">
+
+
+
+
+
+  <title>Tips for improving JavaScript performance that your users will love | killsos</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">killsos</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人情似水分高下 世事如云任卷舒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/05/20/Tips-for-improving-JavaScript-performance-that-your-users-will-love/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Tips for improving JavaScript performance that your users will love</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-20T17:56:32+08:00">
+                2020-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Use-local-variables"><a href="#1-Use-local-variables" class="headerlink" title="1. Use local variables"></a>1. Use local variables</h2><p>使用本地变量 禁止全局变量</p>
+<h2 id="2-Use-browser-cache"><a href="#2-Use-browser-cache" class="headerlink" title="2. Use browser cache"></a>2. Use browser cache</h2><p>使用浏览器缓存 localStorage sessionStorage  indexedDB WebSQL Cookies<br>manifest.json<br>CacheStorage 接口表示 Cache 对象的存储。它提供了一个 ServiceWorker 、<br>其它类型worker或者 window 范围内可以访问到的所有命名cache的主目录<br>applicationCache 返回该window 中的应用缓存对象的一个引用。</p>
+<h2 id="3-缓存DOM"><a href="#3-缓存DOM" class="headerlink" title="3. 缓存DOM"></a>3. 缓存DOM</h2><h2 id="4-避免递归调用"><a href="#4-避免递归调用" class="headerlink" title="4. 避免递归调用"></a>4. 避免递归调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">调用栈是有限的资源，如果我们递归地调用函数并且我们不小心，很容易导致栈溢出。</span><br><span class="line">最小化此问题的一种方法是使用ES6尾部调用优化。</span><br><span class="line">使用尾部调用优化，如果函数中的最后一个表达式是对另一个函数的调用，则引擎将优化调用堆栈以防止其增长。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function doA(a) &#123;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br><span class="line">function doB(b) &#123;</span><br><span class="line">    return doA( b + 1 ); //tail call</span><br><span class="line">&#125;</span><br><span class="line">function foo() &#123;</span><br><span class="line">    return 20 + doB(10); //not tail call</span><br><span class="line">&#125;</span><br><span class="line">foo(); // 31</span><br></pre></td></tr></table></figure>
+<h2 id="5-Use-XMLHttpRequest-fetch-or-similar"><a href="#5-Use-XMLHttpRequest-fetch-or-similar" class="headerlink" title="5. Use XMLHttpRequest, fetch or similar"></a>5. Use XMLHttpRequest, fetch or similar</h2><h2 id="6-Implement-Event-Delegation"><a href="#6-Implement-Event-Delegation" class="headerlink" title="6. Implement Event Delegation"></a>6. Implement Event Delegation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">事件委托</span><br></pre></td></tr></table></figure>
+<h2 id="7-Minimize-and-combine-your-code-into-modules"><a href="#7-Minimize-and-combine-your-code-into-modules" class="headerlink" title="7. Minimize and combine your code into modules"></a>7. Minimize and combine your code into modules</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">我们可以将应用程序的组件捆绑为* .js文件，并通过javascript最小化工具（例如uglify-js）将其传递给源代码，</span><br><span class="line">这些工具从源代码中删除所有不必要的字符，而无需更改其功能。</span><br><span class="line">缩小极大地提高了站点速度和可访问性。</span><br><span class="line">这对于通过有限数据计划或低带宽访问您的网站的用户也很有用</span><br></pre></td></tr></table></figure>
+<h2 id="8-Use-Top-Level-Await-feature"><a href="#8-Use-Top-Level-Await-feature" class="headerlink" title="8. Use Top Level Await feature"></a>8. Use Top Level Await feature</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 9. 小心添加不必要的依赖项</span><br><span class="line"></span><br><span class="line">## 10. Use web workers for intensive work</span><br></pre></td></tr></table></figure>
+<p>Web Workers允许您生成新线程并将任务委派给这些线程以提高性能。<br>这样，通常会阻塞其他作业的成本任务会传递给工作人员，<br>并且主线程可以在不受成本任务阻塞的情况下运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 11. Use a Javascript file bundling tool</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 12. Tools to detect problems</span><br></pre></td></tr></table></figure>
+<p>在Chrome浏览器中，您可以使用“审核”标签，以帮助您识别和修复影响网站性能，<br>可访问性和用户体验的常见问题。<br>诸如PageSpeed Insights之类的在线工具也可以帮助您分析您的网站</p>
+<p>以使用命令npm audit来检测正在使用的程序包的问题</p>
+<p><code>`</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/20/Introduction-to-JavaScript-Symbol/" rel="next" title="Introduction to JavaScript Symbol">
+                <i class="fa fa-chevron-left"></i> Introduction to JavaScript Symbol
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/04/The-Top-6-JavaScript-Features-From-ES2020/" rel="prev" title="The Top 6 JavaScript Features From ES2020">
+                The Top 6 JavaScript Features From ES2020 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">killsos.ql@gmail.com</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Use-local-variables"><span class="nav-number">1.</span> <span class="nav-text">1. Use local variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Use-browser-cache"><span class="nav-number">2.</span> <span class="nav-text">2. Use browser cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-缓存DOM"><span class="nav-number">3.</span> <span class="nav-text">3. 缓存DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-避免递归调用"><span class="nav-number">4.</span> <span class="nav-text">4. 避免递归调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Use-XMLHttpRequest-fetch-or-similar"><span class="nav-number">5.</span> <span class="nav-text">5. Use XMLHttpRequest, fetch or similar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Implement-Event-Delegation"><span class="nav-number">6.</span> <span class="nav-text">6. Implement Event Delegation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Minimize-and-combine-your-code-into-modules"><span class="nav-number">7.</span> <span class="nav-text">7. Minimize and combine your code into modules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Use-Top-Level-Await-feature"><span class="nav-number">8.</span> <span class="nav-text">8. Use Top Level Await feature</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">killsos.ql@gmail.com</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

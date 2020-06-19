@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="设计模式123软件设计模式是软件设计中给定上下文中常见问题的通用的、可重用的解决方案设计模式的价值在于更好地组织我们当前的代码并使将来的迭代更容易。 Strategy Pattern 策略模式12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565">
+<meta name="keywords" content="javascript 前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4 Useful JavaScript Design Patterns You Should Know">
+<meta property="og:url" content="http://jsonload.com/2020/05/12/4-Useful-JavaScript-Design-Patterns-You-Should-Know/index.html">
+<meta property="og:site_name" content="killsos">
+<meta property="og:description" content="设计模式123软件设计模式是软件设计中给定上下文中常见问题的通用的、可重用的解决方案设计模式的价值在于更好地组织我们当前的代码并使将来的迭代更容易。 Strategy Pattern 策略模式12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://jsonload.com/2020/05/12/images/publish-subscribe.png">
+<meta property="og:updated_time" content="2020-05-18T06:33:42.059Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 Useful JavaScript Design Patterns You Should Know">
+<meta name="twitter:description" content="设计模式123软件设计模式是软件设计中给定上下文中常见问题的通用的、可重用的解决方案设计模式的价值在于更好地组织我们当前的代码并使将来的迭代更容易。 Strategy Pattern 策略模式12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565">
+<meta name="twitter:image" content="http://jsonload.com/2020/05/12/images/publish-subscribe.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jsonload.com/2020/05/12/4-Useful-JavaScript-Design-Patterns-You-Should-Know/">
+
+
+
+
+
+  <title>4 Useful JavaScript Design Patterns You Should Know | killsos</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">killsos</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人情似水分高下 世事如云任卷舒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/05/12/4-Useful-JavaScript-Design-Patterns-You-Should-Know/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">4 Useful JavaScript Design Patterns You Should Know</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-12T17:17:41+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">软件设计模式是软件设计中给定上下文中常见问题的通用的、可重用的解决方案</span><br><span class="line"></span><br><span class="line">设计模式的价值在于更好地组织我们当前的代码并使将来的迭代更容易。</span><br></pre></td></tr></table></figure>
+<h2 id="Strategy-Pattern-策略模式"><a href="#Strategy-Pattern-策略模式" class="headerlink" title="Strategy Pattern 策略模式"></a>Strategy Pattern 策略模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">假设我们有一个要求，当用户试图打开一个页面时，只有满足以下条件才能看到正确的内容：</span><br><span class="line"></span><br><span class="line">该用户是该站点的注册用户</span><br><span class="line"></span><br><span class="line">用户等级不小于1</span><br><span class="line"></span><br><span class="line">用户必须是前端开发工程师</span><br><span class="line"></span><br><span class="line">用户类型是活跃用户</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">我们需要编写判断逻辑以确保只有合适的用户才能看到内容。 你是做什么？ 许多新手程序员可能只是选择“ if-else”并编写如下代码</span><br><span class="line"></span><br><span class="line">function checkAuth(data) &#123;</span><br><span class="line">  if (data.role !== &apos;registered&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not a registered user&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.grade &lt; 1) &#123;</span><br><span class="line">    console.log(&quot;The user&apos;s level is less than 1&quot;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.job !== &apos;FE&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not a front-end development engineer&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.type !== &apos;active user&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not an active user&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">我确定您之前都写过类似的代码，但是存在以下问题：</span><br><span class="line"></span><br><span class="line">checkAuth函数是臃肿的</span><br><span class="line"></span><br><span class="line">每个判断功能都不能重用</span><br><span class="line"></span><br><span class="line">违反开闭原则</span><br><span class="line"></span><br><span class="line">策略模式允许封装用于特定任务的替代算法</span><br><span class="line"></span><br><span class="line">它定义了一系列算法，并以一种在运行时可以互换的方式封装它们，而不会受到客户端的干扰或了解</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const jobList = [&apos;FE&apos;, &apos;BE&apos;];</span><br><span class="line">var strategies = &#123;</span><br><span class="line">  checkRole: function(value) &#123;</span><br><span class="line">    if (value === &apos;registered&apos;) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkGrade: function(value) &#123;</span><br><span class="line">    if (value &gt;= 1) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkJob: function(value) &#123;</span><br><span class="line">    if (jobList.indexOf(value) &gt; 1) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkType: function(value) &#123;</span><br><span class="line">    if (value === &apos;active user&apos;) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var Validator = function() &#123;</span><br><span class="line">  // Store strategies</span><br><span class="line">  this.cache = [];</span><br><span class="line">// add strategy to cache</span><br><span class="line">  this.add = function(value, method) &#123;</span><br><span class="line">    this.cache.push(function() &#123;</span><br><span class="line">      return strategies[method](value);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">// check all strategies</span><br><span class="line">  this.check = function() &#123;</span><br><span class="line">    for (let i = 0; i &lt; this.cache.length; i++) &#123;</span><br><span class="line">      let valiFn = this.cache[i];</span><br><span class="line">      var data = valiFn();</span><br><span class="line">      if (!data) &#123;</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var compose1 = function() &#123;</span><br><span class="line">  var validator = new Validator();</span><br><span class="line">  const data1 = &#123;</span><br><span class="line">    role: &apos;register&apos;,</span><br><span class="line">    grade: 3,</span><br><span class="line">    job: &apos;FE&apos;,</span><br><span class="line">    type: &apos;active user&apos;</span><br><span class="line">  &#125;;</span><br><span class="line">  validator.add(data1.role, &apos;checkRole&apos;);</span><br><span class="line">  validator.add(data1.grade, &apos;checkGrade&apos;);</span><br><span class="line">  validator.add(data1.type, &apos;checkType&apos;);</span><br><span class="line">  validator.add(data1.job, &apos;checkJob&apos;);</span><br><span class="line"></span><br><span class="line">  const result = validator.check();</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Publish–subscribe-pattern-发布订阅模式"><a href="#Publish–subscribe-pattern-发布订阅模式" class="headerlink" title="Publish–subscribe pattern  发布订阅模式"></a>Publish–subscribe pattern  发布订阅模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">// 发布订阅模式</span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"></span><br><span class="line">function applySuccess() &#123;</span><br><span class="line">  // Notify the message center for the latest content</span><br><span class="line">  MessageCenter.fetch();</span><br><span class="line">  // Update order information</span><br><span class="line">  Order.update();</span><br><span class="line">  // Inform the person in charge to review</span><br><span class="line">  Checker.alert();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">您的项目通常不仅依赖于这三个模块</span><br><span class="line">例如，当申请成功时，我们需要提交日志。 您如何处理这种情况？</span><br><span class="line">您可能必须再次修改原始功能</span><br><span class="line"></span><br><span class="line">function applySuccess() &#123;</span><br><span class="line">  // Notify the message center for the latest content</span><br><span class="line">  MessageCenter.fetch();</span><br><span class="line">  // Update order information</span><br><span class="line">  Order.update();</span><br><span class="line">  // Inform the person in charge to review</span><br><span class="line">  Checker.alert();</span><br><span class="line">  Log.write();</span><br><span class="line">  // Maybe more</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">随着涉及到越来越多的模块，我们的代码变得越来越肿，难以维护</span><br><span class="line">那就是发布和订阅模型可以节省灾难的时候</span><br><span class="line"></span><br><span class="line">发布-订阅是一种消息传递范例</span><br><span class="line">其中消息的发布者不直接将消息发送给特定的订阅者</span><br><span class="line">而是通过消息通道进行广播</span><br><span class="line">订阅者可以通过订阅获得他们想要的消息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 消息中心 函数</span><br><span class="line"></span><br><span class="line">const EventEmit = function() &#123;</span><br><span class="line">  this.events = &#123;&#125;;</span><br><span class="line">  this.on = function(name, cb) &#123;</span><br><span class="line">    if (this.events[name]) &#123;</span><br><span class="line">      this.events[name].push(cb);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.events[name] = [cb];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  this.trigger = function(name, ...arg) &#123;</span><br><span class="line">    if (this.events[name]) &#123;</span><br><span class="line">      this.events[name].forEach(eventListener =&gt; &#123;</span><br><span class="line">        eventListener(...arg);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 订阅发布</span><br><span class="line"></span><br><span class="line">let event = new EventEmit();</span><br><span class="line">MessageCenter.fetch() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;update MessageCenter&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">Order.update() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;update Order&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">Checker.alert() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;Notify Checker&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">event.trigger(&apos;success&apos;);</span><br></pre></td></tr></table></figure>
+<p><img src="../images/publish-subscribe.png" alt="发布订阅模式"></p>
+<h2 id="Decorator-Pattern-装饰模式"><a href="#Decorator-Pattern-装饰模式" class="headerlink" title="Decorator Pattern  装饰模式"></a>Decorator Pattern  装饰模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">核心： 在原来的逻辑上包装一层自己特定逻辑</span><br><span class="line"></span><br><span class="line">正如任何了解React的人所知道的那样，高阶组件实际上只是一个函数。</span><br><span class="line">它接受一个组件作为参数并返回一个新的组件。</span><br><span class="line"></span><br><span class="line">因此，让我们编写一个高阶组件HOC，并用它来装饰TargetComponent</span><br><span class="line"></span><br><span class="line">import React from &apos;react&apos;;</span><br><span class="line">const yellowHOC = WrapperComponent =&gt; &#123;</span><br><span class="line">  return class extends React.Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">      &lt;div style=&#123;&#123; backgroundColor: &apos;yellow&apos; &#125;&#125;&gt;</span><br><span class="line">        &lt;WrapperComponent &#123;...this.props&#125; /&gt;</span><br><span class="line">      &lt;/div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">export default yellowHOC;</span><br><span class="line"></span><br><span class="line">// 装饰  </span><br><span class="line"></span><br><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import yellowHOC from &apos;./yellowHOC&apos;;</span><br><span class="line">class TargetComponent extends Reac.Compoment &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;div&gt;hello world&lt;/div&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default yellowHOC(TargetComponent);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Jon was originally a Chinese speaker</span><br><span class="line">const jonWrite = function() &#123;</span><br><span class="line">  this.writeChinese = function() &#123;</span><br><span class="line">    console.log(&apos;I can only write Chinese&apos;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">// Add the ability to write English to Jon through the decorator</span><br><span class="line">const Decorator = function(old) &#123;</span><br><span class="line">  this.oldWrite = old.writeChinese;</span><br><span class="line">  this.writeEnglish = function() &#123;</span><br><span class="line">    console.log(&apos;Give Jon the ability to write English&apos;);</span><br><span class="line">  &#125;;</span><br><span class="line">  this.newWrite = function() &#123;</span><br><span class="line">    this.oldWrite();</span><br><span class="line">    this.writeEnglish();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">const oldJonWrite = new jonWrite();</span><br><span class="line">const decorator = new Decorator(oldJonWrite);</span><br><span class="line">decorator.newWrite();</span><br></pre></td></tr></table></figure>
+<h2 id="Chain-of-Responsibility-Pattern-责任链模式"><a href="#Chain-of-Responsibility-Pattern-责任链模式" class="headerlink" title="Chain of Responsibility Pattern  责任链模式"></a>Chain of Responsibility Pattern  责任链模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">假设当我们申请从公司购买设备时，必须按以下步骤进行操作：</span><br><span class="line"></span><br><span class="line">申请设备</span><br><span class="line"></span><br><span class="line">选择送货地址</span><br><span class="line"></span><br><span class="line">选择负责人进行审核</span><br><span class="line"></span><br><span class="line">许多新手将其视为非常简单的要求，并开始编写类似的代码</span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"></span><br><span class="line">function applyDevice(data) &#123;</span><br><span class="line">  // some code to apply device</span><br><span class="line">  // ...</span><br><span class="line">// Then go to the next step</span><br><span class="line">  selectAddress(nextData);</span><br><span class="line">&#125;</span><br><span class="line">function selectAddress(data) &#123;</span><br><span class="line">  // some code to select address</span><br><span class="line">  // ...</span><br><span class="line"></span><br><span class="line">  // Then go to the next step</span><br><span class="line">  selectChecker(nextData);</span><br><span class="line">&#125;</span><br><span class="line">function selectChecker(data) &#123;</span><br><span class="line">  // Some code to select a person to review</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">上述缺点非常大：我们的购买过程可能会发生变化，例如添加库存检查过程</span><br><span class="line">然后，您必须彻底更改原始代码，这很难维护代码设计</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在这一点上，我们可以考虑使用责任链模式</span><br><span class="line"></span><br><span class="line">const Chain = function(fn) &#123;</span><br><span class="line">  this.fn = fn</span><br><span class="line">  this.setNext = function(next) &#123;</span><br><span class="line">    return this.next = next</span><br><span class="line">  &#125;</span><br><span class="line">  this.run = function(...args) &#123;</span><br><span class="line">    let result = this.fn.call(this, ...args);</span><br><span class="line">    if (result) &#123;</span><br><span class="line">      this.next &amp;&amp; this.next.fn.call(this.next,...args);</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">const applyDevice = function() &#123;&#125;</span><br><span class="line">const chainApplyDevice = new Chain(applyDevice);</span><br><span class="line">const selectAddress = function() &#123;&#125;</span><br><span class="line">const chainSelectAddress = new Chain(selectAddress);</span><br><span class="line">const selectChecker = function() &#123;&#125;</span><br><span class="line">const chainSelectChecker = new Chain(selectChecker);</span><br><span class="line">chainApplyDevice.setNext(chainSelectAddress).setNext(chainSelectChecker);</span><br><span class="line">chainApplyDevice.run();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/09/chrome-philosophy/" rel="next" title="chrome philosophy">
+                <i class="fa fa-chevron-left"></i> chrome philosophy
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/20/Introduction-to-JavaScript-Symbol/" rel="prev" title="Introduction to JavaScript Symbol">
+                Introduction to JavaScript Symbol <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">killsos.ql@gmail.com</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">1.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strategy-Pattern-策略模式"><span class="nav-number">2.</span> <span class="nav-text">Strategy Pattern 策略模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Publish–subscribe-pattern-发布订阅模式"><span class="nav-number">3.</span> <span class="nav-text">Publish–subscribe pattern  发布订阅模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decorator-Pattern-装饰模式"><span class="nav-number">4.</span> <span class="nav-text">Decorator Pattern  装饰模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chain-of-Responsibility-Pattern-责任链模式"><span class="nav-number">5.</span> <span class="nav-text">Chain of Responsibility Pattern  责任链模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">killsos.ql@gmail.com</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
