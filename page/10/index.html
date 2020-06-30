@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/17/let-const-块级作用-执行上下文/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/停止用i-在循环中/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/17/let-const-块级作用-执行上下文/" itemprop="url">let/const 块级作用域 执行上下文</a></h1>
+                <a class="post-title-link" href="/2019/11/22/停止用i-在循环中/" itemprop="url">停止用i++在循环中</a></h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T01:34:00+08:00">
-                2019-04-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T09:37:12+08:00">
+                2019-11-22
               </time>
             
 
@@ -301,16 +301,25 @@
       
         
           
-            <h2 id="执行代码"><a href="#执行代码" class="headerlink" title="执行代码"></a>执行代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x,y</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">let</span> c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(c);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="执行上下文1"><a href="#执行上下文1" class="headerlink" title="执行上下文1"></a>执行上下文1</h2><p><img src="../images/EC1.jpg" alt>   </p>
-<h2 id="执行上下文2"><a href="#执行上下文2" class="headerlink" title="执行上下文2"></a>执行上下文2</h2><p><img src="../images/EC2.jpg" alt> </p>
-<h2 id="执行上下文3"><a href="#执行上下文3" class="headerlink" title="执行上下文3"></a>执行上下文3</h2><p><img src="../images/EC3.jpg" alt>  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>每一个块级作用域都会生成一个新的执行上下文
-this 取决于 父级作用域的this  
-可以通过 调试 bar.call(o,1,2) 来验证
-
-变量对象 variable object 包含 let const 声明的变量或者常量
-但是注意TDZ 
+            <h2 id="why-i-may-be-better-than-i-in-most-situations"><a href="#why-i-may-be-better-than-i-in-most-situations" class="headerlink" title="why ++i may be better than i++ in most situations"></a>why ++i may be better than i++ in most situations</h2><ul>
+<li><p>Post-Increment (i++)</p>
+<pre><code>int j = i;
+i = i + 1;
+return j;
+由于后递增运算符必须返回i的原始值，而不是返回递增值i + 1，因此它必须存储i的旧版本。
+这意味着它通常不必要地使用额外的内存来存储该值，因为在大多数情况下，我们实际上并不使用旧版本的i，而只是将其丢弃
+</code></pre></li>
+<li><p>Pre-Increment (++i)</p>
+<pre><code>i = i + 1;
+return i;
+值得注意的是，在这里，我们不必保存i的旧值-我们可以简单地将其添加并返回。
+这与for循环中的典型用例更加契合，因为在这种情况下我们很少需要i的旧值。
+只要您不需要所要递增的值的前一个值，则预增量运算符就会好于或等于后增量运算符
+</code></pre></li>
+</ul>
+<pre><code>在看到后增量和前增量之间的差异之后，您可能会注意到，由于i的缓存值从未在后增量中使用，因此编译器将优化该行，使两个运算符等效。
+对于基本类型（例如整数），最可能是这样。
+但是，对于更复杂的类型，例如用户定义的类型或带有+操作重载的迭代器，编译器可能无法安全地优化缓存操作
 </code></pre>
           
         
@@ -359,7 +368,7 @@ this 取决于 父级作用域的this
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/16/说人话的深拷贝/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -378,7 +387,7 @@ this 取决于 父级作用域的this
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/16/说人话的深拷贝/" itemprop="url">说人话的深拷贝</a></h1>
+                <a class="post-title-link" href="/2019/11/22/什么时候用或不用箭头函数/" itemprop="url">什么时候用或不用箭头函数</a></h1>
         
 
         <div class="post-meta">
@@ -390,8 +399,8 @@ this 取决于 父级作用域的this
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-16T16:55:30+08:00">
-                2019-04-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T08:57:23+08:00">
+                2019-11-22
               </time>
             
 
@@ -430,84 +439,1311 @@ this 取决于 父级作用域的this
       
         
           
-            <h2 id="类型判断方法"><a href="#类型判断方法" class="headerlink" title="类型判断方法"></a>类型判断方法</h2><pre><code>1. typeof
+            <h2 id="arrow-function"><a href="#arrow-function" class="headerlink" title="arrow function"></a>arrow function</h2><p>. 省略{}</p>
+<p>. 省略 return </p>
+<ol>
+<li><p>No parameters</p>
+<pre><code>() =&gt; 42
 
-2. instanceof
+甚至可以省略括号
 
-3. Object.prototype.toString.call()
+_ =&gt; 42
+</code></pre></li>
+<li><p>single parameter</p>
+<pre><code>x =&gt; 42  || (x) =&gt; 42
+</code></pre></li>
+</ol>
+<ol start="3">
+<li><p>Multiple parameters</p>
+<pre><code>(x, y) =&gt; 42
+</code></pre></li>
+</ol>
+<ol start="4">
+<li><p>Statements (as opposed to expressions)</p>
+<pre><code>需要花括号
 
-4. 对象.constructor
-</code></pre><h2 id="typeof-7种类型"><a href="#typeof-7种类型" class="headerlink" title="typeof 7种类型"></a>typeof 7种类型</h2><pre><code>typeof 1 // number
+需要return
+</code></pre></li>
+<li><p>“Block body”</p>
+</li>
+<li><p>Object literals</p>
+<pre><code>如果想返回一个对象 需要一个大括号包起来 避免认为是语句
 
-typeof &apos;a&apos; // string
+x =&gt;({ y: x })
+</code></pre></li>
+</ol>
+<h2 id="arrow-function-Syntactically-anonymous"><a href="#arrow-function-Syntactically-anonymous" class="headerlink" title="arrow function Syntactically anonymous"></a>arrow function Syntactically anonymous</h2><ol>
+<li><p>难于调试</p>
+</li>
+<li><p>No self-referencing</p>
+<pre><code>递归
 
-typeof true // boolean
-
-typeof undefined // undefined
-
-typeof function a(){} // function
-
-typeof {} // object
-
-typeof symbol() // symbol
-</code></pre><h2 id="instanceof-主要对象的细化"><a href="#instanceof-主要对象的细化" class="headerlink" title="instanceof 主要对象的细化"></a>instanceof 主要对象的细化</h2><pre><code>[] instanceof Array
-
-/1/g instanceof RegExp
-</code></pre><h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><pre><code>Object.prototype.toString.call([]) // &quot;[object Array]&quot;
-</code></pre><h2 id="深克隆的实现"><a href="#深克隆的实现" class="headerlink" title="深克隆的实现"></a>深克隆的实现</h2><pre><code>function deepClone(data){
-
-    // 1. typeof 非对象类型
-    // number string boolean undefined function  symbol
-
-    if (typeof data !== &apos;obejct&apos;) return data;
-
-    // 2. null
-    if (data === null) return data;
-
-    // 3. string number boolean包对象
-    if (data instanceof String) return new String(data);
-    if (data instanceof Number) return new Number(data);
-    if (data instanceof Boolean) return new Boolean(data);
-
-    // 4. 日期 正则
-    if (data instanceof Date) return new Date(data);
-    if (data instanceof RegExp) return new RegExp(data);
-
-    // 5. WeakSet WeakMap
-    if (data instanceof WeakSet) return data;
-    if (data instanceof WeakMap) return data;
-
-    // 6. Array Object Set Map
-    let cloner = new data.constructor();
-
-    // Set
-    if (data instanceof Set) {
-        return cloner = new Set([...data])
+event handler that needs to unbind
+</code></pre></li>
+</ol>
+<h2 id="Main-benefit-No-binding-of-‘this’"><a href="#Main-benefit-No-binding-of-‘this’" class="headerlink" title="Main benefit: No binding of ‘this’"></a>Main benefit: No binding of ‘this’</h2><pre><code>var obj = {
+    id: 42,
+    counter: function counter() {
+        setTimeout(() =&gt; {
+        console.log(this.id);
+        }, 1000);
     }
+}; // 这是原作者举得栗子
 
-    // Map
-    if (data instanceof Map) {
-        for (let key of data.keys()) {
-            let cloneKey = deepClone(key);
-            cloner[cloneKey] = deepClone(data.get(key));
-        }
-        return cloner;
+obj.counter() // this --&gt; obj
+
+实际上 arrow functio 中 this 取决于 词法作用域上父级作用域的this 如果父级作用域中this存在
+</code></pre><h2 id="When-you-should-not-use-Arrow-Functions"><a href="#When-you-should-not-use-Arrow-Functions" class="headerlink" title="When you should not use Arrow Functions"></a>When you should not use Arrow Functions</h2><ol>
+<li><p>Object methods</p>
+<pre><code>var cat = {
+    lives: 9,
+    jumps: () =&gt; {
+        this.lives--; // this 不是 对象本身
     }
+} 
+</code></pre></li>
+<li><p>Callback functions with dynamic context</p>
+<pre><code>var button = document.getElementById(&apos;press&apos;);
+    button.addEventListener(&apos;click&apos;, () =&gt; {
+    this.classList.toggle(&apos;on&apos;);
+}); // this 不是 button
+</code></pre></li>
+<li><p>call apply bind  对于 箭头函数 是无效的</p>
+</li>
+<li><p>代码可读性差</p>
+</li>
+</ol>
+<h2 id="When-you-should-use-them"><a href="#When-you-should-use-them" class="headerlink" title="When you should use them"></a>When you should use them</h2><ol>
+<li><p>箭头函数最适合需要利用this绑定特性，而不是函数本身</p>
+</li>
+<li><p>map reducer方法中使用   the pros outweigh the cons 利大于弊</p>
+</li>
+</ol>
 
-    // Array Object
+          
+        
+      
+    </div>
+    
+    
+    
 
-    for (let key in data) {
-        if (data.hasOwnPropery(key)) {
-            cloner[key] = deepClone(data[key])
-        }
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/即将来临js特色/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/即将来临js特色/" itemprop="url">即将来临js特色</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T17:09:22+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Optional-Chaining"><a href="#1-Optional-Chaining" class="headerlink" title="1. Optional Chaining ?."></a>1. Optional Chaining ?.</h2><pre><code>const street = user.address?.street
+</code></pre><h2 id="2-Nullish-Coalescing-Operator-undefined-or-null"><a href="#2-Nullish-Coalescing-Operator-undefined-or-null" class="headerlink" title="2. Nullish Coalescing Operator  ??  undefined or null"></a>2. Nullish Coalescing Operator  ??  undefined or null</h2><pre><code>Base case. If the expression at the left-hand side of the ?? operator evaluates to undefined or null, its right-hand side is returned.
+
+const response = {
+    settings: {
+        nullValue: null,
+        height: 400,
+        animationDuration: 0,
+        headerText: &apos;&apos;,
+        showSplashScreen: false
     }
+    };
 
-    return cloner
+    const undefinedValue = response.settings.undefinedValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const nullValue = response.settings.nullValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
+    const headerText = response.settings.headerText ?? &apos;Hello, world!&apos;; // result: &apos;&apos;
+    const animationDuration = response.settings.animationDuration ?? 300; // result: 0
+    const showSplashScreen = response.settings.showSplashScreen ?? true; // result: false
+</code></pre><h2 id="3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型"><a href="#3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型" class="headerlink" title="3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型"></a>3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型</h2><pre><code>IEEE754 64-bit floats  BigInt 可以表示 2^53
 
+63 符号位
+
+62-53 指数位
+
+0-52 精度位
+
+const x = Number.MAX_SAFE_INTEGER;
+// ↪ 9007199254740991, this is 1 less than 2^53
+
+const y = x + 1;
+// ↪ 9007199254740992, ok, checks out
+
+const z = x + 2
+// ↪ 9007199254740992, wait, that’s the same as above!
+
+A BigInt is created by appending n to the end of the integer or by calling the constructor:
+
+const theBiggestInt = 9007199254740991n;
+
+const alsoHuge = BigInt(9007199254740991);
+// ↪ 9007199254740991n
+
+const hugeButString = BigInt(&apos;9007199254740991&apos;);
+// ↪ 9007199254740991n
+</code></pre><h2 id="4-类静态"><a href="#4-类静态" class="headerlink" title="4. 类静态"></a>4. 类静态</h2><ul>
+<li>静态公有属性</li>
+</ul>
+<pre><code>class CustomDate {
+// ...
+static epoch = new CustomDate(0);
 }
-</code></pre><h2 id="symbol-WeakSet-WeakMap"><a href="#symbol-WeakSet-WeakMap" class="headerlink" title="symbol WeakSet WeakMap"></a>symbol WeakSet WeakMap</h2><pre><code>symbol(&apos;1&apos;) === symbol(&apos;1&apos;) // false
 
- WeakSet WeakMap 不支持遍历
+/* or */
+
+class CustomDate {
+// ...
+}
+CustomDate.epoch = new CustomDate(0);
+</code></pre><ul>
+<li><p>静态私有属性</p>
+<pre><code>class C {
+    static #x = 42;
+    x(){
+        return C.#x;
+    }
+}
+return new C().x() === 42;
+</code></pre></li>
+<li><p>静态私有方法 </p>
+</li>
+<li><p>静态计算属性</p>
+<pre><code>class C {
+    static [&apos;x&apos;] = 42;
+}
+return C.x === 42;
+</code></pre></li>
+</ul>
+<h2 id="5-类实例"><a href="#5-类实例" class="headerlink" title="5. 类实例"></a>5. 类实例</h2><ul>
+<li><p>类实例私有属性 / 类实例私有方法</p>
+<pre><code>class Counter extends HTMLElement {
+        #xValue = 0; // 类实例私有属性
+
+        get #x() { return #xValue; } // 类实例私有方法
+        set #x(value) { // setter // 类实例私有方法
+            this.#xValue = value;
+            window.requestAnimationFrame(this.#render.bind(this));
+        }
+
+        #clicked() { // 类实例私有方法
+            this.#x++;
+        }
+
+        constructor() {
+            super();
+            this.onclick = this.#clicked.bind(this);
+        }
+
+        connectedCallback() { this.#render(); }
+
+        #render() { // 类实例私有方法
+            this.textContent = this.#x.toString();
+        }
+    }
+    window.customElements.define(&apos;num-counter&apos;, Counter);
+</code></pre></li>
+</ul>
+<p><a href="https://medium.com/better-programming/new-upcoming-javascript-features-2019-2020-and-beyond-5c426f31ec97" target="_blank" rel="noopener">原始位置</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/2019的9个js技巧/" itemprop="url">2019的9个js技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T16:33:11+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-async-await"><a href="#1-async-await" class="headerlink" title="1. async await"></a>1. async await</h2><pre><code>async function getData() {
+    const result = await axios.get(&apos;https://dube.io/service/ping&apos;)
+    const data = result.data
+
+    console.log(&apos;data&apos;, data)
+
+    return data
+}
+
+getData()
+</code></pre><h2 id="2-async-control-flow"><a href="#2-async-control-flow" class="headerlink" title="2. async control flow"></a>2. async control flow</h2><ul>
+<li><p>for of</p>
+<pre><code>import axios from &apos;axios&apos;
+
+let myData = [{id: 0}, {id: 1}, {id: 2}, {id: 3}]
+
+async function fetchData(dataSet) {
+    for(entry of dataSet) {
+        const result = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`)
+        const newData = result.data
+        updateData(newData)
+
+        console.log(myData)
+    }
+}
+
+function updateData(newData) {
+    myData = myData.map(el =&gt; {
+        if(el.id === newData.id) return newData
+        return el
+    })
+}
+
+fetchData(myData)
+</code></pre></li>
+<li><p>Promise.all</p>
+</li>
+</ul>
+<h2 id="3-Destructuring-amp-default-values"><a href="#3-Destructuring-amp-default-values" class="headerlink" title="3. Destructuring &amp; default values"></a>3. Destructuring &amp; default values</h2><h2 id="4-Truthy-amp-falsy-values"><a href="#4-Truthy-amp-falsy-values" class="headerlink" title="4. Truthy &amp; falsy values"></a>4. Truthy &amp; falsy values</h2><pre><code>    Falsy
+        strings with the length of 0
+        the number 0
+        false
+        undefined
+        null
+        NaN
+
+
+    Truthy
+        empty arrays
+        empty objects
+        Everything else
+
+比较 == 不要用 严格比较  ===
+</code></pre><h2 id="5-Logical-and-ternary-operators"><a href="#5-Logical-and-ternary-operators" class="headerlink" title="5. Logical and ternary operators"></a>5. Logical and ternary operators</h2><pre><code>console.log(0 &amp;&amp; {a: 1}) // 0
+console.log(false &amp;&amp; &apos;a&apos;) // false
+console.log(&apos;2&apos; &amp;&amp; 5) // 5
+console.log([] || false) // []
+console.log(NaN || null) // null
+console.log(true || &apos;a&apos;) // true
+</code></pre><ul>
+<li><p>三运算符</p>
+<ol>
+<li><p>比较结果是 true false  </p>
+</li>
+<li><p>true 返回第一个  </p>
+</li>
+<li><p>false 返回第二个  </p>
+<p> const lang = ‘German’<br> console.log(lang === ‘German’ ? ‘Hallo’ : ‘Hello’) // Hallo<br> console.log(lang ? ‘Ja’ : ‘Yes’) // Ja<br> console.log(lang === ‘French’ ? ‘Bon soir’ : ‘Good evening’) // Good evening</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="6-Optional-chaining"><a href="#6-Optional-chaining" class="headerlink" title="6. Optional chaining ?."></a>6. Optional chaining ?.</h2><pre><code>const data = myObj?.firstProp?.secondProp?.actualData
+</code></pre><h2 id="7-Class-properties-amp-binding"><a href="#7-Class-properties-amp-binding" class="headerlink" title="7. Class properties &amp; binding"></a>7. Class properties &amp; binding</h2><pre><code>class Counter extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { count: 0 }
+    }
+
+    render() {
+        return(
+            &lt;div&gt;
+                &lt;h1&gt;{this.state.count}&lt;/h1&gt;  
+                &lt;button onClick={this._increaseCount}&gt;Increase Count&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+    // 类属性 自动绑定this
+    _increaseCount = () =&gt; {
+        this.setState({ count: this.state.count + 1 })
+    }
+}
+</code></pre><h2 id="8-Use-parcel"><a href="#8-Use-parcel" class="headerlink" title="8. Use parcel"></a>8. Use parcel</h2><h2 id="9-动手写自己代码-清楚原理"><a href="#9-动手写自己代码-清楚原理" class="headerlink" title="9. 动手写自己代码 清楚原理"></a>9. 动手写自己代码 清楚原理</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/javascript如何处理错误/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/javascript如何处理错误/" itemprop="url">javascript如何处理错误</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:43:39+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-javascript-Errors-和-传统处理"><a href="#1-javascript-Errors-和-传统处理" class="headerlink" title="1. javascript Errors 和 传统处理"></a>1. javascript Errors 和 传统处理</h2><pre><code>throw new Error(&apos;something went wrong&apos;)
+并且return停止运行
+
+The Error Object有属性 message 和 stack
+
+const myError = new Error(‘please improve your code’)
+
+console.log(myError.message) // please improve your code
+
+console.log(myError.stack) // please improve your code
+
+错误栈 展现错误产生过程和历史
+</code></pre><h2 id="2-抛出与处理错误"><a href="#2-抛出与处理错误" class="headerlink" title="2. 抛出与处理错误"></a>2. 抛出与处理错误</h2><ul>
+<li><p>try catch</p>
+</li>
+<li><p>finally</p>
+</li>
+</ul>
+<h2 id="处理异步的回调"><a href="#处理异步的回调" class="headerlink" title="处理异步的回调"></a>处理异步的回调</h2><ul>
+<li><p>错误优先  回调函数第一个参数是error</p>
+</li>
+<li><p>promise catch finally</p>
+</li>
+<li><p>async await try catch</p>
+</li>
+</ul>
+<h2 id="服务端处理错误"><a href="#服务端处理错误" class="headerlink" title="服务端处理错误"></a>服务端处理错误</h2><ol>
+<li><p>传统处理</p>
+<pre><code>Something went wrong, please try again or contact us
+</code></pre></li>
+<li><p>给用户错误细节信息 便于修复</p>
+</li>
+</ol>
+<h2 id="建立通用的错误构造类-Error-captureStackTrace"><a href="#建立通用的错误构造类-Error-captureStackTrace" class="headerlink" title="建立通用的错误构造类 Error.captureStackTrace"></a>建立通用的错误构造类 Error.captureStackTrace</h2><pre><code>class CustomError extends Error {
+    constructor(code = &apos;GENERIC&apos;, status = 500, ...params) {
+        super(...params)
+
+        if (Error.captureStackTrace) {
+            Error.captureStackTrace(this, CustomError)
+        }
+
+        this.code = code
+        this.status = status
+    }   
+}
+
+module.exports = CustomError
+
+既然JavaScript语言标准中没有定义captureStackTrace，那就只能从Node.js的文档中去寻找答案了。Node.js中，关于Error.captureStackTrace的描述是这样的：
+
+Error.captureStackTrace(targetObject[, constructorOpt])
+
+在targetObject中添加一个.stack属性。对该属性进行访问时，将以字符串的形式返回Error.captureStackTrace()语句被调用时的代码位置信息(即：调用栈历史)
+</code></pre><p><a href="http://blog.shaochuancs.com/about-error-capturestacktrace/" target="_blank" rel="noopener">参考</a></p>
+<h2 id="如何处理路由"><a href="#如何处理路由" class="headerlink" title="如何处理路由"></a>如何处理路由</h2><pre><code>{
+    error: &apos;SOME_ERROR_CODE&apos;,
+    description: &apos;Something bad happened. Please try again or     contact support.&apos;
+}
+</code></pre><p>const express = require(‘express’)<br>const router = express.Router()<br>const CustomError = require(‘../CustomError’)</p>
+<p>router.use(async (req, res) =&gt; {<br>    try {<br>        const route = require(<code>.${req.path}</code>)[req.method]</p>
+<pre><code>    try {
+        const result = route(req) // We pass the request to the route function
+        res.send(result) // We just send to the client what we get returned from the route function
+    } catch (err) {
+        /*
+        This will be entered, if an error occurs inside the route function.
+        */
+        if (err instanceof CustomError) {
+            /* 
+            In case the error has already been handled, we just transform the error 
+            to our return object.
+            */
+
+            return res.status(err.status).send({
+                error: err.code,
+                description: err.message,
+            })
+        } else {
+            console.error(err) // For debugging reasons
+
+            // It would be an unhandled error, here we can just return our generic error object.
+            return res.status(500).send({
+                error: &apos;GENERIC&apos;,
+                description: &apos;Something went wrong. Please try again or contact support.&apos;,
+            })
+        }
+    }
+} catch (err) {
+    /* 
+    This will be entered, if the require fails, meaning there is either 
+    no file with the name of the request path or no exported function 
+    with the given request method.
+    */
+    res.status(404).send({
+        error: &apos;NOT_FOUND&apos;,
+        description: &apos;The resource you tried to access does not exist.&apos;,
+        })
+    }
+    })
+
+module.exports = router
+
+
+
+    const CustomError = require(&apos;../CustomError&apos;)
+
+    const GET = req =&gt; {
+        // example for success
+        return { name: &apos;Rio de Janeiro&apos; }
+    }
+
+    const POST = req =&gt; {
+        // example for unhandled error
+        throw new Error(&apos;Some unexpected error, may also be thrown by a library or the runtime.&apos;)
+    }
+
+    const DELETE = req =&gt; {
+        // example for handled error
+        throw new CustomError(&apos;CITY_NOT_FOUND&apos;, 404, &apos;The city you are trying to delete could not be found.&apos;)
+    }
+
+    const PATCH = req =&gt; {
+        // example for catching errors and using a CustomError
+        try {
+            // something bad happens here
+            throw new Error(&apos;Some internal error&apos;)
+        } catch (err) {
+            console.error(err) // decide what you want to do here
+
+            throw new CustomError(
+                &apos;CITY_NOT_EDITABLE&apos;,
+                400,
+                &apos;The city you are trying to edit is not editable.&apos;
+            )
+        }
+    }
+
+    module.exports = {
+        GET,
+        POST,
+        DELETE,
+        PATCH,
+    }
+</code></pre><h2 id="如何展示给用户"><a href="#如何展示给用户" class="headerlink" title="如何展示给用户"></a>如何展示给用户</h2><ol>
+<li>Saving Errors in React state</li>
+</ol>
+<pre><code>import React, { Component } from &apos;react&apos;
+
+import GlobalError from &apos;./GlobalError&apos;
+
+class Application extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            error: &apos;&apos;,
+        }
+
+        this._resetError = this._resetError.bind(this)
+        this._setError = this._setError.bind(this)
+    }
+
+    render() {
+        return (
+            &lt;div className=&quot;container&quot;&gt;
+                &lt;GlobalError error={this.state.error} resetError={this._resetError} /&gt;
+                &lt;h1&gt;Handling Errors&lt;/h1&gt;
+            &lt;/div&gt;
+        )
+    }
+
+    _resetError() {
+        this.setState({ error: &apos;&apos; })
+    }
+
+    _setError(newError) {
+        this.setState({ error: newError })
+    }
+}
+
+export default Application
+</code></pre><p><a href="https://levelup.gitconnected.com/the-definite-guide-to-handling-errors-gracefully-in-javascript-58424d9c60e6" target="_blank" rel="noopener">原始文章</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/10种javascript技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/10种javascript技巧/" itemprop="url">10种javascript技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:30:30+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-控制流"><a href="#1-控制流" class="headerlink" title="1.控制流"></a>1.控制流</h2><ul>
+<li><p>if else</p>
+</li>
+<li><p>switch</p>
+</li>
+<li><p>for</p>
+<pre><code>forof forin asyncawait
+</code></pre></li>
+<li><p>三元算符</p>
+</li>
+</ul>
+<h2 id="2-错误处理"><a href="#2-错误处理" class="headerlink" title="2. 错误处理"></a>2. 错误处理</h2><ul>
+<li><p>构建自己Error函数</p>
+</li>
+<li><p>正确捕获 trycatch </p>
+</li>
+</ul>
+<h2 id="3-数据模型"><a href="#3-数据模型" class="headerlink" title="3. 数据模型"></a>3. 数据模型</h2><h2 id="4-异步处理"><a href="#4-异步处理" class="headerlink" title="4. 异步处理"></a>4. 异步处理</h2><ul>
+<li><p>promise</p>
+</li>
+<li><p>async/await</p>
+</li>
+</ul>
+<h2 id="5-DOM处理"><a href="#5-DOM处理" class="headerlink" title="5. DOM处理"></a>5. DOM处理</h2><ul>
+<li>原生操作 避免Jquery</li>
+</ul>
+<h2 id="6-Node-js-Express"><a href="#6-Node-js-Express" class="headerlink" title="6. Node.js/Express"></a>6. Node.js/Express</h2><h2 id="7-函数编程"><a href="#7-函数编程" class="headerlink" title="7. 函数编程"></a>7. 函数编程</h2><ul>
+<li><p>map</p>
+</li>
+<li><p>reducer</p>
+</li>
+<li><p>filter</p>
+</li>
+<li><p>forEach</p>
+</li>
+<li><p>find</p>
+</li>
+</ul>
+<h2 id="8-面向对象编程"><a href="#8-面向对象编程" class="headerlink" title="8. 面向对象编程"></a>8. 面向对象编程</h2><h2 id="9-前端框架"><a href="#9-前端框架" class="headerlink" title="9. 前端框架"></a>9. 前端框架</h2><h2 id="10-打包、编译"><a href="#10-打包、编译" class="headerlink" title="10. 打包、编译"></a>10. 打包、编译</h2><ul>
+<li><p>babel.js</p>
+</li>
+<li><p>webpack</p>
+</li>
+<li><p>parcel</p>
+</li>
+</ul>
+<h2 id="11-正则表达式"><a href="#11-正则表达式" class="headerlink" title="11. 正则表达式"></a>11. 正则表达式</h2><h2 id="12-测试"><a href="#12-测试" class="headerlink" title="12. 测试"></a>12. 测试</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/3种javascript性能之殇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/3种javascript性能之殇/" itemprop="url">3种javascript性能之殇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:13:58+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-数组循环"><a href="#1-数组循环" class="headerlink" title="1. 数组循环"></a>1. 数组循环</h2><ul>
+<li>for</li>
+<li>forof</li>
+<li>while</li>
+<li>forEach</li>
+<li>reduce</li>
+<li><p>map</p>
+<pre><code>reduce 使用方便
+
+reduce和forEach要求递归调用该函数以递归方式调用并膨胀堆栈，并且对执行的代码进行额外的操作和验证
+
+for while 性能好
+</code></pre></li>
+</ul>
+<h2 id="2-复制数组"><a href="#2-复制数组" class="headerlink" title="2. 复制数组"></a>2. 复制数组</h2><ul>
+<li><p>spread operation […arr]  性能中</p>
+</li>
+<li><p>Array from Array.from(arr)  性能最差</p>
+</li>
+<li><p>map arr.map(x =&gt; x) 性能次</p>
+</li>
+<li><p>slice arr.slice() 性能好</p>
+</li>
+<li><p>concatenate [].concat(arr) 性能好</p>
+</li>
+</ul>
+<h2 id="3-迭代对象"><a href="#3-迭代对象" class="headerlink" title="3. 迭代对象"></a>3. 迭代对象</h2><ul>
+<li><p>forin   性能好</p>
+</li>
+<li><p>Object.keys()  forEach 性能次</p>
+</li>
+<li><p>Object.entries()   forof  性能差</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/18/js闭包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/18/js闭包/" itemprop="url">js闭包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-18T09:08:17+08:00">
+                2019-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="闭包概念"><a href="#闭包概念" class="headerlink" title="闭包概念"></a>闭包概念</h2><pre><code>函数与对其状态(即词法环境 lexical environment) 的引用 共同构成 闭包 closure
+
+也就是说 闭包可以让你从内部函数 访问 外部函数作用域
+
+在javascript中 函数在每次创建时生成闭包
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Mozilla"</span>; <span class="comment">// name 是一个被 init 创建的局部变量</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123; <span class="comment">// displayName() 是内部函数,一个闭包</span></span><br><span class="line">        alert(name); <span class="comment">// 使用了父函数中声明的变量</span></span><br><span class="line">    &#125;</span><br><span class="line">    displayName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+<h2 id="词法（lexical）"><a href="#词法（lexical）" class="headerlink" title="词法（lexical）"></a>词法（lexical）</h2><pre><code>词法一词表明，词法作用域根据声明变量的位置来确定该变量可被访问的位置。
+
+嵌套函数可获取声明于外部作用域的函数。
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Mozilla"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
+<pre><code>在一些编程语言中，函数中的局部变量仅在函数的执行期间可用。一旦 makeFunc() 执行完毕，
+我们会认为 name 变量将不能被访问。
+然而，因为代码运行得没问题，所以很显然在 JavaScript 中并不是这样的。
+
+这个谜题的答案是，JavaScript中的函数会形成闭包。 
+
+闭包是由函数以及创建该函数的词法环境组合而成。
+这个环境包含了这个闭包创建时所能访问的所有局部变量
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">var</span> add10 = makeAdder(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add5(<span class="number">2</span>));  <span class="comment">// 7</span></span><br><span class="line"><span class="built_in">console</span>.log(add10(<span class="number">2</span>)); <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+<pre><code>从本质上讲，makeAdder 是一个函数工厂 — 他创建了将指定的值和它的参数相加求和的函数。
+在上面的示例中，我们使用函数工厂创建了两个新函数 — 一个将其参数和 5 求和，另一个和 10 求和。
+
+add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存了不同的词法环境。
+在 add5 的环境中，x 为 5。而在 add10 中，x 则为 10。
+</code></pre><h3 id="实用的闭包"><a href="#实用的闭包" class="headerlink" title="实用的闭包"></a>实用的闭包</h3><p>闭包很有用，因为它允许将函数与其所操作的某些数据（环境）关联起来。<br>这显然类似于面向对象编程。在面向对象编程中，对象允许我们将某些数据（对象的属性）与一个或者多个方法相关联。</p>
+<p>因此，通常你使用只有一个方法的对象的地方，都可以使用闭包。</p>
+<p>在 Web 中，你想要这样做的情况特别常见。<br>大部分我们所写的 JavaScript 代码都是基于事件的 — 定义某种行为，<br>然后将其添加到用户触发的事件之上（比如点击或者按键）。</p>
+<p>我们的代码通常作为回调：为响应事件而执行的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeSizer</span>(<span class="params">size</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.body.style.fontSize = size + <span class="string">'px'</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> size12 = makeSizer(<span class="number">12</span>);</span><br><span class="line"><span class="keyword">var</span> size14 = makeSizer(<span class="number">14</span>);</span><br><span class="line"><span class="keyword">var</span> size16 = makeSizer(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-12'</span>).onclick = size12;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-14'</span>).onclick = size14;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-16'</span>).onclick = size16;</span><br></pre></td></tr></table></figure>
+<h3 id="用闭包模拟私有方法"><a href="#用闭包模拟私有方法" class="headerlink" title="用闭包模拟私有方法"></a>用闭包模拟私有方法</h3><p>编程语言中，比如 Java，是支持将方法声明为私有的，即它们只能被同一个类中的其它方法所调用。</p>
+<p>而 JavaScript 没有这种原生支持，但我们可以使用闭包来模拟私有方法。   </p>
+<p>私有方法不仅仅有利于限制对代码的访问：还提供了管理全局命名空间的强大能力，  </p>
+<p>避免非核心的方法弄乱了代码的公共接口部分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Counter = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> privateCounter = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">changeBy</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    privateCounter += val;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    decrement: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">-1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> privateCounter;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;   </span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="在循环中创建闭包：一个常见错误"><a href="#在循环中创建闭包：一个常见错误" class="headerlink" title="在循环中创建闭包：一个常见错误"></a>在循环中创建闭包：一个常见错误</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      showHelp(item.help);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+<pre><code>原因是赋值给 onfocus 的是闭包。这些闭包是由他们的函数定义和在 setupHelp 作用域中捕获的环境所组成的。
+
+三个闭包在循环中被创建，但他们共享了同一个词法作用域，在这个作用域中存在一个变量item。
+
+这是因为变量help使用var进行声明，由于变量提升，所以具有函数作用域。
+
+当onfocus的回调执行时，item.help的值被决定。由于循环在事件触发之前早已执行完毕，
+
+变量对象item（被三个闭包所共享）已经指向了helpText的最后一项。
+</code></pre><h4 id="解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂"><a href="#解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂" class="headerlink" title="解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂"></a>解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeHelpCallback</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    showHelp(help);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = makeHelpCallback(item.help);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+<h4 id="另一种方法使用了匿名闭包"><a href="#另一种方法使用了匿名闭包" class="headerlink" title="另一种方法使用了匿名闭包"></a>另一种方法使用了匿名闭包</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">       <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         showHelp(item.help);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;)(); <span class="comment">// 马上把当前循环项的item与事件回调相关联起来</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+<h4 id="避免使用过多的闭包，可以用let关键词"><a href="#避免使用过多的闭包，可以用let关键词" class="headerlink" title="避免使用过多的闭包，可以用let关键词"></a>避免使用过多的闭包，可以用let关键词</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      showHelp(item.help);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+<pre><code>这个例子使用let而不是var，因此每个闭包都绑定了块作用域的变量，这意味着不再需要额外的闭包。   
+</code></pre><h3 id="性能考量"><a href="#性能考量" class="headerlink" title="性能考量"></a>性能考量</h3><pre><code>如果不是某些特定任务需要使用闭包，在其它函数中创建函数是不明智的，
+因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响。
 </code></pre>
           
         
@@ -556,7 +1792,7 @@ typeof symbol() // symbol
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/08/进化/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/07/12/PATH的顺序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -575,7 +1811,7 @@ typeof symbol() // symbol
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/08/进化/" itemprop="url">进化</a></h1>
+                <a class="post-title-link" href="/2019/07/12/PATH的顺序/" itemprop="url">PATH的顺序</a></h1>
         
 
         <div class="post-meta">
@@ -587,8 +1823,8 @@ typeof symbol() // symbol
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-08T21:44:11+08:00">
-                2019-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:04:16+08:00">
+                2019-07-12
               </time>
             
 
@@ -627,20 +1863,35 @@ typeof symbol() // symbol
       
         
           
-            <h2 id="一份完备的事后分析报告"><a href="#一份完备的事后分析报告" class="headerlink" title="一份完备的事后分析报告"></a>一份完备的事后分析报告</h2><pre><code>1. 概述
+            <h2 id="PATH的顺序"><a href="#PATH的顺序" class="headerlink" title="PATH的顺序"></a>PATH的顺序</h2><pre><code>/etc/profile 
 
-2. 从发现问题 调查问题 到 解决问题的时间线
+/etc/paths 
 
-3. 事件发生的主要原因
+~/.bash_profile 
 
-4. 影响和损失估计
+~/.bash_login 
 
-5. 立即解决问题的一系列措施
+~/.profile 
 
-6. 预防事件再次发生的一系列措施
-
-7. 吸取经验教训
-</code></pre>
+~/.bashrc
+</code></pre><ol start="2">
+<li>最好的设置 .bash_profile</li>
+</ol>
+<ol start="3">
+<li><p>设定 export PATH=${PATH}:/test/folder</p>
+</li>
+<li><p>系统级</p>
+<p> /etc/profile 和 /etc/paths 是系统级别的</p>
+</li>
+<li><p>用户级</p>
+<p> ~/.bash_profile </p>
+<p> ~/.bash_login </p>
+<p> ~/.profile </p>
+<p> ~/.bashrc</p>
+</li>
+</ol>
+<h2 id="1-etc-profile-建议不修改这个文件"><a href="#1-etc-profile-建议不修改这个文件" class="headerlink" title="1 /etc/profile 建议不修改这个文件"></a>1 /etc/profile 建议不修改这个文件</h2><pre><code>全局（公有）配置，不管是哪个用户，登录时都会读取该文件
+</code></pre><h2 id="2-etc-paths-全局建议修改这个文件"><a href="#2-etc-paths-全局建议修改这个文件" class="headerlink" title="2 /etc/paths 全局建议修改这个文件"></a>2 /etc/paths 全局建议修改这个文件</h2><h2 id="3-etc-bashrc-（一般在这个文件中添加系统级环境变量）"><a href="#3-etc-bashrc-（一般在这个文件中添加系统级环境变量）" class="headerlink" title="3 /etc/bashrc （一般在这个文件中添加系统级环境变量）"></a>3 /etc/bashrc （一般在这个文件中添加系统级环境变量）</h2>
           
         
       
@@ -688,7 +1939,7 @@ typeof symbol() // symbol
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/08/javascript之美-mixin/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/20/swift-UIApplicationMain/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -707,7 +1958,7 @@ typeof symbol() // symbol
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/08/javascript之美-mixin/" itemprop="url">javascript之美 mixin</a></h1>
+                <a class="post-title-link" href="/2019/06/20/swift-UIApplicationMain/" itemprop="url">swift @UIApplicationMain</a></h1>
         
 
         <div class="post-meta">
@@ -719,8 +1970,8 @@ typeof symbol() // symbol
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-08T17:21:35+08:00">
-                2019-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T01:42:20+08:00">
+                2019-06-20
               </time>
             
 
@@ -759,1034 +2010,28 @@ typeof symbol() // symbol
       
         
           
-            <h2 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * mixin的目标对象是上下文对象this</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> withCircle =  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.area = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  &#125;</span><br><span class="line">    <span class="keyword">this</span>.grow = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  &#125;</span><br><span class="line">    <span class="keyword">this</span>.shrink = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> withClickable =  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.hover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'hover'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.press = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'press'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.release = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'release'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.fire = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">      <span class="keyword">this</span>.action.fire();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> RoundButton = <span class="function"><span class="keyword">function</span> (<span class="params">radius, labal,aciton</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.radius = radius;</span><br><span class="line">    <span class="keyword">this</span>.labal = labal;</span><br><span class="line">    <span class="keyword">this</span>.aciton = aciton;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// mixin式绑定 将withCircle withClickable工具 </span></span><br><span class="line"><span class="comment">// 混入 掺入给RoundButton.prototype</span></span><br><span class="line"></span><br><span class="line">withCircle.call(RoundButton.prototype);</span><br><span class="line"></span><br><span class="line">withClickable.call(RoundButton.prototype);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 总结</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *  好处 </span></span><br><span class="line"><span class="comment"> *      轻量级的一站式函数服务 </span></span><br><span class="line"><span class="comment"> *      </span></span><br><span class="line"><span class="comment"> *      没有影响原型的constructor属性</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *      代码简洁  </span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *      this总是执行函数集的接受者而不是我们不需要的抽象对象</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *  坏处</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *  缺点</span></span><br><span class="line"><span class="comment"> *      </span></span><br><span class="line"><span class="comment"> *      mixin函数会覆盖目标对象碰巧与之重名的属性</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *      解决办法 为现有属性加锁 writable</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *        advice方法 就是面向切面编程</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">after</span>(<span class="params">name,fn</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>[name]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">            <span class="keyword">this</span>[name]();</span><br><span class="line">            fn.call(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">            fn.call(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * extend 只是简单复制 不是克隆</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">dest, source</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">        <span class="keyword">if</span> (source.hasOwnProperty(key)) &#123;</span><br><span class="line">            dest[key]= source[key];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/06/执行上下文-变量对象-作用域-闭包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/06/执行上下文-变量对象-作用域-闭包/" itemprop="url">执行上下文 变量对象 作用域 闭包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-06T10:33:47+08:00">
-                2019-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><pre><code>执行上下文 是 一个动态概念
-
-也就是说 只有在代码执行的时候生成
-</code></pre><h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><pre><code>1. 当前上下文中的所有的通过var声明的变量 不包括通过let const 强调一下 声明这两个字
-
-2. 函数的所有参数 也就是 参数argments对象 也会在变量对象中
-
-3. 当前上下文中的所有函数声明 注意不包括函数表达式
-
-4. let const 声明变量在作用域上
-</code></pre><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><pre><code>作用域 是 一个 静态概念
-
-是在代码的编译阶段就生成的
-
-每一个函数在编译阶段就会添加一个[[scopes]]属性
-
-let const 声明变量 与 var 不同就在这里:
-
-    let const声明变量不会预解析 也就是不会保存到变量对象中
-
-    而是保存到一个作用域scope中 并且是 这个scope是块级作用域
-</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>没有this  就用函数声明的位置this
-
-没有argments 
-
-没有super new.targe
-
-不能new调用 没有[[constructor]]方法
-
-没有原型
-
-本质 箭头函数 使用 父级执行上下文
-
-所有就说明没有this 使用父级执行上下文中的this
-</code></pre><h2 id="call-apply-bind"><a href="#call-apply-bind" class="headerlink" title="call apply bind"></a>call apply bind</h2><pre><code>call apply 为了绑定函数执行上下文中this arments
-
-bind 为了绑定函数的执行上下文this argments 
-
-bind 返回一个新函数
-
-如果bind绑定arments 返回的新函数不能传参
-
-如果bind没有绑定arments 返回的新函数可以传参
-</code></pre><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><pre><code>当前执行上下文A中的变量对象和作用域中没有的变量
-
-而是调用父级们执行上下文中的变量对象或者scope 就形成 闭包
-</code></pre><h2 id="块级作用域-代码演示"><a href="#块级作用域-代码演示" class="headerlink" title="块级作用域 代码演示"></a>块级作用域 代码演示</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt;<span class="number">3</span>; index++) &#123;</span><br><span class="line">    arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">代码编译时候变成下面的代码</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt;<span class="number">2</span>; index++) &#123;</span><br><span class="line">    <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">    arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index + o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> o = <span class="number">1</span>;</span><br><span class="line">        arr[index] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>执行上下文有一下情况会生成
-
-    1. 全局环境
-
-    2. 函数环境
-
-    3. eavl  依赖于执行位置
-
-    4. vm    全新
-
-    5. new Function   全新
-
-执行上下文一般包括含 变量对象  作用域  this
-
-执行栈中栈顶的执行上下文的变量对象 称之为 活动对象
-
-变量对象
-
-    argumets对象
-
-    var 声明变量
-
-    function 函数声明
-
-scope
-
-    let const 声明变量
-
-    私有属性 Parent 
-
-this
-
-    是给调用者影响函数执行的一个窗口
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//eval("console.log(a)");  // 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"console.log(a)"</span>);</span><br><span class="line"></span><br><span class="line">fn()  <span class="comment">// a is not defined</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/execution context.png" alt="execution context" title="Title">  </p>
-<p><img src="/images/execution-context-code.png" alt="execution-context-code" title="Title"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">理解块级作用域的代码</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let a 声明后</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/04/04/编程字体/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/04/编程字体/" itemprop="url">编程字体</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-04T22:56:43+08:00">
-                2019-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="编程字体"><a href="#编程字体" class="headerlink" title="编程字体"></a>编程字体</h2><pre><code>Ubuntu Mono
-
-Menlo
-
-Fira Code 
-
-Meslo
-
-Source Code Pro
-
-San Francisco Mono
-
-YaHei Consolas Hybrid
-
-Ubuntu Monospace
-
-Courier New
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/30/CORS跨域请求之简单请求与非简单请求/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/30/CORS跨域请求之简单请求与非简单请求/" itemprop="url">CORS跨域请求之简单请求与非简单请求</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T16:04:52+08:00">
-                2019-03-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><pre><code>就是使用设定的请求方式请求数据
-</code></pre><h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><pre><code>则是在使用设定的请求方式请求数据之前
-先发送一个OPTIONS请求 
-看服务端是否允许客户端发送非简单请
-只有&quot;预检&quot;通过后才会再发送一次请求用于数据传输
-</code></pre><h2 id="简单请求与非简单请求的区别"><a href="#简单请求与非简单请求的区别" class="headerlink" title="简单请求与非简单请求的区别"></a>简单请求与非简单请求的区别</h2><pre><code>* 请求方式:HEAD,GET,POST
-* 请求头信息:
-    Accept
-    Accept-Language
-    Content-Language
-    Last-Event-ID
-    Content-Type 对应的值是以下三个中的任意一个
-        application/x-www-form-urlencoded
-        multipart/form-data
-        text/plain
-
-只有同时满足以上两个条件时,才是简单请求,否则为非简单请求
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>对于非简单请求,客户端以PUT方式请求数据
-
-服务端的&quot;预检&quot;里边一定要包含允许客户端使用非简单方式请求数据的响应头
-
-“预检”请求时，允许请求方式则需服务器设置响应头：Access-Control-Request-Method
-
-“预检”请求时，允许请求头则需服务器设置响应头：Access-Control-Request-Headers
-
-“预检”缓存时间，服务器设置响应头：Access-Control-Max-Age
-
-虽然可以通过设置响应头和响应方式等支持非简单请求
-
-但是不到万不得已的情况,不能允许客户端发送非简单请求
-
-因为非简单请求会使服务器比简单请求的多一倍的压力
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/22/虚拟机网络模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/22/虚拟机网络模式/" itemprop="url">虚拟机网络模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-22T00:21:13+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="虚拟机有三种网络模式"><a href="#虚拟机有三种网络模式" class="headerlink" title="虚拟机有三种网络模式"></a>虚拟机有三种网络模式</h2><pre><code>1. 桥接
-
-2. NAT
-
-3. Host-Only
-</code></pre><h2 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h2><pre><code>桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接
-
-物理网卡和虚拟网卡在拓扑图上处于同等地位
-
-那么物理网卡和虚拟网卡就相当于处于同一个网段
-
-虚拟交换机就相当于一台现实网络中的交换机
-
-所以两个网卡的IP地址也要设置为同一网段   
-</code></pre><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><pre><code>NAT模式中  就是让虚拟机借助NAT(网络地址转换)功能
-
-通过宿主机器所在的网络来访问公网
-
-NAT模式中   虚拟机的网卡和物理网卡的网络 不在同一个网络
-
-虚拟机的网卡  是在vmware提供的一个虚拟网络
-
-NAT和桥接的比较:
-
-    1   NAT模式和桥接模式虚拟机都可以上外网
-
-    2   由于NAT的网络在vmware提供的一个虚拟网络里
-        所以局域网其他主机是无法访问虚拟机的  而宿主机可以访问虚拟机
-        虚拟机可以访问局域网的所有主机
-        因为真实的局域网相对于NAT的虚拟网络
-        就是NAT的虚拟网络的外网
-
-    3   桥接模式下 多个虚拟机之间可以互相访问
-        NAT模式下 多个虚拟机之间也可以相互访问
-
-如果你建一个虚拟机 只是给自己用 不需要给局域网其他人用  那么可以选择NAT
-
-毕竟NAT模式下的虚拟系统的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP服务器提供的
-
-只要虚拟机的网路配置是DHCP  那么你不需要进行任何其他的配置
-
-只需要宿主机器能访问互联网即可  就可以让虚拟机联网了    
-</code></pre><h2 id="Host-Only"><a href="#Host-Only" class="headerlink" title="Host-Only"></a>Host-Only</h2><pre><code>在Host-Only模式下 虚拟网络是一个全封闭的网络
-
-它唯一能够访问的就是主机
-
-其实Host-Only网络和NAT网络很相似 不同的地方就是Host-Only网络没有NAT服务
-
-所以虚拟网络不能连接到Internet
-
-主机和虚拟机之间的通信是通过VMware Network Adepter VMnet1虚拟网卡来实现的
-
-Host-Only的宗旨就是建立一个与外界隔绝的内部网络 来提高内网的安全性
-
-这个功能或许对普通用户来说没有多大意义
-
-但大型服务商会常常利用这个功能
-
-如果你想为VMnet1网段提供路由功能
-
-那就需要使用RRAS    而不能使用XP或2000的ICS
-
-因为ICS会把内网的IP地址改为192.168.0.1
-
-但虚拟机是不会给VMnet1虚拟网卡分配这个地址的
-
-那么主机和虚拟机之间就不能通信了
-</code></pre><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><pre><code>在VMware的3中网络模式中 NAT模式是最简单的
-
-基本不需要手动配置IP地址等相关参数 至于桥接模式则需要额外的IP地址
-
-如果是在内网环境中还很容易
-
-如果是ADSL宽带就比较麻烦了
-
-ISP一般是不会大方的多提供一个公网IP的
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/git-reset-revert/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/git-reset-revert/" itemprop="url">git reset revert</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T20:45:48+08:00">
-                2019-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h2><pre><code>大致分为下面2种情况
-</code></pre><h4 id="1-没有push"><a href="#1-没有push" class="headerlink" title="1.没有push"></a>1.没有push</h4><pre><code>这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题
-准备取消提交,用到下面命令
-
-git reset [--soft | --mixed | --hard
-
---mixed 会保留源码,只是将git commit和index 信息回退到了某个版本.
-
-git reset 默认是 --mixed 模式   
-git reset --mixed  等价于  git reset
-
---soft
-保留源码,只回退到commit 信息到某个版本
-不涉及index的回退,如果还需要提交,直接commit即可.
-
---hard
-源码也会回退到某个版本,commit和index 都回回退到某个版本
-(注意,这种方式是改变本地代码仓库源码)
-</code></pre><h4 id="2-已经push"><a href="#2-已经push" class="headerlink" title="2.已经push"></a>2.已经push</h4><pre><code>对于已经把代码push到线上仓库,你回退本地代码其实也想同时回退线上代码
-
-回滚到某个指定的版本,线上,线下代码保持一致.你要用到下面的命令
-
-git revert用于反转提交,执行evert命令时要求工作树必须是干净的
-
-git revert用一个新提交来消除一个历史提交所做的任何修改
-
-revert 之后你的本地代码会回滚到指定的历史版本
-
-这时你再 git push 既可以把线上的代码更新
-
-revert 使用,需要先找到你想回滚版本唯一的commit标识代码
-
-可以用 git log 或者在adgit搭建的web环境历史提交记录里查看
-
-git revert c011eb3c20ba6fb38cc94fe5a8dda366a3990c61
-
-通常,前几位即可
-
-git revert c011eb3
-</code></pre><h4 id="git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit"><a href="#git-revert是用一次新的commit来回滚之前的commit，git-reset是直接删除指定的commit" class="headerlink" title="git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit"></a>git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit</h4><pre><code>看似达到的效果是一样的,其实完全不同.
-
-第一:
-
-上面我们说的如果你已经push到线上代码库, reset 删除指定commit以后,你git push可能导致一大堆冲突.但是revert 并不会.
-
-第二:
-
-如果在日后现有分支和历史分支需要合并的时候,reset 恢复部分的代码依然会出现在历史分支里.但是revert 方向提交的commit 并不会出现在历史分支里.
-
-第三:
-
-reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的HEAD 是一直向前的.
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/03/17/粘包分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/粘包分析/" itemprop="url">粘包分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T20:13:01+08:00">
-                2019-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-长连接与短连接"><a href="#1-长连接与短连接" class="headerlink" title="1. 长连接与短连接"></a>1. 长连接与短连接</h2><p>1.长连接</p>
-<pre><code>Client方与Server方先建立通讯连接，连接建立后不断开， 然后再进行报文发送和接收。
-</code></pre><p>2.短连接</p>
-<pre><code>Client方与Server每进行一次报文收发交易时才进行通讯连接，交易完毕后立即断开连接。此种方式常用于一点对多点 
-通讯，比如多个Client连接一个Server.
-</code></pre><h2 id="2-什么时候需要考虑粘包问题"><a href="#2-什么时候需要考虑粘包问题" class="headerlink" title="2 什么时候需要考虑粘包问题?"></a>2 什么时候需要考虑粘包问题?</h2><pre><code>1: 如果利用tcp每次发送数据，就与对方建立连接，然后双方发送完一段数据后，就关闭连接，这样就不会出现粘包问题
-
-2: 如果发送数据无结构，如文件传输，这样发送方只管发送，接收方只管接收存储就ok，也不用考虑粘包
-</code></pre><h2 id="3-粘包出现原因"><a href="#3-粘包出现原因" class="headerlink" title="3 粘包出现原因"></a>3 粘包出现原因</h2><pre><code>在流传输中出现，UDP不会出现粘包，因为它有消息边界
-
-1 发送端需要等缓冲区满才发送出去，造成粘包
-
-2 接收方不及时接收缓冲区的包，造成多个包接收
-
-解决办法：
-
-    为了避免粘包现象，可采取以下几种措施
-
-    一 是对于发送方引起的粘包现象，用户可通过编程设置来避免，TCP提供了强制数据立即传送的操作指令push，TCP软件收到该操作指令后，就立即将本段数据发送出去，而不必等待发送缓冲区满
-
-    二 是对于接收方引起的粘包，则可通过优化程序设计、精简接收进程工作量、提高接收进程优先级等措施，使其及时接收数据，从而尽量避免出现粘包现象
-
-    三 是由接收方控制，将一包数据按结构字段，人为控制分多次接收，然后合并，通过这种手段来避免粘包
-
-TCP是个&quot;流&quot;协议,所谓流,就是没有界限的一串数据.大家可以想想河里的流水,是连成一片的,其间是没有分界线的.但一般通讯程序开发是需要定义一个个相互独立的数据包的,比如用于登陆的数据包,用于注销的数据包.由于TCP&quot;流&quot;的特性以及网络状况,在进行数据传输时会出现以下几种情况.
-
-假设我们连续调用两次send分别发送两段数据data1和data2,
-在接收端有以下几种接收情况(当然不止这几种情况,这里只列出了有代表性的情况).
-
-A.先接收到data1,然后接收到data2.
-
-B.先接收到data1的部分数据,然后接收到data1余下的部分以及data2的全部.
-
-C.先接收到了data1的全部数据和data2的部分数据,然后接收到了data2的余下的数据.
-
-D.一次性接收到了data1和data2的全部数据.
-
-对于A这种情况正是我们需要的,不再做讨论.
-
-对于B,C,D的情况就是大家经常说的&quot;粘包&quot;,就需要我们把接收到的数据进行拆包
-拆成一个个独立的数据包.为了拆包就必须在发送端进行封包
-</code></pre><h4 id="为什么会出现B-C-D的情况"><a href="#为什么会出现B-C-D的情况" class="headerlink" title="为什么会出现B.C.D的情况."></a>为什么会出现B.C.D的情况.</h4><pre><code>&quot;粘包&quot;可发生在发送端也可发生在接收端.
-
-1.由Nagle算法造成的发送端的粘包:Nagle算法是一种改善网络传输效率的算法.
-简单的说,当我们提交一段数据给TCP发送时,TCP并不立刻发送此段数据
-而是等待一小段时间,看看在等待期间是否还有要发送的数据
-若有则会一次把这两段数据发送出去.这是对Nagle算法一个简单的解释
-详细的请看相关书籍.象C和D的情况就有可能是Nagle算法造成的.
-
-2.接收端接收不及时造成的接收端粘包:TCP会把接收到的数据存在自己的缓冲区中
-然后通知应用层取数据.当应用层由于某些原因不能及时的把TCP的数据取出来
-就会造成TCP缓冲区中存放了几段数据
-</code></pre><p><a href="https://blog.csdn.net/tiandijun/article/details/41961785" title="Title" target="_blank" rel="noopener">good </a></p>
+            <h2 id="程序如何开始的"><a href="#程序如何开始的" class="headerlink" title="程序如何开始的"></a>程序如何开始的</h2><p>C 系列语言中，程序的入口都是 main 函数  </p>
+<p>一个 Objective-C 的 iOS app 项目在新建时  </p>
+<p>Xcode 会给我们创建好一个 main.m 的文件</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#<span class="keyword">import</span> "AppDelegate.h"</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="type">NSStringFromClass</span>([<span class="type">AppDelegate</span> <span class="class"><span class="keyword">class</span>]));</span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>复制代码我们调用了 UIKit 的 UIApplicationMain 方法  </p>
+<p>这个方法根据第三个参数初始化一个 UIApplication 或者它的子类对象开始接收事件  </p>
+<p>当传入 nil 时则使用默认的 UIApplication   </p>
+<p>最后一个参数指定了 AppDelegate 类作为应用的委托  </p>
+<p>用来接收与应用生命周期相关的委托方法。</p>
+<p>虽然这个方法标明要返回一个 int，但其实它并不会真正的返回   </p>
+<p>而是一直存在于内存中，直到用户或者系统将应用强制终止。  </p>
+<h2 id="swift-中的对应情况"><a href="#swift-中的对应情况" class="headerlink" title="swift 中的对应情况"></a>swift 中的对应情况</h2><p>创建一个 swift 的项目之后  </p>
+<p>我们发现所有的文件中并没有一个类似于 Objective-C 中的 main.m 文件  也没有 main 函数   </p>
+<p>唯一和 main 有关系的就是在 AppDelegate 中有一个 @UIApplicationMain 标签  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">@UIApplicationMain</span><br><span class="line">class AppDelegate: UIResponder, UIApplicationDelegate &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个标签的作用就是将标注的类作为委托，创建一个 UIApplication 并启动整个程序。  </p>
+<p>一般情况我们不需要对这个标签做任何修改，但如果我们想使用 UIApplication 的子类 </p>
+<p>而不是它本身，我们就要自定义一个 main.swift 文件了</p>
+<p>（记得删除 @UIApplicationMain 标签）</p>
+<p>这个文件我们不需要定义作用域，直接写代码就OK。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(<span class="number">_</span> event: UIEvent)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Event sent:\(event)"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(</span><br><span class="line">    <span class="type">CommandLine</span>.argc,</span><br><span class="line">    <span class="type">UnsafeMutableRawPointer</span>(<span class="type">CommandLine</span>.unsafeArgv)</span><br><span class="line">        .bindMemory(</span><br><span class="line">            to: <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">Int8</span>&gt;.<span class="keyword">self</span>,</span><br><span class="line">            capacity: <span class="type">Int</span>(<span class="type">CommandLine</span>.argc)),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">MyApplication</span>.<span class="keyword">self</span>),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>.<span class="keyword">self</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这样每次发送事件（点击按钮之类的）我们都可以监听到了</p>
 
           
         
@@ -1826,7 +2071,7 @@ D.一次性接收到了data1和data2的全部数据.
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1872,7 +2117,7 @@ D.一次性接收到了data1和data2的全部数据.
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

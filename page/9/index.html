@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/即将来临js特色/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/javascript4种语句/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -249,7 +249,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/21/即将来临js特色/" itemprop="url">即将来临js特色</a></h1>
+                <a class="post-title-link" href="/2019/12/03/javascript4种语句/" itemprop="url">javascript4种语句</a></h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T17:09:22+08:00">
-                2019-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T17:06:43+08:00">
+                2019-12-03
               </time>
             
 
@@ -301,114 +301,22 @@
       
         
           
-            <h2 id="1-Optional-Chaining"><a href="#1-Optional-Chaining" class="headerlink" title="1. Optional Chaining ?."></a>1. Optional Chaining ?.</h2><pre><code>const street = user.address?.street
-</code></pre><h2 id="2-Nullish-Coalescing-Operator-undefined-or-null"><a href="#2-Nullish-Coalescing-Operator-undefined-or-null" class="headerlink" title="2. Nullish Coalescing Operator  ??  undefined or null"></a>2. Nullish Coalescing Operator  ??  undefined or null</h2><pre><code>Base case. If the expression at the left-hand side of the ?? operator evaluates to undefined or null, its right-hand side is returned.
+            <h2 id="1-空语句"><a href="#1-空语句" class="headerlink" title="1. 空语句"></a>1. 空语句</h2><pre><code>用一个; 表示空语句
+var litmus = &apos;neutral&apos;;
+var pH; 
 
-const response = {
-    settings: {
-        nullValue: null,
-        height: 400,
-        animationDuration: 0,
-        headerText: &apos;&apos;,
-        showSplashScreen: false
-    }
-    };
+if(pH&gt;0 &amp;&amp; pH&lt;7)
+    litmus = &apos;acidic&apos;;
+else if(pH===7)
+    ;       /* empty statement */
+else if(pH&gt;7 &amp;&amp; pH&lt;15)
+    litmus = &apos;basic&apos;;
+else
+    throw &quot;Invalid pH value&quot;;
+</code></pre><h2 id="2-debugger语句"><a href="#2-debugger语句" class="headerlink" title="2. debugger语句"></a>2. debugger语句</h2><h2 id="3-labeled语句"><a href="#3-labeled语句" class="headerlink" title="3. labeled语句"></a>3. labeled语句</h2><pre><code>break continue
 
-    const undefinedValue = response.settings.undefinedValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
-    const nullValue = response.settings.nullValue ?? &apos;some other default&apos;; // result: &apos;some other default&apos;
-    const headerText = response.settings.headerText ?? &apos;Hello, world!&apos;; // result: &apos;&apos;
-    const animationDuration = response.settings.animationDuration ?? 300; // result: 0
-    const showSplashScreen = response.settings.showSplashScreen ?? true; // result: false
-</code></pre><h2 id="3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型"><a href="#3-BigInt-Arbitrary-Precision-Integers-in-JavaScript-高精度整型" class="headerlink" title="3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型"></a>3. BigInt: Arbitrary Precision Integers in JavaScript 高精度整型</h2><pre><code>IEEE754 64-bit floats  BigInt 可以表示 2^53
-
-63 符号位
-
-62-53 指数位
-
-0-52 精度位
-
-const x = Number.MAX_SAFE_INTEGER;
-// ↪ 9007199254740991, this is 1 less than 2^53
-
-const y = x + 1;
-// ↪ 9007199254740992, ok, checks out
-
-const z = x + 2
-// ↪ 9007199254740992, wait, that’s the same as above!
-
-A BigInt is created by appending n to the end of the integer or by calling the constructor:
-
-const theBiggestInt = 9007199254740991n;
-
-const alsoHuge = BigInt(9007199254740991);
-// ↪ 9007199254740991n
-
-const hugeButString = BigInt(&apos;9007199254740991&apos;);
-// ↪ 9007199254740991n
-</code></pre><h2 id="4-类静态"><a href="#4-类静态" class="headerlink" title="4. 类静态"></a>4. 类静态</h2><ul>
-<li>静态公有属性</li>
-</ul>
-<pre><code>class CustomDate {
-// ...
-static epoch = new CustomDate(0);
-}
-
-/* or */
-
-class CustomDate {
-// ...
-}
-CustomDate.epoch = new CustomDate(0);
-</code></pre><ul>
-<li><p>静态私有属性</p>
-<pre><code>class C {
-    static #x = 42;
-    x(){
-        return C.#x;
-    }
-}
-return new C().x() === 42;
-</code></pre></li>
-<li><p>静态私有方法 </p>
-</li>
-<li><p>静态计算属性</p>
-<pre><code>class C {
-    static [&apos;x&apos;] = 42;
-}
-return C.x === 42;
-</code></pre></li>
-</ul>
-<h2 id="5-类实例"><a href="#5-类实例" class="headerlink" title="5. 类实例"></a>5. 类实例</h2><ul>
-<li><p>类实例私有属性 / 类实例私有方法</p>
-<pre><code>class Counter extends HTMLElement {
-        #xValue = 0; // 类实例私有属性
-
-        get #x() { return #xValue; } // 类实例私有方法
-        set #x(value) { // setter // 类实例私有方法
-            this.#xValue = value;
-            window.requestAnimationFrame(this.#render.bind(this));
-        }
-
-        #clicked() { // 类实例私有方法
-            this.#x++;
-        }
-
-        constructor() {
-            super();
-            this.onclick = this.#clicked.bind(this);
-        }
-
-        connectedCallback() { this.#render(); }
-
-        #render() { // 类实例私有方法
-            this.textContent = this.#x.toString();
-        }
-    }
-    window.customElements.define(&apos;num-counter&apos;, Counter);
-</code></pre></li>
-</ul>
-<p><a href="https://medium.com/better-programming/new-upcoming-javascript-features-2019-2020-and-beyond-5c426f31ec97" target="_blank" rel="noopener">原始位置</a></p>
-
+goto
+</code></pre><h2 id="4-with语句"><a href="#4-with语句" class="headerlink" title="4. with语句"></a>4. with语句</h2>
           
         
       
@@ -456,7 +364,7 @@ return C.x === 42;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/2019的9个js技巧/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -475,7 +383,7 @@ return C.x === 42;
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/21/2019的9个js技巧/" itemprop="url">2019的9个js技巧</a></h1>
+                <a class="post-title-link" href="/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/" itemprop="url">使用ES6符号隐藏对象属性/属性的后备变量</a></h1>
         
 
         <div class="post-meta">
@@ -487,8 +395,8 @@ return C.x === 42;
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T16:33:11+08:00">
-                2019-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T16:43:19+08:00">
+                2019-12-03
               </time>
             
 
@@ -527,886 +435,19 @@ return C.x === 42;
       
         
           
-            <h2 id="1-async-await"><a href="#1-async-await" class="headerlink" title="1. async await"></a>1. async await</h2><pre><code>async function getData() {
-    const result = await axios.get(&apos;https://dube.io/service/ping&apos;)
-    const data = result.data
-
-    console.log(&apos;data&apos;, data)
-
-    return data
-}
-
-getData()
-</code></pre><h2 id="2-async-control-flow"><a href="#2-async-control-flow" class="headerlink" title="2. async control flow"></a>2. async control flow</h2><ul>
-<li><p>for of</p>
-<pre><code>import axios from &apos;axios&apos;
-
-let myData = [{id: 0}, {id: 1}, {id: 2}, {id: 3}]
-
-async function fetchData(dataSet) {
-    for(entry of dataSet) {
-        const result = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`)
-        const newData = result.data
-        updateData(newData)
-
-        console.log(myData)
-    }
-}
-
-function updateData(newData) {
-    myData = myData.map(el =&gt; {
-        if(el.id === newData.id) return newData
-        return el
+            <h2 id="The-Problem-Hiding-The-Backing-Variable"><a href="#The-Problem-Hiding-The-Backing-Variable" class="headerlink" title="The Problem: Hiding The Backing Variable"></a>The Problem: Hiding The Backing Variable</h2><pre><code>1. this._foo 
+</code></pre><h2 id="Hiding-Via-Closures"><a href="#Hiding-Via-Closures" class="headerlink" title="Hiding Via Closures"></a>Hiding Via Closures</h2><pre><code>function defineProperty(obj, key, value) {
+    Object.defineProperty(obj, key, {
+        get() {
+            return value;
+        },
+        set(newValue) {
+            value = newValue;
+        }
     })
-}
+</code></pre><h2 id="Hiding-The-Backing-Variable-With-ES6-Symbols"><a href="#Hiding-The-Backing-Variable-With-ES6-Symbols" class="headerlink" title="Hiding The Backing Variable With ES6 Symbols"></a>Hiding The Backing Variable With ES6 Symbols</h2><pre><code>Symbol(“foo”)
 
-fetchData(myData)
-</code></pre></li>
-<li><p>Promise.all</p>
-</li>
-</ul>
-<h2 id="3-Destructuring-amp-default-values"><a href="#3-Destructuring-amp-default-values" class="headerlink" title="3. Destructuring &amp; default values"></a>3. Destructuring &amp; default values</h2><h2 id="4-Truthy-amp-falsy-values"><a href="#4-Truthy-amp-falsy-values" class="headerlink" title="4. Truthy &amp; falsy values"></a>4. Truthy &amp; falsy values</h2><pre><code>    Falsy
-        strings with the length of 0
-        the number 0
-        false
-        undefined
-        null
-        NaN
-
-
-    Truthy
-        empty arrays
-        empty objects
-        Everything else
-
-比较 == 不要用 严格比较  ===
-</code></pre><h2 id="5-Logical-and-ternary-operators"><a href="#5-Logical-and-ternary-operators" class="headerlink" title="5. Logical and ternary operators"></a>5. Logical and ternary operators</h2><pre><code>console.log(0 &amp;&amp; {a: 1}) // 0
-console.log(false &amp;&amp; &apos;a&apos;) // false
-console.log(&apos;2&apos; &amp;&amp; 5) // 5
-console.log([] || false) // []
-console.log(NaN || null) // null
-console.log(true || &apos;a&apos;) // true
-</code></pre><ul>
-<li><p>三运算符</p>
-<ol>
-<li><p>比较结果是 true false  </p>
-</li>
-<li><p>true 返回第一个  </p>
-</li>
-<li><p>false 返回第二个  </p>
-<p> const lang = ‘German’<br> console.log(lang === ‘German’ ? ‘Hallo’ : ‘Hello’) // Hallo<br> console.log(lang ? ‘Ja’ : ‘Yes’) // Ja<br> console.log(lang === ‘French’ ? ‘Bon soir’ : ‘Good evening’) // Good evening</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="6-Optional-chaining"><a href="#6-Optional-chaining" class="headerlink" title="6. Optional chaining ?."></a>6. Optional chaining ?.</h2><pre><code>const data = myObj?.firstProp?.secondProp?.actualData
-</code></pre><h2 id="7-Class-properties-amp-binding"><a href="#7-Class-properties-amp-binding" class="headerlink" title="7. Class properties &amp; binding"></a>7. Class properties &amp; binding</h2><pre><code>class Counter extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { count: 0 }
-    }
-
-    render() {
-        return(
-            &lt;div&gt;
-                &lt;h1&gt;{this.state.count}&lt;/h1&gt;  
-                &lt;button onClick={this._increaseCount}&gt;Increase Count&lt;/button&gt;
-            &lt;/div&gt;
-        )
-    }
-    // 类属性 自动绑定this
-    _increaseCount = () =&gt; {
-        this.setState({ count: this.state.count + 1 })
-    }
-}
-</code></pre><h2 id="8-Use-parcel"><a href="#8-Use-parcel" class="headerlink" title="8. Use parcel"></a>8. Use parcel</h2><h2 id="9-动手写自己代码-清楚原理"><a href="#9-动手写自己代码-清楚原理" class="headerlink" title="9. 动手写自己代码 清楚原理"></a>9. 动手写自己代码 清楚原理</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/javascript如何处理错误/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/javascript如何处理错误/" itemprop="url">javascript如何处理错误</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:43:39+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-javascript-Errors-和-传统处理"><a href="#1-javascript-Errors-和-传统处理" class="headerlink" title="1. javascript Errors 和 传统处理"></a>1. javascript Errors 和 传统处理</h2><pre><code>throw new Error(&apos;something went wrong&apos;)
-并且return停止运行
-
-The Error Object有属性 message 和 stack
-
-const myError = new Error(‘please improve your code’)
-
-console.log(myError.message) // please improve your code
-
-console.log(myError.stack) // please improve your code
-
-错误栈 展现错误产生过程和历史
-</code></pre><h2 id="2-抛出与处理错误"><a href="#2-抛出与处理错误" class="headerlink" title="2. 抛出与处理错误"></a>2. 抛出与处理错误</h2><ul>
-<li><p>try catch</p>
-</li>
-<li><p>finally</p>
-</li>
-</ul>
-<h2 id="处理异步的回调"><a href="#处理异步的回调" class="headerlink" title="处理异步的回调"></a>处理异步的回调</h2><ul>
-<li><p>错误优先  回调函数第一个参数是error</p>
-</li>
-<li><p>promise catch finally</p>
-</li>
-<li><p>async await try catch</p>
-</li>
-</ul>
-<h2 id="服务端处理错误"><a href="#服务端处理错误" class="headerlink" title="服务端处理错误"></a>服务端处理错误</h2><ol>
-<li><p>传统处理</p>
-<pre><code>Something went wrong, please try again or contact us
-</code></pre></li>
-<li><p>给用户错误细节信息 便于修复</p>
-</li>
-</ol>
-<h2 id="建立通用的错误构造类-Error-captureStackTrace"><a href="#建立通用的错误构造类-Error-captureStackTrace" class="headerlink" title="建立通用的错误构造类 Error.captureStackTrace"></a>建立通用的错误构造类 Error.captureStackTrace</h2><pre><code>class CustomError extends Error {
-    constructor(code = &apos;GENERIC&apos;, status = 500, ...params) {
-        super(...params)
-
-        if (Error.captureStackTrace) {
-            Error.captureStackTrace(this, CustomError)
-        }
-
-        this.code = code
-        this.status = status
-    }   
-}
-
-module.exports = CustomError
-
-既然JavaScript语言标准中没有定义captureStackTrace，那就只能从Node.js的文档中去寻找答案了。Node.js中，关于Error.captureStackTrace的描述是这样的：
-
-Error.captureStackTrace(targetObject[, constructorOpt])
-
-在targetObject中添加一个.stack属性。对该属性进行访问时，将以字符串的形式返回Error.captureStackTrace()语句被调用时的代码位置信息(即：调用栈历史)
-</code></pre><p><a href="http://blog.shaochuancs.com/about-error-capturestacktrace/" target="_blank" rel="noopener">参考</a></p>
-<h2 id="如何处理路由"><a href="#如何处理路由" class="headerlink" title="如何处理路由"></a>如何处理路由</h2><pre><code>{
-    error: &apos;SOME_ERROR_CODE&apos;,
-    description: &apos;Something bad happened. Please try again or     contact support.&apos;
-}
-</code></pre><p>const express = require(‘express’)<br>const router = express.Router()<br>const CustomError = require(‘../CustomError’)</p>
-<p>router.use(async (req, res) =&gt; {<br>    try {<br>        const route = require(<code>.${req.path}</code>)[req.method]</p>
-<pre><code>    try {
-        const result = route(req) // We pass the request to the route function
-        res.send(result) // We just send to the client what we get returned from the route function
-    } catch (err) {
-        /*
-        This will be entered, if an error occurs inside the route function.
-        */
-        if (err instanceof CustomError) {
-            /* 
-            In case the error has already been handled, we just transform the error 
-            to our return object.
-            */
-
-            return res.status(err.status).send({
-                error: err.code,
-                description: err.message,
-            })
-        } else {
-            console.error(err) // For debugging reasons
-
-            // It would be an unhandled error, here we can just return our generic error object.
-            return res.status(500).send({
-                error: &apos;GENERIC&apos;,
-                description: &apos;Something went wrong. Please try again or contact support.&apos;,
-            })
-        }
-    }
-} catch (err) {
-    /* 
-    This will be entered, if the require fails, meaning there is either 
-    no file with the name of the request path or no exported function 
-    with the given request method.
-    */
-    res.status(404).send({
-        error: &apos;NOT_FOUND&apos;,
-        description: &apos;The resource you tried to access does not exist.&apos;,
-        })
-    }
-    })
-
-module.exports = router
-
-
-
-    const CustomError = require(&apos;../CustomError&apos;)
-
-    const GET = req =&gt; {
-        // example for success
-        return { name: &apos;Rio de Janeiro&apos; }
-    }
-
-    const POST = req =&gt; {
-        // example for unhandled error
-        throw new Error(&apos;Some unexpected error, may also be thrown by a library or the runtime.&apos;)
-    }
-
-    const DELETE = req =&gt; {
-        // example for handled error
-        throw new CustomError(&apos;CITY_NOT_FOUND&apos;, 404, &apos;The city you are trying to delete could not be found.&apos;)
-    }
-
-    const PATCH = req =&gt; {
-        // example for catching errors and using a CustomError
-        try {
-            // something bad happens here
-            throw new Error(&apos;Some internal error&apos;)
-        } catch (err) {
-            console.error(err) // decide what you want to do here
-
-            throw new CustomError(
-                &apos;CITY_NOT_EDITABLE&apos;,
-                400,
-                &apos;The city you are trying to edit is not editable.&apos;
-            )
-        }
-    }
-
-    module.exports = {
-        GET,
-        POST,
-        DELETE,
-        PATCH,
-    }
-</code></pre><h2 id="如何展示给用户"><a href="#如何展示给用户" class="headerlink" title="如何展示给用户"></a>如何展示给用户</h2><ol>
-<li>Saving Errors in React state</li>
-</ol>
-<pre><code>import React, { Component } from &apos;react&apos;
-
-import GlobalError from &apos;./GlobalError&apos;
-
-class Application extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            error: &apos;&apos;,
-        }
-
-        this._resetError = this._resetError.bind(this)
-        this._setError = this._setError.bind(this)
-    }
-
-    render() {
-        return (
-            &lt;div className=&quot;container&quot;&gt;
-                &lt;GlobalError error={this.state.error} resetError={this._resetError} /&gt;
-                &lt;h1&gt;Handling Errors&lt;/h1&gt;
-            &lt;/div&gt;
-        )
-    }
-
-    _resetError() {
-        this.setState({ error: &apos;&apos; })
-    }
-
-    _setError(newError) {
-        this.setState({ error: newError })
-    }
-}
-
-export default Application
-</code></pre><p><a href="https://levelup.gitconnected.com/the-definite-guide-to-handling-errors-gracefully-in-javascript-58424d9c60e6" target="_blank" rel="noopener">原始文章</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/10种javascript技巧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/10种javascript技巧/" itemprop="url">10种javascript技巧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:30:30+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-控制流"><a href="#1-控制流" class="headerlink" title="1.控制流"></a>1.控制流</h2><ul>
-<li><p>if else</p>
-</li>
-<li><p>switch</p>
-</li>
-<li><p>for</p>
-<pre><code>forof forin asyncawait
-</code></pre></li>
-<li><p>三元算符</p>
-</li>
-</ul>
-<h2 id="2-错误处理"><a href="#2-错误处理" class="headerlink" title="2. 错误处理"></a>2. 错误处理</h2><ul>
-<li><p>构建自己Error函数</p>
-</li>
-<li><p>正确捕获 trycatch </p>
-</li>
-</ul>
-<h2 id="3-数据模型"><a href="#3-数据模型" class="headerlink" title="3. 数据模型"></a>3. 数据模型</h2><h2 id="4-异步处理"><a href="#4-异步处理" class="headerlink" title="4. 异步处理"></a>4. 异步处理</h2><ul>
-<li><p>promise</p>
-</li>
-<li><p>async/await</p>
-</li>
-</ul>
-<h2 id="5-DOM处理"><a href="#5-DOM处理" class="headerlink" title="5. DOM处理"></a>5. DOM处理</h2><ul>
-<li>原生操作 避免Jquery</li>
-</ul>
-<h2 id="6-Node-js-Express"><a href="#6-Node-js-Express" class="headerlink" title="6. Node.js/Express"></a>6. Node.js/Express</h2><h2 id="7-函数编程"><a href="#7-函数编程" class="headerlink" title="7. 函数编程"></a>7. 函数编程</h2><ul>
-<li><p>map</p>
-</li>
-<li><p>reducer</p>
-</li>
-<li><p>filter</p>
-</li>
-<li><p>forEach</p>
-</li>
-<li><p>find</p>
-</li>
-</ul>
-<h2 id="8-面向对象编程"><a href="#8-面向对象编程" class="headerlink" title="8. 面向对象编程"></a>8. 面向对象编程</h2><h2 id="9-前端框架"><a href="#9-前端框架" class="headerlink" title="9. 前端框架"></a>9. 前端框架</h2><h2 id="10-打包、编译"><a href="#10-打包、编译" class="headerlink" title="10. 打包、编译"></a>10. 打包、编译</h2><ul>
-<li><p>babel.js</p>
-</li>
-<li><p>webpack</p>
-</li>
-<li><p>parcel</p>
-</li>
-</ul>
-<h2 id="11-正则表达式"><a href="#11-正则表达式" class="headerlink" title="11. 正则表达式"></a>11. 正则表达式</h2><h2 id="12-测试"><a href="#12-测试" class="headerlink" title="12. 测试"></a>12. 测试</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/21/3种javascript性能之殇/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/3种javascript性能之殇/" itemprop="url">3种javascript性能之殇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:13:58+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-数组循环"><a href="#1-数组循环" class="headerlink" title="1. 数组循环"></a>1. 数组循环</h2><ul>
-<li>for</li>
-<li>forof</li>
-<li>while</li>
-<li>forEach</li>
-<li>reduce</li>
-<li><p>map</p>
-<pre><code>reduce 使用方便
-
-reduce和forEach要求递归调用该函数以递归方式调用并膨胀堆栈，并且对执行的代码进行额外的操作和验证
-
-for while 性能好
-</code></pre></li>
-</ul>
-<h2 id="2-复制数组"><a href="#2-复制数组" class="headerlink" title="2. 复制数组"></a>2. 复制数组</h2><ul>
-<li><p>spread operation […arr]  性能中</p>
-</li>
-<li><p>Array from Array.from(arr)  性能最差</p>
-</li>
-<li><p>map arr.map(x =&gt; x) 性能次</p>
-</li>
-<li><p>slice arr.slice() 性能好</p>
-</li>
-<li><p>concatenate [].concat(arr) 性能好</p>
-</li>
-</ul>
-<h2 id="3-迭代对象"><a href="#3-迭代对象" class="headerlink" title="3. 迭代对象"></a>3. 迭代对象</h2><ul>
-<li><p>forin   性能好</p>
-</li>
-<li><p>Object.keys()  forEach 性能次</p>
-</li>
-<li><p>Object.entries()   forof  性能差</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/18/js闭包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/18/js闭包/" itemprop="url">js闭包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-18T09:08:17+08:00">
-                2019-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="闭包概念"><a href="#闭包概念" class="headerlink" title="闭包概念"></a>闭包概念</h2><pre><code>函数与对其状态(即词法环境 lexical environment) 的引用 共同构成 闭包 closure
-
-也就是说 闭包可以让你从内部函数 访问 外部函数作用域
-
-在javascript中 函数在每次创建时生成闭包
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Mozilla"</span>; <span class="comment">// name 是一个被 init 创建的局部变量</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123; <span class="comment">// displayName() 是内部函数,一个闭包</span></span><br><span class="line">        alert(name); <span class="comment">// 使用了父函数中声明的变量</span></span><br><span class="line">    &#125;</span><br><span class="line">    displayName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
-<h2 id="词法（lexical）"><a href="#词法（lexical）" class="headerlink" title="词法（lexical）"></a>词法（lexical）</h2><pre><code>词法一词表明，词法作用域根据声明变量的位置来确定该变量可被访问的位置。
-
-嵌套函数可获取声明于外部作用域的函数。
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Mozilla"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
-<pre><code>在一些编程语言中，函数中的局部变量仅在函数的执行期间可用。一旦 makeFunc() 执行完毕，
-我们会认为 name 变量将不能被访问。
-然而，因为代码运行得没问题，所以很显然在 JavaScript 中并不是这样的。
-
-这个谜题的答案是，JavaScript中的函数会形成闭包。 
-
-闭包是由函数以及创建该函数的词法环境组合而成。
-这个环境包含了这个闭包创建时所能访问的所有局部变量
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">var</span> add10 = makeAdder(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add5(<span class="number">2</span>));  <span class="comment">// 7</span></span><br><span class="line"><span class="built_in">console</span>.log(add10(<span class="number">2</span>)); <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
-<pre><code>从本质上讲，makeAdder 是一个函数工厂 — 他创建了将指定的值和它的参数相加求和的函数。
-在上面的示例中，我们使用函数工厂创建了两个新函数 — 一个将其参数和 5 求和，另一个和 10 求和。
-
-add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存了不同的词法环境。
-在 add5 的环境中，x 为 5。而在 add10 中，x 则为 10。
-</code></pre><h3 id="实用的闭包"><a href="#实用的闭包" class="headerlink" title="实用的闭包"></a>实用的闭包</h3><p>闭包很有用，因为它允许将函数与其所操作的某些数据（环境）关联起来。<br>这显然类似于面向对象编程。在面向对象编程中，对象允许我们将某些数据（对象的属性）与一个或者多个方法相关联。</p>
-<p>因此，通常你使用只有一个方法的对象的地方，都可以使用闭包。</p>
-<p>在 Web 中，你想要这样做的情况特别常见。<br>大部分我们所写的 JavaScript 代码都是基于事件的 — 定义某种行为，<br>然后将其添加到用户触发的事件之上（比如点击或者按键）。</p>
-<p>我们的代码通常作为回调：为响应事件而执行的函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeSizer</span>(<span class="params">size</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.body.style.fontSize = size + <span class="string">'px'</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> size12 = makeSizer(<span class="number">12</span>);</span><br><span class="line"><span class="keyword">var</span> size14 = makeSizer(<span class="number">14</span>);</span><br><span class="line"><span class="keyword">var</span> size16 = makeSizer(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-12'</span>).onclick = size12;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-14'</span>).onclick = size14;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'size-16'</span>).onclick = size16;</span><br></pre></td></tr></table></figure>
-<h3 id="用闭包模拟私有方法"><a href="#用闭包模拟私有方法" class="headerlink" title="用闭包模拟私有方法"></a>用闭包模拟私有方法</h3><p>编程语言中，比如 Java，是支持将方法声明为私有的，即它们只能被同一个类中的其它方法所调用。</p>
-<p>而 JavaScript 没有这种原生支持，但我们可以使用闭包来模拟私有方法。   </p>
-<p>私有方法不仅仅有利于限制对代码的访问：还提供了管理全局命名空间的强大能力，  </p>
-<p>避免非核心的方法弄乱了代码的公共接口部分。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Counter = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> privateCounter = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">changeBy</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    privateCounter += val;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    decrement: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">-1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> privateCounter;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;   </span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<h3 id="在循环中创建闭包：一个常见错误"><a href="#在循环中创建闭包：一个常见错误" class="headerlink" title="在循环中创建闭包：一个常见错误"></a>在循环中创建闭包：一个常见错误</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      showHelp(item.help);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
-<pre><code>原因是赋值给 onfocus 的是闭包。这些闭包是由他们的函数定义和在 setupHelp 作用域中捕获的环境所组成的。
-
-三个闭包在循环中被创建，但他们共享了同一个词法作用域，在这个作用域中存在一个变量item。
-
-这是因为变量help使用var进行声明，由于变量提升，所以具有函数作用域。
-
-当onfocus的回调执行时，item.help的值被决定。由于循环在事件触发之前早已执行完毕，
-
-变量对象item（被三个闭包所共享）已经指向了helpText的最后一项。
-</code></pre><h4 id="解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂"><a href="#解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂" class="headerlink" title="解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂"></a>解决这个问题的一种方案是使用更多的闭包：特别是使用前面所述的函数工厂</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeHelpCallback</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    showHelp(help);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = makeHelpCallback(item.help);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
-<h4 id="另一种方法使用了匿名闭包"><a href="#另一种方法使用了匿名闭包" class="headerlink" title="另一种方法使用了匿名闭包"></a>另一种方法使用了匿名闭包</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">       <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         showHelp(item.help);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;)(); <span class="comment">// 马上把当前循环项的item与事件回调相关联起来</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
-<h4 id="避免使用过多的闭包，可以用let关键词"><a href="#避免使用过多的闭包，可以用let关键词" class="headerlink" title="避免使用过多的闭包，可以用let关键词"></a>避免使用过多的闭包，可以用let关键词</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'help'</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'email'</span>, <span class="string">'help'</span>: <span class="string">'Your e-mail address'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'name'</span>, <span class="string">'help'</span>: <span class="string">'Your full name'</span>&#125;,</span><br><span class="line">      &#123;<span class="string">'id'</span>: <span class="string">'age'</span>, <span class="string">'help'</span>: <span class="string">'Your age (you must be over 16)'</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      showHelp(item.help);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
-<pre><code>这个例子使用let而不是var，因此每个闭包都绑定了块作用域的变量，这意味着不再需要额外的闭包。   
-</code></pre><h3 id="性能考量"><a href="#性能考量" class="headerlink" title="性能考量"></a>性能考量</h3><pre><code>如果不是某些特定任务需要使用闭包，在其它函数中创建函数是不明智的，
-因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响。
+Object.getOwnPropertySymbols() returns an array of Symbols that are stored on the object
 </code></pre>
           
         
@@ -1455,7 +496,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/07/12/PATH的顺序/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/Symbols/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1474,7 +515,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/12/PATH的顺序/" itemprop="url">PATH的顺序</a></h1>
+                <a class="post-title-link" href="/2019/12/03/Symbols/" itemprop="url">Symbols</a></h1>
         
 
         <div class="post-meta">
@@ -1486,8 +527,8 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:04:16+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T12:28:09+08:00">
+                2019-12-03
               </time>
             
 
@@ -1526,35 +567,1024 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
       
         
           
-            <h2 id="PATH的顺序"><a href="#PATH的顺序" class="headerlink" title="PATH的顺序"></a>PATH的顺序</h2><pre><code>/etc/profile 
+            
+          
+        
+      
+    </div>
+    
+    
+    
 
-/etc/paths 
+    
 
-~/.bash_profile 
+    
 
-~/.bash_login 
+    
 
-~/.profile 
+    <footer class="post-footer">
+      
 
-~/.bashrc
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/javascript中getter与setter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/03/javascript中getter与setter/" itemprop="url">javascript中getter与setter</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T09:34:20+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Getter与Setter是用来获得或者设置变量值得函数或者方法<br>Getter与Setter的概念是在计算机编程中一个普遍的概念<br>几乎所有高级编程语言<br>几乎所有的高级编程语言都带有一组用于实现getter和setter的语法，包括JavaScipt  </p>
+<p>在这篇文章 我们将能懂getters setters是什么 如何建立和使用他们在Javascript  </p>
+<h2 id="Getters-setters与封装"><a href="#Getters-setters与封装" class="headerlink" title="Getters-setters与封装"></a>Getters-setters与封装</h2><p>Getters-setters总是会与封装联系在一起<br>封装可以用两种方式来理解  </p>
+<ol>
+<li><p>首先 它是数据获取者、设置者和修改者的集合 这种限定在某些操作的时候是非常有意义的<br> 例如验证 在数据保存和展示之前 getter和setter提供了完美解决</p>
+</li>
+<li><p>依据封装是为了隐藏数据 使得外部不能访问内部数据 除了通过getter和setter 这样避免了程序中其他代码重写数据</p>
+</li>
+</ol>
+<h2 id="创建Getters-setters"><a href="#创建Getters-setters" class="headerlink" title="创建Getters-setters"></a>创建Getters-setters</h2><ol>
+<li>通过方法</li>
+</ol>
+<p>由于getter和setter本质改变和设置值的函数 </p>
+<pre><code>var obj = {
+    foo:    &apos;this is the value of foo&apos;,
+    getFoo: function() {
+                return this.foo;
+    ,
+    setFoo: function(val) {
+                this.foo = val;
+    }
+}
+
+    console.log(obj.getFoo());
+    // &quot;this is the value of foo&quot;
+
+    obj.setFoo(&apos;hello&apos;);
+
+    console.log(obj.getFoo());
+    // &quot;hello&quot;
+    This is the simples  
 </code></pre><ol start="2">
-<li>最好的设置 .bash_profile</li>
+<li><p>通过关键字</p>
+<pre><code>通过关键字get/set是官方和健壮的做法
+
+var obj = {
+    fooVal: &apos;this is the value of foo&apos;,
+    get foo() {
+        return this.fooVal;
+    },
+    set foo(val) {
+        this.fooVal = val;
+    }
+}
+
+    console.log(obj.foo);
+    // &quot;this is the value of foo&quot;
+
+    obj.foo = &apos;hello&apos;;
+
+    console.log(obj.foo);
+    // &quot;hello&quot;
+</code></pre></li>
 </ol>
-<ol start="3">
-<li><p>设定 export PATH=${PATH}:/test/folder</p>
+<p>注意，数据只能存储在与getter-setter方法不同的属性名(fooVal)下，因为持有getter-setter方法的属性也不能持有数据。  </p>
+<h2 id="Overwrite-prevention-重写保护"><a href="#Overwrite-prevention-重写保护" class="headerlink" title="Overwrite prevention 重写保护"></a>Overwrite prevention 重写保护</h2><p>如果因为某种原因选择第一种 想使属性通过getter-setter方法并且是一个只读属性<br>可以通过Object.defineProperties<br>Object.defineProperties, Object.defineProperty and Reflect.defineProperty automatically configure to writable: false which means read-only:</p>
+<pre><code>/* Overwrite prevention */
+var obj = {
+foo: &apos;this is the value of foo&apos;
+};
+
+Object.defineProperties(obj, {
+&apos;getFoo&apos;: {
+    value: function () {
+        return this.foo;
+    }
+},
+&apos;setFoo&apos;: {
+    value: function (val) {
+        this.foo = val;
+    }
+}
+});
+
+obj.getFoo = 66;
+// getFoo is not going to be overwritten!
+
+console.log(obj.getFoo());
+// &quot;this is the value of foo&quot;
+</code></pre><h2 id="getter和setter中的操作"><a href="#getter和setter中的操作" class="headerlink" title="getter和setter中的操作"></a>getter和setter中的操作</h2><pre><code>var obj = {
+n: 67,
+get id() {
+    return &apos;The ID is: &apos; + this.n;
+},
+set id(val) {
+    if (typeof val === &apos;number&apos;)
+        this.n = val;
+}
+}
+
+console.log(obj.id);
+// &quot;The ID is: 67&quot;
+
+obj.id = 893;
+
+console.log(obj.id);
+// &quot;The ID is: 893&quot;
+
+obj.id = &apos;hello&apos;;
+
+console.log(obj.id);
+// &quot;The ID is: 893&quot;
+</code></pre><h2 id="通过getter与setter保护数据"><a href="#通过getter与setter保护数据" class="headerlink" title="通过getter与setter保护数据"></a>通过getter与setter保护数据</h2><ul>
+<li><p>Unprotected data</p>
+<pre><code>var obj = {
+    fooVal: &apos;this is the value of foo&apos;,
+    get foo() {
+        return this.fooVal;
+    },
+    set foo(val) {
+        this.fooVal = val;
+    }
+}
+
+obj.fooVal = &apos;hello&apos;;
+
+console.log(obj.foo);
+// &quot;hello&quot;
+</code></pre></li>
+</ul>
+<p>保护数据通过块级作用域或者函数作用域  </p>
+<ol>
+<li>块级作用域 通过let</li>
+</ol>
+<p>创建块级作用域一种方法是通过{}中创建</p>
+<pre><code>/* BLOCK SCOPE, leave the braces alone! */
+
+{
+    let fooVal = &apos;this is the value of foo&apos;;
+    var obj = {
+        get foo() {
+            return fooVal;
+        },
+        set foo(val) {
+            fooVal = val
+        }
+    }
+}
+
+fooVal = &apos;hello&apos;;
+// not going to affect the fooVal inside the block
+
+console.log(obj.foo);
+// &quot;this is the value of foo&quot;
+</code></pre><ol start="2">
+<li>函数作用域</li>
+</ol>
+<p>The more common way to protect the data with scoping is by keeping the data inside a function and returning an object with the getters and setters from that function.  </p>
+<pre><code>function myobj(){
+    var fooVal = &apos;this is the value of foo&apos;;
+    return {
+        get foo() {
+            return fooVal;
+        },
+        set foo(val) {
+            fooVal = val
+        }
+    }
+}
+
+fooVal = &apos;hello&apos;;
+// not going to affect our original fooVal
+
+var obj = myobj();
+
+console.log(obj.foo);
+// &quot;this is the value of foo&quot;
+</code></pre><ol start="3">
+<li>Data protection without scoping</li>
+</ol>
+<p>如果数据具有一个不太容易复制的变量/属性名称，则没有人（甚至我们自己）也不会通过为该变量/属性名称分配一些值来覆盖它  </p>
+<pre><code>var obj = {
+    s89274934764: &apos;this is the value of foo&apos;,
+    get foo() {
+        return this.s89274934764;
+    },
+    set foo(val) {
+        this.s89274934764 = val;
+    }
+}
+
+console.log(obj.foo);
+// &quot;this is the value of foo&quot;
+</code></pre><ol start="4">
+<li><p>通过闭包</p>
+<pre><code>function reactive(obj, prop, value){
+    Object.defineProperty(obj, prop,{
+        get() {
+            return value
+        },
+        set(newValue) {
+            value = newValue;
+        }   
+    })
+}
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/02/像素-2k-4k-高清/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/02/像素-2k-4k-高清/" itemprop="url">像素-2k-4k-高清</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-02T13:44:17+08:00">
+                2019-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="逻辑像素-物理像素"><a href="#逻辑像素-物理像素" class="headerlink" title="逻辑像素 物理像素"></a>逻辑像素 物理像素</h2><h2 id="高清"><a href="#高清" class="headerlink" title="高清"></a>高清</h2><pre><code>屏幕横纵比16:9成为主流分辨率后，1280x720的分辨率成功定义了市场主流分辨率需求。
+液晶屏厂家将它命名为high-definition，可以翻译为高解析度或者高清晰度
+</code></pre><h2 id="全高清屏幕-Full-HD-Resolution-Screen"><a href="#全高清屏幕-Full-HD-Resolution-Screen" class="headerlink" title="全高清屏幕 Full HD Resolution Screen"></a>全高清屏幕 Full HD Resolution Screen</h2><pre><code>1080p的称呼和全高清可以完全划等号
+1080p全高清屏幕的像素点为2073 * 600个
+</code></pre><h2 id="4K-UHD-Ultra-HD-Resolution-Screen"><a href="#4K-UHD-Ultra-HD-Resolution-Screen" class="headerlink" title="4K  UHD Ultra HD Resolution Screen"></a>4K  UHD Ultra HD Resolution Screen</h2><pre><code>UHD屏幕对应为2160p，也就是分辨率3840 x 2160
+
+因主流电视采用1920 x 1080的全高清分辨率
+3840 x 2160分辨率的像素数量刚好是全高清分辨率的4倍
+所以电视市场将1080p作为基数1K而直接喊出4K。
+久而久之，约定俗成的UHD就等同于了4K
+</code></pre><h2 id="屏幕"><a href="#屏幕" class="headerlink" title="屏幕"></a>屏幕</h2><p><img src="../images/screens.png" alt="屏幕"></p>
+<h2 id="ppi"><a href="#ppi" class="headerlink" title="ppi"></a>ppi</h2><p><img src="../images/ppi.png" alt="ppi"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/26/html-height100-意味着什么/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/26/html-height100-意味着什么/" itemprop="url">html-height100%意味着什么?</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-26T10:01:33+08:00">
+                2019-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="浏览器-html-body"><a href="#浏览器-html-body" class="headerlink" title="浏览器 html body"></a>浏览器 html body</h2><pre><code>首先要确定html不代表浏览器 只是渲染树的最顶层的节点 是不是根节点是一个疑问
+
+html {background: red}
+
+这段代码就证明了 上面的话 你会看见浏览器是背景色是红色
+但是实际上html宽度是100% height是0px 但是背景色是红色 这就是一个悖论
+高度是0 为何能显示背景色是红色
+由此 可以推测 html上面还有根节点 就是浏览器
+浏览器默认使用html的背景色渲染
+</code></pre><h2 id="height-100"><a href="#height-100" class="headerlink" title="height:100%"></a>height:100%</h2><pre><code>html {background: red; height: 100%}
+body {background: green;}
+
+背景色还是红色 但是此时是html的背景色  因为html现在高度继承浏览器的高度
+拖动就可以证明
+
+html {background: red; height: 100%}
+body {background: green;height: 100%}
+
+上面就意味着 html继承浏览器的高度 body继承了html的高度
+背景色是绿色
+
+进一步
+html
+    body
+        div#container
+
+html {background: red; height: 100%}
+body {background: green;height: 100%}
+#container {background: blue, height: 100%}
+
+现在显示是蓝色 #container的高度刚好是浏览器的高度
+这就是 html继承浏览器的高度  body继承了html的高度  #container继承body的高度
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>html默认是没有高度 height100%就会继承浏览器的高度
+
+同时又一个发现 html的border只有上下 没有左右
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/what-is-closure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/what-is-closure/" itemprop="url">what-is-closure?</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T14:31:02+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="closure-闭包"><a href="#closure-闭包" class="headerlink" title="closure 闭包"></a>closure 闭包</h2><p>什么是封闭？闭包是捆绑在一起（封闭）的函数及其周围状态（词汇环境）的组合。<br>换句话说，闭包使您可以从内部函数访问外部函数的范围。<br>在JavaScript中，每次创建函数时都会在函数创建时创建闭包。<br>要使用闭包，请在另一个函数中定义一个函数并将其公开。<br>要公开一个函数，请将其返回或传递给另一个函数。<br>即使返回了外部函数，内部函数也可以访问外部函数范围内的变量。  </p>
+<p>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).<br>In other words, a closure gives you access to an outer function’s scope from an inner function.<br>In JavaScript, closures are created every time a function is created, at function creation time.<br>To use a closure, define a function inside another function and expose it. To expose a function, return it or pass it to another function.<br>The inner function will have access to the variables in the outer function scope, even after the outer function has returned.  </p>
+<p>在JavaScript中，闭包是用于实现数据隐私的主要机制。    </p>
+<p>当使用闭包进行数据保密时，包含的变量仅在包含（外部）函数的范围内。    </p>
+<p>除了通过对象的特权方法之外，您无法从外部范围获取数据。    </p>
+<p>在JavaScript中，闭包范围内定义的任何公开方法都具有特权。  </p>
+<p>In JavaScript, closures are the primary mechanism used to enable data privacy.   </p>
+<p>When you use closures for data privacy, the enclosed variables are only in scope within the containing (outer) function.     </p>
+<p>You can’t get at the data from an outside scope except through the object’s privileged methods.     </p>
+<p>In JavaScript, any exposed method defined within the closure scope is privileged. </p>
+<pre><code>const getSecret = (secret) =&gt; {
+    return {
+        get: () =&gt; secret
+    };
+    };
+
+    test(&apos;Closure for object privacy.&apos;, assert =&gt; {
+    const msg = &apos;.get() should have access to the closure.&apos;;
+    const expected = 1;
+    const obj = getSecret(1);
+
+    const actual = obj.get();
+
+    try {
+        assert.ok(secret, &apos;This throws an error.&apos;);
+    } catch (e) {
+        assert.ok(true, `The secret var is only available
+        to privileged methods.`);
+    }
+
+    assert.equal(actual, expected, msg);
+    assert.end();
+});
+</code></pre><p><a href="https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8" target="_blank" rel="noopener">参考文章</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/js小知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/22/js小知识点/" itemprop="url">js小知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T11:40:03+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-void"><a href="#1-void" class="headerlink" title="1. void"></a>1. void</h2><pre><code>JavaScript具有一元void运算符。
+您可能已经看到它用作void（0）或void 0。
+它在生活中有一个单一目的-评估表达式的正确位置并返回未定义的表达式。
+习惯使用“ 0”。
+您不一定必须使用“ 0”，它可以是任何有效的表达式，例如void &lt;expression&gt;，并且仍返回undefined
+
+Well, turns out, before ES5 you could actually assign a new value to the original undefined likeundefined = &quot;abc&quot; , in most browsers.
+Hence, defining the undefined!
+In those days, using void was a way to ensure, you are always returning the original undefined.
+</code></pre><h2 id="2-Constructor-Brackets-are-optional"><a href="#2-Constructor-Brackets-are-optional" class="headerlink" title="2. Constructor Brackets are optional"></a>2. Constructor Brackets are optional</h2><pre><code>构造函数后面括号可选 
+
+const date = new Date;
+
+const month = (new Date).getMonth();
+
+const MyInstance = new MyClass;
+</code></pre><h2 id="3-IIFE-Brackets-can-be-skipped"><a href="#3-IIFE-Brackets-can-be-skipped" class="headerlink" title="3. IIFE Brackets can be skipped"></a>3. IIFE Brackets can be skipped</h2><ul>
+<li><p>The syntax for IIFE (Immediately Invoked Functional Expression) was always a bit odd for me. What’s up will all the brackets?</p>
 </li>
-<li><p>系统级</p>
-<p> /etc/profile 和 /etc/paths 是系统级别的</p>
-</li>
-<li><p>用户级</p>
-<p> ~/.bash_profile </p>
-<p> ~/.bash_login </p>
-<p> ~/.profile </p>
-<p> ~/.bashrc</p>
+<li><p>事实证明，只需要这些额外的括号即可告诉JavaScript解析器即将发布的代码是函数表达式，而不是函数。可以想象，知道了这一点，有很多方法可以跳过那些多余的括号，并且仍然可以制作出有效的IIFE。</p>
+<pre><code>// normal IIEF
+(function() {
+    console.log(&apos;Normal IIEF called&apos;);
+})()
+
+// cool IIEF called
+void function() {
+    console.log(&apos;cool IIEF called&apos;);
+}()
+
+void运算符告诉解析器代码是函数表达式。
+因此，我们可以跳过函数定义的括号
+你猜怎么着？我们可以使用任何一元运算符（void，+，！，-等），但这仍然有效！
+
+// IIEF with return
+
+result = (function() {
+    // some code
+    return &quot;结果&quot;
+})()
+
+// IIEF with return
+
+result = function() {
+    // some code
+    return &quot;结果&quot;
+}()
+</code></pre></li>
+</ul>
+<h2 id="4-With-Statement"><a href="#4-With-Statement" class="headerlink" title="4. With Statement"></a>4. With Statement</h2><pre><code>with (object)
+    statement
+
+// for multiple statements add a block
+
+with (object) {
+    statement
+    statement
+    ...
+}
+
+不建议使用with 严格模式是禁止
+</code></pre><h2 id="5-The-Function-constructor"><a href="#5-The-Function-constructor" class="headerlink" title="5. The Function constructor"></a>5. The Function constructor</h2><pre><code>// Function constructor
+const multipy = new Function(&apos;x&apos;, &apos;y&apos;, &apos;return x + y&apos;);
+// 最后一个参数是代码  之前都是参数
+
+函数构造函数是JavaScript中所有构造函数的母亲。甚至Object的构造函数都是Function构造函数。
+Function自己的构造函数也是Function本身。
+
+因此，调用object.constructor.constructor ...足够的次数最终将返回JavaScript中任何对象上的Function构造函数。
+</code></pre><h2 id="6-Function-Properties"><a href="#6-Function-Properties" class="headerlink" title="6. Function Properties"></a>6. Function Properties</h2><ol>
+<li><p>Configurable Functions</p>
+<pre><code>// custom functional properties
+
+function greet () {
+    if (greet.locale === &apos;fr&apos;) {
+        console.log(&apos;Bonjour);
+    } else if (greet.locale === &apos;es&apos;) {
+        console.log(&apos;Hola);
+    } else {
+        console.log(&apos;Hello);
+    }
+}
+
+greet() // hello
+
+greet.locale = &apos;fr&apos;;
+
+greet() // Bonjour
+</code></pre></li>
+<li><p>Function with Static Variables  函数静态属性</p>
 </li>
 </ol>
-<h2 id="1-etc-profile-建议不修改这个文件"><a href="#1-etc-profile-建议不修改这个文件" class="headerlink" title="1 /etc/profile 建议不修改这个文件"></a>1 /etc/profile 建议不修改这个文件</h2><pre><code>全局（公有）配置，不管是哪个用户，登录时都会读取该文件
-</code></pre><h2 id="2-etc-paths-全局建议修改这个文件"><a href="#2-etc-paths-全局建议修改这个文件" class="headerlink" title="2 /etc/paths 全局建议修改这个文件"></a>2 /etc/paths 全局建议修改这个文件</h2><h2 id="3-etc-bashrc-（一般在这个文件中添加系统级环境变量）"><a href="#3-etc-bashrc-（一般在这个文件中添加系统级环境变量）" class="headerlink" title="3 /etc/bashrc （一般在这个文件中添加系统级环境变量）"></a>3 /etc/bashrc （一般在这个文件中添加系统级环境变量）</h2>
+<h2 id="7-Arguments-Properties"><a href="#7-Arguments-Properties" class="headerlink" title="7. Arguments Properties"></a>7. Arguments Properties</h2><pre><code>arguments 在函数 function里一个对象 但是 arrow function 是没有的
+
+arguments.callee: Refers to the function currently invoked  指当前调用的函数
+
+arguments.callee.caller: Refers to the function that has invoked the current function 指向调用当前函数的函数
+</code></pre><h2 id="8-Tagged-Template-Literals"><a href="#8-Tagged-Template-Literals" class="headerlink" title="8. Tagged Template Literals"></a>8. Tagged Template Literals</h2><h2 id="9-Getters-amp-Setters"><a href="#9-Getters-amp-Setters" class="headerlink" title="9. Getters &amp; Setters"></a>9. Getters &amp; Setters</h2><pre><code>get fullName() {
+
+}
+
+set fullName(value) {
+
+}
+</code></pre><h2 id="10-Comma-operator-逗号运算符"><a href="#10-Comma-operator-逗号运算符" class="headerlink" title="10. Comma operator 逗号运算符"></a>10. Comma operator 逗号运算符</h2><pre><code>JavaScript具有逗号运算符。它允许我们在一行中编写多个用逗号分隔的表达式，并返回最后一个表达式的结果
+
+used Comma operator in a for loop
+
+for (var a = 0, b = 10; a &lt;= 10; a++, b--)
+
+
+有时在一行中编写多个语句时会有所帮助
+
+function getNextValue() {
+    return counter++, console.log(counter), counter
+}
+
+
+or writing short lamda functions
+
+const getSquare = x =&gt; (console.log (x), x * x)
+</code></pre><h2 id="11-加号运算符"><a href="#11-加号运算符" class="headerlink" title="11. +加号运算符"></a>11. +加号运算符</h2><pre><code>是否曾经想过将字符串快速转换为数字？
+
+只需在字符串前面加上+运算符即可。
+加号运算符还适用于负，八进制，十六进制，指数值。
+而且，它甚至可以将Date或Moment.js对象转换为时间戳
+
++&apos;9.11&apos;              // 9.11
++&apos;-4&apos;               // -4
++&apos;0xFF&apos;            // 255
++true             // 1
++&apos;123e-5&apos;        // 0.00123
++false          // 0
++null          // 0
++&apos;Infinity&apos;   // Infinity
++&apos;1,234&apos;     // NaN
++dateobject // timestamp
+</code></pre><h2 id="12-Bang-Bang-Operator"><a href="#12-Bang-Bang-Operator" class="headerlink" title="12. !! Bang Bang Operator"></a>12. !! Bang Bang Operator</h2><h2 id="13-Tilde-Operator"><a href="#13-Tilde-Operator" class="headerlink" title="13. ~ Tilde Operator"></a>13. ~ Tilde Operator</h2><pre><code>〜N = -(N + 1)
+
+This expression evaluates to “0” only when N == -1
+
+我们可以通过将〜放在indexOf（...）函数前面来利用此值，以对布尔值是否存在于String或Array中进行布尔检查
+
+ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。无疑，这是一种比波浪号运算符更简洁的方法来检查数组或字符串中是否存在项。
+</code></pre><h2 id="14-Labelled-statements"><a href="#14-Labelled-statements" class="headerlink" title="14. Labelled statements"></a>14. Labelled statements</h2>
           
         
       
@@ -1602,7 +1632,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/20/swift-UIApplicationMain/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/js面试10点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1621,7 +1651,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/20/swift-UIApplicationMain/" itemprop="url">swift @UIApplicationMain</a></h1>
+                <a class="post-title-link" href="/2019/11/22/js面试10点/" itemprop="url">js面试10点</a></h1>
         
 
         <div class="post-meta">
@@ -1633,8 +1663,8 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T01:42:20+08:00">
-                2019-06-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:46:33+08:00">
+                2019-11-22
               </time>
             
 
@@ -1673,28 +1703,135 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
       
         
           
-            <h2 id="程序如何开始的"><a href="#程序如何开始的" class="headerlink" title="程序如何开始的"></a>程序如何开始的</h2><p>C 系列语言中，程序的入口都是 main 函数  </p>
-<p>一个 Objective-C 的 iOS app 项目在新建时  </p>
-<p>Xcode 会给我们创建好一个 main.m 的文件</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#<span class="keyword">import</span> "AppDelegate.h"</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="type">NSStringFromClass</span>([<span class="type">AppDelegate</span> <span class="class"><span class="keyword">class</span>]));</span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>复制代码我们调用了 UIKit 的 UIApplicationMain 方法  </p>
-<p>这个方法根据第三个参数初始化一个 UIApplication 或者它的子类对象开始接收事件  </p>
-<p>当传入 nil 时则使用默认的 UIApplication   </p>
-<p>最后一个参数指定了 AppDelegate 类作为应用的委托  </p>
-<p>用来接收与应用生命周期相关的委托方法。</p>
-<p>虽然这个方法标明要返回一个 int，但其实它并不会真正的返回   </p>
-<p>而是一直存在于内存中，直到用户或者系统将应用强制终止。  </p>
-<h2 id="swift-中的对应情况"><a href="#swift-中的对应情况" class="headerlink" title="swift 中的对应情况"></a>swift 中的对应情况</h2><p>创建一个 swift 的项目之后  </p>
-<p>我们发现所有的文件中并没有一个类似于 Objective-C 中的 main.m 文件  也没有 main 函数   </p>
-<p>唯一和 main 有关系的就是在 AppDelegate 中有一个 @UIApplicationMain 标签  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">@UIApplicationMain</span><br><span class="line">class AppDelegate: UIResponder, UIApplicationDelegate &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个标签的作用就是将标注的类作为委托，创建一个 UIApplication 并启动整个程序。  </p>
-<p>一般情况我们不需要对这个标签做任何修改，但如果我们想使用 UIApplication 的子类 </p>
-<p>而不是它本身，我们就要自定义一个 main.swift 文件了</p>
-<p>（记得删除 @UIApplicationMain 标签）</p>
-<p>这个文件我们不需要定义作用域，直接写代码就OK。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(<span class="number">_</span> event: UIEvent)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Event sent:\(event)"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(</span><br><span class="line">    <span class="type">CommandLine</span>.argc,</span><br><span class="line">    <span class="type">UnsafeMutableRawPointer</span>(<span class="type">CommandLine</span>.unsafeArgv)</span><br><span class="line">        .bindMemory(</span><br><span class="line">            to: <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">Int8</span>&gt;.<span class="keyword">self</span>,</span><br><span class="line">            capacity: <span class="type">Int</span>(<span class="type">CommandLine</span>.argc)),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">MyApplication</span>.<span class="keyword">self</span>),</span><br><span class="line">    <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>.<span class="keyword">self</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>这样每次发送事件（点击按钮之类的）我们都可以监听到了</p>
+            <h2 id="1-js编程方式"><a href="#1-js编程方式" class="headerlink" title="1 js编程方式"></a>1 js编程方式</h2><ul>
+<li><p>JavaScript是一种多范式语言，支持命令式/过程式编程以及OOP（面向对象编程）和函数式编程 JavaScript支持原型继承的OOP</p>
+<pre><code>范式  过程式/命令式    面向对象    函数式
+
+面向对象 prototype 
+
+函数式 闭包  函数一等类  lambdas 
+</code></pre></li>
+</ul>
+<h2 id="2-函数式编程"><a href="#2-函数式编程" class="headerlink" title="2 函数式编程"></a>2 函数式编程</h2><ul>
+<li>函数式编程通过组合数学函数来生成程序，并避免共享状态和可变数据</li>
+<li>Lisp（在1958年指定）是最早支持函数式编程的语言之一，并且受到lambda演算的极大启发。</li>
+<li>Lisp和许多Lisp家庭语言在今天仍然很普遍</li>
+</ul>
+<ol>
+<li><p>纯函数/函数纯度。</p>
+</li>
+<li><p>避免副作用。</p>
+</li>
+<li><p>简单的功能组成。</p>
+</li>
+<li><p>功能语言的示例：Lisp，ML，Haskell，Erlang，Clojure，Elm，F Sharp，OCaml等</p>
+</li>
+<li><p>提到支持FP的功能：一流的功能，高阶功能，作为参数/值的功能</p>
+</li>
+</ol>
+<h2 id="3-经典继承和原型继承有什么区别？"><a href="#3-经典继承和原型继承有什么区别？" class="headerlink" title="3.经典继承和原型继承有什么区别？"></a>3.经典继承和原型继承有什么区别？</h2><ol>
+<li><p>类继承：实例从类继承（如蓝图-类的描述），并创建子类关系：分层类分类法。</p>
+<pre><code>实例通常通过带有`new`关键字的构造函数来实例化。
+类继承可以使用也可以不使用ES6中的`class`关键字。
+</code></pre></li>
+<li><p>原型继承：实例直接从其他对象继承。</p>
+<pre><code>通常通过工厂函数或Object.create（）实例化实例。
+实例可以由许多不同的对象组成，从而可以轻松地进行选择性继承。
+</code></pre></li>
+<li><p>类：创建紧密耦合 或层次结构/分类法。  原型：提及串联继承，原型委托，功能继承，对象组成。</p>
+</li>
+</ol>
+<h2 id="4-函数式程序设计与面向对象程序设计的优缺点是什么？"><a href="#4-函数式程序设计与面向对象程序设计的优缺点是什么？" class="headerlink" title="4. 函数式程序设计与面向对象程序设计的优缺点是什么？"></a>4. 函数式程序设计与面向对象程序设计的优缺点是什么？</h2><ul>
+<li><p>OOP优点：易于理解对象的基本概念，并易于解释方法调用的含义。OOP倾向于使用命令式而不是声明式，其读起来就像一组简单的指令供计算机遵循。</p>
+</li>
+<li><p>OOP缺点：OOP通常取决于共享状态。对象和行为通常在同一实体上固定在一起，可以由具有不确定顺序的任意数量的函数随机访问，这可能导致不良行为，例如竞态条件。</p>
+</li>
+<li><p>FP优点：使用功能范式，程序员避免了任何共享状态或副作用，从而消除了由多个功能争夺同一资源引起的错误。</p>
+<p>  通过使用无点样式（又称为默认编程）等功能，与OOP相比，对于那些更普遍可重用的代码，功能往往会得到根本简化，并且易于重组。</p>
+<p>  FP还倾向于使用声明性和指示性样式，它们不会详细说明操作的分步说明，而是专注于执行操作，让底层函数负责操作方式。</p>
+<p>  这为重构和性能优化留出了极大的自由度，甚至允许您通过很少的代码更改就可以用效率更高的算法替换整个算法。例如，记住或使用懒惰的评估代替急切的评估</p>
+<p>  利用纯函数的计算也很容易在多个处理器或分布式计算集群之间扩展，而不必担心线程资源冲突，竞争条件等。</p>
+</li>
+<li><p>FP缺点：过度利用FP功能（如无点样式和较大的组合）可能会降低可读性，因为生成的代码通常被更抽象地指定，更简洁且不太具体。</p>
+<p>  比函数编程更熟悉OO和命令式编程，因此即使是函数式编程中的常见习语也会使新团队成员感到困惑。FP的学习曲线比OOP陡得多</p>
+<p>  这是因为OOP的广泛普及使OOP的语言和学习材料变得更具对话性，而FP的语言往往更具学术性和形式性。</p>
+<p>  FP概念经常被编写为使用lambda演算，代数和范畴论中的惯用语和记号，所有这些都需要先了解这些领域的知识基础。</p>
+</li>
+<li><p>提到共享状态带来的麻烦，争夺相同资源的不同事物，等等……</p>
+</li>
+<li><p>意识到FP能够从根本上简化许多应用程序的能力</p>
+</li>
+<li><p>意识到学习曲线的差异</p>
+</li>
+<li><p>阐明副作用及其对程序可维护性的影响</p>
+</li>
+<li><p>意识到功能强大的代码库可能具有陡峭的学习曲线</p>
+</li>
+<li><p>意识到，与同等的FP代码库相比，高度面向对象的代码库可以极大地抵抗更改并且非常脆弱</p>
+</li>
+<li><p>意识到不变性会带来极其可访问和可延展的程序状态历史记录，从而允许轻松添加无限的撤消/重做，倒带/重播，时间旅行调试等功能</p>
+</li>
+<li><p>在这两种范例中都可以实现不变性，但是共享状态对象的泛滥使OOP的实现变得复杂</p>
+</li>
+</ul>
+<h2 id="5-When-is-classical-inheritance-an-appropriate-choice"><a href="#5-When-is-classical-inheritance-an-appropriate-choice" class="headerlink" title="5. When is classical inheritance an appropriate choice?"></a>5. When is classical inheritance an appropriate choice?</h2><h2 id="6-原型继承何时合适？"><a href="#6-原型继承何时合适？" class="headerlink" title="6.原型继承何时合适？"></a>6.原型继承何时合适？</h2><ul>
+<li><p>原型继承有多种类型：</p>
+<ol>
+<li><p>委托（即原型链）</p>
+</li>
+<li><p>串联的（即mixins，<code>Object.assign（）</code>）</p>
+</li>
+<li><p>函数式的（不要与函数式编程混淆。用于创建私有状态/封装的闭包的函数）</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="7-“偏向于类继承而不是对象继承”是什么意思？"><a href="#7-“偏向于类继承而不是对象继承”是什么意思？" class="headerlink" title="7.“偏向于类继承而不是对象继承”是什么意思？"></a>7.“偏向于类继承而不是对象继承”是什么意思？</h2><pre><code>这摘自“设计模式：可重用的面向对象软件的元素”。这意味着应该通过将较小的功能单元组装到新对象中，而不是从类继承并创建对象分类法来实现代码重用
+
+换句话说，使用can-do，has-a或uses-a关系代替is-a关系。
+</code></pre><ul>
+<li>避免类层次结构。</li>
+<li>避免脆性基类问题。</li>
+<li>避免紧密耦合。</li>
+<li>避免使用严格的分类法（强迫is-a关系对于新用例最终是错误的）。</li>
+<li>避免大猩猩香蕉问题（“您想要的是香蕉，得到的是拿着香蕉的大猩猩，以及整个丛林”）。</li>
+<li>使代码更灵活。</li>
+</ul>
+<h2 id="8-什么是双向数据绑定和单向数据流，它们有何不同？"><a href="#8-什么是双向数据绑定和单向数据流，它们有何不同？" class="headerlink" title="8.什么是双向数据绑定和单向数据流，它们有何不同？"></a>8.什么是双向数据绑定和单向数据流，它们有何不同？</h2><ul>
+<li>双向数据绑定意味着将UI字段动态绑定到模型数据，这样，当UI字段更改时，模型数据也会随之更改，反之亦然。</li>
+<li>单向数据流的一种方式意味着模型是事实的唯一来源。UI中的更改会触发消息，向用户发送信号通知模型（或在React中store）的意图。只有模型才有权更改应用程序的状态。结果是数据始终沿单一方向流动，这使它更易于理解。</li>
+<li><p>单向数据流是确定性的一种方式，而双向绑定可能会引起副作用，而这些副作用很难理解和理解。</p>
+</li>
+<li><p>React是单向数据流的新典范示例，因此提到React是一个很好的信号。</p>
+</li>
+<li>Cycle.js是另一种流行的单向数据流实现。</li>
+<li>Angular是使用双向绑定的流行框架</li>
+</ul>
+<h2 id="9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures"><a href="#9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures" class="headerlink" title="9. What are the pros and cons of monolithic vs microservice architectures?"></a>9. What are the pros and cons of monolithic vs microservice architectures?</h2><ul>
+<li><p>整体架构意味着您的应用程序是作为一个内聚的代码单元编写的，其组件被设计为可以协同工作，共享相同的内存空间和资源</p>
+</li>
+<li><p>微服务架构意味着您的应用程序由许多较小的独立应用程序组成，这些应用程序可以在自己的内存空间中运行，并且可以在可能的许多不同机器上彼此独立地扩展</p>
+</li>
+<li><p>整体式优点：整体式架构的主要优势在于，大多数应用程序通常具有大量的跨领域问题，例如日志记录，速率限制以及诸如审计跟踪和DOS保护之类的安全功能。<br>  当所有事情都通过同一个应用程序运行时，很容易将组件与那些跨领域的问题联系起来。由于共享内存访问比进程间通信（IPC）更快，因此也可能具有性能优势。</p>
+</li>
+<li><p>整体式劣势：随着应用程序的发展，整体式应用程序服务趋于紧密耦合和纠缠，从而难以出于独立缩放或代码可维护性等目的隔离服务。<br>  整体架构也很难理解，因为当您查看特定的服务或控制器时，可能存在不明显的依赖关系，副作用和魔力。</p>
+</li>
+<li><p>微服务的优点：微服务架构通常组织得更好，因为每个微服务都有非常具体的工作，并且与其他组件的工作无关。<br>解耦的服务也更易于重组和重新配置，以服务于不同应用程序的目的（例如，服务于Web客户端和公共API）<br>根据它们的组织方式，它们还可以具有性能优势，因为可以隔离热服务并独立于应用程序的其余部分进行扩展</p>
+</li>
+<li><p>微服务的弊端：在构建新的微服务架构时，您可能会发现很多跨领域的问题，而这些问题在设计时并未预料到。<br>  单一的应用程序可以建立共享的魔术助手或中间件来处理此类跨领域的问题，而无需付出太多努力。<br>  在微服务架构中，您要么需要为每个横切关注点承担单独模块的开销，要么将横切关注点封装在所有流量都通过的另一个服务层中。<br>  最终，即使是单一的体系结构也倾向于通过外部服务层路由流量，以解决跨领域的问题，<br>  但是采用整体体系结构，有可能将这项工作的成本推迟到项目更加成熟之前。<br>  微服务经常部署在自己的虚拟机或容器上，从而导致VM争用工作激增。<br>  这些任务通常使用集装箱车队管理工具自动执行。</p>
+<ul>
+<li>尽管与单一应用程序相比，初始成本较高，但对微服务仍持积极态度。</li>
+<li>意识到微服务从长远来看往往具有更好的性能和扩展性。关于微服务与整体应用程序的实践。</li>
+<li>对应用程序进行结构设计，以使服务在代码级别上彼此独立，但一开始就很容易将其作为整体应用程序捆绑在一起。</li>
+<li>微服务的间接成本可以延迟，直到支付价格变得更加实际为止。</li>
+</ul>
+<h2 id="10-什么是异步编程，为什么它在JavaScript中很重要？"><a href="#10-什么是异步编程，为什么它在JavaScript中很重要？" class="headerlink" title="10.什么是异步编程，为什么它在JavaScript中很重要？"></a>10.什么是异步编程，为什么它在JavaScript中很重要？</h2><pre><code>同步编程意味着，除非有条件和函数调用，否则代码将自上而下依次执行，从而阻止长时间运行的任务（例如网络请求和磁盘I / O）。
+异步编程意味着引擎在事件循环中运行。当需要阻止操作时，请求将启动，并且代码将继续运行而不会阻止结果。当响应准备就绪时，将触发一个中断，这将导致事件处理程序运行，并在此处继续控制流程。
+这样，单个程序线程可以处理许多并发操作。用户界面本质上是异步的，它们花费大部分时间等待用户输入来中断事件循环并触发事件处理程序。
+默认情况下，Node是异步的，这意味着服务器的工作方式几乎相同，在循环中等待网络请求，并在处理第一个请求时接受更多的传入请求。
+这在JavaScript中很重要，因为它非常适合用户界面代码，并且对服务器性能非常有益。
+</code></pre></li>
+</ul>
 
           
         
@@ -1743,7 +1880,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/18/命令行工具/">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/Error实践技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="killsos.ql@gmail.com">
@@ -1762,7 +1899,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/18/命令行工具/" itemprop="url">命令行工具</a></h1>
+                <a class="post-title-link" href="/2019/11/22/Error实践技巧/" itemprop="url">Error实践技巧</a></h1>
         
 
         <div class="post-meta">
@@ -1774,8 +1911,8 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T23:53:53+08:00">
-                2019-06-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:19:27+08:00">
+                2019-11-22
               </time>
             
 
@@ -1814,166 +1951,114 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
       
         
           
-            <h2 id="mas"><a href="#mas" class="headerlink" title="mas"></a>mas</h2><ul>
-<li>对应Appstroe</li>
-</ul>
-<p><a href="https://github.com/mas-cli/mas" target="_blank" rel="noopener">https://github.com/mas-cli/mas</a></p>
-<h2 id="gitsome"><a href="#gitsome" class="headerlink" title="gitsome"></a>gitsome</h2><ul>
-<li>一个非常实用的 GitHub 命令行工具</li>
-</ul>
-<p><a href="https://github.com/donnemartin/gitsome" target="_blank" rel="noopener">https://github.com/donnemartin/gitsome</a></p>
-<h2 id="thefuck"><a href="#thefuck" class="headerlink" title="thefuck"></a>thefuck</h2><ul>
-<li>在你输错命令后，fuck 一下，自动帮你更正命令，解气又实用</li>
-</ul>
-<p><a href="https://github.com/nvbn/thefuck" target="_blank" rel="noopener">https://github.com/nvbn/thefuck</a></p>
-<h2 id="Httpie"><a href="#Httpie" class="headerlink" title="Httpie"></a>Httpie</h2><ul>
-<li>一个 HTTP 命令行客户端</li>
-</ul>
-<p><a href="https://github.com/jakubroztocil/httpie" target="_blank" rel="noopener">https://github.com/jakubroztocil/httpie</a></p>
-<h2 id="transfer-sh"><a href="#transfer-sh" class="headerlink" title="transfer.sh"></a>transfer.sh</h2><ul>
-<li>可通过简单的命令行来快速完成文件共享操作</li>
-</ul>
-<p><a href="https://github.com/dutchcoders/transfer.sh" target="_blank" rel="noopener">https://github.com/dutchcoders/transfer.sh</a></p>
-<h2 id="stegify"><a href="#stegify" class="headerlink" title="stegify"></a>stegify</h2><ul>
-<li>能将任意文件隐藏到图片里面的命令行工具</li>
-</ul>
-<p><a href="https://github.com/DimitarPetrov/stegify" target="_blank" rel="noopener">https://github.com/DimitarPetrov/stegify</a></p>
-<h2 id="gtop"><a href="#gtop" class="headerlink" title="gtop"></a>gtop</h2><ul>
-<li>终端的系统显示工具</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm install gtop -g</span><br></pre></td></tr></table></figure>
-<h2 id="lazygit"><a href="#lazygit" class="headerlink" title="lazygit"></a>lazygit</h2><ul>
-<li>git终端</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lazygit</span><br></pre></td></tr></table></figure>
-<h2 id="tig"><a href="#tig" class="headerlink" title="tig"></a>tig</h2><ul>
-<li>git终端</li>
-</ul>
-<h2 id="fx"><a href="#fx" class="headerlink" title="fx"></a>fx</h2><ul>
-<li>优化了终端命令行JSON 查阅体验</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install fx</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
+            <h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><pre><code>class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;ValidationError&apos;
+        this.message = message
+    }
+}
 
-    
+class PermissionError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;PermissionError&apos;
+        this.message = message
+    }
+}
 
-    
+class DatabaseError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;DatabaseError&apos;
+        this.message = message
+    }
+}
 
-    
+module.exports = {
+    ValidationError,
+    PermissionError,
+    DatabaseError
+} 
 
-    <footer class="post-footer">
-      
+const { ValidationError } = require(&apos;./error&apos;);
 
-      
+function myFunction(input) {
+    if (!input)
+        throw new ValidationError(&apos;A validation error&apos;)
+    return input
+}
 
-      
+try {
+    myFunction(null)
+} catch (e) {
+    if (e.name === &apos;ValidationError&apos;) {
+        console.log(&quot;Handle input validation error&quot;)
+    } else {
+        console.log(&quot;Handle other errors&quot;)
+    }
+}
+</code></pre><h2 id="Returning-Error-objects-from-Promises"><a href="#Returning-Error-objects-from-Promises" class="headerlink" title="Returning Error objects from Promises"></a>Returning Error objects from Promises</h2><ol>
+<li><p>return error when rejecting a Promise</p>
+<pre><code>const { ValidationError } = require(&apos;./error&apos;)
+function myFunction(input) {
+    return new Promise((resolve, reject) =&gt; {
+        if (!input)
+        return reject(new ValidationError(&apos;A validation error&apos;))
+        resolve(input)
+    })
+}
+</code></pre></li>
+<li><p>Promise.catch</p>
+</li>
+</ol>
+<h2 id="Serializing-Error-objects-in-JSON"><a href="#Serializing-Error-objects-in-JSON" class="headerlink" title="Serializing Error objects in JSON"></a>Serializing Error objects in JSON</h2><p>By default, Error objects seralize to JSON with output like this:  </p>
+<pre><code>{ name: &apos;ValidationError&apos; }
+</code></pre><p>可以重写序列化方法toJSON() </p>
+<pre><code>class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = &apos;ValidationError&apos;
+        this.message = message
+    }
 
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+    toJSON() {
+        return {
+        error: {
+            name: this.name,
+            message: this.message,
+            stacktrace: this.stack
+        }
+        }
+    }
+}
 
+ps: 对象不是JSON 一个对象stringify首先第一步是一个对象的调用toJSON方法 将对象转为JSON 然后执行JSON.stringify方法
+</code></pre><h2 id="new-Error-message-fileName-lineNumber"><a href="#new-Error-message-fileName-lineNumber" class="headerlink" title="new Error([message[, fileName[,lineNumber]]])"></a>new Error([message[, fileName[,lineNumber]]])</h2><pre><code>message
+可选。人类可阅读的错误描述信息。
 
-    
-      
+fileName 
+可选。被创建的Error对象的fileName属性值。默认是调用Error构造器代码所在的文件 的名字。
 
-  
+lineNumber 
+可选。被创建的Error对象的lineNumber属性值。默认是调用Error构造器代码所在的文件的行号。
 
-  
-  
-  
+作为函数使用 不需要new  const x = Error(&apos;I was created using a function call!&apos;);
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/06/08/httpie/">
+6种类型
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+    EvalError       表示错误的原因：与 eval() 有关
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
+    InternalError   代表Javascript引擎内部错误 如: &quot;递归太多&quot;
 
-    
-      <header class="post-header">
+    RangeError      表示错误的原因：数值变量或参数超出其有效范围
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/08/httpie/" itemprop="url">httpie</a></h1>
-        
+    SyntaxError     语法错误
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T01:16:05+08:00">
-                2019-06-08
-              </time>
-            
+    TypeError       类型错误   变量或参数不属于有效类型
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="httpie"><a href="#httpie" class="headerlink" title="httpie"></a>httpie</h2><pre><code>一个http客户端
-</code></pre><h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p><a href="https://httpie.org/doc#examples" target="_blank" rel="noopener">https://httpie.org/doc#examples</a></p>
-
+    URIError        给 encodeURI()或  decodeURl()传递的参数无效
+</code></pre>
           
         
       
@@ -2012,7 +2097,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2058,7 +2143,7 @@ add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
