@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、学习基本快捷方式123456789安装  —  常规：npm install，简写：npm i测试  —  常规：npm test，简写：npm t帮助  —  常规：npm --help，简写：npm -h全局标志 —  常规： --global，简写：-g保存为开发依赖 - 常规： - save-dev，简写：-Dnpm init 默认值 - 常规：npm init --yes 或 npm">
+<meta name="keywords" content="javascript 前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm 快速开发技巧">
+<meta property="og:url" content="http://jsonload.com/2020/07/20/npm-快速开发技巧/index.html">
+<meta property="og:site_name" content="killsos">
+<meta property="og:description" content="1、学习基本快捷方式123456789安装  —  常规：npm install，简写：npm i测试  —  常规：npm test，简写：npm t帮助  —  常规：npm --help，简写：npm -h全局标志 —  常规： --global，简写：-g保存为开发依赖 - 常规： - save-dev，简写：-Dnpm init 默认值 - 常规：npm init --yes 或 npm">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-20T03:25:44.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm 快速开发技巧">
+<meta name="twitter:description" content="1、学习基本快捷方式123456789安装  —  常规：npm install，简写：npm i测试  —  常规：npm test，简写：npm t帮助  —  常规：npm --help，简写：npm -h全局标志 —  常规： --global，简写：-g保存为开发依赖 - 常规： - save-dev，简写：-Dnpm init 默认值 - 常规：npm init --yes 或 npm">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jsonload.com/2020/07/20/npm-快速开发技巧/">
+
+
+
+
+
+  <title>npm 快速开发技巧 | killsos</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">killsos</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人情似水分高下 世事如云任卷舒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/07/20/npm-快速开发技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">npm 快速开发技巧</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-20T10:41:12+08:00">
+                2020-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1、学习基本快捷方式"><a href="#1、学习基本快捷方式" class="headerlink" title="1、学习基本快捷方式"></a>1、学习基本快捷方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">安装  —  常规：npm install，简写：npm i</span><br><span class="line">测试  —  常规：npm test，简写：npm t</span><br><span class="line">帮助  —  常规：npm --help，简写：npm -h</span><br><span class="line">全局标志 —  常规： --global，简写：-g</span><br><span class="line">保存为开发依赖 - 常规： - save-dev，简写：-D</span><br><span class="line">npm init 默认值 - 常规：npm init --yes 或 npm init --force，简写：npm init -y 或 npm init -f</span><br><span class="line">要安装一个包而不保存它，可以使用 ——no-save标志。</span><br><span class="line">安装包信息将加入到optionalDependencies（可选阶段的依赖）- 常规：--save-optional， 简写：-O</span><br><span class="line">精确安装指定模块版本 - 常规：--save-optional， 简写：-O</span><br></pre></td></tr></table></figure>
+<h3 id="根的快捷方式"><a href="#根的快捷方式" class="headerlink" title="根的快捷方式"></a>根的快捷方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">. 符号通常用于表示应用程序的根目录</span><br><span class="line"></span><br><span class="line">npm术语中的应用程序入口点，即package.json中指定为“main”的值</span><br><span class="line">&#123;</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">这个快捷方式也可以用于像npx create-react-app . 这样的命令</span><br><span class="line"></span><br><span class="line">因此，可以运行npx create-react-app .</span><br><span class="line"></span><br><span class="line">而不是使用 npx create-react-app my-app 创建一个新的my-app目录。</span><br></pre></td></tr></table></figure>
+<h3 id="2、设置默认npm-init属性"><a href="#2、设置默认npm-init属性" class="headerlink" title="2、设置默认npm init属性"></a>2、设置默认npm init属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">字段设置默认值</span><br><span class="line">npm config set init.author.name &quot;Joe Bloggs&quot;</span><br><span class="line">npm config set init.author.email &quot;JoebLoggs@gmail.com&quot;</span><br><span class="line">npm config set init.author.url &quot;Joebloggs.com&quot;</span><br><span class="line">npm config set init.license &quot;MIT&quot;</span><br><span class="line"></span><br><span class="line">要检查是否正确添加了这些属性，在终端输入 npm config edit查看配置文件信息</span><br><span class="line">当然也j可以通过直接在打开的配置文件编辑信息</span><br><span class="line">如果要编辑全局npm设置，使用npm config edit -g</span><br><span class="line"></span><br><span class="line">要重新初始化默认设置，可以使用以下脚本。第一行用空字符串替换配置文件，第二行用默认设置重新填充配置文件</span><br><span class="line">echo &quot;&quot; &gt; $(npm config get userconfig)</span><br><span class="line">npm config edit</span><br><span class="line"></span><br><span class="line">上面的脚本将重置用户默认值，下面的脚本将重置全局默认值</span><br><span class="line">echo &quot;&quot; &gt; $(npm config get globalconfig)</span><br><span class="line">npm config --global edit</span><br></pre></td></tr></table></figure>
+<h3 id="3、让脚本跨平台兼容"><a href="#3、让脚本跨平台兼容" class="headerlink" title="3、让脚本跨平台兼容"></a>3、让脚本跨平台兼容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">最好的是cross-env。使用npm i -D cross-env将其作为开发依赖项安装</span><br><span class="line">然后在任何环境变量之前包括关键字cross-env</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;cross-env NODE_ENV=production webpack --config build/wepack.config.js&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cross-env是 实现跨平台兼容性的最无缝的方法</span><br><span class="line"></span><br><span class="line">rimraf 可以安装在全球运行跨平台脚本</span><br><span class="line">ShellJS 是Unix shell命令在Node.js API上的可移植实现</span><br></pre></td></tr></table></figure>
+<h3 id="4、并行运行脚本"><a href="#4、并行运行脚本" class="headerlink" title="4、并行运行脚本"></a>4、并行运行脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">可以使用&amp;&amp;来依次运行两个或多个进程</span><br><span class="line">但是并行运行脚本呢?为此，我们可以从各种npm包中进行选择。</span><br><span class="line"></span><br><span class="line">concurrent 和 npm-run-all 是最流行的解决方案</span><br><span class="line"></span><br><span class="line">首先通过 npm i -D concurrently 安装开发依赖</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;start&quot;: &quot;concurrently \&quot;command1 arg\&quot; \&quot;command2 arg\&quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5、在不同的目录中运行脚本"><a href="#5、在不同的目录中运行脚本" class="headerlink" title="5、在不同的目录中运行脚本"></a>5、在不同的目录中运行脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">有时，在不同的文件夹中拥有一个包含多个package.json文件的应用程序。</span><br><span class="line">从根目录访问这些脚本会很方便，而不是每次要运行脚本时导航到不同的文件夹，有两种方法可以执行此操作</span><br><span class="line"></span><br><span class="line">第一种是手动 cd 并运行对应的命令</span><br><span class="line">cd folder &amp;&amp; npm start &amp;&amp; cd ..</span><br><span class="line"></span><br><span class="line">第二种更优雅的解决方案，即使用--prefix标志指定路径:</span><br><span class="line">npm start --prefix path/to/your/folder</span><br><span class="line"></span><br><span class="line">下面是一个工作应用程序中此解决方案的示例，我们希望在前端(在客户机目录中)和后端(在服务器目录中)运行 npm start</span><br><span class="line"></span><br><span class="line">&quot;start&quot;: &quot;concurrently \&quot;(npm start --prefix client)\&quot; \&quot;(npm start --prefix server)\&quot;&quot;,</span><br><span class="line"></span><br><span class="line">通常，在开发全堆栈应用程序期间，咱们可能希望同时启动服务器和客户端。wait-on 节点模块提供了一种方便的方法来确保进程只在某些进程就绪时发生:在我们的例子中，我们有一个特定的端口。</span><br><span class="line">例如，这是我在使用react前端的Electron项目中使用的dev脚本。同时使用，脚本并行加载表示层和Electron窗口。但是，使用wait-on，只有在 http://localhost:3000 启动好，才会打开Electron窗口。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;dev&quot;: &quot;concurrently \&quot;cross-env BROWSER=none npm run start\&quot; \&quot;wait-on http://localhost:3000 &amp;&amp; electron .\&quot;&quot;,</span><br><span class="line"></span><br><span class="line">此外，react默认情况下会打开一个浏览器窗口，但对于 Electron 开发来说，这是不必要的。咱们可以通过传递环境变量BROWSER=none来禁用此行为</span><br></pre></td></tr></table></figure>
+<h3 id="7、列出并选择可用脚本"><a href="#7、列出并选择可用脚本" class="headerlink" title="7、列出并选择可用脚本"></a>7、列出并选择可用脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">列出package.json文件中可用的脚本很简单：只需转到项目的根目录并在终端中输入npm run。</span><br><span class="line"></span><br><span class="line">但是有一种更方便的方法可以获得脚本列表，可以立即运行该列表:为此，全局安装 NTL (npm任务列表)模块:</span><br><span class="line"></span><br><span class="line">  npm i -g ntl</span><br><span class="line"></span><br><span class="line">然后在项目文件夹中运行ntl命令，可以获得一个可用脚本列表，并可以选择其中一个运行</span><br></pre></td></tr></table></figure>
+<h3 id="8、运行前后脚本"><a href="#8、运行前后脚本" class="headerlink" title="8、运行前后脚本"></a>8、运行前后脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">你可能熟悉prebuild和postbuild这样的脚本，它们允许你定义在构建脚本之前或之后运行的代码</span><br><span class="line"></span><br><span class="line">但事实上，pre和post可以在任何脚本之前添加，包括自定义脚本</span><br><span class="line"></span><br><span class="line">这不仅使你的代码更干净，而且还允许你单独运行pre和post脚本</span><br></pre></td></tr></table></figure>
+<h3 id="9、控制应用程序版本"><a href="#9、控制应用程序版本" class="headerlink" title="9、控制应用程序版本"></a>9、控制应用程序版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm 提供了一些有用的快捷方式来完成这一点</span><br><span class="line">要增加版本</span><br><span class="line"></span><br><span class="line">请在运行 npm version加上major，minor或patch`</span><br><span class="line"></span><br><span class="line">// 1.0.0</span><br><span class="line">npm version patch</span><br><span class="line">// 1.0.1</span><br><span class="line">npm version minor</span><br><span class="line">// 1.1.0</span><br><span class="line">npm version major</span><br><span class="line">// 2.0.0</span><br><span class="line"></span><br><span class="line">根据更新应用程序的频率，可以通过在每次部署时增加版本号来节省时间，使用以下脚本:</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;predeploy&quot;: &quot;npm version patch&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="10、从命令行编辑-package-json"><a href="#10、从命令行编辑-package-json" class="headerlink" title="10、从命令行编辑 package.json"></a>10、从命令行编辑 package.json</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package.json是一个常规的json文件，因此可以使用工具库json从命令行进行编辑。这在修改package.json提供另外一种新的方式，允许w你q创建超出默认值的快捷方式。全局安装：</span><br><span class="line">npm install -g json</span><br><span class="line"></span><br><span class="line">然后，可以使用它来使用-I进行就地编辑。例如，要添加值为“bar”的新脚本“foo”，这样写：</span><br><span class="line"></span><br><span class="line">json -I -f package.json -e &apos;this.scripts.foo=&quot;bar&quot;&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="11、-自动设置和打开你的github库"><a href="#11、-自动设置和打开你的github库" class="headerlink" title="11、 自动设置和打开你的github库"></a>11、 自动设置和打开你的github库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">如果package.json文件中有“repository”，则可以通过输入 npm repo在默认浏览器中打开它</span><br><span class="line"></span><br><span class="line">如果你的项目已经连接到远程存储库，并且已经在命令行上安装了git，那您可以使用这个命令找到你的连接存储库</span><br><span class="line"></span><br><span class="line">git config --get remote.origin.url</span><br><span class="line"></span><br><span class="line">更好的是，如果你按照上面的提示并安装了json模块，可以使用下面的脚本自动将正确的存储库添加到 package.json</span><br><span class="line"></span><br><span class="line">json -I -f package.json -e &quot;this.repository=\&quot;$(git config --get remote.o</span><br></pre></td></tr></table></figure>
+<h3 id="12、自定义npm-init脚本"><a href="#12、自定义npm-init脚本" class="headerlink" title="12、自定义npm init脚本"></a>12、自定义npm init脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">让我们更进一步，使用我们自己的npm init脚本，它接受GitHub存储库URL并自动推送我们的第一个提交</span><br><span class="line">在本技巧中，我们将讨论如何创建自定义npm init脚本。在下一个(也是最后一个)技巧中，我们将合并git</span><br><span class="line"></span><br><span class="line">可以通过重定向到主目录中的.npm-init.js文件来编辑npm init脚本</span><br><span class="line">（在Windows上，通常是 c/Users/&lt;用户名&gt;，在 Mac 上，它是/Users/&lt;用户名&gt;）</span><br><span class="line"></span><br><span class="line">让我们首先在我们的主目录中创建一个.nmm-init.js文件</span><br><span class="line"></span><br><span class="line">为了确保npm init被指向正确的文件，可以运行:</span><br><span class="line"></span><br><span class="line">npm config set init-module ~\.npm-init.js</span><br><span class="line"></span><br><span class="line">在集成git之前，这里有一个简单的.npm-init.js文件，它模拟了默认npm init的问题。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  name: prompt(&apos;package name&apos;, basename || package.name),</span><br><span class="line">  version: prompt(&apos;version&apos;, &apos;0.0.0&apos;),</span><br><span class="line">  decription: prompt(&apos;description&apos;, &apos;&apos;),</span><br><span class="line">  main: prompt(&apos;entry point&apos;, &apos;index.js&apos;),</span><br><span class="line">  repository: prompt(&apos;git repository&apos;, &apos;&apos;),</span><br><span class="line">  keywords: prompt(function (s) &#123; return s.split(/\s+/) &#125;),</span><br><span class="line">  author: prompt(&apos;author&apos;, &apos;Joe Bloggs &lt;joe.bloggs@gmail.com&gt; (joebloggs.com)&apos;),</span><br><span class="line">  license: prompt(&apos;license&apos;, &apos;ISC&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">每个问题都遵循nameInPackage模式:prompt(&apos;nameInPrompt&apos;,&apos;defaultValue&apos;)。要在缺省情况下设置值而不带问题，只需删除prompt方法。</span><br></pre></td></tr></table></figure>
+<h3 id="13、使用自定义npm-init脚本将你的第一个-Commit-提交到-GitHub"><a href="#13、使用自定义npm-init脚本将你的第一个-Commit-提交到-GitHub" class="headerlink" title="13、使用自定义npm init脚本将你的第一个 Commit 提交到 GitHub"></a>13、使用自定义npm init脚本将你的第一个 Commit 提交到 GitHub</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">为了将git命令合并到.npm-init.js文件中，需要一种方法来控制命令行。为此，我们可以使用child_process 模块</span><br><span class="line"></span><br><span class="line">在文件的顶部引入它，因为我们只需要execSync函数，所以可以使用析构赋值语法自己获取它：</span><br><span class="line"></span><br><span class="line">const &#123; execSync &#125; = require(&apos;child_process&apos;);</span><br><span class="line"></span><br><span class="line">我还创建了一个helper函数，它将函数的结果打印到控制台：</span><br><span class="line"></span><br><span class="line">function run(func) &#123;</span><br><span class="line">  console.log(execSync(func).toString())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">最后，我们将提示输入GitHub存储库URL，如果提供，我们将生README.md文件，并启动我们的第一次提交</span><br><span class="line"></span><br><span class="line">repository: prompt(&apos;github repository url&apos;, &apos;&apos;, function (url) &#123;</span><br><span class="line">  if (url) &#123;</span><br><span class="line">    run(&apos;touch README.md&apos;);</span><br><span class="line">    run(&apos;git init&apos;);</span><br><span class="line">    run(&apos;git add README.md&apos;);</span><br><span class="line">    run(&apos;git commit -m &quot;first commit&quot;&apos;);</span><br><span class="line">    run(`git remote add origin $&#123;url&#125;`);</span><br><span class="line">    run(&apos;git push -u origin master&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">  return url;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">总的来说，.npm-init.js文件大概如下：</span><br><span class="line"></span><br><span class="line">const &#123; execSync &#125; = require(&apos;child_process&apos;);</span><br><span class="line"></span><br><span class="line">function run(func) &#123;</span><br><span class="line">  console.log(execSync(func).toString())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  name: prompt(&apos;package name&apos;, basename || package.name),</span><br><span class="line">  version: prompt(&apos;version&apos;, &apos;0.0.0&apos;),</span><br><span class="line">  decription: prompt(&apos;description&apos;, &apos;&apos;),</span><br><span class="line">  main: prompt(&apos;entry point&apos;, &apos;index.js&apos;),</span><br><span class="line">  keywords: prompt(function (s) &#123; return s.split(/\s+/) &#125;),</span><br><span class="line">  author: prompt(&apos;author&apos;, &apos;Joe Bloggs &lt;joe.bloggs@gmail.com&gt; (joebloggs.com)&apos;),</span><br><span class="line">  license: prompt(&apos;license&apos;, &apos;ISC&apos;),</span><br><span class="line">  repository: prompt(&apos;github repository url&apos;, &apos;&apos;, function (url) &#123;</span><br><span class="line">    if (url) &#123;</span><br><span class="line">      run(&apos;touch README.md&apos;);</span><br><span class="line">      run(&apos;git init&apos;);</span><br><span class="line">      run(&apos;git add README.md&apos;);</span><br><span class="line">      run(&apos;git commit -m &quot;first commit&quot;&apos;);</span><br><span class="line">      run(`git remote add origin $&#123;url&#125;`);</span><br><span class="line">      run(&apos;git push -u origin master&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    return url;</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">package.json文件：</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;Custom npm init&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.0.0&quot;,</span><br><span class="line">  &quot;decription&quot;: &quot;A test project, to demonstrate a custom npm init script.&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;Joe Bloggs &lt;joe.bloggs@gmail.com&gt; (joebloggs.com)&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;,</span><br><span class="line">  &quot;repository&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;git&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;git+https://github.com/123/custom.git&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;bugs&quot;: &#123;</span><br><span class="line">    &quot;url&quot;: &quot;https://github.com/123/issues&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;homepage&quot;: &quot;https://github.com/123/custom#readme&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/20/vue-watch-computed/" rel="next" title="vue watch computed">
+                <i class="fa fa-chevron-left"></i> vue watch computed
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/20/搭建一个灰度发布环境/" rel="prev" title="搭建一个灰度发布环境">
+                搭建一个灰度发布环境 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">killsos.ql@gmail.com</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、学习基本快捷方式"><span class="nav-number">1.</span> <span class="nav-text">1、学习基本快捷方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根的快捷方式"><span class="nav-number">2.</span> <span class="nav-text">根的快捷方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、设置默认npm-init属性"><span class="nav-number">3.</span> <span class="nav-text">2、设置默认npm init属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、让脚本跨平台兼容"><span class="nav-number">4.</span> <span class="nav-text">3、让脚本跨平台兼容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、并行运行脚本"><span class="nav-number">5.</span> <span class="nav-text">4、并行运行脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、在不同的目录中运行脚本"><span class="nav-number">6.</span> <span class="nav-text">5、在不同的目录中运行脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、列出并选择可用脚本"><span class="nav-number">7.</span> <span class="nav-text">7、列出并选择可用脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、运行前后脚本"><span class="nav-number">8.</span> <span class="nav-text">8、运行前后脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、控制应用程序版本"><span class="nav-number">9.</span> <span class="nav-text">9、控制应用程序版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、从命令行编辑-package-json"><span class="nav-number">10.</span> <span class="nav-text">10、从命令行编辑 package.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、-自动设置和打开你的github库"><span class="nav-number">11.</span> <span class="nav-text">11、 自动设置和打开你的github库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、自定义npm-init脚本"><span class="nav-number">12.</span> <span class="nav-text">12、自定义npm init脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13、使用自定义npm-init脚本将你的第一个-Commit-提交到-GitHub"><span class="nav-number">13.</span> <span class="nav-text">13、使用自定义npm init脚本将你的第一个 Commit 提交到 GitHub</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">killsos.ql@gmail.com</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
