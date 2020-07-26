@@ -230,6 +230,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/" itemprop="url">使用ES6符号隐藏对象属性/属性的后备变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T16:43:19+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="The-Problem-Hiding-The-Backing-Variable"><a href="#The-Problem-Hiding-The-Backing-Variable" class="headerlink" title="The Problem: Hiding The Backing Variable"></a>The Problem: Hiding The Backing Variable</h2><pre><code>1. this._foo 
+</code></pre><h2 id="Hiding-Via-Closures"><a href="#Hiding-Via-Closures" class="headerlink" title="Hiding Via Closures"></a>Hiding Via Closures</h2><pre><code>function defineProperty(obj, key, value) {
+    Object.defineProperty(obj, key, {
+        get() {
+            return value;
+        },
+        set(newValue) {
+            value = newValue;
+        }
+    })
+</code></pre><h2 id="Hiding-The-Backing-Variable-With-ES6-Symbols"><a href="#Hiding-The-Backing-Variable-With-ES6-Symbols" class="headerlink" title="Hiding The Backing Variable With ES6 Symbols"></a>Hiding The Backing Variable With ES6 Symbols</h2><pre><code>Symbol(“foo”)
+
+Object.getOwnPropertySymbols() returns an array of Symbols that are stored on the object
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/Symbols/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1965,205 +2097,6 @@ return i;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/什么时候用或不用箭头函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/什么时候用或不用箭头函数/" itemprop="url">什么时候用或不用箭头函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T08:57:23+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="arrow-function"><a href="#arrow-function" class="headerlink" title="arrow function"></a>arrow function</h2><p>. 省略{}</p>
-<p>. 省略 return </p>
-<ol>
-<li><p>No parameters</p>
-<pre><code>() =&gt; 42
-
-甚至可以省略括号
-
-_ =&gt; 42
-</code></pre></li>
-<li><p>single parameter</p>
-<pre><code>x =&gt; 42  || (x) =&gt; 42
-</code></pre></li>
-</ol>
-<ol start="3">
-<li><p>Multiple parameters</p>
-<pre><code>(x, y) =&gt; 42
-</code></pre></li>
-</ol>
-<ol start="4">
-<li><p>Statements (as opposed to expressions)</p>
-<pre><code>需要花括号
-
-需要return
-</code></pre></li>
-<li><p>“Block body”</p>
-</li>
-<li><p>Object literals</p>
-<pre><code>如果想返回一个对象 需要一个大括号包起来 避免认为是语句
-
-x =&gt;({ y: x })
-</code></pre></li>
-</ol>
-<h2 id="arrow-function-Syntactically-anonymous"><a href="#arrow-function-Syntactically-anonymous" class="headerlink" title="arrow function Syntactically anonymous"></a>arrow function Syntactically anonymous</h2><ol>
-<li><p>难于调试</p>
-</li>
-<li><p>No self-referencing</p>
-<pre><code>递归
-
-event handler that needs to unbind
-</code></pre></li>
-</ol>
-<h2 id="Main-benefit-No-binding-of-‘this’"><a href="#Main-benefit-No-binding-of-‘this’" class="headerlink" title="Main benefit: No binding of ‘this’"></a>Main benefit: No binding of ‘this’</h2><pre><code>var obj = {
-    id: 42,
-    counter: function counter() {
-        setTimeout(() =&gt; {
-        console.log(this.id);
-        }, 1000);
-    }
-}; // 这是原作者举得栗子
-
-obj.counter() // this --&gt; obj
-
-实际上 arrow functio 中 this 取决于 词法作用域上父级作用域的this 如果父级作用域中this存在
-</code></pre><h2 id="When-you-should-not-use-Arrow-Functions"><a href="#When-you-should-not-use-Arrow-Functions" class="headerlink" title="When you should not use Arrow Functions"></a>When you should not use Arrow Functions</h2><ol>
-<li><p>Object methods</p>
-<pre><code>var cat = {
-    lives: 9,
-    jumps: () =&gt; {
-        this.lives--; // this 不是 对象本身
-    }
-} 
-</code></pre></li>
-<li><p>Callback functions with dynamic context</p>
-<pre><code>var button = document.getElementById(&apos;press&apos;);
-    button.addEventListener(&apos;click&apos;, () =&gt; {
-    this.classList.toggle(&apos;on&apos;);
-}); // this 不是 button
-</code></pre></li>
-<li><p>call apply bind  对于 箭头函数 是无效的</p>
-</li>
-<li><p>代码可读性差</p>
-</li>
-</ol>
-<h2 id="When-you-should-use-them"><a href="#When-you-should-use-them" class="headerlink" title="When you should use them"></a>When you should use them</h2><ol>
-<li><p>箭头函数最适合需要利用this绑定特性，而不是函数本身</p>
-</li>
-<li><p>map reducer方法中使用   the pros outweigh the cons 利大于弊</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2214,7 +2147,7 @@ obj.counter() // this --&gt; obj
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -230,6 +230,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/07/26/How-to-Configure-VS-Code-Like-a-Pro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/26/How-to-Configure-VS-Code-Like-a-Pro/" itemprop="url">How to Configure VS Code Like a Pro</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-26T11:00:48+08:00">
+                2020-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Why-Do-We-Even-Need-a-Workspace"><a href="#Why-Do-We-Even-Need-a-Workspace" class="headerlink" title="Why Do We Even Need a Workspace?"></a>Why Do We Even Need a Workspace?</h2><p>为了在基于项目的级别而不是全局（用户）级别应用任何设置或配置，您将需要有一个工作区。</p>
+<p>有了工作区，您可以定制工作环境的各个方面，以满足和满足您正在处理的项目的特定需求。</p>
+<p>在这里，我正在谈论扩展，任务，代码片段，甚至是文本编辑器的外观。 这正是我所要介绍的内容，我将向您展示如何在自己的工作空间中进行设置和配置。</p>
+<h2 id="如何设置工作区"><a href="#如何设置工作区" class="headerlink" title="如何设置工作区"></a>如何设置工作区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">保存</span><br><span class="line">1. 文件  2. 将工作区另存为</span><br><span class="line"></span><br><span class="line">打开</span><br><span class="line"></span><br><span class="line">1. 文件  2. 打开工作区</span><br><span class="line"></span><br><span class="line">工作区看上去是空文件 也没有什么</span><br><span class="line">但是通过工作区可以快速安装 自己喜欢的插件</span><br><span class="line">通过 Peacock 这个插件 给vs实例添加不同颜色</span><br><span class="line"></span><br><span class="line">打开命令面板 cmd + shift +  p  输入 peacock</span><br><span class="line"></span><br><span class="line">在工作区中.vscode/settings.json</span><br><span class="line"></span><br><span class="line">在workbench对象中，您可以进一步定制VS代码中的许多其他元素和部分(例如终端部分)</span><br></pre></td></tr></table></figure>
+<h2 id="如何一个多文件工作区"><a href="#如何一个多文件工作区" class="headerlink" title="如何一个多文件工作区"></a>如何一个多文件工作区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">实际上，多文件夹工作区只是一个常规工作区，在原始项目的文件夹中添加了其他文件夹（项目</span><br><span class="line">您可以在当前工作空间中添加任意数量的项目。 您可以让前端和后端项目共享一个工作区</span><br><span class="line">或你可想在自己一个仓库中有一个工作区中对多个React项目进行配置</span><br><span class="line">您在多文件夹工作空间中可以拥有的设置和功能与普通工作空间完全相同</span><br><span class="line"></span><br><span class="line">1. 文件  2. 将文件夹添加到工作区</span><br></pre></td></tr></table></figure>
+<h2 id="通过工作区公开和分享扩展"><a href="#通过工作区公开和分享扩展" class="headerlink" title="## 通过工作区公开和分享扩展"></a>## 通过工作区公开和分享扩展</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">***.code-workspace 文件中</span><br><span class="line"></span><br><span class="line">extensions字段中 recommrecommendations字段中    </span><br><span class="line">添加自己喜欢的插件</span><br><span class="line"></span><br><span class="line">一旦其他人打开这个工作区 就会提示安装推荐的插件</span><br></pre></td></tr></table></figure>
+<h2 id="如何在工作空间-多文件夹-工作空间设置和运行自动化任务"><a href="#如何在工作空间-多文件夹-工作空间设置和运行自动化任务" class="headerlink" title="如何在工作空间/多文件夹 工作空间设置和运行自动化任务"></a>如何在工作空间/多文件夹 工作空间设置和运行自动化任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我们可以轻松地将VS Code配置为一次单击或每次打开工作区时执行此命令链</span><br><span class="line">具体取决于我们的需求</span><br><span class="line"></span><br><span class="line">在.vscode文件夹中task.json设置</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &apos;version&apos;,</span><br><span class="line">  &apos;tasks&apos;; [</span><br><span class="line">    &#123;</span><br><span class="line">      label,</span><br><span class="line">      command,</span><br><span class="line">      type: &apos;shell&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">执行任务 终端 run task  选择</span><br><span class="line"></span><br><span class="line">我想指出的是，如果您在多文件夹工作区中工作，则可以在彼此独立的每个文件夹（项目）中同时运行任务。 您只需要在每个项目中都有一个.vscode文件夹，并在其中包含命令的tasks.json文件即可。</span><br><span class="line"></span><br><span class="line">每当我们从工作区打开我们的项目并真正实现它的自动化时，我们都可以轻松地将VS Code配置为运行此类任务。 该过程还涉及两个步骤</span><br><span class="line"></span><br><span class="line">1. 在一个任务对象添加runOptions字段 对象为&#123;runOn: &apos;folderOpen&apos;&#125;</span><br><span class="line"></span><br><span class="line">2. we need to open the command palette, type “Manage Automatic Tasks in Folder,” and then allow the option.</span><br></pre></td></tr></table></figure>
+<h2 id="如何在工作区中创建自定义片段"><a href="#如何在工作区中创建自定义片段" class="headerlink" title="如何在工作区中创建自定义片段"></a>如何在工作区中创建自定义片段</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">代码段是一种节省时间的好方法，您无需一直输入模板或样板代码。</span><br><span class="line">当然，可以选择安装片段扩展，但是我真的更喜欢根据自己的喜好和需求定制片段。</span><br><span class="line"></span><br><span class="line">因此，为了创建代码段，您应该在VS Code中导航到</span><br><span class="line"></span><br><span class="line">代码&gt;首选项&gt;用户代码段。 然后，您应该会看到一个下拉列表，</span><br><span class="line">其中包含当前列出的摘录以及选项“ New Global Snippets File…”</span><br><span class="line"></span><br><span class="line"> 和“新的摘要文件”作为“您的工作区名称”。</span><br><span class="line"></span><br><span class="line"> 仓库地址</span><br><span class="line"></span><br><span class="line"> https://github.com/Squiff88/vscodeSetup</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/07/20/搭建一个灰度发布环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1358,128 +1485,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/30/The-Power-of-Functions-Returning-Other-Functions-in-JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/30/The-Power-of-Functions-Returning-Other-Functions-in-JavaScript/" itemprop="url">The Power of Functions Returning Other Functions in JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-30T10:48:41+08:00">
-                2020-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="The-Function-With-Intention"><a href="#The-Function-With-Intention" class="headerlink" title="The Function With Intention"></a>The Function With Intention</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getDate(callback) &#123;</span><br><span class="line">  return callback(new Date())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function start(callback) &#123;</span><br><span class="line">  return getDate(callback)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">start(function (date) &#123;</span><br><span class="line">  console.log(`Todays date: $&#123;date&#125;`)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="Abstraction-and-Composition"><a href="#Abstraction-and-Composition" class="headerlink" title="Abstraction and Composition"></a>Abstraction and Composition</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">要知道要抽象什么，请考虑我们的最终目标是：</span><br><span class="line"></span><br><span class="line">“如果函数接受一个对象并返回一个新对象，该对象按照我们希望的方式更新了样式，那该怎么办？”</span><br><span class="line"></span><br><span class="line">本质上，此函数的重点是将一个值转换为我们期望的表示形式</span><br><span class="line"></span><br><span class="line">抽象本质是 明确输入 明确输出</span><br></pre></td></tr></table></figure>
-<h2 id="Breaking-Changes"><a href="#Breaking-Changes" class="headerlink" title="Breaking Changes"></a>Breaking Changes</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如何导致灾难性错误，这些错误会使您的应用崩溃</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1530,7 +1535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
