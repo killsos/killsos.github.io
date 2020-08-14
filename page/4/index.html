@@ -230,6 +230,616 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/08/JavaScript-Decorators/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/08/JavaScript-Decorators/" itemprop="url">JavaScript Decorators</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-08T17:52:44+08:00">
+                2020-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="JS-装饰器"><a href="#JS-装饰器" class="headerlink" title="JS 装饰器"></a>JS 装饰器</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">tsconfig.json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"target"</span>: <span class="string">"ES6"</span>,</span><br><span class="line">    <span class="string">"experimentalDecorators"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Log = (msg: <span class="built_in">string</span>): <span class="function"><span class="params">any</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">target: <span class="built_in">any</span>, propertyKey: <span class="built_in">string</span>, descriptor: PropertyDescriptor</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// target: class constructor or current object's prototype</span></span><br><span class="line">    <span class="comment">// target 类的构造器 或 对象的原型</span></span><br><span class="line">    <span class="comment">// propertyKey: name of the decorated method</span></span><br><span class="line">    <span class="comment">// 属性名</span></span><br><span class="line">    <span class="comment">// descriptor: property descriptor of the method</span></span><br><span class="line">    <span class="comment">// 描述</span></span><br><span class="line">    <span class="comment">// modify class or method...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Log</span>(<span class="string">'decorating class'</span>)</span><br><span class="line"><span class="keyword">class</span> Test &#123;</span><br><span class="line">  <span class="meta">@Log</span>(<span class="string">'decorate method'</span>)</span><br><span class="line">  testMethod() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// A decorator that catches a specific error</span></span><br><span class="line"><span class="comment">// A decorator that catches all the errors</span></span><br><span class="line"><span class="comment">// Apply these decorators to a class or a method</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> HandlerFunction = <span class="function">(<span class="params">error: <span class="built_in">Error</span>, ctx: <span class="built_in">any</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Catch = (errorType: <span class="built_in">any</span>, handler: HandlerFunction): <span class="function"><span class="params">any</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">target: <span class="built_in">any</span>, propertyKey: <span class="built_in">string</span>, descriptor: PropertyDescriptor</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Save a reference to the original method</span></span><br><span class="line">    <span class="keyword">const</span> originalMethod = descriptor.value;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Rewrite original method with try/catch wrapper</span></span><br><span class="line">    descriptor.value = <span class="function"><span class="keyword">function</span> (<span class="params">...args: <span class="built_in">any</span>[]</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 最外层</span></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> result = originalMethod.apply(<span class="keyword">this</span>, args);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Check if method is asynchronous</span></span><br><span class="line">        <span class="keyword">if</span> (result &amp;&amp; result <span class="keyword">instanceof</span> <span class="built_in">Promise</span>) &#123;</span><br><span class="line">          <span class="comment">// Return promise</span></span><br><span class="line">          <span class="keyword">return</span> result.catch(<span class="function">(<span class="params">error: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">            _handleError(<span class="keyword">this</span>, errorType, handler, error);</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Return actual result</span></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">      &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        _handleError(<span class="keyword">this</span>, errorType, handler, error);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> descriptor;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CatchAll = (handler: HandlerFunction): <span class="function"><span class="params">any</span> =&gt;</span> Catch(<span class="built_in">Error</span>, handler);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_handleError</span>(<span class="params">ctx: <span class="built_in">any</span>, errorType: <span class="built_in">any</span>, handler: HandlerFunction, error: <span class="built_in">Error</span></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Check if error is instance of given error type</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> handler === <span class="string">'function'</span> &amp;&amp; error <span class="keyword">instanceof</span> errorType) &#123;</span><br><span class="line">    <span class="comment">// Run handler with error object and class context</span></span><br><span class="line">    handler.call(<span class="literal">null</span>, error, ctx);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Throw error further</span></span><br><span class="line">    <span class="comment">// Next decorator in chain can catch it</span></span><br><span class="line">    <span class="keyword">throw</span> error;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类装饰器"><a href="#类装饰器" class="headerlink" title="类装饰器"></a>类装饰器</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Decorator factory function</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Catch = (errorType: <span class="built_in">any</span>, handler: HandlerFunction): <span class="function"><span class="params">any</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">target: <span class="built_in">any</span>, propertyKey: <span class="built_in">string</span>, descriptor: PropertyDescriptor</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Method decorator</span></span><br><span class="line">    <span class="keyword">if</span> (descriptor) &#123;</span><br><span class="line">      <span class="keyword">return</span> _generateDescriptor(descriptor, errorType, handler);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Class decorator</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// Iterate over class properties except constructor</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> propertyName of Reflect.ownKeys(target.prototype).filter(<span class="function"><span class="params">prop</span> =&gt;</span> prop !== <span class="string">'constructor'</span>)) &#123;</span><br><span class="line">        <span class="keyword">const</span> desc = <span class="built_in">Object</span>.getOwnPropertyDescriptor(target.prototype, propertyName)!;</span><br><span class="line">        <span class="keyword">const</span> isMethod = desc.value <span class="keyword">instanceof</span> <span class="built_in">Function</span>;</span><br><span class="line">        <span class="keyword">if</span> (!isMethod) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(target.prototype, propertyName, _generateDescriptor(desc, errorType, handler));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_generateDescriptor</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  descriptor: PropertyDescriptor,</span></span></span><br><span class="line"><span class="function"><span class="params">  errorType: <span class="built_in">any</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">  handler: HandlerFunction</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">PropertyDescriptor</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Save a reference to the original method</span></span><br><span class="line">  <span class="keyword">const</span> originalMethod = descriptor.value;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Rewrite original method with try/catch wrapper</span></span><br><span class="line">  descriptor.value = <span class="function"><span class="keyword">function</span> (<span class="params">...args: <span class="built_in">any</span>[]</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> result = originalMethod.apply(<span class="keyword">this</span>, args);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Check if method is asynchronous</span></span><br><span class="line">      <span class="keyword">if</span> (result &amp;&amp; result <span class="keyword">instanceof</span> <span class="built_in">Promise</span>) &#123;</span><br><span class="line">        <span class="comment">// Return promise</span></span><br><span class="line">        <span class="keyword">return</span> result.catch(<span class="function">(<span class="params">error: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">          _handleError(<span class="keyword">this</span>, errorType, handler, error);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Return actual result</span></span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      _handleError(<span class="keyword">this</span>, errorType, handler, error);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> descriptor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Messenger &#123;</span><br><span class="line">  getMessages() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125; <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">      <span class="keyword">if</span> (err <span class="keyword">instanceof</span> <span class="built_in">TypeError</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>, err);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// and the same surrounding block for all the class functions</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Catch</span>(<span class="built_in">TypeError</span>, <span class="function">(<span class="params">err, ctx</span>) =&gt;</span> <span class="built_in">console</span>.log(ctx, err))</span><br><span class="line"><span class="keyword">class</span> Messenger &#123;</span><br><span class="line">  getMessages() &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// all the other functions</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/08/JavaScript-Design-Patterns-—-The-Decorator-Pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/08/JavaScript-Design-Patterns-—-The-Decorator-Pattern/" itemprop="url">JavaScript Design Patterns — The Decorator Pattern</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-08T17:35:19+08:00">
+                2020-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(firstName, lastName, title) &#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">    <span class="keyword">this</span>.title = title;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getFullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.firstName&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.lastName&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 很可能会违反第一个SOLID规则-单一责任</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(firstName, lastName, title) &#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">    <span class="keyword">this</span>.title = title;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getFullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.firstName&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.lastName&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserDecorator</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(user) &#123;</span><br><span class="line">    <span class="keyword">this</span>.user = user;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getFullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.user.getFullName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserFullNameDecoratorWithTitleDecorator</span> <span class="keyword">extends</span> <span class="title">UserDecorator</span> </span>&#123;</span><br><span class="line">  getFullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.user.title&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.user.getFullName()&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/08/JavaScript-Design-Patterns-The-Adapter-Pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/08/JavaScript-Design-Patterns-The-Adapter-Pattern/" itemprop="url">JavaScript Design Patterns: The Adapter Pattern</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-08T17:15:40+08:00">
+                2020-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="适应器模式"><a href="#适应器模式" class="headerlink" title="适应器模式"></a>适应器模式</h2><p>在现实世界中，适配器用于连接两个或多个无法与原始插座连接的设备。<br>例如，英国插头不能与欧洲插座一起使用，因此您需要一个适配器。<br>同样适用于编程-适配器模式。</p>
+<p>诀窍是，您必须确定某些东西需要适配器。<br> 因为您可能知道，如果您有编码方面的经验，尤其是JavaScript方面的经验，人们往往会随处使用所有内容。<br> 最终，代码库最终完全被第三方依赖性和意粉代码的负载弄得一团糟，这没有任何标准。</p>
+<p>适配器是一种结构设计模式，因此可以极大地提高代码的质量和可伸缩性<br>充当某种过滤器或漏斗。 适配器使用所有旧的或第三方的代码，并且仅输出您的代码需要和期望的内容    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;v4 <span class="keyword">as</span> uuidv4&#125; <span class="keyword">from</span> <span class="string">'uuid";</span></span><br><span class="line"><span class="string">// console.log(uuidv4);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">class uuid &#123;</span></span><br><span class="line"><span class="string">  generate() &#123;</span></span><br><span class="line"><span class="string">    return uuidv4();</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default new uuid()</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/08/JavaScript-Design-Patterns-The-Factory-Pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/08/JavaScript-Design-Patterns-The-Factory-Pattern/" itemprop="url">JavaScript Design Patterns: The Factory Pattern</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-08T16:34:37+08:00">
+                2020-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="工程模式"><a href="#工程模式" class="headerlink" title="工程模式"></a>工程模式</h2><p>Factory Pattern的主体在核心上非常简单。 这种模式被归类为“创造型”，这是有原因的。 工厂旨在创造。<br>当谈到编程时，我们希望它创建遵循领域约定的对象。</p>
+<p>众所周知，JavaScript应用程序可以通过多种方式编写，例如功能性或半OOP风格。<br>因此，我认为可以公平地说，实现工厂模式可能有多种方式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(object) &#123;</span><br><span class="line">      <span class="keyword">this</span>.title = object.title;</span><br><span class="line">      <span class="keyword">this</span>.author = object.author;</span><br><span class="line">      <span class="keyword">this</span>.pages = object.pages</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookFactory</span> </span>&#123;</span><br><span class="line">  create(object) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Book(object);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  createFromDB(objectFromDB) &#123;</span><br><span class="line">    <span class="keyword">const</span> preparedBookJson = &#123;</span><br><span class="line">      title: objectFromDB.title,</span><br><span class="line">      author: objectFromDB.author,</span><br><span class="line">      pages: objectFromDB.pages</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Book(preparedBookJson);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> BookFactory();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/08/chrome-83-new-feature/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/08/chrome-83-new-feature/" itemprop="url">chrome 83 new feature</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-08T15:58:14+08:00">
+                2020-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-本地文件系统"><a href="#1-本地文件系统" class="headerlink" title="1. 本地文件系统"></a>1. 本地文件系统</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Chrome 83 支持了一项新的本机文件系统 API，这使得开发者可以和本地文件做交互</span></span><br><span class="line"><span class="comment">// 本机文件系统 API 还提供了打开目录并枚举其内容的功能</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">writeURLToFile</span>(<span class="params">fileHandle, url</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Create a FileSystemWritableFileStream to write to.</span></span><br><span class="line">  <span class="keyword">const</span> writable = <span class="keyword">await</span> fileHandle.createWritable();</span><br><span class="line">  <span class="comment">// Make an HTTP request for the contents.</span></span><br><span class="line">  <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line">  <span class="comment">// Stream the response into the file.</span></span><br><span class="line">  <span class="keyword">await</span> response.body.pipeTo(writable);</span><br><span class="line">  <span class="comment">// pipeTo() closes the destination pipe automatically.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-新的内存监控-API"><a href="#2-新的内存监控-API" class="headerlink" title="2. 新的内存监控 API"></a>2. 新的内存监控 API</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">performance.measureMemory() <span class="comment">// 是一个新的 API，可用于测量页面的内存使用情况并检测内存泄漏</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 旧版 API performance.memory ，返回的是 JavaScript 堆的大小，而新 API 估计的是整个 web 页面的内存使用量</span></span><br><span class="line"><span class="comment">// 当 Chrome 与多个 web 页面(或同一个 web 页面的多个实例)共享同一堆时，这种差异变得非常重要</span></span><br><span class="line"><span class="comment">// 在这种情况下，旧 API 的结果可能会被任意关闭</span></span><br><span class="line"><span class="comment">// 另一个区别是，新的 API 是在垃圾收集期间执行内存测量。</span></span><br><span class="line"><span class="comment">// 这减少了结果中的噪音，但是可能需要一段时间才能产生结果，所以这个操作是异步的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (performance.measureMemory) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> performance.measureMemory();</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-新的跨域策略"><a href="#3-新的跨域策略" class="headerlink" title="3. 新的跨域策略"></a>3. 新的跨域策略</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 什么叫旁路攻击</span></span><br><span class="line"><span class="comment">// 在你的程序正常通讯通道之外，产生了一种边缘特征，</span></span><br><span class="line"><span class="comment">// 这些特征反映了你不想产生的信息，这个信息被人拿到了，</span></span><br><span class="line"><span class="comment">// 你就泄密了。这个边缘特征产生的信息通道，就叫旁路。</span></span><br><span class="line"><span class="comment">// 比如你的内存在运算的时候，产生了一个电波，这个电波反映了内存中的内容的，</span></span><br><span class="line"><span class="comment">// 有人用特定的手段收集到这个电波，这就产生了一个旁路了</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 比如使用下面几个 API 都可以造成这种风险：</span></span><br><span class="line"></span><br><span class="line">SharedArrayBuffer</span><br><span class="line">performance.measureMemory()</span><br><span class="line">JS Self-Profiling API</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为了减轻这种风险，Chrome 提供了一个基于选择加入的隔离环境，称为跨域隔离。</span></span><br><span class="line"><span class="comment">// 这是通过两个新的 HTTP Header 完成的：Cross-Origin-Embedder-Policy 和 Cross-Origin-Opener-Policy</span></span><br><span class="line"><span class="comment">// 要选择跨域隔离状态，您需要在页面添加下面的配置：</span></span><br><span class="line"></span><br><span class="line">Cross-Origin-Embedder-Policy: <span class="built_in">require</span>-corp</span><br><span class="line">Cross-Origin-Opener-Policy: same-origin</span><br><span class="line"></span><br><span class="line"><span class="comment">// 跨域隔离状态还可以防止对 document.domain 进行修改</span></span><br></pre></td></tr></table></figure>
+<h2 id="默认启动-DoH"><a href="#默认启动-DoH" class="headerlink" title="默认启动 DoH"></a>默认启动 DoH</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">当你尝试打开一个网站时，您的浏览器首先需要通过 DNS（域名系统）查找来确定托管该网站的服务器。</span><br><span class="line">DNS 服务器与你之间的链接为“明文传输”，而非“加密传输”。</span><br><span class="line">这就导致每一个环节上的人都能随意修改你的链接。</span><br><span class="line"></span><br><span class="line">DNS-over-HTTPS(简称DoH)的具体原理其实就是在DNS外面套一层HTTPS。</span><br><span class="line"></span><br><span class="line">使用之后你的站点的 DNS 查询就变成了下面的过程：</span><br><span class="line">你的电脑 -&gt; DoH服务器 -&gt; DNS服务器 -&gt; DoH服务器 -&gt; 你的电脑</span><br><span class="line">以上流程中的一个箭头代表一个HTTPS加密链接，使得该过程中的所有流量皆受到强加密</span><br><span class="line"></span><br><span class="line">只要你的 DNS 服务器支持安全 DNS， Chrome 中就会默认启用 HTTP-over-HTTPS</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/08/5-Useful-Tricks-JavaScript-has-been-Hiding-from-You/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -836,633 +1446,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/06/JavaScript-Patterns-—-Modules-and-Sandbox/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/06/JavaScript-Patterns-—-Modules-and-Sandbox/" itemprop="url">JavaScript Patterns — Modules and Sandbox</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-06T12:12:10+08:00">
-                2020-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Modules-That-Create-Constructors-or-Classes"><a href="#Modules-That-Create-Constructors-or-Classes" class="headerlink" title="Modules That Create Constructors or Classes"></a>Modules That Create Constructors or Classes</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 通过创建类来完成一个模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Foo = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> Foo;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Foo = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">  Foo.prototype.fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> Foo;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<h2 id="Importing-Globals-into-a-Module"><a href="#Importing-Globals-into-a-Module" class="headerlink" title="Importing Globals into a Module"></a>Importing Globals into a Module</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">module</span> = <span class="function">(<span class="params">(global</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;)(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="Sandbox-Pattern"><a href="#Sandbox-Pattern" class="headerlink" title="Sandbox Pattern"></a>Sandbox Pattern</h2><p>sandbox模式解决了上面使用的名称空间模式的问题  </p>
-<p>它解决了应用程序依赖单一全局变量作为全局变量的问题  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">new</span> Sandbox(<span class="function">(<span class="params">box</span>) =&gt;</span> &#123;  </span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Sandbox([<span class="string">'foo'</span>, <span class="string">'bar'</span>], (box) =&gt; &#123;</span><br><span class="line">  <span class="comment">// console.log(box);</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 'foo' and 'bar' are module names</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sandbox</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(modules, callback) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Sandbox)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Sandbox(modules, callback);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> name <span class="keyword">of</span> <span class="built_in">Object</span>.keys(Sandbox.modules)) &#123;</span><br><span class="line">      <span class="keyword">const</span> fn = Sandbox.modules[name];</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> fn === <span class="string">'function'</span>) &#123;</span><br><span class="line">        Sandbox.modules[name](<span class="keyword">this</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> callback === <span class="string">'function'</span>) &#123;</span><br><span class="line">        callback(<span class="keyword">this</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  hello() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Sandbox.modules = &#123;&#125;</span><br><span class="line">Sandbox.modules.foo = <span class="function">(<span class="params">box</span>) =&gt;</span> &#123;</span><br><span class="line">  box.foo = <span class="string">"bar"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">Sandbox.modules.bar = <span class="function">(<span class="params">box</span>) =&gt;</span> &#123;</span><br><span class="line">  box.getBar = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'bar'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> sandbox = <span class="keyword">new</span> Sandbox([<span class="string">'foo'</span>, <span class="string">'bar'</span>], (box) =&gt; &#123;</span><br><span class="line">  box.hello();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/05/5-Questions-to-Test-Your-JavaScript-Knowledge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/05/5-Questions-to-Test-Your-JavaScript-Knowledge/" itemprop="url">5 Questions to Test Your JavaScript Knowledge</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-05T17:40:22+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> programmer = &#123;</span><br><span class="line">  languages: [<span class="string">"JavaScript"</span>, <span class="string">"Python"</span>, <span class="string">"Go"</span>, <span class="string">"Java"</span>],</span><br><span class="line">  name: <span class="string">"raz"</span>,</span><br><span class="line"></span><br><span class="line">  printLanguages() &#123;</span><br><span class="line">    <span class="keyword">this</span>.languages.forEach(</span><br><span class="line">    language =&gt; <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' knows: '</span> + language)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">programmer.printLanguages();</span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> programmer = &#123;</span><br><span class="line">  languages: [<span class="string">"JavaScript"</span>, <span class="string">"Python"</span>, <span class="string">"Go"</span>, <span class="string">"Java"</span>],</span><br><span class="line">  name: <span class="string">"raz"</span>,</span><br><span class="line"></span><br><span class="line">  printLanguages() &#123;</span><br><span class="line">    <span class="keyword">this</span>.languages.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">language</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' knows: '</span> + language)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">programmer.printLanguages();  <span class="comment">// Error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 报错原因</span></span><br><span class="line"><span class="comment">//  Error: Cannot read property 'name' of undefined</span></span><br><span class="line"><span class="comment">//  严格模式报错  使用因为 this 指向为 undefiend</span></span><br><span class="line"><span class="comment">//  非严格模式 不报错 this指向 window</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [‘a’, ‘b’, ‘a’, ‘d’, ‘b’, ‘a’] -&gt; &#123;a: 3, b: 2, d: 1&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> letters = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> summarize = <span class="function">(<span class="params">letters</span>) =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">return</span> letters.reduce(<span class="function">(<span class="params">acc, letter</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">if</span>(acc[letter])&#123;</span><br><span class="line">    acc[letter]++;</span><br><span class="line">   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    acc[letter] = <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> acc;</span><br><span class="line"> &#125;, &#123;&#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(summarize(letters));</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/05/Understanding-ES6-Modules-Import-Export-Syntax-in-JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/05/Understanding-ES6-Modules-Import-Export-Syntax-in-JavaScript/" itemprop="url">Understanding ES6 Modules (Import / Export Syntax) in JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-05T17:22:46+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="default-import-and-export"><a href="#default-import-and-export" class="headerlink" title="default import and export"></a>default import and export</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// second.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="string">'some string'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">'Max'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> name</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> someValue <span class="keyword">from</span> <span class="string">'./second.js'</span></span><br><span class="line"><span class="built_in">console</span>.log(someValue) <span class="comment">// 'some string'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// function</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'hi user!'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> greet = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">'hi user!'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> greet</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> someFunction <span class="keyword">from</span> <span class="string">'./second.js'</span></span><br><span class="line"><span class="built_in">console</span>.log(someFunction())  <span class="comment">// 'hi user!'</span></span><br></pre></td></tr></table></figure>
-<h2 id="named-import-and-export"><a href="#named-import-and-export" class="headerlink" title="named import and export"></a>named import and export</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// second.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> greet = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'hi user!'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'Max'</span></span><br><span class="line"><span class="keyword">export</span> &#123; greet, name &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> greet = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'hi user!'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; greet &#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">'Max'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; greet, name &#125; <span class="keyword">from</span> <span class="string">'./second.js'</span></span><br><span class="line"><span class="built_in">console</span>.log(name)     <span class="comment">// 'Max'</span></span><br><span class="line"><span class="built_in">console</span>.log(greet())  <span class="comment">// 'hi user!'</span></span><br></pre></td></tr></table></figure>
-<h2 id="named-import-and-export-with-renaming"><a href="#named-import-and-export-with-renaming" class="headerlink" title="named import and export with renaming"></a>named import and export with renaming</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; greet <span class="keyword">as</span> greetFunction &#125; <span class="keyword">from</span> <span class="string">'./second.js'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(greetFunction())</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> greetingFunction = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'hi user!'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; greetingFunction <span class="keyword">as</span> greet &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="ES6-modules-in-Node-js"><a href="#ES6-modules-in-Node-js" class="headerlink" title="ES6 modules in Node.js"></a>ES6 modules in Node.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Node.js 13支持ESM 需要type属性为module在package.json</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"es6-in-node"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="string">"license"</span>: <span class="string">"MIT"</span>,</span><br><span class="line">  <span class="string">"type"</span>: <span class="string">"module"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="ES6-modules-in-the-Browser"><a href="#ES6-modules-in-the-Browser" class="headerlink" title="ES6 modules in the Browser"></a>ES6 modules in the Browser</h2><p>├── index.html<br>├── index.js<br>└── second.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  second.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">'Max'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; name &#125; <span class="keyword">from</span> <span class="string">'./second.js'</span></span><br><span class="line"><span class="built_in">console</span>.log(name)</span><br><span class="line"></span><br><span class="line"><span class="comment">// script tag type attrbuite is module</span></span><br><span class="line"><span class="comment">// type=”module”</span></span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script src=<span class="string">"index.js"</span> type=<span class="string">"module"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="A-cheatsheet-for-you"><a href="#A-cheatsheet-for-you" class="headerlink" title="A cheatsheet for you"></a>A cheatsheet for you</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/05/10-Super-Useful-Tricks-for-JavaScript-Developers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/05/10-Super-Useful-Tricks-for-JavaScript-Developers/" itemprop="url">10 Super Useful Tricks for JavaScript Developers</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-05T14:50:30+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="参数的验证"><a href="#参数的验证" class="headerlink" title="参数的验证"></a>参数的验证</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> isRequired = <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'param is required'</span>); &#125;;</span><br><span class="line"><span class="keyword">const</span> print = <span class="function">(<span class="params">num = isRequired(</span>)) =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="string">`printing <span class="subst">$&#123;num&#125;</span>`</span>) &#125;;</span><br><span class="line">print(<span class="number">2</span>);<span class="comment">//printing 2</span></span><br><span class="line">print()<span class="comment">// error</span></span><br><span class="line">print(<span class="literal">null</span>)<span class="comment">//printing null</span></span><br></pre></td></tr></table></figure>
-<h2 id="Format-JSON-Code"><a href="#Format-JSON-Code" class="headerlink" title="Format JSON Code"></a>Format JSON Code</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">name</span>:<span class="string">"John"</span>,<span class="attr">Age</span>:<span class="number">23</span>&#125;,<span class="literal">null</span>,<span class="string">'\t'</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[...new <span class="built_in">Set</span>(array)]</span><br></pre></td></tr></table></figure>
-<h2 id="数组去假"><a href="#数组去假" class="headerlink" title="数组去假"></a>数组去假</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line"><span class="literal">null</span></span><br><span class="line"><span class="literal">NaN</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="string">""</span> (empty string)</span><br><span class="line"><span class="literal">false</span></span><br><span class="line"></span><br><span class="line">myArray.filter(<span class="built_in">Boolean</span>)</span><br><span class="line"></span><br><span class="line">myArray.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Do your changes and return the new item</span></span><br><span class="line">    &#125;).</span><br><span class="line">    filter(<span class="built_in">Boolean</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="合并对象"><a href="#合并对象" class="headerlink" title="合并对象"></a>合并对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> summary = &#123;...user, ...college, ...skills&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 想相同属性名 右侧覆盖左侧</span></span><br></pre></td></tr></table></figure>
-<h2 id="Sort-Number-Arrays"><a href="#Sort-Number-Arrays" class="headerlink" title="Sort Number Arrays"></a>Sort Number Arrays</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="number">0</span>,<span class="number">10</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">123</span>,<span class="number">54</span>,<span class="number">1</span>].sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a-b);</span><br></pre></td></tr></table></figure>
-<h2 id="Destructuring-with-Aliases"><a href="#Destructuring-with-Aliases" class="headerlink" title="Destructuring with Aliases"></a>Destructuring with Aliases</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> object = &#123; <span class="attr">number</span>: <span class="number">10</span> &#125;;</span><br><span class="line"><span class="comment">// Grabbing number</span></span><br><span class="line"><span class="keyword">const</span> &#123; number &#125; = object;</span><br><span class="line"><span class="comment">// Grabbing number and renaming it as otherNumber</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="attr">number</span>: otherNumber &#125; = object;</span><br><span class="line"><span class="built_in">console</span>.log(otherNumber); <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
-<h2 id="Get-the-Last-Items-in-an-Array"><a href="#Get-the-Last-Items-in-an-Array" class="headerlink" title="Get the Last Items in an Array"></a>Get the Last Items in an Array</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="built_in">console</span>.log(array.slice(<span class="number">-1</span>));</span><br><span class="line">&gt;&gt;&gt;[<span class="number">7</span>]</span><br><span class="line"><span class="built_in">console</span>.log(array.slice(<span class="number">-2</span>));</span><br><span class="line">&gt;&gt;&gt;[<span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="built_in">console</span>.log(array.slice(<span class="number">-3</span>));</span><br><span class="line">&gt;&gt;&gt;[<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="Disable-Right-Click"><a href="#Disable-Right-Click" class="headerlink" title="Disable Right Click"></a>Disable Right Click</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body oncontextmenu=<span class="string">"return false"</span>&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/05/JavaScript-Mistakes-—-Async-Type-Checking-and-Values/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/05/JavaScript-Mistakes-—-Async-Type-Checking-and-Values/" itemprop="url">JavaScript Mistakes — Async, Type Checking, and Values</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-05T09:45:00+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-赋值通过竞争条件-yield-await"><a href="#1-赋值通过竞争条件-yield-await" class="headerlink" title="1. 赋值通过竞争条件 yield await"></a>1. 赋值通过竞争条件 yield await</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> total = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> getNum = <span class="keyword">async</span> (num) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> add = <span class="keyword">async</span> (num) =&gt; &#123;</span><br><span class="line">  total += <span class="keyword">await</span> getNum(num);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([add(<span class="number">1</span>), add(<span class="number">2</span>)]).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(total);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getNum = <span class="keyword">async</span> (num) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> add = <span class="keyword">async</span> (num) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> getNum(num);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([add(<span class="number">1</span>), add(<span class="number">2</span>)]).then(<span class="function">(<span class="params">nums</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> total = nums.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b, <span class="number">0</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(total);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="NaN检查"><a href="#NaN检查" class="headerlink" title="NaN检查"></a>NaN检查</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>   <span class="comment">// false</span></span><br><span class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>   <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="literal">NaN</span> !== <span class="literal">NaN</span>  <span class="comment">// true</span></span><br><span class="line"><span class="literal">NaN</span> != <span class="literal">NaN</span>   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Indexof  lastIndexOf 无法发现</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> foo = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">Object</span>.is(foo, <span class="literal">NaN</span>)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'is NaN'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Getters-and-Setters-should-be-Together-in-Object-and-Classes"><a href="#Getters-and-Setters-should-be-Together-in-Object-and-Classes" class="headerlink" title="Getters and Setters should be Together in Object and Classes"></a>Getters and Setters should be Together in Object and Classes</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">getter setter 最好同时出现</span><br><span class="line"></span><br><span class="line"> <span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"> <span class="built_in">Object</span>.defineProperty(obj, <span class="string">'foo'</span>, &#123;</span><br><span class="line">  <span class="keyword">get</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._foo;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">set</span>(val) &#123;</span><br><span class="line">    <span class="keyword">this</span>._foo = val</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="document-window-区别"><a href="#document-window-区别" class="headerlink" title="document window 区别"></a>document window 区别</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">document</span> 是 <span class="built_in">window</span>属性</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span> 是 页面 DOM 表现</span><br><span class="line"></span><br><span class="line">Dom 是 HTML标签 的 表现</span><br></pre></td></tr></table></figure>
-<h2 id="document-onload-window-onload-区别"><a href="#document-onload-window-onload-区别" class="headerlink" title="document.onload window.onload 区别"></a>document.onload window.onload 区别</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload DOM已经好了 包括 图片 css scripts subframe</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.onload 仅仅是DOM好了</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.readyState</span><br><span class="line"></span><br><span class="line">  loading   </span><br><span class="line"></span><br><span class="line">  interactive  仅仅解析完成 subresources is loading</span><br><span class="line"></span><br><span class="line">  complate</span><br><span class="line"></span><br><span class="line">  readystatechange事件</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.compatMode</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.contentType</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.doctype.name</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1508,7 +1496,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-count">135</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

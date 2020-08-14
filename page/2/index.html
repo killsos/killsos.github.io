@@ -230,6 +230,621 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/07/01/apifox使用与总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/01/apifox使用与总结/" itemprop="url">apifox使用与总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-01T10:07:45+08:00">
+                2020-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="接口管理现状"><a href="#接口管理现状" class="headerlink" title="接口管理现状"></a>接口管理现状</h2><ol>
+<li>使用 Swagger 管理接口文档</li>
+<li>使用 Postman 调试接口</li>
+<li>使用 RAP Mock 数据</li>
+<li>使用 JMeter 做接口自动化测试</li>
+</ol>
+<h2 id="Apifox-解决方案"><a href="#Apifox-解决方案" class="headerlink" title="Apifox 解决方案"></a>Apifox 解决方案</h2><p>Apifox = Postman + Swagger + Mock + JMeter  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/30/JavaScript’s-Memory-Model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/30/JavaScript’s-Memory-Model/" itemprop="url">JavaScript’s Memory Model</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-30T16:36:05+08:00">
+                2020-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="js-基本类型-声明-赋值"><a href="#js-基本类型-声明-赋值" class="headerlink" title="js 基本类型 声明 赋值"></a>js 基本类型 声明 赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let myNumber = 23</span><br><span class="line"></span><br><span class="line">声明一个变量</span><br><span class="line">分配一个内地地址</span><br><span class="line">将变量值存储到内存中</span><br><span class="line"></span><br><span class="line">let newVar = myNumber</span><br><span class="line"></span><br><span class="line">也指向myNumber的内存地址</span><br><span class="line"></span><br><span class="line">myNumber = myNumber + 1</span><br><span class="line"></span><br><span class="line">myNumber指向新的内存地址</span><br><span class="line">新的内存地址中内容为 24</span><br><span class="line"></span><br><span class="line">基本类型 按值存储</span><br></pre></td></tr></table></figure>
+<h2 id="js内存模型-调用栈和堆"><a href="#js内存模型-调用栈和堆" class="headerlink" title="js内存模型 调用栈和堆"></a>js内存模型 调用栈和堆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">调用堆栈是存储基本类型的地方(除了函数调用之外)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">堆是存储对象类型的</span><br></pre></td></tr></table></figure>
+<h2 id="对象类型变量-声明-赋值"><a href="#对象类型变量-声明-赋值" class="headerlink" title="对象类型变量 声明 赋值"></a>对象类型变量 声明 赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let myArray = []</span><br><span class="line">在堆中分配内存地址</span><br><span class="line">内存中存储内容</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/30/FQDN-域名-主机名/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/30/FQDN-域名-主机名/" itemprop="url">FQDN 域名 主机名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-30T15:14:04+08:00">
+                2020-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="FQDN"><a href="#FQDN" class="headerlink" title="FQDN"></a>FQDN</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FQDN：(Fully Qualified Domain Name)全限定域名</span><br><span class="line">又称为绝对领域名称（absolute domain name</span><br><span class="line"></span><br><span class="line">同时带有主机名和域名的名称。（通过符号“.”）</span><br><span class="line"></span><br><span class="line">主机名是bigserver,域名是mycompany.com,那么FQDN就是bigserver.mycompany.com</span><br><span class="line"></span><br><span class="line">全限定域名可以从逻辑上准确地表示出主机在什么地方，也可以说全域名是主机名的一种完全表示形式</span><br><span class="line"></span><br><span class="line">从全限定域名中包含的信息可以看出主机在域名树中的位置。</span><br><span class="line"></span><br><span class="line">完整域名 由  主机名称  与 母域名  两部分所组成</span><br><span class="line">FQDN = Hostname + DomainName</span><br><span class="line">例如有一部服务器的本地主机名为myhost，而其母域名为example.com，</span><br><span class="line">那指向该服务器的完整域名就是myhost.example.com。</span><br><span class="line">虽然世界上可能有很多服务器的本地主机名是myhost，</span><br><span class="line">但myhost.example.com是唯一的，因此完整域名能识别该特定服务器</span><br><span class="line"></span><br><span class="line">DNS解析流程：首先查找本机HOSTS表，有的直接使用表中定义，没有查找网络连接中设置的DNS 服务器由他来解析</span><br><span class="line"></span><br><span class="line">域名、主机名与URL</span><br><span class="line"></span><br><span class="line">URL 协议 主机名/域名 端口 路径 ?查询 #hash</span><br><span class="line"></span><br><span class="line">主机名/域名：主机名标识服务器</span><br><span class="line"></span><br><span class="line">http中host</span><br><span class="line"></span><br><span class="line">主机名/域名：主机名标识服务器</span><br><span class="line">也许还会有子域名作为主机名的前缀。子域名可以是任何形式的，其中www最为常见。子域名通常是可选的</span><br><span class="line"></span><br><span class="line">域名/子域名/主机名</span><br><span class="line"></span><br><span class="line">.com是顶级域名。</span><br><span class="line">baidu.com是一级域名。</span><br><span class="line">www.baidu.com、bbs.baidu.com、news.baidu.com是二级域名</span><br><span class="line"></span><br><span class="line">以http://www.sina.com.cn/为例，</span><br><span class="line">http是通信使用的协议，sina.com.cn是域名，</span><br><span class="line">www是提供服务的机器的名字（计算机名）</span><br><span class="line"></span><br><span class="line">计算机名+域名才是主机名，即www.sina.com.cn是主机名</span><br><span class="line"></span><br><span class="line">Linux下查看方式：</span><br><span class="line"></span><br><span class="line">hostname， 查看主机名</span><br><span class="line"></span><br><span class="line">hostname -f 查看FQDN</span><br><span class="line"></span><br><span class="line">dnsdomainname 查看域</span><br><span class="line"></span><br><span class="line">uname -h 查看主机名</span><br><span class="line"></span><br><span class="line">主机名(Hostname)和域名(Domain）</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/30/Tricky-Javascript-code-snippets-asked-in-the-interview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/30/Tricky-Javascript-code-snippets-asked-in-the-interview/" itemprop="url">Tricky Javascript code snippets asked in the interview</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-30T14:19:35+08:00">
+                2020-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="show-code"><a href="#show-code" class="headerlink" title="show code"></a>show code</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="string">'Raj'</span>,</span><br><span class="line">  location: &#123;</span><br><span class="line">    city: <span class="string">'NY'</span>,</span><br><span class="line">    state: <span class="string">'NY'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> copy = <span class="built_in">Object</span>.assign(&#123;&#125;, user); <span class="comment">// 浅拷贝</span></span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"><span class="comment">// const copy = &#123; ...user &#125;; 浅拷贝</span></span><br><span class="line">copy.location.city = <span class="string">'Albany'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'original: '</span>, user.location);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'copy:'</span>, copy.location);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> number = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> display = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(number); <span class="comment">// undefined hoisting</span></span><br><span class="line">  <span class="keyword">var</span> number = <span class="number">20</span>;</span><br><span class="line">&#125;;</span><br><span class="line">display();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> number = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> result = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">delete</span> number;</span><br><span class="line">  <span class="keyword">return</span> number;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// delete 用于删除一个对象的属性</span></span><br><span class="line"><span class="comment">// number不是一个对象 是基本类型</span></span><br><span class="line"><span class="comment">// 所以不会报错</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> number = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> result = (<span class="function"><span class="keyword">function</span> (<span class="params">number</span>) </span>&#123; <span class="comment">// number是基本类型 按值传递 delete没起到任何作用</span></span><br><span class="line">  <span class="keyword">delete</span> number;</span><br><span class="line">  <span class="keyword">return</span> number;</span><br><span class="line">&#125;)(<span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line">注意</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.a  <span class="comment">// false 是不能删除的 虽然满足delete 的属性是一个自身的 不可配置的属性</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.aa = <span class="number">12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.aa <span class="comment">//  true 可以删除</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">display</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = b = <span class="number">10</span>;</span><br><span class="line">  <span class="comment">// 赋值操作符 从右向左执行</span></span><br><span class="line">  <span class="comment">// b = 10;</span></span><br><span class="line">  <span class="comment">// var a = b</span></span><br><span class="line">  <span class="comment">// 没有用var声明 是全局变量</span></span><br><span class="line">&#125;</span><br><span class="line">display();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b'</span>, <span class="keyword">typeof</span> b === <span class="string">'undefined'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a'</span>, <span class="keyword">typeof</span> a === <span class="string">'undefined'</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span>; <span class="comment">// 严格模式就不会 没有用var声明 是全局变量</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">display</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = b = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line">display();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b'</span>, <span class="keyword">typeof</span> b === <span class="string">'undefined'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a'</span>, <span class="keyword">typeof</span> a === <span class="string">'undefined'</span>);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/30/Set-Up-Continuous-Delivery-for-Your-Node-js-Application/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/30/Set-Up-Continuous-Delivery-for-Your-Node-js-Application/" itemprop="url">Set Up Continuous Delivery for Your Node.js Application</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-30T10:59:18+08:00">
+                2020-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="用到技术"><a href="#用到技术" class="headerlink" title="用到技术"></a>用到技术</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GitLab CI</span><br><span class="line">post-receive git hook</span><br><span class="line">pm2</span><br><span class="line">digital ocean droplet</span><br></pre></td></tr></table></figure>
+<h2 id="1-Create-User-and-Set-SSH-and-Sudo-Rights"><a href="#1-Create-User-and-Set-SSH-and-Sudo-Rights" class="headerlink" title="1. Create User and Set SSH and Sudo Rights"></a>1. Create User and Set SSH and Sudo Rights</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># This will create a user and home directory.</span></span><br><span class="line">useradd -s /bin/bash -m -d /home/deploy -c <span class="string">"deploy"</span> deploy</span><br><span class="line"></span><br><span class="line"><span class="comment"># There you will add a password for new user</span></span><br><span class="line">passwd deploy</span><br><span class="line"></span><br><span class="line"><span class="comment"># let new user use sudo</span></span><br><span class="line">usermod -aG sudo deploy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PermitRootLogin no <span class="comment"># forbid logging via root</span></span><br><span class="line">AllowUsers deploy <span class="comment"># we want to connect as a new user though :)</span></span><br><span class="line">PasswordAuthentication yes  <span class="comment"># just to have it there until ssh key is deployed</span></span><br><span class="line"></span><br><span class="line">sudo service ssh restart</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C “your_email@example.com”</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~ &amp;&amp; mkdir .ssh &amp;&amp; touch .ssh/</span><br><span class="line"></span><br><span class="line">cat ~/.ssh/id_rsa.pub | ssh deploy@DROPLET_IP_ADDRESS “cat &gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys”</span><br><span class="line"></span><br><span class="line">nano ~/.zshrc</span><br><span class="line"><span class="built_in">alias</span> ssh_droplet=’ssh deploy@DEPLOY_IP_ADDRESS’</span><br></pre></td></tr></table></figure>
+<h2 id="2-Setup-Droplet"><a href="#2-Setup-Droplet" class="headerlink" title="2. Setup Droplet"></a>2. Setup Droplet</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo apt-get install curl</span><br><span class="line">curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -</span><br><span class="line"><span class="comment"># Install node and npm</span></span><br><span class="line">sudo apt-get install -y nodejs</span><br><span class="line">sudo npm install npm - global</span><br><span class="line"><span class="comment"># Install n package</span></span><br><span class="line">sudo npm cache clean -f</span><br><span class="line">sudo npm install -g n</span><br><span class="line">sudo n stable</span><br><span class="line"><span class="comment"># Install node version that you need with the help of n</span></span><br><span class="line">sudo n 13.6.0</span><br></pre></td></tr></table></figure>
+<h2 id="3-pm2-Configuration"><a href="#3-pm2-Configuration" class="headerlink" title="3. pm2 Configuration"></a>3. pm2 Configuration</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">GitLab CI and post-receive git hook in a separate bare repository.</span><br><span class="line"></span><br><span class="line">pm2 无停机 部署</span><br><span class="line"></span><br><span class="line">这个神奇的应用程序使我们可以运行一个应用程序的多个实例，并在不停机的情况下随时切换它们</span><br><span class="line"></span><br><span class="line">在程序的根目录下创建一个ecosystem.config.js</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    apps: [</span><br><span class="line">        &#123;</span><br><span class="line">            name: &apos;web app&apos;,</span><br><span class="line">            exec_mode: &apos;cluster&apos;,</span><br><span class="line">            instances: 4,</span><br><span class="line">            script: &apos;./start.js&apos;,</span><br><span class="line">            autorestart: true,</span><br><span class="line">            max_memory_restart: &apos;1G&apos;,</span><br><span class="line">        &#125;,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">name — just a name to be displayed on a dashboard</span><br><span class="line"></span><br><span class="line">exec_mode — use cluster for node.js, here’s an explanation of that</span><br><span class="line"></span><br><span class="line">instances — the number of instances to run — you can put max or any integer there</span><br><span class="line"></span><br><span class="line">script — your application starting file</span><br><span class="line"></span><br><span class="line">autorestart — if false pm2 will not restart the application if it crashes</span><br><span class="line"></span><br><span class="line">max_memory_restart — the application will be restarted if it exceeds that RAM limit</span><br></pre></td></tr></table></figure>
+<h2 id="nuxt-js-pm2-Configuration"><a href="#nuxt-js-pm2-Configuration" class="headerlink" title="nuxt.js pm2 Configuration"></a>nuxt.js pm2 Configuration</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    apps: [</span><br><span class="line">        &#123;</span><br><span class="line">            name: &apos;web app&apos;,</span><br><span class="line">            exec_mode: &apos;cluster&apos;,</span><br><span class="line">            instances: 4,</span><br><span class="line">            script: &apos;./node_modules/nuxt/bin/nuxt.js&apos;,</span><br><span class="line">            args: &apos;start&apos;,</span><br><span class="line">            autorestart: true,</span><br><span class="line">            max_memory_restart: &apos;1G&apos;,</span><br><span class="line">        &#125;,</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">在git-hook之后 用 yarn build 构建</span><br><span class="line">在每一次push到master分支上</span><br><span class="line">nuxt start 或 pm2 start</span><br></pre></td></tr></table></figure>
+<h2 id="Creating-a-git-hook"><a href="#Creating-a-git-hook" class="headerlink" title="Creating a git-hook"></a>Creating a git-hook</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mkdir git-hook</span><br><span class="line"><span class="built_in">cd</span> git-hook/</span><br><span class="line">git init - bare</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's leave it here for a moment and install magnificent pm2</span></span><br><span class="line">sudo npm install -g pm2</span><br><span class="line"></span><br><span class="line"><span class="comment"># And let's create server folder and pull repo there</span></span><br><span class="line">git <span class="built_in">clone</span> REPO_URL server</span><br><span class="line"></span><br><span class="line"><span class="comment"># Also let's install yarn and install everything there for the start</span></span><br><span class="line">sudo npm install -g yarn</span><br><span class="line"><span class="built_in">cd</span> server &amp;&amp; yarn &amp;&amp; yarn install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">TARGET=<span class="string">"/home/deploy/server"</span></span><br><span class="line">GIT_DIR=<span class="string">"/home/deploy/git-hook"</span></span><br><span class="line">BRANCH=<span class="string">"master"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> oldrev newrev ref</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="comment"># only checking out the master (or whatever branch you would like to deploy)</span></span><br><span class="line">	<span class="keyword">if</span> [ <span class="string">"<span class="variable">$ref</span>"</span> = <span class="string">"refs/heads/<span class="variable">$BRANCH</span>"</span> ];</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Ref <span class="variable">$ref</span> received. Deploying <span class="variable">$&#123;BRANCH&#125;</span> branch to production..."</span></span><br><span class="line">		git --work-tree=<span class="variable">$TARGET</span> --git-dir=<span class="variable">$GIT_DIR</span> checkout -f <span class="variable">$BRANCH</span></span><br><span class="line">		<span class="built_in">cd</span> /home/deploy/server</span><br><span class="line">		yarn install</span><br><span class="line">		pm2 restart all</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Ref <span class="variable">$ref</span> received. Doing nothing: only the <span class="variable">$&#123;BRANCH&#125;</span> branch may be deployed on this server."</span></span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> oldrev newrev ref</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="keyword">if</span> [ <span class="string">"<span class="variable">$ref</span>"</span> = <span class="string">"refs/heads/<span class="variable">$BRANCH</span>"</span> ];</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Ref <span class="variable">$ref</span> received. Doing nothing: only the <span class="variable">$&#123;BRANCH&#125;</span> branch may be deployed on this server."</span></span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="Setting-CD-on-GitLab-CI"><a href="#Setting-CD-on-GitLab-CI" class="headerlink" title="Setting CD on GitLab CI"></a>Setting CD on GitLab CI</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ci.yml</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image: node:13.6.0-alpine</span><br><span class="line"></span><br><span class="line">variables:</span><br><span class="line">  NODE_ENV: &apos;gitlab-ci&apos;</span><br><span class="line"></span><br><span class="line">cache:</span><br><span class="line">  paths:</span><br><span class="line">    - node_modules/</span><br><span class="line">    - .yarn</span><br><span class="line"></span><br><span class="line">stages:</span><br><span class="line">  - deploy</span><br><span class="line"></span><br><span class="line">Deploy master:</span><br><span class="line">  stage: deploy</span><br><span class="line">  only:</span><br><span class="line">    - master</span><br><span class="line">  before_script:</span><br><span class="line">    # add ssh deploy keys</span><br><span class="line">    - yarn config set cache-folder .yarn</span><br><span class="line">    - yarn install</span><br><span class="line">    # alpine has apk instead of apt-get</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client git curl)&apos;</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    - echo &quot;$DIGITAL_OCEAN_PRIVATE&quot; | tr -d &apos;\r&apos; | ssh-add -</span><br><span class="line">    - mkdir -p ~/.ssh</span><br><span class="line">    - chmod 700 ~/.ssh</span><br><span class="line">    # disable SSH check cause known_hosts doesn&apos;t work</span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line">    # - echo &quot;$SSH_KNOWN_HOSTS&quot; &gt; ~/.ssh/known_hosts</span><br><span class="line">    # - chmod 644 ~/.ssh/known_hosts</span><br><span class="line">    # add digital ocean remote repop</span><br><span class="line">    - git remote add production deploy@YOUR_DIGITAL_OCEAN_IP:git-hook</span><br><span class="line">    # prepare files</span><br><span class="line">    - git checkout master</span><br><span class="line">    - git config --global user.email &quot;michail.a.starikov@gmail.com&quot;</span><br><span class="line">    - git config --global user.name &quot;Mikhail Starikov&quot;</span><br><span class="line">  script:</span><br><span class="line">    - git push -f production HEAD:master</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/30/The-Power-of-Functions-Returning-Other-Functions-in-JavaScript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -824,636 +1439,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/28/Scopes-in-Javascript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/28/Scopes-in-Javascript/" itemprop="url">Scopes in Javascript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-28T17:10:03+08:00">
-                2020-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="What-are-scopes"><a href="#What-are-scopes" class="headerlink" title="What are scopes?"></a>What are scopes?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">作用域是在运行时访问代码的某些特定部分中的变量、函数或对象</span><br><span class="line">当最小特权原则应用于编程语言设计时，它们就诞生了。</span><br></pre></td></tr></table></figure>
-<h2 id="Why-should-we-care-to-learn-it"><a href="#Why-should-we-care-to-learn-it" class="headerlink" title="Why should we care to learn it?"></a>Why should we care to learn it?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">它们为您的代码提供了一定程度的安全性，即仅在确实需要它们时使用。</span><br><span class="line"></span><br><span class="line">对代码的各个部分进行范围界定有助于提高效率，跟踪并减少错误。</span><br><span class="line"></span><br><span class="line">当您拥有名称相同但作用域不同的变量时，它还解决了命名问题，因此减少了名称空间冲突。</span><br></pre></td></tr></table></figure>
-<h2 id="What-are-the-types-of-scope"><a href="#What-are-the-types-of-scope" class="headerlink" title="What are the types of scope?"></a>What are the types of scope?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. Global and Local</span><br><span class="line">2. Lexical</span><br><span class="line">3. Block</span><br><span class="line">4. Public and Private</span><br></pre></td></tr></table></figure>
-<h2 id="Global-Scope-and-Local-Scope"><a href="#Global-Scope-and-Local-Scope" class="headerlink" title="Global Scope and Local Scope"></a>Global Scope and Local Scope</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在函数外部声明的任何变量都属于全局范围，因此可以访问，并且可以在代码中的任何位置进行更改。</span><br><span class="line"></span><br><span class="line">函数内部定义的变量在本地范围内。 对于该函数的每次调用，它们的作用域都不同。</span><br><span class="line">这意味着具有相同名称的变量可以在不同的函数中使用。</span><br><span class="line">这是因为这些变量绑定到它们各自的功能，每个功能具有不同的作用域，并且在其他功能中不可访问。</span><br><span class="line"></span><br><span class="line">New functions = new local scope — that’s the rule.</span><br><span class="line"></span><br><span class="line">// Gobal</span><br><span class="line">var mouse = &quot;Mouse&quot;;</span><br><span class="line">function test1() &#123;</span><br><span class="line">  // Local</span><br><span class="line">  var name = &quot;Cat&quot;;</span><br><span class="line">  console.log(name);</span><br><span class="line">&#125;</span><br><span class="line">function test2() &#123;</span><br><span class="line">  // Local</span><br><span class="line">  var name = &quot;Dog&quot;;</span><br><span class="line">  console.log(name);</span><br><span class="line">&#125;</span><br><span class="line">test1();</span><br><span class="line">test2();</span><br><span class="line">console.log(name);</span><br></pre></td></tr></table></figure>
-<h2 id="Lexical-Scope"><a href="#Lexical-Scope" class="headerlink" title="Lexical Scope"></a>Lexical Scope</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当一个函数在另一个函数中时，内部函数可以访问外部函数中的作用域，这称为“词法作用域”，</span><br><span class="line">也称为“静态作用域”，因为它只能在其所在的代码块中被调用（引用）</span><br><span class="line"></span><br><span class="line">JavaScript从最内层的范围开始并向外搜索，直到找到所要查找的变量/对象/函数</span><br></pre></td></tr></table></figure>
-<h2 id="Block-Scope"><a href="#Block-Scope" class="headerlink" title="Block Scope"></a>Block Scope</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">块语句（例如if和switch条件或for和while循环以及&#123;&#125;与函数不同）不会创建新的作用域。</span><br><span class="line"></span><br><span class="line">在block语句内部定义的变量将保留在它们已经存在的范围内</span><br><span class="line"></span><br><span class="line">ECMAScript 6引入了let和const关键字。 可以使用这些关键字代替var关键字，而let和const关键字支持在块语句中声明局部作用域。</span><br><span class="line"></span><br><span class="line">如果我们将var i更改为让i，现在让我们看看其中的区别。</span><br></pre></td></tr></table></figure>
-<h2 id="Public-and-Private-scopes"><a href="#Public-and-Private-scopes" class="headerlink" title="Public and Private scopes"></a>Public and Private scopes</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从公共（全局）范围包装功能可以使它们免受易受攻击的攻击。 但是在JavaScript中，没有公共或私有作用域。 但是，我们可以模拟它们</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/28/DOM-Manipulation-—-HTML-Elements/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/28/DOM-Manipulation-—-HTML-Elements/" itemprop="url">DOM Manipulation — HTML Elements</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-28T17:04:27+08:00">
-                2020-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="HTMLElement"><a href="#HTMLElement" class="headerlink" title="HTMLElement"></a>HTMLElement</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Element 是一个通用性非常强的基类，所有 Document 对象下的对象都继承自它。</span><br><span class="line">这个接口描述了所有相同种类的元素所普遍具有的方法和属性。</span><br><span class="line">一些接口继承自 Element 并且增加了一些额外功能的接口描述了具体的行为。</span><br><span class="line">例如， HTMLElement 接口是所有 HTML 元素的基本接口，</span><br><span class="line">而 SVGElement 接口是所有 SVG 元素的基础。大多数功能是在这个类的更深层级（hierarchy）的接口中被进一步制定的。</span><br><span class="line"></span><br><span class="line">HTMLElement 是一个构造器函数</span><br><span class="line">生成html文档节点</span><br><span class="line"></span><br><span class="line">包含以下五类构造器</span><br><span class="line"></span><br><span class="line">HTMLHtmlElement</span><br><span class="line">HTMLHeadElement</span><br><span class="line">HTMLLinkElement</span><br><span class="line">HTMLTitleElement</span><br><span class="line">HTMLMetaElement</span><br></pre></td></tr></table></figure>
-<h2 id="HTMLElement-Object-Properties-and-Methods"><a href="#HTMLElement-Object-Properties-and-Methods" class="headerlink" title="HTMLElement Object Properties and Methods"></a>HTMLElement Object Properties and Methods</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">createElement</span><br><span class="line">const input = document.createElement(&apos;input&apos;);</span><br><span class="line">tagName</span><br><span class="line"></span><br><span class="line">children</span><br><span class="line"></span><br><span class="line">getAttributes</span><br><span class="line"></span><br><span class="line">setAttribute</span><br><span class="line"></span><br><span class="line">hasAttribute</span><br><span class="line"></span><br><span class="line">removeAttribute</span><br><span class="line"></span><br><span class="line">classList</span><br><span class="line"></span><br><span class="line">dataset</span><br><span class="line"></span><br><span class="line">attributes</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/28/The-Most-Frequent-Mistakes-New-Front-End-Developers-Make/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/28/The-Most-Frequent-Mistakes-New-Front-End-Developers-Make/" itemprop="url">The Most Frequent Mistakes New Front-End Developers Make </a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-28T16:58:03+08:00">
-                2020-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-Not-Using-Responsive-Web-Design"><a href="#1-Not-Using-Responsive-Web-Design" class="headerlink" title="1. Not Using Responsive Web Design"></a>1. Not Using Responsive Web Design</h2><h2 id="2-Lack-of-Input-Validation"><a href="#2-Lack-of-Input-Validation" class="headerlink" title="2. Lack of Input Validation"></a>2. Lack of Input Validation</h2><h2 id="3-Cross-Browser-Compatibility-Issues"><a href="#3-Cross-Browser-Compatibility-Issues" class="headerlink" title="3. Cross-Browser Compatibility Issues"></a>3. Cross-Browser Compatibility Issues</h2><h2 id="4-Using-Outdated-HTML"><a href="#4-Using-Outdated-HTML" class="headerlink" title="4. Using Outdated HTML"></a>4. Using Outdated HTML</h2><h2 id="5-Use-of-Website-Builder-Tools"><a href="#5-Use-of-Website-Builder-Tools" class="headerlink" title="5. Use of Website Builder Tools"></a>5. Use of Website Builder Tools</h2><h2 id="6-Not-Considering-Details"><a href="#6-Not-Considering-Details" class="headerlink" title="6. Not Considering Details"></a>6. Not Considering Details</h2><h2 id="7-Fancy-and-Tiny-Fonts"><a href="#7-Fancy-and-Tiny-Fonts" class="headerlink" title="7. Fancy and Tiny Fonts"></a>7. Fancy and Tiny Fonts</h2><h2 id="8-Auto-playing-Audio-and-Video"><a href="#8-Auto-playing-Audio-and-Video" class="headerlink" title="8. Auto-playing Audio and Video"></a>8. Auto-playing Audio and Video</h2><h2 id="9-Broken-Links"><a href="#9-Broken-Links" class="headerlink" title="9. Broken Links"></a>9. Broken Links</h2><h2 id="10-Relying-on-jQuery"><a href="#10-Relying-on-jQuery" class="headerlink" title="10. Relying on jQuery"></a>10. Relying on jQuery</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/19/前端监控badjs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/19/前端监控badjs/" itemprop="url">前端监控badjs</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T17:01:01+08:00">
-                2020-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="badjs的收集"><a href="#badjs的收集" class="headerlink" title="badjs的收集"></a>badjs的收集</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">当 JavaScript 运行发生异常时，并且未被捕获，window 下会触发一个 ErrorEvent 接口的 error 事件，并执行 window.onerror()</span><br><span class="line"></span><br><span class="line">我们可以通过以下两种方式在全局处理异常：</span><br><span class="line"></span><br><span class="line">window.addEventListener(&apos;error&apos;, function(errorEvent) &#123;</span><br><span class="line">    const &#123; message, filename, lineno, colno, error &#125; = errorEvent</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">window.onerror = function(message, source, lineno, colno, error) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">这两种方式在写法上前者更优一点，因为 error 事件可以监听多个，window.onerror 只能订阅一个。</span><br><span class="line"></span><br><span class="line">可惜 ie8 以前不支持 ErrorEvent，只能使用 window.onerror。 所以看业务需要合理使用</span><br><span class="line"></span><br><span class="line">另外还有 try...catch 的方式，也可以收集到特定场景下的全局错误信息，但这个方式有很多缺陷</span><br><span class="line"></span><br><span class="line">通过 window 下的 error 事件，我们正常情况下能收集到五类信息</span><br><span class="line"></span><br><span class="line">属性	                   含义	                     说明</span><br><span class="line">message	                 错误信息	                 错误描述</span><br><span class="line">filename(source)	       发生错误的脚本URL	        在 ErrorEvent 中是 filename，在 onError 中是 source</span><br><span class="line">lineno	                 错误行</span><br><span class="line">colno	                   发生错误的脚本URL</span><br><span class="line">error	                    Error 对象	             error.stack 是很重要的信息</span><br><span class="line"></span><br><span class="line">window 下的 error 事件也并不是什么异常都能捕获的。</span><br><span class="line"></span><br><span class="line">比如我们直接在 console 里触发的异常、浏览器拦截的数据、资源 404 等都不会触发。</span><br></pre></td></tr></table></figure>
-<h2 id="跨域场景"><a href="#跨域场景" class="headerlink" title="跨域场景"></a>跨域场景</h2><h2 id="小程序badjs"><a href="#小程序badjs" class="headerlink" title="小程序badjs"></a>小程序badjs</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">小程序的全局异常捕获，可以在  App 注册小程序的方法下订阅</span><br><span class="line">https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onError-String-error</span><br><span class="line"></span><br><span class="line">这里不太一样的是，onError 订阅函数里只有一个 msg 参数。内容类似 error.stack</span><br></pre></td></tr></table></figure>
-<h2 id="badjs上报"><a href="#badjs上报" class="headerlink" title="badjs上报"></a>badjs上报</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">要是出了问题，我们得依靠上报的信息定位问题。那么就要提前确认哪些信息是需要的。</span><br><span class="line">另外考虑到数据量级的问题，太多了服务器容易噎着，因此只上报一些必要的信息。</span><br><span class="line"></span><br><span class="line">前端必要上报数据：</span><br><span class="line"></span><br><span class="line">类别	                来源	                         示例</span><br><span class="line">content	              message + error.stack	         &quot;ReferenceError: test is not definedat HTMLLIElement.(https://wq.360buyimg.com/wecteam/badjstest.js:8996:115)</span><br><span class="line"></span><br><span class="line">有帮助的业务信息	    /	                              balabalabala</span><br><span class="line"></span><br><span class="line">除了 stack 信息，还有些业务信息(比如跟单、用户id等)可能有助于定位，看业务背景自行选择。</span><br><span class="line"></span><br><span class="line">另外有些数据是包含在报文当中的，可以在服务端一起收集和展示，前端不需要再单独上报</span><br><span class="line"></span><br><span class="line">报文自带的数据</span><br><span class="line"></span><br><span class="line">类别	              来源	                       示例</span><br><span class="line">ip	                 /	                         58.20.191.9</span><br><span class="line">time	              /	                           May 20th 2020, 14:56:00.062</span><br><span class="line">referer           	Headers.Referer	              https://wqsou.jd.com/wecTeam?key=%E9%9B%B6%E9%A3%9F&amp;sf=14&amp;as=0&amp;version=V00--</span><br><span class="line">UA	                Headers.User-Agent	Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.12(0x17000c2d) NetType/4G Language/zh_CN</span><br><span class="line">Cookie	            Headers.Cookie	            pin=wecTeam;</span><br></pre></td></tr></table></figure>
-<h2 id="数据拼接"><a href="#数据拼接" class="headerlink" title="数据拼接"></a>数据拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">前端把必要的数据拼接起来，准备发送到服务器。类似下面这条链接：</span><br><span class="line"></span><br><span class="line">https://wq.jd.com/wecteam/badjs?stack=%22ReferenceError%3A%20test%20is%20not%20defined%20%20%20%20at%20HTMLLIElement.%3Canonymous%3E%20(https%3A%2F%2Fwq.360buyimg.com%2Fwecteam%2Fbadjstest.js%3A8996%3A115)&amp;exts=balabalabala</span><br><span class="line"></span><br><span class="line">数据传输用 get 方式即可。更简单一些的用 img 传递。</span><br><span class="line"></span><br><span class="line">var _img = new Image();</span><br><span class="line">_img.src = url;</span><br><span class="line">需要注意的是，get 有最大长度(2048个字符)限制，注意裁剪。如果需要突破限制，请用 post 方式上报。</span><br><span class="line"></span><br><span class="line">推荐 bj-report.js</span><br><span class="line"></span><br><span class="line">它可以帮你进行前端日志上报与JS异常监控。通过简单的初始化和传入一些参数，就可以跳过上文的所有步骤~</span><br></pre></td></tr></table></figure>
-<h2 id="数据提取"><a href="#数据提取" class="headerlink" title="数据提取"></a>数据提取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">基于一个第三方的专业日志分析系统 Kibana 定制而成的</span><br></pre></td></tr></table></figure>
-<h2 id="异常分析"><a href="#异常分析" class="headerlink" title="异常分析"></a>异常分析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">badjs 可以分为两种，</span><br><span class="line"></span><br><span class="line">一种是因为开发人员所写的代码缺陷而导致的，俗称 bug。</span><br><span class="line"></span><br><span class="line">还有一种是人为故意的，比如安全扫描、刷子、爬虫、浏览器插件等嵌入的第三方的脚本，触发了本不存在的异常。</span><br><span class="line"></span><br><span class="line">content 信息：</span><br><span class="line"></span><br><span class="line">content 信息即 message 和 error.stack，里面是错误的描述和堆栈信息</span><br><span class="line"></span><br><span class="line">message 是对 error.stack 的补充，而一段完整的 error.stack 信息，包含了错误代码堆栈，文件和行列号</span><br><span class="line"></span><br><span class="line">通过这些信息我们基本可以断定错误的位置和触发原因</span><br><span class="line"></span><br><span class="line">我们一行行来看：</span><br><span class="line"></span><br><span class="line">Uncaught TypeError: Cannot read property &apos;style&apos; of undefined</span><br><span class="line">无法在 undefined 下访问 style 这个属性。就是说在某个对象下，某个属性空了，在这个基础上又访问 style 这个属性，因此报错了</span><br><span class="line"></span><br><span class="line">at removeAD (badjs.js:4)</span><br><span class="line">该异常代码位于badjs.js 这个文件里的第 4 行，所属的方法名叫做 removeAD。</span><br><span class="line"></span><br><span class="line">at removeAD (badjs.js:4)</span><br><span class="line">该异常代码位于badjs.js 这个文件里的第 4 行，所属的方法名叫做 removeAD。</span><br><span class="line"></span><br><span class="line">发生异常的位置很奇怪，第一行第一列，在 anonymous 中触发。回去一查代码，发现第一行第一列根本没有这个方法。</span><br><span class="line"></span><br><span class="line">这个其实是在浏览器的匿名函数(即 anonymous)中执行的代码，类似直接打在 console 中的代码，或者通过 eval 等函数运行的代码。</span><br><span class="line"></span><br><span class="line">事实上，上面图片里的这个 badjs 出现的背景，</span><br><span class="line"></span><br><span class="line">是 App 的 native 用 js 代码在 Webview 里直接执行了一个 window 作用域下的 callback (即 getNetWrokCallback)。但是这个函数不存在，所以出现异常。</span><br><span class="line"></span><br><span class="line">UA：</span><br><span class="line"></span><br><span class="line">在上面一段的结尾提前介绍了下 UA 信息的作用。</span><br><span class="line"></span><br><span class="line">我们能通过 UA，推断出环境：比如运行在某微信、某 App，某浏览器等。还能推断出是谁在访问我们的页面：比如百度爬虫、xx爬虫、阿里百川等。</span><br><span class="line"></span><br><span class="line">UA 可以简单的作为用户指纹。京喜的页面会经常被不知名的网友刷，每天还特别准时。因为不确定来源，只能戏谑的称之为：刷子。有时我们会遇到大量奇怪的报错，但是背后的 UA 都是一模一样的，基本可以认定是有网友在刷我们的的页面。</span><br><span class="line"></span><br><span class="line">需要强调的一点是，UA 可以伪造。有些有经验的刷子，每次的 UA 都是不一样的，迷惑性很强。因此 UA 信息是否真实，还得具体情况具体分析。</span><br></pre></td></tr></table></figure>
-<h2 id="初见-Script-error"><a href="#初见-Script-error" class="headerlink" title="初见 Script error"></a>初见 Script error</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">出现 Script error，是因为引入了跨域脚本。</span><br><span class="line">比如通过 script 标签引入的其他非同域 js 文件，里面发生了 badjs，</span><br><span class="line">这时在 onerror 事件里的 message 信息就只有一句 Script error，error 信息为 null</span><br><span class="line">对于这些已经上报了的 Script error 数据，能得到的数据非常有限，大多数时候只能放弃。</span><br><span class="line"></span><br><span class="line">但是对于这个问题并不是没有任何解决方法，我们可以在上报的时候&quot;打开&quot; Script error 里的信息，再上报它。比如跨域脚本设置信任策略等一些方案。</span><br><span class="line"></span><br><span class="line">关于 Script error 详细的应对策略，我们将在下面的内容里进一步讨论它。</span><br><span class="line"></span><br><span class="line">Script error</span><br><span class="line">上面卖了不少关子，这一段深入一下，讨论怎么能挖出 Script error 里有效的信息</span><br><span class="line">来源</span><br><span class="line">Script error 本质是因为浏览器的跨域安全策略行为，保护非同域代码内容的安全。</span><br><span class="line"></span><br><span class="line">所有通过 script 标签引入的跨域脚本，如果出现异常，window 下的 error 事件都只能得到 &apos;Script error&apos;</span><br><span class="line"></span><br><span class="line">解决方案</span><br><span class="line">对于 script 标签引入的跨域脚本产生 &apos;Script error&apos; 的问题，业内有解决方案。</span><br><span class="line"></span><br><span class="line">大概思路就是：不就是安全问题嘛，只要双方都觉得可信，那我浏览器就给你放开这个限制。</span><br><span class="line"></span><br><span class="line">具体实现如下：</span><br><span class="line"></span><br><span class="line">1.response 头增加 Access-Control-Allow-Origin，表明受信任的域名 *</span><br><span class="line"></span><br><span class="line">2.请求的 script 标签增加 crossorigin 属性</span><br><span class="line"></span><br><span class="line">crossorigin 有两个值，分别是</span><br><span class="line"></span><br><span class="line">anonymous</span><br><span class="line">use-credentials</span><br><span class="line"></span><br><span class="line">当 crossorigin=&apos;&apos; ，或者其他字符，和设置 anonymous 的效果一样</span><br><span class="line"></span><br><span class="line">anonymous 依赖 response 头的 Access-Control-Allow-Origin。</span><br><span class="line"></span><br><span class="line">需要注意的是，使用 anonymous 时，request 头不会带上用户信息，</span><br><span class="line">比如 cookie。相对的，使用 use-credentials 可以带上用户信息。</span><br><span class="line"></span><br><span class="line">use-credentials 需要和 response 头的 Access-Control-Allow-Credentials 配合使用，</span><br><span class="line">当 Access-Control-Allow-Credentials 返回 true 的时候，浏览器才会允许运行脚本和信任来源。</span><br><span class="line">另外在这种情况下， Access-Control-Allow-Origin 不能设置为 *，必须是具体的域名。</span><br><span class="line"></span><br><span class="line">通过以上的两步，web 浏览器下的 window error 事件里的 error 信息就不会被浏览器拦截成 &apos;Script error&apos; 了</span><br><span class="line"></span><br><span class="line">一个变种场景: jsonp</span><br><span class="line"></span><br><span class="line">这里提一个 script 标签的变种场景：jsonp</span><br><span class="line"></span><br><span class="line">jsonp本身解决的问题就是跨域接口请求，因此大部分使用场景自带跨域光环。另外它通过 script 标签运行，和 js 脚本的性质一样。</span><br><span class="line"></span><br><span class="line">因此当它出现了异常，也会存在 Script error 的情况。</span><br><span class="line"></span><br><span class="line">jsonp 出现异常的常见的场景就是：callback 未定义</span><br><span class="line">虽然可以在 console 看到具体错误信息，但是在被捕获的 error 中，因为 url 跨域，没额外设置信任，只能抓到 Script error。</span><br><span class="line"></span><br><span class="line">解决方式就是按照「常规解决方案」里列举的两个步骤去&quot;解构&quot; Script error。</span><br><span class="line"></span><br><span class="line">这里有个问题在于大部分接口依赖用户信息，前端需要使用 crossorigin=&apos;use-credentials&apos; 方式将请求带上 cookie 信息。</span><br><span class="line">因此后台在 Access-Control-Allow-Origin 中要返回具体的域名，</span><br><span class="line">以及将 Access-Control-Allow-Credentials 设置为 true 以让浏览器通过验证。</span><br><span class="line"></span><br><span class="line">额外提一点，jsonp 产生的脚本绝大部分是非异步代码。跨域脚本异步代码有一些坑，后面会介绍。</span><br><span class="line"></span><br><span class="line">特殊的解决方案</span><br><span class="line">使用 crossOrigin 是常规解决方案。还有种特殊的方法，就是使用 try...catch</span><br><span class="line"></span><br><span class="line">// https://xxx.badjs.js</span><br><span class="line">window.fireBadjs = function () &#123;</span><br><span class="line">    ops</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;xxx.badjs.js&quot; &gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.addEventListener(&apos;error&apos;, function (errorEvent) &#123;</span><br><span class="line">        const &#123; message, filename, lineno, colno, error &#125; = errorEvent</span><br><span class="line">        debugger</span><br><span class="line">    &#125;)</span><br><span class="line">    fireBadjs()</span><br><span class="line">    try &#123;</span><br><span class="line">        fireBadjs()</span><br><span class="line">    &#125; catch (error) &#123;</span><br><span class="line">        debugger</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">badjs.js 里面往 window 下塞了一个名为 fireBadjs 的函数，里面运行了一行会出异常的代码。</span><br><span class="line"></span><br><span class="line">第一个 fireBadjs() 运行后，error 事件触发，内容如下：</span><br><span class="line"></span><br><span class="line">情理之中，error 事件只能抓到 Script error。</span><br><span class="line"></span><br><span class="line">注释掉第一个 fireBadjs()，让在 try...catch 中的 fireBadjs() 执行，badjs 被 catch 捕获。打在 console 里，它的内容如下：</span><br></pre></td></tr></table></figure>
-<h2 id="try-catch-增强"><a href="#try-catch-增强" class="headerlink" title="try catch 增强"></a>try catch 增强</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">try...catch 是一个让人又爱又恨的工具。很多时候我们为了让代码有好的健壮性，会用它包裹起来。</span><br><span class="line"></span><br><span class="line">但是一旦在 try 中发生了错误，浏览器不会把错误打在 console 里，也不会触发 error 事件。</span><br><span class="line"></span><br><span class="line">来看一段简单的代码：</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    JSON.stringify(apiData)</span><br><span class="line">&#125; catch (e) &#123;&#125;</span><br><span class="line">如果 JSON.stringify(apiData) 发生了错误，代码可能是运行正常，但是最后表现没有达到预期，我们也不知道这里有问题。最后可能绕了一个大圈子才回到这里。</span><br><span class="line"></span><br><span class="line">这里的问题出在异常被捕获以后，没有给予我们提示。那解决方案也很简单，手动补上提示就好。</span><br><span class="line"></span><br><span class="line">这时可以在 catch 里，把错误打在 console.error 里面，并手动包装 ErrorEvent，丢给 window 下的 error 事件捕获。</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    JSON.stringify(apiData)</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">    console.error(error)</span><br><span class="line">    if (ErrorEvent) &#123;</span><br><span class="line">        window.dispatchEvent(new ErrorEvent(&apos;error&apos;, &#123; error, message: error.message &#125;)) // 这里也会触发window.onerror</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        window.onerror &amp;&amp; window.onerror(null, null, null, null, error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">需要额外注意的是，try...catch 有个缺点，不能捕获异步代码的异常。</span><br><span class="line"></span><br><span class="line">比如 setTimeout、promise、事件等。因为这个问题，我们无法在代码里从头到尾简单的包裹一层 try...catch 解决所有问题。</span><br></pre></td></tr></table></figure>
-<h2 id="Hybrid"><a href="#Hybrid" class="headerlink" title="Hybrid"></a>Hybrid</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">开发人员往往在自己的象牙塔内进行改造和升级，但是真实的生产环境往往比预想的更复杂，比如 Hybrid。</span><br><span class="line"></span><br><span class="line">这里是广义 Hybrid，除了原生 App 之外，浏览器也算。事实上 H5 真正的场景就是在 Hybrid 当中，这里研究一下 H5 在手机 App 里异常会有什么表现。</span><br></pre></td></tr></table></figure>
-<h2 id="Webview"><a href="#Webview" class="headerlink" title="Webview"></a>Webview</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">很多 App 里面都会内嵌 Webview 运行 H5 页面。如果 H5 在 Webview 里面发生了 badjs，各位猜一猜，Webview 的表现是什么样的？</span><br><span class="line"></span><br><span class="line">这里分两个环境 iOS 和 Android。</span><br><span class="line"></span><br><span class="line">1.iOS系统 (系统测试版本：9.0.2/11.0.3/13.4)</span><br><span class="line"></span><br><span class="line">在 iOS 中的 Webview，跨域脚本的异步代码如果发生了badjs(注意是异步代码)，不管有没有按照常规方案去设置跨域头和 crossOrigin，在 window 下的 error 事件里都只能抓到 &apos;Script error&apos;。</span><br><span class="line"></span><br><span class="line">你没看错，只要是 iOS 里的 Webview，不论是你业务下的 App，还是微信甚至是浏览器。</span><br><span class="line"></span><br><span class="line">举个栗子：在iPhone的微信里打开了某个 H5 页面，H5 页面引用了某 (跨域)cdn 的 js 文件。当这个 js 文件内部某个事件产生 badjs 并上报了，我们在日志系统只能看到 &apos;Script error&apos;。</span><br><span class="line"></span><br><span class="line">2.Android系统</span><br><span class="line"></span><br><span class="line">在 Android 中的 Webview，和web端一样的表现。设置好了跨域头和 crossOrigin，如果跨域脚本发生 badjs，不论异步同步代码，都能在 window 下的 error 事件里抓到错误详情。</span><br><span class="line"></span><br><span class="line">拿一个京喜 h5 的线上的数据，简单验证下这个现象：</span><br><span class="line"></span><br><span class="line">一个绝大部分流量跑在 微信 和 手机QQ 里的业务，在 Android 环境下，有 8043 个 Script error</span><br><span class="line"></span><br><span class="line">顺便一提，iOS 下的非 Script error 只有 393 个。</span><br><span class="line"></span><br><span class="line">解决方法，主要是针对 iOS 环境。因为 Android 表现和 web 端一致。</span><br><span class="line"></span><br><span class="line">1.跨域脚本改为同域脚本。</span><br><span class="line"></span><br><span class="line">同域脚本报错不会显示 Script error。</span><br><span class="line"></span><br><span class="line">2.try...catch 包裹</span><br><span class="line"></span><br><span class="line">把跨域的脚本里的异步方法用 try...catch 包裹一下，在 catch 中手动触发事件。手动包裹比较麻烦，可以考虑用工具打包的时候自动包裹一下。</span><br><span class="line"></span><br><span class="line">3.用 Android 的 badjs 数据参考 iOS</span><br><span class="line"></span><br><span class="line">因为两个环境出异常的概率近似相等，在做好跨域工作以后，专注解决 Android 下的 badjs，就可以覆盖绝大部分 iOS 的异常了。</span><br></pre></td></tr></table></figure>
-<h2 id="native-代码注入"><a href="#native-代码注入" class="headerlink" title="native 代码注入"></a>native 代码注入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">App native 往 Webview 注入代码有两种方式。第一种是 native 代码转换成 js 代码，</span><br><span class="line">再发送到 Webview 通过 js 引擎执行。第二种是用 c++ 代码，直接写在引擎的底层，成为 native code。</span><br><span class="line"></span><br><span class="line">第一种方式实际上还是通过 Webview 环境执行，和 js 代码无异。常见于在 JSSDK 里的一些 callback 参数。</span><br><span class="line"></span><br><span class="line">App 一般会为了避免逻辑过于复杂，通常就是往 Webview 里直接执行 window.callback，如果 callback 不存在，出了异常，Android 中和 web 端表现一致。</span><br><span class="line"></span><br><span class="line">但是 iOS 里只有 Script error。</span><br><span class="line"></span><br><span class="line">如果你在日志里看到处于 anonymous 下第一行第一列的报错，并且 UA 是 App 环境。那很有可能是由 App 主动的调用产生的 badjs：</span><br><span class="line">Android 没什么好说的，iOS 在 content 这里则会显示 Script error。由于代码是 App 生成发送到 Webview 当中的，因此前端没办法做什么去解构这个 Script error，只能跟 App 的同学商量做一层保护，比如调用前先检查函数是否定义过了。</span><br><span class="line"></span><br><span class="line">第二种用 c++ 代码，直接写在引擎的底层的方式，常见于 native 生成一段供 H5 使用原生 App 能力的接口，比如 jssdk。这种方式生成的代码会成为 native code。</span><br><span class="line">由于运行在引擎当中，一旦出错，Webview 可能整个都挂了。前端 badjs 事件对于这种情况是无能为力的，可以忽略。</span><br></pre></td></tr></table></figure>
-<h2 id="iOS-stack-差异"><a href="#iOS-stack-差异" class="headerlink" title="iOS stack 差异"></a>iOS stack 差异</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/19/V8基础概念/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/19/V8基础概念/" itemprop="url">V8基础概念</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T16:14:14+08:00">
-                2020-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="v8-知识梳理以及编程入门"><a href="#v8-知识梳理以及编程入门" class="headerlink" title="v8 知识梳理以及编程入门"></a>v8 知识梳理以及编程入门</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">学习 v8 编程的好处就是能够知道 node 是如何通过写JavaScript 进行调用系统 API 的，</span><br><span class="line">如果你有 c/c++ 又或者是比较底层的语言的基础，研究明白 v8 是如何调用系统底层的，</span><br><span class="line">而系统是如何提供函数给 v8 调用的，那么我们对 node 的理解层度就会更上一层楼。</span><br><span class="line"></span><br><span class="line">如何通过 JS 调用 c/c++ 层</span><br><span class="line">如何通过 c/c++ 层调用 JS 层</span><br><span class="line">如何通过 JS 调用 c++ 的类</span><br><span class="line">当我们实现以上的 JS-C/C++ 层的调用时，我们距离自己造一个 node.js 已经不远了</span><br></pre></td></tr></table></figure>
-<h2 id="V8概念梳理"><a href="#V8概念梳理" class="headerlink" title="V8概念梳理"></a>V8概念梳理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">v8 执行代码的过程主要是：</span><br><span class="line"></span><br><span class="line">    JavaScript源码输入</span><br><span class="line"></span><br><span class="line">    转换成AST(抽象语法树)</span><br><span class="line"></span><br><span class="line">    JIT（just in time）</span><br><span class="line"></span><br><span class="line">    NativeCode</span><br></pre></td></tr></table></figure>
-<h2 id="v8-Isolate"><a href="#v8-Isolate" class="headerlink" title="v8::Isolate"></a>v8::Isolate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Isolate 的概念给大家来看一定非常陌生，其英文原意是：隔离。在操作系统中，我们有一个概念和之类似：进程。</span><br><span class="line"></span><br><span class="line">进程是完全相互隔离的，一个进程里有多个线程，同时各个进程之间并不相互共享资源。</span><br><span class="line"></span><br><span class="line">Isolate 也是一样，Isolate1 和 Isolate2 两个拥有各自堆栈的虚拟机实例，且相互完全隔离。</span><br><span class="line"></span><br><span class="line">An isolate is a VM instance with its own heap. It represents an isolated instance of the V8 engine.</span><br><span class="line"></span><br><span class="line">V8 isolates have completely separate states. Objects from one isolate must not be used in other isolates</span><br></pre></td></tr></table></figure>
-<h2 id="v8-handle-v8-Local和v8-Persistent"><a href="#v8-handle-v8-Local和v8-Persistent" class="headerlink" title="v8::handle(v8::Local和v8:Persistent)"></a>v8::handle(v8::Local和v8:Persistent)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">在新的版本中，v8::handle 拆成了更为形象的两个类：v8::Local 和 v8:Persistent 。</span><br><span class="line">用一个更形象的比喻，那么 v8::Local 更像是 JavaScript 中的 let 。</span><br><span class="line">在 V8 中，内存的分配都交付给了 V8，那么我们就最好不要使用自己的 new 方法来创建对象，</span><br><span class="line">而是使用 v8::Local 里的各种方法来创建一个对象。</span><br><span class="line">由 v8::Local 创建的对象，能够被 v8 自动进行管理，也就是传说中的GC (垃圾清理机制)。</span><br><span class="line"></span><br><span class="line">Persistent 代表的是持久的意思，更类似全局变量，</span><br><span class="line">请和释放一定要记得使用：Persistent::New, Persistent::Dispose 这两个方法，否则会内存侧漏。</span><br></pre></td></tr></table></figure>
-<h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Scope是一个比较小范围的GC单元，分别有v8::HandleScope和v8::Context::Scope。</span><br><span class="line">v8::HandleScope一般情况下，HandleScope 会在一个函数的开头进行声明，然后用于管理这整个函数所创建的Handle，</span><br><span class="line">而v8::Context::Scope也类似，只不过他是直接管理context对象的。</span><br><span class="line"></span><br><span class="line">void F()&#123;</span><br><span class="line">    //一开头放一个</span><br><span class="line">    v8::HandleScope handle_scope(isolate);</span><br><span class="line">    v8::Local&lt;v8::String&gt; source1 =.......</span><br><span class="line">    v8::Local&lt;v8::String&gt; source2 =......</span><br><span class="line"></span><br><span class="line">    //开头放一个</span><br><span class="line">    v8::Local&lt;v8::Context&gt; context = Context::New(isolate);</span><br><span class="line">    v8::Context::Scope context_scope(context);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">这样一来，整个函数的handle和context就会被这两个scope分别管理起来，函数跑完了，那么就会自动释放掉了。</span><br></pre></td></tr></table></figure>
-<h2 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Context的概念我更喜欢把比喻成闭包，虽然不是，但是很像。</span><br><span class="line">在V8里面，Context主要是用于创建一个JavaScript的运行上下文环境。</span><br><span class="line">更形象生动的说法是Html的iFrame，一个网页中可以有多个iFrame，每个iFrame又有不同的运行环境。</span><br></pre></td></tr></table></figure>
-<h2 id="V8编译与安装"><a href="#V8编译与安装" class="headerlink" title="V8编译与安装"></a>V8编译与安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">平台MAC</span><br><span class="line">IDE：Xcode</span><br><span class="line">得益于 IDE 的良好提示，</span><br><span class="line">在本次 V8 研究之旅中减少了很多折腾，主要是各种函数的跳转，断点调试，查看函数定义，等等</span><br></pre></td></tr></table></figure>
-<h2 id="todo"><a href="#todo" class="headerlink" title="todo"></a>todo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">根据文档提示，我们得先下载 depot_tools。</span><br><span class="line">https://www.chromium.org/developers/how-tos/install-depot-tools</span><br><span class="line"></span><br><span class="line">git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git</span><br><span class="line">export PATH=$PATH:/Path/To/depot_tools</span><br><span class="line">fetch v8</span><br><span class="line">cd v8</span><br><span class="line">gclient sync</span><br><span class="line">gn args out.gn/x64.release</span><br><span class="line">ninja -C out.gn/x64.release</span><br><span class="line"></span><br><span class="line">git clone命令执行的是下载操作，不多说</span><br><span class="line">第二个是在.zshrc或者.bashrc中配置以下工具的环境变量，一般这两个玩意儿都在你的cd目录下可以找到</span><br><span class="line">fetch v8：自然说的就是获取v8的最新可编译版本</span><br><span class="line">gclient sync：是下载所有的依赖</span><br><span class="line">gn args out.gn/x64.release：在正常情况下会弹出一个编辑器，是vim，如果你想迁移v8到xcode上，你必须编译出静态库.a文件，然后复制到xcode里面，才可以，因此你需要在编辑器里添加一行参数：v8_static_library=true</span><br><span class="line">ninja -C out.gn/x64.release：进行编译</span><br><span class="line">经过漫长的编译，我们之后可以在 out.gn/x64.release 文件中找到所有编译出来的v8文件。创建一个xcode工程，把v8的include文件丢进去，引入刚刚编译的静态库，这7个全都要</span><br></pre></td></tr></table></figure>
-<h2 id="正式编程之旅：hello-world"><a href="#正式编程之旅：hello-world" class="headerlink" title="正式编程之旅：hello world"></a>正式编程之旅：hello world</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">// Copyright 2015 the V8 project authors. All rights reserved.</span><br><span class="line">// Use of this source code is governed by a BSD-style license that can be</span><br><span class="line">// found in the LICENSE file.</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &quot;include/libplatform/libplatform.h&quot;</span><br><span class="line">#include &quot;include/v8.h&quot;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">  // 初始化v8</span><br><span class="line">  v8::V8::InitializeICUDefaultLocation(argv[0]);</span><br><span class="line">  v8::V8::InitializeExternalStartupData(argv[0]);</span><br><span class="line">  std::unique_ptr&lt;v8::Platform&gt; platform = v8::platform::NewDefaultPlatform();</span><br><span class="line">  v8::V8::InitializePlatform(platform.get());</span><br><span class="line">  v8::V8::Initialize();</span><br><span class="line">  // 创建一个isolate</span><br><span class="line">  v8::Isolate::CreateParams create_params;</span><br><span class="line">  create_params.array_buffer_allocator =</span><br><span class="line">      v8::ArrayBuffer::Allocator::NewDefaultAllocator();</span><br><span class="line">  v8::Isolate* isolate = v8::Isolate::New(create_params);</span><br><span class="line">  //构建好isolate开始编程</span><br><span class="line">    &#123;</span><br><span class="line">      v8::Isolate::Scope isolate_scope(isolate);</span><br><span class="line">      // 构建一个handle_scope管理即将分配的各种变量</span><br><span class="line">      v8::HandleScope handle_scope(isolate);</span><br><span class="line">      // 构建一个上下文context</span><br><span class="line">      v8::Local&lt;v8::Context&gt; context = v8::Context::New(isolate);</span><br><span class="line">      // 将context放进scope中v8会进行管理</span><br><span class="line">      v8::Context::Scope context_scope(context);</span><br><span class="line">      // 构建一段string类型的handle，这一段内容就是javascript了</span><br><span class="line">      v8::Local&lt;v8::String&gt; source =</span><br><span class="line">          v8::String::NewFromUtf8(isolate, &quot;&apos;Hello&apos; + &apos;, World!&apos;&quot;,</span><br><span class="line">                                  v8::NewStringType::kNormal)</span><br><span class="line">              .ToLocalChecked();</span><br><span class="line">      // 编译代码</span><br><span class="line">      v8::Local&lt;v8::Script&gt; script =</span><br><span class="line">          v8::Script::Compile(context, source).ToLocalChecked();</span><br><span class="line">      // 跑代码</span><br><span class="line">      v8::Local&lt;v8::Value&gt; result = script-&gt;Run(context).ToLocalChecked();</span><br><span class="line">      //转换成utf8的变量</span><br><span class="line">      v8::String::Utf8Value utf8(isolate, result);</span><br><span class="line">      //c语言经典打印函数</span><br><span class="line">      printf(&quot;%s\n&quot;, *utf8);</span><br><span class="line">    &#125;</span><br><span class="line">    // 关闭v8并且清理内存</span><br><span class="line">    isolate-&gt;Dispose();</span><br><span class="line">    v8::V8::Dispose();</span><br><span class="line">    v8::V8::ShutdownPlatform();</span><br><span class="line">      delete create_params.array_buffer_allocator;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="构建Global对象"><a href="#构建Global对象" class="headerlink" title="构建Global对象"></a>构建Global对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">虽然说是构建 global 对象，但是其实这一步并不需要我们去做，因为v8已经做好了。</span><br><span class="line">在我们创建Context的时候，v8会为我们的context注入一个 global对象，</span><br><span class="line">这个global对象就是这个context对象里全局的一个对象。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">想要操作他也很简单：</span><br><span class="line"></span><br><span class="line">只需要拿到我们刚刚创建的 Context （指针），就可以拿到。</span><br><span class="line">我们之后所有的操作都会围绕global这个变量进行。</span><br><span class="line">因为对其进行添加变量，添加函数，添加方法等等，</span><br><span class="line">在我们之后进行编译JavaScript时，我们都可以在js中拿到，</span><br><span class="line">比如，我现在注入了一个fangzheng变量，他对应的就是global对象。在Js中，我们可以在任意地方使用：</span><br><span class="line">var global = start;</span><br><span class="line">//do anything</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1499,7 +1489,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-count">135</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

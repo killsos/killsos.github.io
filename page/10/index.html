@@ -230,6 +230,981 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/05/js两大基石/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/05/js两大基石/" itemprop="url">js两大基石</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T15:22:39+08:00">
+                2019-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基石"><a href="#基石" class="headerlink" title="基石"></a>基石</h2><ol>
+<li><p>原型继承</p>
+<pre><code>对象没有类 原型委托
+</code></pre></li>
+<li><p>函数式编程</p>
+<pre><code>通过lambdas 和 闭包
+</code></pre></li>
+</ol>
+<h2 id="创建对象方法"><a href="#创建对象方法" class="headerlink" title="创建对象方法"></a>创建对象方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1= &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="built_in">Object</span>.create(prototype, &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="built_in">Object</span>.assign()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj4 = <span class="built_in">Object</span>.create()</span><br></pre></td></tr></table></figure>
+<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><pre><code>1. The `new` keyword is used to invoke a constructor. What it actually does is:
+
+2. Create a new instance
+
+3. Bind `this` to the new instance
+
+4. Reference the new object’s delegate [[Prototype]] to the object referenced by the constructor function’s `prototype` property.
+
+5. Reference the new object’s .constructor property to the constructor that was invoked.
+Names the object type after the constructor, which you’ll notice mostly in the debugging console. You’ll see `[Object Foo]`, for example, instead of `[Object object]`.
+
+6. Allows `instanceof` to check whether or not an object’s prototype reference is the same object referenced by the .prototype property of the constructor.
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/闭包最终一击/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/04/闭包最终一击/" itemprop="url">闭包最终一击</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T14:49:18+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><pre><code>1. 全局代码  默认环境执行
+
+2. 函数代码  生成一个函数上下文
+
+3. let const花括号  块级作用域
+</code></pre><h2 id="函数执行上下文"><a href="#函数执行上下文" class="headerlink" title="函数执行上下文"></a>函数执行上下文</h2><pre><code>1. js执行一个函数 首先创建一个新执行上下文  用于执行函数内部代码的局部上下文
+
+2. 局部上下文会有自己变量集合 同时这些变量对上下文也是局部的
+
+3. 新创建的执行上下文会处在调用栈最顶层
+
+4. 调用栈可以认为是保存程序执行的上下文的机器
+
+如果函数执行中遇到 return 或者 } 就认为函数结束了
+
+函数结束之后会发生下面的步骤:
+
+    1. 函数的局部执行上下文会被从调用栈抛出
+
+    2. 函数将返回值返给调用执行上文
+
+    3. 调用执行上下文也是一个执行上下文只是函数调用者 可能是全局上下文或局部上下文
+
+    4. 调用执行上下文来处理这个返回值
+
+    5. 如果没有返回值 默认是undefined
+
+    6. 局部执行上下文会被销毁
+
+    7. 局部执行上下文的结果是 局部执行上下文中声明局部变量也会被销毁
+
+    8. 这些变量将不会被找到了 这也是为何被称之为 局部变量
+</code></pre><h2 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h2><pre><code>1: let a = 3
+2: function addTwo(x) {
+3:   let ret = x + 2
+4:   return ret
+5: }
+6: let b = addTwo(a)
+7: console.log(b)
+
+
+第一个行 创建全局变量a  并且赋值为3
+
+第2行至第5行 在全局执行上下文中声明一个全局变量 addTwo 
+并且一个函数赋值给addTwo
+
+addTwo函数内代码没有被执行
+
+第6行 在全局执行上下文创建一个变量b 值为undefined
+
+这时候遇见一个赋值操作符 准备将一个新值赋给变量b
+
+再进一步是一个函数调用  函数调用如果有return返回值给b 如果没有就是undefined
+
+现在我们看函数addTwo调用中过程
+
+注意javascript函数调用过程的参数 字面量是值传递方式 对象是引用方式传值
+
+在执行函数执行过程第一步先创建新的局部执行上下文 我们起一个addTwo execution contex的名字 这个执行上下文压入到调用栈中 
+
+函数addTwo执行的局部执行上下文创建后第一件事情是 查看函数的参数
+在addTwo函数中有一个参数x 并且值为3 
+
+接着addTwo执行上下文会查找var声明变量和函数声明 进行预解析
+
+变量ret用let关键字声明的 所以不会预解析
+
+执行到第3行时候 首先声明了变量ret 并且初始值为undefined 在局部执行上线文中
+
+接着在局部执行上下文中查找变量x 并且查找到了 其值为3
+
+第二个操作数是2  运算之后为5 赋值给变量ret
+
+第4行是返回变量ret 在局部执行上下文查找ret 找到之后 返回其值 5
+
+addTwo函数将5返回之后 addTwo就执行完毕了
+
+函数addTwo执行完毕之后 变量x 和 ret 也会消失 不再存在 
+
+对应创建创建的局部执行上下文也会销毁 同时会被调用栈
+
+addTwo局部执行上下文会将返回值 返给 调用执行上下文
+
+此时调用执行上下文是全局执行上下文 因为addTwo被调用是从全局执行上文中调用的
+
+这是再继续执行就是 将addTwo局部执行上下文的返回值 赋值给变量b
+</code></pre><h2 id="词法作用域-lexical-scope"><a href="#词法作用域-lexical-scope" class="headerlink" title="词法作用域 lexical scope"></a>词法作用域 lexical scope</h2><p>理解词法作用域 我们看下面的例子</p>
+<pre><code>1: let val1 = 2
+2: function multiplyThis(n) {
+3:   let ret = n * val1
+4:   return ret
+5: }
+6: let multiplied = multiplyThis(6)
+7: console.log(&apos;example of scope:&apos;, multiplied)
+
+在这里主要局部执行上下文中变量和全局执行上下文中变量是如何查找的
+
+如果在局部执行上下文中没有发现的变量 可以在调用执行上下文中继续查找
+
+然后不断向上查找 一直到全局执行上下文
+
+1. 全局执行上下文声明变量x 并赋值2
+
+2. 2-5行声明一个新变量 multiThis 并且赋值一个函数
+
+3. 在全局执行上下文中声明变量multiplied
+
+4. 找到全局执行上下文中变量multiThis 执行这个函数变量 赋值参数为6
+
+5. 函数调用 会 生成一个新执行上下文 并且这是一个局部执行上下文
+
+6. 在局部执行上下文声明一个变量n 并赋值6
+
+7. 声明变量ret 
+
+8. 执行乘法运算 n是局部执行上下文中的变量可以找到 val1在局部执行上下文没有
+然后去调用执行上下文继续查找 一直到全局执行上下文
+
+9. multiplyThis执行完毕后 销毁局部执行上下文和局部变量 ret n
+
+10. 将返回值 返回给 调用执行上下文
+
+函数有权访问调用执行上下文中变量的现象叫做 词法作用域 ## 这是原作者的看法
+我认为词法作用域 一个函数访问权限取决于函数定义 而不是执行的时候
+
+词法作用域 是根据 函数声明的位置 决定 函数访问父级作用域的现象
+
+而不是函数执行位置来决定
+</code></pre><h2 id="函数返回函数"><a href="#函数返回函数" class="headerlink" title="函数返回函数"></a>函数返回函数</h2><pre><code>1: let val = 7
+2: function createAdder() {
+3:   function addNumbers(a, b) {
+4:     let ret = a + b
+5:     return ret
+6:   }
+7:   return addNumbers
+8: }
+9: let adder = createAdder()
+10: let sum = adder(val, 8)
+11: console.log(&apos;example of function returning a function: &apos;, sum)
+
+1. 在全局执行上下文中声明变量 val 并且赋值给7
+
+2. 在全局执行上下文中声明一个变量createAdder 并且将一个函数赋值这个变量
+
+3. 第9行 在全局变量声明变量adder 临时赋值undefined给这个变量adder
+
+4. 接着执行函数createAdder 这时候去全局执行上下文寻找变量createAdder 然后调用
+
+5. 函数调用 一个新的局部执行上下文被创建 然后在局部执行上下文创建局部变量 v8将新局部执行上下文压入调用栈
+
+6. 接着是函数声明  创建一个局部变量addNumbers在局部执行上下文中 addNumbers仅存在局部执行上下文中
+   addNumbers存储一个函数
+
+7. 第7行返回变量addNumbers存储的值  一个函数可以返回任何 也包含函数 
+   createAdder函数执行完毕后 与其对应的执行上下文 也会被从调用栈中移除
+
+8. 第10行中 在全局上下文中创建一个新变量 sum 临时赋值为undefined
+
+...
+</code></pre><h2 id="closure"><a href="#closure" class="headerlink" title="closure"></a>closure</h2><pre><code>理解闭包 首先能懂两个概念 词法作用域 和  执行上下文
+
+函数 与对其状态-即词法环境lexical environment的引用共同构成闭包（closure）
+
+也就是说，闭包可以让你从内部函数访问外部函数作用域。
+
+在JavaScript，函数在每次创建时生成闭包
+
+总结 闭包 是 对函数与对其词法作用域的引用
+
+1: function createCounter() {
+2:   let counter = 0
+3:   const myFunction = function() {
+4:     counter = counter + 1
+5:     return counter
+6:   }
+7:   return myFunction
+8: }
+9: const increment = createCounter()
+10: const c1 = increment()
+11: const c2 = increment()
+12: const c3 = increment()
+13: console.log(&apos;example increment&apos;, c1, c2, c3)
+
+1. 全局作用域中创建一个函数变量createCounter
+
+2. 全局作用域中创建一个常量 increment 初始值undefined
+
+3. 执行createCounter函数 创建一个局部执行上下文 返回一个函数给变量increment
+
+4. 在创建新的局部执行上下文中 声明一个新变量counter 赋值0
+
+5. 接着声明一个常量myFunction 并将一个函数赋值给常量myFunction
+
+6. 将常量myFunction的值 一个函数 赋值给 变量increment
+
+7. 同时局部作用域中 myFunction 和 counter 被销毁 // 原作者的idea
+
+8. 第10行 创建一个变量c1  寻找increment函数变量 并执行
+
+9. increment函数执行 会创建一个新局部执行上下文  寻找变量counter 在当前局部执行上下文
+
+10. 在这个局部执行上下文中没有声明任何变量  全局执上下文也没有counter这个变量
+
+11. 这时候该闭包亮相了  闭包中包含变量counter 并且初始值为0
+
+...
+</code></pre><h2 id="重要的闭包"><a href="#重要的闭包" class="headerlink" title="重要的闭包"></a>重要的闭包</h2><pre><code>let c = 4
+const addX = x =&gt; n =&gt; n + x
+const addThree = addX(3)
+let d = addThree(c)
+console.log(&apos;example partial application&apos;, d)
+</code></pre><h2 id="自己总结"><a href="#自己总结" class="headerlink" title="自己总结"></a>自己总结</h2><pre><code>闭包 是词法声明位置的词法作用域和调用作用域共同的引用
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/13-npm-tricks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/04/13-npm-tricks/" itemprop="url">13-npm-tricks</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T13:47:10+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-基本快捷键"><a href="#1-基本快捷键" class="headerlink" title="1. 基本快捷键"></a>1. 基本快捷键</h2><pre><code>初始化  npm i
+
+测试   npm t
+
+帮助   npm -h 
+
+全局   npm -g
+
+开发依赖  npm -D 
+
+初始化默认 npm init -y / npm init -f 
+
+安装默认是 npm install --save -S 
+
+--no-save
+</code></pre><h2 id="2-少用快捷键"><a href="#2-少用快捷键" class="headerlink" title="2. 少用快捷键"></a>2. 少用快捷键</h2><pre><code>可选保存    --save-optional . Shortcut: -O
+
+保存精确版本 --save-exact. Shortcut: -E
+</code></pre><h2 id="3-The-Root-Shortcut"><a href="#3-The-Root-Shortcut" class="headerlink" title="3. The Root Shortcut"></a>3. The Root Shortcut</h2><pre><code>package.json main字段保存是 入口文件
+</code></pre><h2 id="4-设置npm-init-默认值"><a href="#4-设置npm-init-默认值" class="headerlink" title="4. 设置npm init 默认值"></a>4. 设置npm init 默认值</h2><pre><code>npm config set init.author.name  &quot;Joe Bloggs&quot;
+npm config set init.author.email &quot;joebloggs@gmail.com&quot;
+npm config set init.author.url   &quot;joebloggs.com&quot;
+npm config set init.license      &quot;MIT&quot;
+
+npm config edit
+
+npm config edit    -g
+</code></pre><h2 id="5-跨平台兼容的脚本"><a href="#5-跨平台兼容的脚本" class="headerlink" title="5. 跨平台兼容的脚本"></a>5. 跨平台兼容的脚本</h2><pre><code>通过 cross-env 包
+
+npm i -D cross-env
+
+{
+    &quot;scripts&quot;: {
+        &quot;build&quot;: &quot;cross-env NODE_ENV=production webpack --config build/webpack.config.js&quot;
+    }
+}
+
+rimraf can be installed globally to run cross-platform scripts
+The UNIX command rm -rf for node.
+
+ShellJS is a portable implementation of Unix shell commands on top of the Node.js API
+</code></pre><h2 id="6-并行运行脚本"><a href="#6-并行运行脚本" class="headerlink" title="6. 并行运行脚本"></a>6. 并行运行脚本</h2><pre><code>1. &amp;&amp;  
+
+2. concurrently 
+
+3. npm-run-all 
+
+npm i -D concurrently
+{
+    &quot;start&quot;: &quot;concurrently \&quot;command1 arg\&quot; \&quot;command2 arg\&quot;&quot;
+}
+</code></pre><h2 id="7-运行脚本在不同文件夹"><a href="#7-运行脚本在不同文件夹" class="headerlink" title="7. 运行脚本在不同文件夹"></a>7. 运行脚本在不同文件夹</h2><pre><code>有时候, 在一个app有多个package.json在不同文件夹中
+如果在根目录下访问这些ackage.json中的脚本 而不是通过指定路径的方式
+就是很方便 下面这种两种方法可以解决
+
+1. cd folder &amp;&amp; npm start &amp;&amp; cd ..
+
+2. 优雅方式是用 --prefix
+
+    npm start --prefix path/to/your/folder
+
+    如果同时启动前后端文件夹中脚本
+
+    &quot;start&quot;: &quot;concurrently \&quot;(npm start --prefix client)\&quot; \&quot;(npm start --prefix server)\&quot;&quot;
+</code></pre><h2 id="8-端口准备完毕后运行脚本"><a href="#8-端口准备完毕后运行脚本" class="headerlink" title="8. 端口准备完毕后运行脚本"></a>8. 端口准备完毕后运行脚本</h2><pre><code>Electron打开页面 等待react工程启动完毕后
+
+&quot;dev&quot;: &quot;concurrently \&quot;cross-env BROWSER=none npm run start\&quot; \&quot;wait-on http://localhost:3000 &amp;&amp; electron .\&quot;&quot;
+
+另外，React默认会打开一个浏览器窗口，但是对于Electron子开发而言，这是不必要的。 我们可以通过传递环境变量BROWSER=none来禁用此行为，该变量前面带有cross-env以实现跨平台兼容性
+</code></pre><h2 id="9-列出并选择可选的脚本"><a href="#9-列出并选择可选的脚本" class="headerlink" title="9. 列出并选择可选的脚本"></a>9. 列出并选择可选的脚本</h2><pre><code>安装 npm i -g ntl
+
+ntl 会列出package.json中的脚本
+</code></pre><h2 id="10-Run-Pre-and-Post-Scripts"><a href="#10-Run-Pre-and-Post-Scripts" class="headerlink" title="10. Run Pre and Post Scripts"></a>10. Run Pre and Post Scripts</h2><pre><code>prebuild and postbuildwhich allow you to define code to run either before or after your build script
+
+in fact pre and post can be added before any script, including custom ones
+</code></pre><h2 id="11-Control-Your-App’s-Version"><a href="#11-Control-Your-App’s-Version" class="headerlink" title="11. Control Your App’s Version"></a>11. Control Your App’s Version</h2><pre><code>npm version plus major , minor or patch
+
+// 1.0.0 当前版本
+
+npm version patch
+// 1.0.1
+
+npm version minor
+// 1.1.0
+
+npm version major
+// 2.0.0
+
+{
+    &quot;predeploy&quot;: &quot;npm version patch&quot;
+}
+</code></pre><h2 id="12-Edit-package-json-from-the-Command-Line"><a href="#12-Edit-package-json-from-the-Command-Line" class="headerlink" title="12. Edit package.json from the Command Line"></a>12. Edit package.json from the Command Line</h2><pre><code>npm install -g json
+
+json -I -f package.json -e &apos;this.scripts.foo=&quot;bar&quot;&apos;
+</code></pre><h2 id="13-Set-and-Open-Your-Repository-Automatically"><a href="#13-Set-and-Open-Your-Repository-Automatically" class="headerlink" title="13. Set and Open Your Repository Automatically"></a>13. Set and Open Your Repository Automatically</h2><pre><code>获取远程仓库地址
+
+    git config --get remote.origin.url
+
+package.json中添加仓库地址
+
+json -I -f package.json -e &quot;this.repository=\&quot;$(git config --get remote.origin.url)\&quot;&quot;
+</code></pre><h2 id="13-Create-a-Custom-npm-init-Script"><a href="#13-Create-a-Custom-npm-init-Script" class="headerlink" title="13. Create a Custom npm init Script"></a>13. Create a Custom npm init Script</h2><pre><code>npm config set init-module ~\.npm-init.js
+
+.npm-init.js
+
+    module.exports = {
+        name: prompt(&apos;package name&apos;, basename || package.name),
+        version: prompt(&apos;version&apos;, &apos;0.0.0&apos;),
+        decription: prompt(&apos;description&apos;, &apos;&apos;),  
+        main: prompt(&apos;entry point&apos;, &apos;index.js&apos;),
+        repository: prompt(&apos;git repository&apos;, &apos;&apos;),
+        keywords: prompt(function (s) { return s.split(/\s+/) }),
+        author: prompt(&apos;author&apos;, &apos;Joe Bloggs &lt;joe.bloggs@gmail.com&gt; (joebloggs.com)&apos;),
+        license: prompt(&apos;license&apos;, &apos;ISC&apos;)
+    }
+</code></pre><h2 id="14-Push-Your-First-Commit-to-GitHub-with-a-Custom-npm-init-Script"><a href="#14-Push-Your-First-Commit-to-GitHub-with-a-Custom-npm-init-Script" class="headerlink" title="14. Push Your First Commit to GitHub with a Custom npm init Script"></a>14. Push Your First Commit to GitHub with a Custom npm init Script</h2><pre><code>const { execSync } = require(&apos;child_process&apos;);
+
+function run(func) {
+    console.log(execSync(func).toString())
+}
+
+repository: prompt(&apos;github repository url&apos;, &apos;&apos;, function (url) {
+    if (url) {
+        run(&apos;touch README.md&apos;);
+        run(&apos;git init&apos;);
+        run(&apos;git add README.md&apos;);
+        run(&apos;git commit -m &quot;first commit&quot;&apos;);
+        run(`git remote add origin ${url}`);
+        run(&apos;git push -u origin master&apos;);
+    }
+    return url;
+})
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/04/自执行匿名函数本质/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/04/自执行匿名函数本质/" itemprop="url">自执行匿名函数本质</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T11:17:41+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/javascript4种语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/03/javascript4种语句/" itemprop="url">javascript4种语句</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T17:06:43+08:00">
+                2019-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-空语句"><a href="#1-空语句" class="headerlink" title="1. 空语句"></a>1. 空语句</h2><pre><code>用一个; 表示空语句
+var litmus = &apos;neutral&apos;;
+var pH; 
+
+if(pH&gt;0 &amp;&amp; pH&lt;7)
+    litmus = &apos;acidic&apos;;
+else if(pH===7)
+    ;       /* empty statement */
+else if(pH&gt;7 &amp;&amp; pH&lt;15)
+    litmus = &apos;basic&apos;;
+else
+    throw &quot;Invalid pH value&quot;;
+</code></pre><h2 id="2-debugger语句"><a href="#2-debugger语句" class="headerlink" title="2. debugger语句"></a>2. debugger语句</h2><h2 id="3-labeled语句"><a href="#3-labeled语句" class="headerlink" title="3. labeled语句"></a>3. labeled语句</h2><pre><code>break continue
+
+goto
+</code></pre><h2 id="4-with语句"><a href="#4-with语句" class="headerlink" title="4. with语句"></a>4. with语句</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/03/使用ES6符号隐藏对象属性-属性的后备变量/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1069,1039 +2044,11 @@ body {background: green;height: 100%}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/what-is-closure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/what-is-closure/" itemprop="url">what-is-closure?</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T14:31:02+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="closure-闭包"><a href="#closure-闭包" class="headerlink" title="closure 闭包"></a>closure 闭包</h2><p>什么是封闭？闭包是捆绑在一起（封闭）的函数及其周围状态（词汇环境）的组合。<br>换句话说，闭包使您可以从内部函数访问外部函数的范围。<br>在JavaScript中，每次创建函数时都会在函数创建时创建闭包。<br>要使用闭包，请在另一个函数中定义一个函数并将其公开。<br>要公开一个函数，请将其返回或传递给另一个函数。<br>即使返回了外部函数，内部函数也可以访问外部函数范围内的变量。  </p>
-<p>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).<br>In other words, a closure gives you access to an outer function’s scope from an inner function.<br>In JavaScript, closures are created every time a function is created, at function creation time.<br>To use a closure, define a function inside another function and expose it. To expose a function, return it or pass it to another function.<br>The inner function will have access to the variables in the outer function scope, even after the outer function has returned.  </p>
-<p>在JavaScript中，闭包是用于实现数据隐私的主要机制。    </p>
-<p>当使用闭包进行数据保密时，包含的变量仅在包含（外部）函数的范围内。    </p>
-<p>除了通过对象的特权方法之外，您无法从外部范围获取数据。    </p>
-<p>在JavaScript中，闭包范围内定义的任何公开方法都具有特权。  </p>
-<p>In JavaScript, closures are the primary mechanism used to enable data privacy.   </p>
-<p>When you use closures for data privacy, the enclosed variables are only in scope within the containing (outer) function.     </p>
-<p>You can’t get at the data from an outside scope except through the object’s privileged methods.     </p>
-<p>In JavaScript, any exposed method defined within the closure scope is privileged. </p>
-<pre><code>const getSecret = (secret) =&gt; {
-    return {
-        get: () =&gt; secret
-    };
-    };
-
-    test(&apos;Closure for object privacy.&apos;, assert =&gt; {
-    const msg = &apos;.get() should have access to the closure.&apos;;
-    const expected = 1;
-    const obj = getSecret(1);
-
-    const actual = obj.get();
-
-    try {
-        assert.ok(secret, &apos;This throws an error.&apos;);
-    } catch (e) {
-        assert.ok(true, `The secret var is only available
-        to privileged methods.`);
-    }
-
-    assert.equal(actual, expected, msg);
-    assert.end();
-});
-</code></pre><p><a href="https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8" target="_blank" rel="noopener">参考文章</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/js小知识点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/js小知识点/" itemprop="url">js小知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T11:40:03+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-void"><a href="#1-void" class="headerlink" title="1. void"></a>1. void</h2><pre><code>JavaScript具有一元void运算符。
-您可能已经看到它用作void（0）或void 0。
-它在生活中有一个单一目的-评估表达式的正确位置并返回未定义的表达式。
-习惯使用“ 0”。
-您不一定必须使用“ 0”，它可以是任何有效的表达式，例如void &lt;expression&gt;，并且仍返回undefined
-
-Well, turns out, before ES5 you could actually assign a new value to the original undefined likeundefined = &quot;abc&quot; , in most browsers.
-Hence, defining the undefined!
-In those days, using void was a way to ensure, you are always returning the original undefined.
-</code></pre><h2 id="2-Constructor-Brackets-are-optional"><a href="#2-Constructor-Brackets-are-optional" class="headerlink" title="2. Constructor Brackets are optional"></a>2. Constructor Brackets are optional</h2><pre><code>构造函数后面括号可选 
-
-const date = new Date;
-
-const month = (new Date).getMonth();
-
-const MyInstance = new MyClass;
-</code></pre><h2 id="3-IIFE-Brackets-can-be-skipped"><a href="#3-IIFE-Brackets-can-be-skipped" class="headerlink" title="3. IIFE Brackets can be skipped"></a>3. IIFE Brackets can be skipped</h2><ul>
-<li><p>The syntax for IIFE (Immediately Invoked Functional Expression) was always a bit odd for me. What’s up will all the brackets?</p>
-</li>
-<li><p>事实证明，只需要这些额外的括号即可告诉JavaScript解析器即将发布的代码是函数表达式，而不是函数。可以想象，知道了这一点，有很多方法可以跳过那些多余的括号，并且仍然可以制作出有效的IIFE。</p>
-<pre><code>// normal IIEF
-(function() {
-    console.log(&apos;Normal IIEF called&apos;);
-})()
-
-// cool IIEF called
-void function() {
-    console.log(&apos;cool IIEF called&apos;);
-}()
-
-void运算符告诉解析器代码是函数表达式。
-因此，我们可以跳过函数定义的括号
-你猜怎么着？我们可以使用任何一元运算符（void，+，！，-等），但这仍然有效！
-
-// IIEF with return
-
-result = (function() {
-    // some code
-    return &quot;结果&quot;
-})()
-
-// IIEF with return
-
-result = function() {
-    // some code
-    return &quot;结果&quot;
-}()
-</code></pre></li>
-</ul>
-<h2 id="4-With-Statement"><a href="#4-With-Statement" class="headerlink" title="4. With Statement"></a>4. With Statement</h2><pre><code>with (object)
-    statement
-
-// for multiple statements add a block
-
-with (object) {
-    statement
-    statement
-    ...
-}
-
-不建议使用with 严格模式是禁止
-</code></pre><h2 id="5-The-Function-constructor"><a href="#5-The-Function-constructor" class="headerlink" title="5. The Function constructor"></a>5. The Function constructor</h2><pre><code>// Function constructor
-const multipy = new Function(&apos;x&apos;, &apos;y&apos;, &apos;return x + y&apos;);
-// 最后一个参数是代码  之前都是参数
-
-函数构造函数是JavaScript中所有构造函数的母亲。甚至Object的构造函数都是Function构造函数。
-Function自己的构造函数也是Function本身。
-
-因此，调用object.constructor.constructor ...足够的次数最终将返回JavaScript中任何对象上的Function构造函数。
-</code></pre><h2 id="6-Function-Properties"><a href="#6-Function-Properties" class="headerlink" title="6. Function Properties"></a>6. Function Properties</h2><ol>
-<li><p>Configurable Functions</p>
-<pre><code>// custom functional properties
-
-function greet () {
-    if (greet.locale === &apos;fr&apos;) {
-        console.log(&apos;Bonjour);
-    } else if (greet.locale === &apos;es&apos;) {
-        console.log(&apos;Hola);
-    } else {
-        console.log(&apos;Hello);
-    }
-}
-
-greet() // hello
-
-greet.locale = &apos;fr&apos;;
-
-greet() // Bonjour
-</code></pre></li>
-<li><p>Function with Static Variables  函数静态属性</p>
-</li>
-</ol>
-<h2 id="7-Arguments-Properties"><a href="#7-Arguments-Properties" class="headerlink" title="7. Arguments Properties"></a>7. Arguments Properties</h2><pre><code>arguments 在函数 function里一个对象 但是 arrow function 是没有的
-
-arguments.callee: Refers to the function currently invoked  指当前调用的函数
-
-arguments.callee.caller: Refers to the function that has invoked the current function 指向调用当前函数的函数
-</code></pre><h2 id="8-Tagged-Template-Literals"><a href="#8-Tagged-Template-Literals" class="headerlink" title="8. Tagged Template Literals"></a>8. Tagged Template Literals</h2><h2 id="9-Getters-amp-Setters"><a href="#9-Getters-amp-Setters" class="headerlink" title="9. Getters &amp; Setters"></a>9. Getters &amp; Setters</h2><pre><code>get fullName() {
-
-}
-
-set fullName(value) {
-
-}
-</code></pre><h2 id="10-Comma-operator-逗号运算符"><a href="#10-Comma-operator-逗号运算符" class="headerlink" title="10. Comma operator 逗号运算符"></a>10. Comma operator 逗号运算符</h2><pre><code>JavaScript具有逗号运算符。它允许我们在一行中编写多个用逗号分隔的表达式，并返回最后一个表达式的结果
-
-used Comma operator in a for loop
-
-for (var a = 0, b = 10; a &lt;= 10; a++, b--)
-
-
-有时在一行中编写多个语句时会有所帮助
-
-function getNextValue() {
-    return counter++, console.log(counter), counter
-}
-
-
-or writing short lamda functions
-
-const getSquare = x =&gt; (console.log (x), x * x)
-</code></pre><h2 id="11-加号运算符"><a href="#11-加号运算符" class="headerlink" title="11. +加号运算符"></a>11. +加号运算符</h2><pre><code>是否曾经想过将字符串快速转换为数字？
-
-只需在字符串前面加上+运算符即可。
-加号运算符还适用于负，八进制，十六进制，指数值。
-而且，它甚至可以将Date或Moment.js对象转换为时间戳
-
-+&apos;9.11&apos;              // 9.11
-+&apos;-4&apos;               // -4
-+&apos;0xFF&apos;            // 255
-+true             // 1
-+&apos;123e-5&apos;        // 0.00123
-+false          // 0
-+null          // 0
-+&apos;Infinity&apos;   // Infinity
-+&apos;1,234&apos;     // NaN
-+dateobject // timestamp
-</code></pre><h2 id="12-Bang-Bang-Operator"><a href="#12-Bang-Bang-Operator" class="headerlink" title="12. !! Bang Bang Operator"></a>12. !! Bang Bang Operator</h2><h2 id="13-Tilde-Operator"><a href="#13-Tilde-Operator" class="headerlink" title="13. ~ Tilde Operator"></a>13. ~ Tilde Operator</h2><pre><code>〜N = -(N + 1)
-
-This expression evaluates to “0” only when N == -1
-
-我们可以通过将〜放在indexOf（...）函数前面来利用此值，以对布尔值是否存在于String或Array中进行布尔检查
-
-ES6和ES7分别在String＆Array中添加了一个新的.includes（）方法。无疑，这是一种比波浪号运算符更简洁的方法来检查数组或字符串中是否存在项。
-</code></pre><h2 id="14-Labelled-statements"><a href="#14-Labelled-statements" class="headerlink" title="14. Labelled statements"></a>14. Labelled statements</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/js面试10点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/js面试10点/" itemprop="url">js面试10点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:46:33+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-js编程方式"><a href="#1-js编程方式" class="headerlink" title="1 js编程方式"></a>1 js编程方式</h2><ul>
-<li><p>JavaScript是一种多范式语言，支持命令式/过程式编程以及OOP（面向对象编程）和函数式编程 JavaScript支持原型继承的OOP</p>
-<pre><code>范式  过程式/命令式    面向对象    函数式
-
-面向对象 prototype 
-
-函数式 闭包  函数一等类  lambdas 
-</code></pre></li>
-</ul>
-<h2 id="2-函数式编程"><a href="#2-函数式编程" class="headerlink" title="2 函数式编程"></a>2 函数式编程</h2><ul>
-<li>函数式编程通过组合数学函数来生成程序，并避免共享状态和可变数据</li>
-<li>Lisp（在1958年指定）是最早支持函数式编程的语言之一，并且受到lambda演算的极大启发。</li>
-<li>Lisp和许多Lisp家庭语言在今天仍然很普遍</li>
-</ul>
-<ol>
-<li><p>纯函数/函数纯度。</p>
-</li>
-<li><p>避免副作用。</p>
-</li>
-<li><p>简单的功能组成。</p>
-</li>
-<li><p>功能语言的示例：Lisp，ML，Haskell，Erlang，Clojure，Elm，F Sharp，OCaml等</p>
-</li>
-<li><p>提到支持FP的功能：一流的功能，高阶功能，作为参数/值的功能</p>
-</li>
-</ol>
-<h2 id="3-经典继承和原型继承有什么区别？"><a href="#3-经典继承和原型继承有什么区别？" class="headerlink" title="3.经典继承和原型继承有什么区别？"></a>3.经典继承和原型继承有什么区别？</h2><ol>
-<li><p>类继承：实例从类继承（如蓝图-类的描述），并创建子类关系：分层类分类法。</p>
-<pre><code>实例通常通过带有`new`关键字的构造函数来实例化。
-类继承可以使用也可以不使用ES6中的`class`关键字。
-</code></pre></li>
-<li><p>原型继承：实例直接从其他对象继承。</p>
-<pre><code>通常通过工厂函数或Object.create（）实例化实例。
-实例可以由许多不同的对象组成，从而可以轻松地进行选择性继承。
-</code></pre></li>
-<li><p>类：创建紧密耦合 或层次结构/分类法。  原型：提及串联继承，原型委托，功能继承，对象组成。</p>
-</li>
-</ol>
-<h2 id="4-函数式程序设计与面向对象程序设计的优缺点是什么？"><a href="#4-函数式程序设计与面向对象程序设计的优缺点是什么？" class="headerlink" title="4. 函数式程序设计与面向对象程序设计的优缺点是什么？"></a>4. 函数式程序设计与面向对象程序设计的优缺点是什么？</h2><ul>
-<li><p>OOP优点：易于理解对象的基本概念，并易于解释方法调用的含义。OOP倾向于使用命令式而不是声明式，其读起来就像一组简单的指令供计算机遵循。</p>
-</li>
-<li><p>OOP缺点：OOP通常取决于共享状态。对象和行为通常在同一实体上固定在一起，可以由具有不确定顺序的任意数量的函数随机访问，这可能导致不良行为，例如竞态条件。</p>
-</li>
-<li><p>FP优点：使用功能范式，程序员避免了任何共享状态或副作用，从而消除了由多个功能争夺同一资源引起的错误。</p>
-<p>  通过使用无点样式（又称为默认编程）等功能，与OOP相比，对于那些更普遍可重用的代码，功能往往会得到根本简化，并且易于重组。</p>
-<p>  FP还倾向于使用声明性和指示性样式，它们不会详细说明操作的分步说明，而是专注于执行操作，让底层函数负责操作方式。</p>
-<p>  这为重构和性能优化留出了极大的自由度，甚至允许您通过很少的代码更改就可以用效率更高的算法替换整个算法。例如，记住或使用懒惰的评估代替急切的评估</p>
-<p>  利用纯函数的计算也很容易在多个处理器或分布式计算集群之间扩展，而不必担心线程资源冲突，竞争条件等。</p>
-</li>
-<li><p>FP缺点：过度利用FP功能（如无点样式和较大的组合）可能会降低可读性，因为生成的代码通常被更抽象地指定，更简洁且不太具体。</p>
-<p>  比函数编程更熟悉OO和命令式编程，因此即使是函数式编程中的常见习语也会使新团队成员感到困惑。FP的学习曲线比OOP陡得多</p>
-<p>  这是因为OOP的广泛普及使OOP的语言和学习材料变得更具对话性，而FP的语言往往更具学术性和形式性。</p>
-<p>  FP概念经常被编写为使用lambda演算，代数和范畴论中的惯用语和记号，所有这些都需要先了解这些领域的知识基础。</p>
-</li>
-<li><p>提到共享状态带来的麻烦，争夺相同资源的不同事物，等等……</p>
-</li>
-<li><p>意识到FP能够从根本上简化许多应用程序的能力</p>
-</li>
-<li><p>意识到学习曲线的差异</p>
-</li>
-<li><p>阐明副作用及其对程序可维护性的影响</p>
-</li>
-<li><p>意识到功能强大的代码库可能具有陡峭的学习曲线</p>
-</li>
-<li><p>意识到，与同等的FP代码库相比，高度面向对象的代码库可以极大地抵抗更改并且非常脆弱</p>
-</li>
-<li><p>意识到不变性会带来极其可访问和可延展的程序状态历史记录，从而允许轻松添加无限的撤消/重做，倒带/重播，时间旅行调试等功能</p>
-</li>
-<li><p>在这两种范例中都可以实现不变性，但是共享状态对象的泛滥使OOP的实现变得复杂</p>
-</li>
-</ul>
-<h2 id="5-When-is-classical-inheritance-an-appropriate-choice"><a href="#5-When-is-classical-inheritance-an-appropriate-choice" class="headerlink" title="5. When is classical inheritance an appropriate choice?"></a>5. When is classical inheritance an appropriate choice?</h2><h2 id="6-原型继承何时合适？"><a href="#6-原型继承何时合适？" class="headerlink" title="6.原型继承何时合适？"></a>6.原型继承何时合适？</h2><ul>
-<li><p>原型继承有多种类型：</p>
-<ol>
-<li><p>委托（即原型链）</p>
-</li>
-<li><p>串联的（即mixins，<code>Object.assign（）</code>）</p>
-</li>
-<li><p>函数式的（不要与函数式编程混淆。用于创建私有状态/封装的闭包的函数）</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="7-“偏向于类继承而不是对象继承”是什么意思？"><a href="#7-“偏向于类继承而不是对象继承”是什么意思？" class="headerlink" title="7.“偏向于类继承而不是对象继承”是什么意思？"></a>7.“偏向于类继承而不是对象继承”是什么意思？</h2><pre><code>这摘自“设计模式：可重用的面向对象软件的元素”。这意味着应该通过将较小的功能单元组装到新对象中，而不是从类继承并创建对象分类法来实现代码重用
-
-换句话说，使用can-do，has-a或uses-a关系代替is-a关系。
-</code></pre><ul>
-<li>避免类层次结构。</li>
-<li>避免脆性基类问题。</li>
-<li>避免紧密耦合。</li>
-<li>避免使用严格的分类法（强迫is-a关系对于新用例最终是错误的）。</li>
-<li>避免大猩猩香蕉问题（“您想要的是香蕉，得到的是拿着香蕉的大猩猩，以及整个丛林”）。</li>
-<li>使代码更灵活。</li>
-</ul>
-<h2 id="8-什么是双向数据绑定和单向数据流，它们有何不同？"><a href="#8-什么是双向数据绑定和单向数据流，它们有何不同？" class="headerlink" title="8.什么是双向数据绑定和单向数据流，它们有何不同？"></a>8.什么是双向数据绑定和单向数据流，它们有何不同？</h2><ul>
-<li>双向数据绑定意味着将UI字段动态绑定到模型数据，这样，当UI字段更改时，模型数据也会随之更改，反之亦然。</li>
-<li>单向数据流的一种方式意味着模型是事实的唯一来源。UI中的更改会触发消息，向用户发送信号通知模型（或在React中store）的意图。只有模型才有权更改应用程序的状态。结果是数据始终沿单一方向流动，这使它更易于理解。</li>
-<li><p>单向数据流是确定性的一种方式，而双向绑定可能会引起副作用，而这些副作用很难理解和理解。</p>
-</li>
-<li><p>React是单向数据流的新典范示例，因此提到React是一个很好的信号。</p>
-</li>
-<li>Cycle.js是另一种流行的单向数据流实现。</li>
-<li>Angular是使用双向绑定的流行框架</li>
-</ul>
-<h2 id="9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures"><a href="#9-What-are-the-pros-and-cons-of-monolithic-vs-microservice-architectures" class="headerlink" title="9. What are the pros and cons of monolithic vs microservice architectures?"></a>9. What are the pros and cons of monolithic vs microservice architectures?</h2><ul>
-<li><p>整体架构意味着您的应用程序是作为一个内聚的代码单元编写的，其组件被设计为可以协同工作，共享相同的内存空间和资源</p>
-</li>
-<li><p>微服务架构意味着您的应用程序由许多较小的独立应用程序组成，这些应用程序可以在自己的内存空间中运行，并且可以在可能的许多不同机器上彼此独立地扩展</p>
-</li>
-<li><p>整体式优点：整体式架构的主要优势在于，大多数应用程序通常具有大量的跨领域问题，例如日志记录，速率限制以及诸如审计跟踪和DOS保护之类的安全功能。<br>  当所有事情都通过同一个应用程序运行时，很容易将组件与那些跨领域的问题联系起来。由于共享内存访问比进程间通信（IPC）更快，因此也可能具有性能优势。</p>
-</li>
-<li><p>整体式劣势：随着应用程序的发展，整体式应用程序服务趋于紧密耦合和纠缠，从而难以出于独立缩放或代码可维护性等目的隔离服务。<br>  整体架构也很难理解，因为当您查看特定的服务或控制器时，可能存在不明显的依赖关系，副作用和魔力。</p>
-</li>
-<li><p>微服务的优点：微服务架构通常组织得更好，因为每个微服务都有非常具体的工作，并且与其他组件的工作无关。<br>解耦的服务也更易于重组和重新配置，以服务于不同应用程序的目的（例如，服务于Web客户端和公共API）<br>根据它们的组织方式，它们还可以具有性能优势，因为可以隔离热服务并独立于应用程序的其余部分进行扩展</p>
-</li>
-<li><p>微服务的弊端：在构建新的微服务架构时，您可能会发现很多跨领域的问题，而这些问题在设计时并未预料到。<br>  单一的应用程序可以建立共享的魔术助手或中间件来处理此类跨领域的问题，而无需付出太多努力。<br>  在微服务架构中，您要么需要为每个横切关注点承担单独模块的开销，要么将横切关注点封装在所有流量都通过的另一个服务层中。<br>  最终，即使是单一的体系结构也倾向于通过外部服务层路由流量，以解决跨领域的问题，<br>  但是采用整体体系结构，有可能将这项工作的成本推迟到项目更加成熟之前。<br>  微服务经常部署在自己的虚拟机或容器上，从而导致VM争用工作激增。<br>  这些任务通常使用集装箱车队管理工具自动执行。</p>
-<ul>
-<li>尽管与单一应用程序相比，初始成本较高，但对微服务仍持积极态度。</li>
-<li>意识到微服务从长远来看往往具有更好的性能和扩展性。关于微服务与整体应用程序的实践。</li>
-<li>对应用程序进行结构设计，以使服务在代码级别上彼此独立，但一开始就很容易将其作为整体应用程序捆绑在一起。</li>
-<li>微服务的间接成本可以延迟，直到支付价格变得更加实际为止。</li>
-</ul>
-<h2 id="10-什么是异步编程，为什么它在JavaScript中很重要？"><a href="#10-什么是异步编程，为什么它在JavaScript中很重要？" class="headerlink" title="10.什么是异步编程，为什么它在JavaScript中很重要？"></a>10.什么是异步编程，为什么它在JavaScript中很重要？</h2><pre><code>同步编程意味着，除非有条件和函数调用，否则代码将自上而下依次执行，从而阻止长时间运行的任务（例如网络请求和磁盘I / O）。
-异步编程意味着引擎在事件循环中运行。当需要阻止操作时，请求将启动，并且代码将继续运行而不会阻止结果。当响应准备就绪时，将触发一个中断，这将导致事件处理程序运行，并在此处继续控制流程。
-这样，单个程序线程可以处理许多并发操作。用户界面本质上是异步的，它们花费大部分时间等待用户输入来中断事件循环并触发事件处理程序。
-默认情况下，Node是异步的，这意味着服务器的工作方式几乎相同，在循环中等待网络请求，并在处理第一个请求时接受更多的传入请求。
-这在JavaScript中很重要，因为它非常适合用户界面代码，并且对服务器性能非常有益。
-</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/Error实践技巧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/Error实践技巧/" itemprop="url">Error实践技巧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T10:19:27+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><pre><code>class ValidationError extends Error {
-    constructor(message) {
-        super(message)
-        this.name = &apos;ValidationError&apos;
-        this.message = message
-    }
-}
-
-class PermissionError extends Error {
-    constructor(message) {
-        super(message)
-        this.name = &apos;PermissionError&apos;
-        this.message = message
-    }
-}
-
-class DatabaseError extends Error {
-    constructor(message) {
-        super(message)
-        this.name = &apos;DatabaseError&apos;
-        this.message = message
-    }
-}
-
-module.exports = {
-    ValidationError,
-    PermissionError,
-    DatabaseError
-} 
-
-const { ValidationError } = require(&apos;./error&apos;);
-
-function myFunction(input) {
-    if (!input)
-        throw new ValidationError(&apos;A validation error&apos;)
-    return input
-}
-
-try {
-    myFunction(null)
-} catch (e) {
-    if (e.name === &apos;ValidationError&apos;) {
-        console.log(&quot;Handle input validation error&quot;)
-    } else {
-        console.log(&quot;Handle other errors&quot;)
-    }
-}
-</code></pre><h2 id="Returning-Error-objects-from-Promises"><a href="#Returning-Error-objects-from-Promises" class="headerlink" title="Returning Error objects from Promises"></a>Returning Error objects from Promises</h2><ol>
-<li><p>return error when rejecting a Promise</p>
-<pre><code>const { ValidationError } = require(&apos;./error&apos;)
-function myFunction(input) {
-    return new Promise((resolve, reject) =&gt; {
-        if (!input)
-        return reject(new ValidationError(&apos;A validation error&apos;))
-        resolve(input)
-    })
-}
-</code></pre></li>
-<li><p>Promise.catch</p>
-</li>
-</ol>
-<h2 id="Serializing-Error-objects-in-JSON"><a href="#Serializing-Error-objects-in-JSON" class="headerlink" title="Serializing Error objects in JSON"></a>Serializing Error objects in JSON</h2><p>By default, Error objects seralize to JSON with output like this:  </p>
-<pre><code>{ name: &apos;ValidationError&apos; }
-</code></pre><p>可以重写序列化方法toJSON() </p>
-<pre><code>class ValidationError extends Error {
-    constructor(message) {
-        super(message)
-        this.name = &apos;ValidationError&apos;
-        this.message = message
-    }
-
-    toJSON() {
-        return {
-        error: {
-            name: this.name,
-            message: this.message,
-            stacktrace: this.stack
-        }
-        }
-    }
-}
-
-ps: 对象不是JSON 一个对象stringify首先第一步是一个对象的调用toJSON方法 将对象转为JSON 然后执行JSON.stringify方法
-</code></pre><h2 id="new-Error-message-fileName-lineNumber"><a href="#new-Error-message-fileName-lineNumber" class="headerlink" title="new Error([message[, fileName[,lineNumber]]])"></a>new Error([message[, fileName[,lineNumber]]])</h2><pre><code>message
-可选。人类可阅读的错误描述信息。
-
-fileName 
-可选。被创建的Error对象的fileName属性值。默认是调用Error构造器代码所在的文件 的名字。
-
-lineNumber 
-可选。被创建的Error对象的lineNumber属性值。默认是调用Error构造器代码所在的文件的行号。
-
-作为函数使用 不需要new  const x = Error(&apos;I was created using a function call!&apos;);
-
-6种类型
-
-    EvalError       表示错误的原因：与 eval() 有关
-
-    InternalError   代表Javascript引擎内部错误 如: &quot;递归太多&quot;
-
-    RangeError      表示错误的原因：数值变量或参数超出其有效范围
-
-    SyntaxError     语法错误
-
-    TypeError       类型错误   变量或参数不属于有效类型
-
-    URIError        给 encodeURI()或  decodeURl()传递的参数无效
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/11/22/停止用i-在循环中/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/22/停止用i-在循环中/" itemprop="url">停止用i++在循环中</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T09:37:12+08:00">
-                2019-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="why-i-may-be-better-than-i-in-most-situations"><a href="#why-i-may-be-better-than-i-in-most-situations" class="headerlink" title="why ++i may be better than i++ in most situations"></a>why ++i may be better than i++ in most situations</h2><ul>
-<li><p>Post-Increment (i++)</p>
-<pre><code>int j = i;
-i = i + 1;
-return j;
-由于后递增运算符必须返回i的原始值，而不是返回递增值i + 1，因此它必须存储i的旧版本。
-这意味着它通常不必要地使用额外的内存来存储该值，因为在大多数情况下，我们实际上并不使用旧版本的i，而只是将其丢弃
-</code></pre></li>
-<li><p>Pre-Increment (++i)</p>
-<pre><code>i = i + 1;
-return i;
-值得注意的是，在这里，我们不必保存i的旧值-我们可以简单地将其添加并返回。
-这与for循环中的典型用例更加契合，因为在这种情况下我们很少需要i的旧值。
-只要您不需要所要递增的值的前一个值，则预增量运算符就会好于或等于后增量运算符
-</code></pre></li>
-</ul>
-<pre><code>在看到后增量和前增量之间的差异之后，您可能会注意到，由于i的缓存值从未在后增量中使用，因此编译器将优化该行，使两个运算符等效。
-对于基本类型（例如整数），最可能是这样。
-但是，对于更复杂的类型，例如用户定义的类型或带有+操作重载的迭代器，编译器可能无法安全地优化缓存操作
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2147,7 +2094,7 @@ return i;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-count">135</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

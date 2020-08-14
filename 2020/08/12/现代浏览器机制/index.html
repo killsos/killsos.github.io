@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Gpu123456789101112131415161718图形处理器（Graphics Processing Unit），也就是 GPU在进程和线程上执行程序进程可以描述为一个应用程序的执行程序。线程则是进程内部用来执行某个部分的程序。当你启动一个应用时，一个进程就被创建了。程序可能会创建一些线程帮助它完成某些工作，但这不是必须的。操作系统会划分出一部分内存给这个进程，当前应用程序的所有状态都将">
+<meta name="keywords" content="javascript 前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="现代浏览器机制">
+<meta property="og:url" content="http://jsonload.com/2020/08/12/现代浏览器机制/index.html">
+<meta property="og:site_name" content="killsos">
+<meta property="og:description" content="Gpu123456789101112131415161718图形处理器（Graphics Processing Unit），也就是 GPU在进程和线程上执行程序进程可以描述为一个应用程序的执行程序。线程则是进程内部用来执行某个部分的程序。当你启动一个应用时，一个进程就被创建了。程序可能会创建一些线程帮助它完成某些工作，但这不是必须的。操作系统会划分出一部分内存给这个进程，当前应用程序的所有状态都将">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-13T06:55:25.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="现代浏览器机制">
+<meta name="twitter:description" content="Gpu123456789101112131415161718图形处理器（Graphics Processing Unit），也就是 GPU在进程和线程上执行程序进程可以描述为一个应用程序的执行程序。线程则是进程内部用来执行某个部分的程序。当你启动一个应用时，一个进程就被创建了。程序可能会创建一些线程帮助它完成某些工作，但这不是必须的。操作系统会划分出一部分内存给这个进程，当前应用程序的所有状态都将">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jsonload.com/2020/08/12/现代浏览器机制/">
+
+
+
+
+
+  <title>现代浏览器机制 | killsos</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">killsos</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人情似水分高下 世事如云任卷舒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/08/12/现代浏览器机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">现代浏览器机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-12T14:26:15+08:00">
+                2020-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Gpu"><a href="#Gpu" class="headerlink" title="Gpu"></a>Gpu</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">图形处理器（Graphics Processing Unit），也就是 GPU</span><br><span class="line"></span><br><span class="line">在进程和线程上执行程序</span><br><span class="line"></span><br><span class="line">进程可以描述为一个应用程序的执行程序。线程则是进程内部用来执行某个部分的程序。</span><br><span class="line"></span><br><span class="line">当你启动一个应用时，一个进程就被创建了。程序可能会创建一些线程帮助它完成某些工作，但这不是必须的。</span><br><span class="line"></span><br><span class="line">操作系统会划分出一部分内存给这个进程，当前应用程序的所有状态都将保存在这个私有的内存空间中。</span><br><span class="line"></span><br><span class="line">当你关闭应用时，进程也就自动蒸发掉了，操作系统会将先前被占用的内存空间释放掉</span><br><span class="line"></span><br><span class="line">进程可以让操作系统再另起一个进程去处理不同的任务。当这种情况发生时，新的进程又将占据一块内存空间</span><br><span class="line"></span><br><span class="line">当两个进程需要通信时，它们可以用一个叫做进程间通讯（Inter Process Communication）的办法解决</span><br><span class="line"></span><br><span class="line">许多应用程序都被设计成以这种方式进行工作，所以当其中一个进程挂掉时，它可以在其他进程仍然运行的时候直接重启。</span><br></pre></td></tr></table></figure>
+<h2 id="浏览器架构"><a href="#浏览器架构" class="headerlink" title="浏览器架构"></a>浏览器架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">浏览器是如何通过进程和线程建立起来的呢？</span><br><span class="line">有时会是一个进程和多个不同的线程，或是多个进程和少数线程</span><br><span class="line"></span><br><span class="line">首先是浏览器的自身进程，它负责与其他进程协作，主要负责浏览器应用的不同部分，</span><br><span class="line">如网络、内存等。</span><br><span class="line"></span><br><span class="line">至于渲染进程，浏览器会为每个窗口分配一个渲染进程。在最近的一次更新中，</span><br><span class="line">如果够用的话，Chrome 干脆给每个窗口分配了一个进程</span><br><span class="line">而现在，Chrome 在致力于给每个站点一个独立的进程，包括 iframe</span><br><span class="line"></span><br><span class="line">基本进程:</span><br><span class="line"></span><br><span class="line">1. 浏览器进程  负责 chrome 的浏览器功能，包括导航栏、书签、后退、前进按钮。当然也负责一些虽然看不到但也很重要的部分，比如网络请求和文件访问。</span><br><span class="line"></span><br><span class="line">2. 渲染进程 负责 窗口内的网站将如何呈现 每一个tab就是一个渲染进程</span><br><span class="line"></span><br><span class="line">3. 插件进程 负责 控制着网站可能用到的所有插件，比如 flash</span><br><span class="line"></span><br><span class="line">4. GPU进程 负责 处理 GPU 任务，与其他进程隔离。它被划分为不同的进程因为 GPU 会处理来自多个应用程序的请求并将其绘制在同一个平面上。</span><br><span class="line"></span><br><span class="line">将浏览器的工作拆分成不同的进程还有一个好处，就是安全。由于操作系统提供了一种限制进程“权限”的方法，因此浏览器可以将特定的功能和进程有效地隔离开。比如，Chrome 会限制用来处理用户输入的渲染进程去直接访问文件。</span><br><span class="line"></span><br><span class="line">每个进程都有各自的内存空间，因此它们常会各自拥有一份基础功能的拷贝。正因为它们之间不像同一进程中的线程那样能够共享资源，所以就需要更多的内存占用。为了节省内存，Chrome 对其自身可调用的进程在数量上做了限制。具体的限制大小在不同性能的机器上各不相同，唯一确定的是，当达到了这个上限后，Chrome 会将同站点的多个窗口交给同一个进程来管理。</span><br></pre></td></tr></table></figure>
+<h2 id="Chrome-服务化-——-节省更多的内存"><a href="#Chrome-服务化-——-节省更多的内存" class="headerlink" title="Chrome 服务化 —— 节省更多的内存"></a>Chrome 服务化 —— 节省更多的内存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">浏览器进程也应用了相同的方案。Chrome 正在进行架构层面的整改，目的是将浏览器的各部分功能变成独立的服务，</span><br><span class="line">这样就能轻松地将其拆分为不同的进程，也能更加灵活地互相组合。</span><br><span class="line"></span><br><span class="line">总的来说，当 Chrome 在较高性能的设备上运行时，它会将每个服务分配至不同的进程，以此来获得更强的运行时稳定性和健壮性；</span><br><span class="line">反之，如果 Chrome 运行在一台资源受限的设备上时，Chrome 会将服务整合在一个进程中，</span><br><span class="line">以此来节省内存的占用。像这种通过整合进程资源以此来节省内存的手段，已经被用于 Android 上了。</span><br></pre></td></tr></table></figure>
+<h2 id="站点隔离（Site-Isolation）"><a href="#站点隔离（Site-Isolation）" class="headerlink" title="站点隔离（Site Isolation）"></a>站点隔离（Site Isolation）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">站点隔离是 Chrome 在其 67 桌面版上新增的特性，基本原则是不同的站点各自运行在自己的沙箱环境中，独享进程，并且不允许通信。</span><br><span class="line"></span><br><span class="line">我们已经讨论过每个窗口一个进程的模型，在这个模型中，浏览器允许跨站点的 iframe 独立进程共享不同站点之间的内存空间。</span><br><span class="line"></span><br><span class="line">早先在一个渲染进程中（窗口）同时运行 a.com 和 b.com 看起来没有什么问题，因为有同源策略，</span><br><span class="line"></span><br><span class="line">确保一个站点未经同意就无法访问其他站点的数据。绕过同源策略基本上成为了所有安全攻击的指导方针。</span><br><span class="line"></span><br><span class="line">而进程间的相互隔离是将站点分开的最佳途径</span><br><span class="line"></span><br><span class="line">站点隔离已经默认为用户开启了。事实上，站点隔离并不仅仅是为站点分配不同的渲染进程这么简单，</span><br><span class="line"></span><br><span class="line">它从根本上改变了 iframe 之间的通信方式。打开运行有不同站点 iframe 的开发者工具，</span><br><span class="line"></span><br><span class="line">意味着浏览器必须做很多看不到的幕后工作，才能让这一切看起来和以前没有什么区别，</span><br><span class="line"></span><br><span class="line">即使是简简单单的 ctrl+F 在这个场景下也意味着在不同的渲染进程中查询字符串。</span><br><span class="line"></span><br><span class="line">网上有很多文章介绍浏览器的站点隔离策略，当你看完那些之后就会意识到，</span><br><span class="line"></span><br><span class="line">为什么站点隔离值得 Chrome 团队为其发布一个独立版本了。</span><br></pre></td></tr></table></figure>
+<h2 id="一次简单的导航"><a href="#一次简单的导航" class="headerlink" title="一次简单的导航"></a>一次简单的导航</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">Step 1：处理用户输入</span><br><span class="line">当用户开始在地址栏输入时，</span><br><span class="line"></span><br><span class="line">UI 线程 解析输入字符串是url 。因为 Chrome 的地址栏同时还是个搜索框，所以 UI 线程需要解析用户的输入，</span><br><span class="line">才能决定该直接访问网址还是把用户的输入丢给搜索引擎处理</span><br><span class="line"></span><br><span class="line">Step 2：开始导航</span><br><span class="line"></span><br><span class="line">当用户按下回车键后，UI 线程要求网络线程去获取网站的内容。窗口的 Tab 上会开始转菊花，</span><br><span class="line">网络线程会采用一系列的协议和操作（比如 DNS）查询必要的信息并为请求建立连接</span><br><span class="line">网络线程可能会收到来自服务器的一个标记着重定向指令的头部比如 HTTP 301，</span><br><span class="line">在这种情况下，网络线程会把这件事情告诉 UI 线程，之后则会发起一次指向重定向地址的新的网络请求。</span><br><span class="line"></span><br><span class="line">Step 3：读取响应</span><br><span class="line">当响应的数据开始传送到浏览器时，网络线程会在必要的情况下检查一些来自响应的字段。</span><br><span class="line">响应数据的 Content-Type 字段会表示当前返回的是哪种类型的数据，但它也不完全靠谱，</span><br><span class="line">经常会出现丢失或者干脆不准确的情况，但也不用担心，MIME 嗅探[3]会完成缺失的工作。</span><br><span class="line">正如源码的注释中写道，这是一个可以被解释为 hack 的方案，</span><br><span class="line">如果感兴趣的话，你也可以去阅读这些注释，这样就能了解不同的浏览器是如何将实际的数据与 Content-Type 匹配了。</span><br><span class="line"></span><br><span class="line">如果响应数据是一个 HTML 文件，那么接下来的一步会是把数据传递给浏览器的渲染进程；</span><br><span class="line">但如果数据是 zip 压缩文件或其他类型的文件，意味着这将被定位成一次下载动作，</span><br><span class="line">于是浏览器会将数据转交给下载管理器去处理</span><br><span class="line"></span><br><span class="line">通常这一步也是安全检测[5]发生的时候：如果域名或响应数据和已知的恶意网站匹配时，</span><br><span class="line">网络进程会抛出一个警告，并展现一个告警的页面。另外，CORB[6] 检测也会开始工作，</span><br><span class="line">确保那些来自敏感站点的跨站响应数据不会进入到浏览器的渲染进程中</span><br><span class="line"></span><br><span class="line">Step 4：渲染进程</span><br><span class="line">网络线程以获取了全部的数据，并完成了所有需要的检查，此刻它自信的告诉 UI 线程</span><br><span class="line">接着，UI 线程会唤起一个渲染进程去渲染页面</span><br><span class="line">由于网络情况的不可控，一个请求可能会花上好几百毫秒才能把响应数据拿回来，</span><br><span class="line">所以这里浏览器默认开启了用来加速这一过程的优化。</span><br><span class="line">在 Step 2 中，当 UI 线程将需要请求的 url 告诉网络线程时，其实它本身已经知道要导航到哪个网站了，</span><br><span class="line">于是 UI 线程在把 url 传递给网络线程的同时，会尝试启动一个渲染进程。</span><br><span class="line">如果一切都按照预期正常进行的话，当网络线程拿到数据时，渲染进程就已经处于待命状态了。</span><br><span class="line">也会有例外的情况：比如导航重定向到一个另外的站点，</span><br><span class="line">那么预先启动好的渲染进程将不会被使用，这导致 UI 线程需要重新启动一个渲染进程。</span><br><span class="line"></span><br><span class="line">Step 5：触发导航</span><br><span class="line">浏览器进程通过 IPC 告知渲染进程可以出发本次导航了。与此同时，数据流也将传递给渲染进程，这样后者就能继续接收 HTML 数据。</span><br><span class="line">一旦浏览器收到了来自渲染进程的导航启动信号，这次导航也就完成了，下一步进入文档的加载阶段。</span><br><span class="line"></span><br><span class="line">到这会儿，浏览器的地址栏更新，安全指示符和站点的设置 UI 会将新页面的信息呈现出来。</span><br><span class="line">当前窗口的 session 将会更新，刚导航到的页面会被后退/前进按钮记录到窗口的页面历史中</span><br><span class="line">为了便于在关闭窗口时恢复页面，历史的会话记录会保存在本地的磁盘上</span><br><span class="line"></span><br><span class="line">Extra Step：初始加载完成</span><br><span class="line">当导航触发后，渲染进程会持续接收资源并渲染页面。我们将在下一篇文章中讨论这一步的更多细节。</span><br><span class="line">当渲染进程“完成”渲染后，它会通过 IPC 告知浏览器进程（页面的 onload 事件均已执行完毕后），UI 线程也就不再在 tab 上转菊花了。</span><br><span class="line"></span><br><span class="line">上面的“完成”两个字，之所以打了双引号，因为在实际场景中，</span><br><span class="line">它通常并不真正意味着完成，因为客户端的 JavaScript 可能在此时持续地加载资源并渲染新的视图</span><br><span class="line"></span><br><span class="line">导航到另一个网站</span><br><span class="line">一次简单的导航截至目前已经完成了。假如这时用户输入了一个不同的 url 会发生什么呢？其实也没啥，</span><br><span class="line">浏览器进程会按照上面的步骤导航到这个网站。但在这一切开始之前，</span><br><span class="line">浏览器会检查当前已经渲染好了的网站是否需要在网页卸载之前搞一点事情，这就是 beforeunload 事件。</span><br><span class="line"></span><br><span class="line">在 beforeunload 事件中，我们可以在用户即将跳转至其他页面或者关闭 Tab 的时候发起一个“确认离开当前页面？”的二次确认。</span><br><span class="line">Tab 中的所有东西都由渲染进程控制着，当然也包括开发者编写的 JavaScript，</span><br><span class="line">以当一个新的导航请求即将到来时，浏览器进程会对当前的渲染进程做最后的检查。</span><br><span class="line"></span><br><span class="line">我们应当尽量避免在 beforeunload 中添加总会执行的事件代码，这会造成更多的交互延时，毕竟它们总会在新的导航开始之前执行。只在需要的时候添加这些代码，比如提醒用户如果进入新的页面那么当前页面的数据会丢失。</span><br><span class="line"></span><br><span class="line">如果导航是在渲染进程中被创建的（比如用户点击了页面上的某一链接或者在 JavaScript 运行了 window.location.href = &apos;https://abc.cn&apos; ），则当前的渲染进程会首先检查是 beforeunload 中是否有东西需要执行。之后，它会经历与浏览器进程直接发起导航后一样的导航过程。</span><br><span class="line"></span><br><span class="line">当新的导航将发往与当前页面不同的站点时，浏览器将会创建一个新的渲染进程去处理这些新工作，旧的渲染进程则则用来在剩余的时间里处理诸如 unload 的页面事件。如果你想了解更多的话，可以看看页面生命周期概览[7]和页面生命周期 API[8]这两篇文章。</span><br><span class="line"></span><br><span class="line">## 如果有 Service Worker...</span><br><span class="line">Service Worker[9] 的引入会对页面的导航流程带来一些改变。Service Worker 是一种可以在应用代码中编写网络代理的方法；增强了开发者对于本地缓存以及何时发起网络请求的控制。如果 Service Worker 提前设置了从本地缓存中读取某一页面的数据，那么也就不需要发起网络请求了。</span><br><span class="line"></span><br><span class="line">需要明确的一点是，即使 Service Worker 提供了听起来很高端的功能，但它实质上也是运行在渲染进程中的 JavaScript 代码。那么问题来了：当用户发起一次导航时，浏览器进程是如何知道目标站点存在一个 Service Worker 的呢？</span><br><span class="line"></span><br><span class="line">导航预加载</span><br><span class="line"></span><br><span class="line">相信你可以发现，如果 Service Worker 最终决定从网络中请求数据，那么之前在浏览器进程和渲染进程之间所发生的通信都将成为导致响应延时的罪魁祸首。</span><br><span class="line"></span><br><span class="line">导航预加载[11]就是用来加速这一进程的机制：与 Service Worker 并行启动去加载资源。</span><br><span class="line"></span><br><span class="line">它将为这些请求设置一个 Header，由服务端来决定为这些请求发送不同的内容；比如，仅返回更新的数据而不是整个文档。</span><br></pre></td></tr></table></figure>
+<h2 id="渲染进程"><a href="#渲染进程" class="headerlink" title="渲染进程"></a>渲染进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br></pre></td><td class="code"><pre><span class="line">渲染进程处理 Web 页面的所有内容</span><br><span class="line"></span><br><span class="line">一个浏览器窗口之内发生的所有事情，都是被渲染进程所掌握着的。前端工程师们的代码由渲染进程中的主线程处理</span><br><span class="line"></span><br><span class="line">如果使用了 web worker 或者 service worker，那其中的代码将会由 worker 线程处理</span><br><span class="line"></span><br><span class="line">Compositor 线程和 Raster 线程也运行在渲染进程中，它们的作用是高效平滑地渲染出一个页面。</span><br><span class="line"></span><br><span class="line">渲染进程最核心的工作是：将 HTML、CSS 和 JavaScript 代码变成一个可与用户交互的 Web 页面。</span><br><span class="line"></span><br><span class="line">解析文档</span><br><span class="line"></span><br><span class="line">构建 DOM 树</span><br><span class="line">当渲染进程接收到一条即将去导航的信号并开始接收 HTML 数据时，主线程就开始了自己的工作：解析 HTML 文本并将其转换为文档对象模型（Document Object Model，aka DOM）。</span><br><span class="line"></span><br><span class="line">DOM 是浏览器内部对一个页面的抽象（代表），也是开发者可以利用 JavaScript 与之相交互的数据结构和 API。</span><br><span class="line"></span><br><span class="line">浏览器按照HTML 标准[4] 去解析 HTML 文档。你或许发现了一件事情，就是即使你随便丢给浏览器一个 HTML 文档都不会报错。比如，没有结束标签的 &lt;/p&gt; 仍然是一段有效的 HTML。一段错误的标签比如：Hi! &lt;b&gt;我是&lt;i&gt;Chrome&lt;/b&gt;!&lt;/i&gt;(b 标签在 i 标签之前提前关闭了)会被当作 Hi! &lt;b&gt;I&apos;m &lt;i&gt;Chrome&lt;/i&gt;&lt;/b&gt;&lt;i&gt;!&lt;/i&gt; 去对待。这都是因为 HTML 本身才设计之初就希望优雅的解决这些错误。如果你是个好奇的小朋友，可以去看看 An Introduction to Error Handling and Strange Cases in the Parser[5] 这篇文章的相关章节。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">子资源加载</span><br><span class="line">一个网站通常会用到很多外部资源比如图片、CSS 和 JavaScript。这些文件都需要从网络或是缓存中加载。当主线程在解析 HTML 文档的时候发现了这些需要额外加载的资源，主线程会一个一个地去请求，但这样会降低解析 HTML 的效率。因此为了提速，“预加载扫描器”闪亮登场了。如果在文档中存在 img 标签或是 link 标签，预加载扫描器会“窥探”到 HTML 解析器生成的 token，并向浏览器进程中的网络线程发起请求。</span><br><span class="line"></span><br><span class="line">JavaScript 阻塞解析</span><br><span class="line">当 HTML 解析器遇到了 script 标签时，它会暂停对 HTML 的解析工作，转而去加载、解析并执行 JavaScript 代码。为什么呢？因为 JavaScript 可能改变文档的结构，比如用了 document.write() 之类的函数。这就是为什么 HTML 解析器必须在 JavaScript 执行过后才恢复对 HTML 文档的解析工作。如果你的 JavaScript 代码在执行时的事情有兴趣的话，可以看看 V8 团队的这篇文章[6]</span><br><span class="line"></span><br><span class="line">告诉浏览器你想怎样加载资源</span><br><span class="line">浏览器提供了很多不错的方法给开发者，以帮助他们用不同的姿势在页面上加载资源。</span><br><span class="line">如果你的 JavaScript 代码中没有用到诸如 document.write() 之类的代码，</span><br><span class="line">你可以在自己的 script 标签上加上 async / defer 属性，浏览器就会异步地加载并执行 JavaScript 代码并且不会阻塞对于文档的解析。</span><br><span class="line"></span><br><span class="line">需要的话，也可以用到 JavaScript 模块[7]。&lt;link rel=&quot;preload&quot;&gt; 用于加载当前页面一定会用到的资源，</span><br><span class="line">并且开发者希望浏览器能在第一时间加载这些资源。开发者可以针对不同的场景，</span><br><span class="line">赋予资源不同的加载优先级[8]，浏览器会按照既定的规则依次加载这些资源，从而起到加载优化的效果</span><br><span class="line"></span><br><span class="line">样式的计算</span><br><span class="line">只有 DOM 是无法完全知道一个页面最终会是什么样子的，因此我们还需要 CSS。</span><br><span class="line">主线程在完成对 CSS 的解析和计算后，才会为每个 DOM 节点赋予最终的样式。</span><br><span class="line">你可以在 DevTools 的 Computed 中查看到页面的相关信息。</span><br><span class="line"></span><br><span class="line">即使开发者不提供任何的 CSS，每个 DOM 节点还是会有各自的样式：&lt;h1&gt; 显示的字体比 &lt;h2&gt; 大、</span><br><span class="line">每个元素都有自己的 margin 值。这是因为浏览器本身有一个默认的样式表。</span><br><span class="line">如果你想知道 Chrome 的默认 CSS 是啥，去看看 Chrome 的源代码[9]吧。</span><br><span class="line"></span><br><span class="line">布局</span><br><span class="line">现在渲染进程知道了文档的结构和每个节点的样式，但这还不足以去渲染一个页面</span><br><span class="line"></span><br><span class="line">布局是查找元素几何形状的过程。主线程遍历 DOM 并计算样式，</span><br><span class="line">创建一个具体横纵坐标以及盒子边界大小数据的布局树（layout tree）。</span><br><span class="line"></span><br><span class="line">布局树可能与 DOM 树相似，但它只包含和页面即将呈现的节点相关的信息。</span><br><span class="line">如果某个元素设置了 display: none ，虽然它会呈现在 DOM 树中但并不会包含于布局树当中；</span><br><span class="line">如果有一个伪类元素 p::before&#123; content: &apos;Hi!&apos; &#125;， 那么它虽然不在 DOM 树中，但仍然会出现在布局树当中。</span><br><span class="line"></span><br><span class="line">注意 dom树  布局树</span><br><span class="line"></span><br><span class="line">页面布局的决策是一项很有挑战的工作。即使是最简单的页面布局，</span><br><span class="line">比如一个从上至下的块状元素集合，也需要去决定字体显示多大、在哪里换行...因为这些都会影响到段落的大小和形状，</span><br><span class="line">这些也都会影响到相邻的元素最终会显示在哪里。</span><br><span class="line"></span><br><span class="line">CSS 可以让元素悬浮在另一侧，可以将溢出的内容隐藏，还可以改变文案的阅读方向。</span><br><span class="line">相信你可以想象的到，布局阶段的任务是非常艰巨的。</span><br><span class="line">Chrome，一整个团队的工程师都致力于布局这一阶段的工作。如果你想看看他们都做了哪些工作，</span><br><span class="line">这里有一个关于 BlinkOn[10] 有趣的会议记录可以看看。</span><br><span class="line"></span><br><span class="line">布局就像是你在尽力还原一幅画：你知道大小、形状以及元素的坐标，但你还是需要决定先画哪一个。</span><br><span class="line"></span><br><span class="line">实际情况是，某个元素可能被设置了 z-index，如果按照 HTML 的元素编写顺序去“画”，就会导致错误的渲染效果</span><br><span class="line"></span><br><span class="line">在这一绘制的过程中，主线程遍历布局树从而去创建绘制记录。绘制记录是绘制进程的“笔记”，</span><br><span class="line">记下了诸如“先是背景，然后文字，接下来是矩形”这样的记录。</span><br><span class="line">如果你曾经在 canvas 上用 JavaScript 画过画，那么这个过程对你来说就很熟悉了。</span><br><span class="line"></span><br><span class="line">更新渲染的代价是很大的</span><br><span class="line">在渲染中最需要关注到的事情是，在每一步中，先前的操作都会产生新的数据。</span><br><span class="line">举个例子，如果布局树的某些东西改变了，文档中相关部分的绘制顺序也需要重新安排一遍。</span><br><span class="line"></span><br><span class="line">如果页面上有动画元素，浏览器会在每一帧都执行这些操作。大多数显示器会以每秒 60 次的频率刷新屏幕，</span><br><span class="line">当你以这样的运动速率去维持动画时，人眼对于动画的感知会是流畅的。然而，如果动画“丢帧”了，页面就会看起来很不友好。</span><br><span class="line"></span><br><span class="line">即使你的渲染操作跟上了屏幕的刷新频率，但这些计算始终是运行在主线程上的，</span><br><span class="line">这就意味着当你的应用在运行 JavaScript 时，这些都会被阻塞掉。</span><br><span class="line"></span><br><span class="line">你可以将 JavaScript 的操作分割为许多小的块并放在 requestAnimationFrame() 里执行，</span><br><span class="line">或者干脆把这些 JavaScript 丢在 Web Worker 里去执行，这样就能避免阻塞主线程。</span><br><span class="line"></span><br><span class="line">合成</span><br><span class="line">现在浏览器知道了文档的结构、每个元素的样式、页面的几何构成以及绘制的顺序，它会怎样去绘制一个页面呢？</span><br><span class="line">将这些信息转化为屏幕上的像素，这个过程叫做光栅化。</span><br><span class="line">处理这个问题有个“幼稚”的办法，就是只对可视区域的部分进行光栅化。当用户滚动页面时移动浏览器的光栅窗口，</span><br><span class="line">从而将剩余的部分渲染出来。实不相瞒，Chrome 在刚发布的时候，确实是用这种方案的。</span><br><span class="line">不过时至今日，现代浏览器的这一过程更为复杂，我们一般称之为合成。</span><br><span class="line"></span><br><span class="line">什么是合成？</span><br><span class="line">合成是一种将页面的各个部分分为多层，分别对其进行光栅化并在成为合成器线程的单独线程中作为页面进行合成的技术。</span><br><span class="line">如果发生了滚动，因为每一层都已经完成了光栅化，剩下需要做的就只是合成出一个窗口。</span><br><span class="line">可以通过移动图层并合并新帧来以相同的方式实现动画。</span><br><span class="line"></span><br><span class="line">你可以在 DevTools 的 Layers 面板[11]中查看你的页面是如何被切分成层的。</span><br><span class="line"></span><br><span class="line">分层</span><br><span class="line">为了确定每个元素各自应该在哪一层，主线程在遍历了布局树后生成了一个叫做 Layer Tree 的东西</span><br><span class="line">（不知道怎么翻译就还是保留 Layer Tree 这个名字吧）。如果页面的某一部分需要单独的层级</span><br><span class="line">（比如滑入的侧边栏目录）但却没有得到对应的层级，开发者可以用 CSS 的 will-change 属性来告知浏览器</span><br><span class="line"></span><br><span class="line">你可能想给每一个元素一个单独的渲染层，但是与每帧光栅化页面的一小部分相比，在过多数量的图层上进行合成可能会导致操作的速度变慢，</span><br><span class="line">因此衡量应用程序的渲染性能也是至关重要的一环。更多内容，</span><br><span class="line">可以阅读这篇文章：Stick to Compositor-Only Properties and Manage Layer Count[12]</span><br><span class="line"></span><br><span class="line">will-change 为web开发者提供了一种告知浏览器该元素会有哪些变化的方法，</span><br><span class="line">这样浏览器可以在元素属性真正发生变化之前提前做好对应的优化准备工作。</span><br><span class="line">这种优化可以将一部分复杂的计算工作提前准备好，使页面的反应更为快速灵敏</span><br><span class="line"></span><br><span class="line">主线程的光栅与合成</span><br><span class="line">一旦 layer tree 形成并且绘制的顺序定下来后，主线程会将这个消息提交给合成线程。然后，合成器线程将每个图层光栅化</span><br><span class="line">一个图层有可能和整个页面一样大，所以合成器线程将它们切割为很多小块，并将这些块发送给光栅线程</span><br><span class="line">光栅线程将一小块完成光栅化后将其保存在 GPU 的内存当中</span><br><span class="line"></span><br><span class="line">合成线程可以优先处理不同的光栅线程，以便可以首先对可视区域（或者可视区域附近）中的事物进行光栅化</span><br><span class="line">图层还具有用于不同分辨率的多个拼贴，以处理诸如放大动作之类的事情。</span><br><span class="line"></span><br><span class="line">光栅化后，合成器线程将收集成为“Draw Quads（绘制四边形？）”的图块信息以创建 合成帧（Compositor frame）</span><br><span class="line"></span><br><span class="line">合成帧会通过 IPC 被传递给浏览器进程。这时，来自其他 UI 线程的合成帧可能已经被用于浏览器的 UI 变化了</span><br><span class="line">合成帧被运送至 GPU，目的就是为了显示在屏幕上</span><br><span class="line">如果这时滚动页面，合成器线程又会创建新的合成帧并将之发送到 GPU</span><br><span class="line"></span><br><span class="line">合成的优势是所有的合成操作都是独立于主线程进行的。合成器线程不需要等待样式的计算或是 JavaScript 的执行。</span><br><span class="line">这就是 COA（Compositing Only Animations[13]）能加速页面性能的原因。</span><br><span class="line">如果页面的布局或者绘制需要被重新计算，这种情况下主线程就会被牵扯进来。</span><br><span class="line"></span><br><span class="line">从浏览器的角度定义输入事件</span><br><span class="line">当提到“输入事件”时，你可能会想到在文本域中打字或是鼠标的点击事件，</span><br><span class="line">但在浏览器看来，用户的任何动作都意味着“输入”。鼠标滚轮的滚动是一种输入事件，触摸或者鼠标滑过也是一种输入事件。</span><br><span class="line"></span><br><span class="line">当用户的交互行为发生时（比如触摸点击屏幕），浏览器进程会第一个感知到这个用户行为，但也仅仅是感知而已，</span><br><span class="line">因为浏览器 tab 下的内容都是由渲染进程全盘掌控着。于是浏览器进程在第一时间将用户事件的类型和坐标发送给渲染进程。</span><br><span class="line">渲染进程通过查找并调用对应的事件处理函数来处理这个用户输入事件。</span><br><span class="line"></span><br><span class="line">合成器接收到输入事件</span><br><span class="line">在上一篇文章中，我们研究了合成器如何通过光栅化图层来平滑的处理滚动。</span><br><span class="line">如果页面上没有事件监听器，合成器线程会创建一个完全独立于主线程的新的合成帧。</span><br><span class="line"></span><br><span class="line">非快速滚动区域</span><br><span class="line">因为运行 JavaScript 是主线程的任务，当一个页面被合成，合成器线程将页面上挂在了事件处理器的区域标记为“非快速滚动区域”。</span><br><span class="line">有了这个标记之后，合成器就能保证在对应的区域触发输入事件时可以向主线程传递这一事件。</span><br><span class="line">如果输入事件来自于这个区域之外，合成器则会持续合成新的帧，并不会等待主线程</span><br><span class="line"></span><br><span class="line">写事件处理器时要注意</span><br><span class="line">在 Web 开发中一个比较常见的事件处理模型就是事件委托（代理）。因为事件的冒泡机制，</span><br><span class="line">开发者可以在最顶层的元素挂载一个事件处理函数，并且基于 event target 分发不同的处理逻辑。</span><br><span class="line"></span><br><span class="line">只用写一个事件处理器就可以搞定所有的输入事件，这在工程学上是一件极具魅力的事情。</span><br><span class="line">当你从浏览器的视角审视这段代码的时候，你会发现整个页面都被标记成了“非快速滚动区域”。</span><br><span class="line">这就意味着即使你的 web app 不关心来自页面上某个位置的输入事件，</span><br><span class="line">但合成器线程仍然会基于这次触发的事件和主线程进行“交流”。</span><br><span class="line">在这种模式之下，合成器本身“平滑处理页面滚动”的能力就不复存在了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">为了减轻这种情况的发生，开发者可以给自己的事件处理器传递 passive: true 这样一个参。</span><br><span class="line">这等同于告诉浏览器开发者仍然希望在主线程中监听页面上每一次触发的输入事件，</span><br><span class="line">但也希望合成器该干啥干啥，持续合成新的帧。</span><br><span class="line"></span><br><span class="line">在你的鼠标事件监听函数中使用 passive:true 意味着页面的滚动可以按照往常纵享丝滑般地去处理，</span><br><span class="line">你会为了限制滚动的方向调用 preventDefault ，但在这之前竖直的滚动就可能已经发生了。</span><br><span class="line">你可以通过 event.cancelable 针对此种情况进行相应的优化。</span><br><span class="line"></span><br><span class="line">document.body.addEventListener(&apos;pointermove&apos;, event =&gt; &#123;</span><br><span class="line">  if (event.cancelable) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123; passive: true &#125;);</span><br><span class="line"></span><br><span class="line">你也可以用如下 css 来帮忙消除事件处理器：</span><br><span class="line"></span><br><span class="line">#area &#123;</span><br><span class="line">  touch-action: pan-x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">当合成器线程向主线程发送了一个输入事件后，第一件事情就是通过 hit test（点击测试）</span><br><span class="line">找到对应的 event target（事件目标，还是不翻译这个词比较正宗）</span><br><span class="line">Hit test 利用渲染进程产生的绘制记录来找出在触发本次输入事件的坐标底下的真实元素</span><br><span class="line"></span><br><span class="line">减少主线程的事件处理负担</span><br><span class="line"></span><br><span class="line">主流的显示器通过每秒 60 次的频率刷新以及我们需要跟上这个节奏以实现流畅的动画效果。</span><br><span class="line">对于输入事件来说，主流的触摸屏会以每秒 60 到 120 次的频率向主线程传递触摸事件，</span><br><span class="line">大多数的鼠标事件都被以每秒 100 次的频率传递给主线程。</span><br><span class="line">输入事件的保真度是普遍高于主流屏幕的刷新能力的。</span><br><span class="line"></span><br><span class="line">如果一个持续不断的事件（比如 touchmove）在一秒内被传递给了主线程 120 次，</span><br><span class="line">这就会触发大量的 hit test 和 JavaScript 的执行，</span><br><span class="line">这么一对比，每秒 60 次的屏幕刷新速率就显得太慢了。</span><br><span class="line"></span><br><span class="line">为了减少主线程的负担，Chrome 将常见的连续事件进行了合并（比如 wheel、mousewheel、mousemove、pointermove、touchmove 等），</span><br><span class="line">并且在 requestAnimationFrame 中延缓了事件的触发时机。</span><br><span class="line"></span><br><span class="line">其他“分散触发”的事件（keydown、keyup、mouseup、touchstart、touchend 等）仍保持立即触发的策略。</span><br><span class="line"></span><br><span class="line">通过 getCoalescedEvents 获取帧内事件</span><br><span class="line"></span><br><span class="line">对于大多数的 web app 来说，合成事件是为了更好的用户体验。假如你在开发一款绘画的应用程序，</span><br><span class="line">如果你根据 touchmove 的坐标来放置路径，大概率是会丢失掉中间的坐标的，你也就无法画一条平滑的线了。</span><br><span class="line">这种情况下，你就可以用 getCoalescedEvents 这个方法来获取更多关于合成事件的信息</span><br><span class="line"></span><br><span class="line">window.addEventListener(&apos;pointermove&apos;, event =&gt; &#123;</span><br><span class="line">  const evnets = event.getCoalescedEvents();</span><br><span class="line">  for (let event of events) &#123;</span><br><span class="line">    const x = event.pageX;</span><br><span class="line">    const y = event.pageY;</span><br><span class="line">    // 用这些坐标画线，稳</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">如果你之前从来没有想过为什么官方推荐在你的事件处理函数中添加 passive 参数，</span><br><span class="line">或者不知道为什么在 script 标签上添加 async 属性，我希望这个系列能为你阐明为什么浏览器需要这些东西来提供更快、更流畅的用户体验。</span><br><span class="line"></span><br><span class="line">Lighthouse 用起来</span><br><span class="line">如果你想让自己的代码变得更加“浏览器友好”却不知道从哪里开始，不妨试试 Lighthouse[3] 吧。Lighthouse 是一个可以对网站进行审核检查的工具，会为开发者提供一份包含网站得分以及优化方案的详尽报告。</span><br><span class="line"></span><br><span class="line">学习如何度量性能</span><br><span class="line">不同的网站对于性能的需求可能不同，因此找到合适的度量方法以及优化方案是至关重要的。Chrome 的开发者工具团队有话说：通过 Chrome Devtools 优化网站性能[4]。</span><br><span class="line"></span><br><span class="line">给网站添加 Feature Policy</span><br><span class="line">如果你想更进一步，Feature Policy 了解一下？Feature Policy 是一个新的 web 特性，它可以在开发者构建 web app 时提供“保护”。启用 feature policy 可以确保你的 web app 具备某些行为，并在一定程度上避免开发者犯错。举个例子，如果你希望保证你的 app 不会阻塞解析，你可以在同步脚本策略之下运行你的 app。当 sync-script:none 打开时，会阻塞解析的 JavaScript 都会被阻止执行。这一策略会防止任何“脚本阻塞解析”的发生，浏览器就再也不用担心解析被阻塞这件事情了。</span><br><span class="line"></span><br><span class="line">通常来说就是滚动当前页面（还可能是缩放页面），如果它的默认行为被阻止了，页面就必须静止不动。但浏览器无法预先知道一个监听器会不会调用 preventDefault()，它能做的只有等监听器执行完后再去执行默认行为，而监听器执行是要耗时的，有些甚至耗时很明显，这样就会导致页面卡顿。视频里也说了，即便监听器是个空函数，也会产生一定的卡顿，毕竟空函数的执行也会耗时。</span><br><span class="line"></span><br><span class="line">视频里还说了，有 80% 的滚动事件监听器是不会阻止默认行为的，也就是说大部分情况下，浏览器是白等了。所以，passive 监听器诞生了，passive 的意思是“顺从的”，表示它不会对事件的默认行为说 no，浏览器知道了一个监听器是 passive 的，它就可以在两个线程里同时执行监听器中的 JavaScript 代码和浏览器的默认行为了。</span><br><span class="line"></span><br><span class="line">https://developers.google.com/web/updates/2018/09/inside-browser-part4</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/26/How-to-Configure-VS-Code-Like-a-Pro/" rel="next" title="How to Configure VS Code Like a Pro">
+                <i class="fa fa-chevron-left"></i> How to Configure VS Code Like a Pro
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/13/7-JavaScript-Utility-Functions-to-Improve-Your-Efficiency/" rel="prev" title="7 JavaScript Utility Functions to Improve Your Efficiency ">
+                7 JavaScript Utility Functions to Improve Your Efficiency  <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">killsos.ql@gmail.com</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gpu"><span class="nav-number">1.</span> <span class="nav-text">Gpu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器架构"><span class="nav-number">2.</span> <span class="nav-text">浏览器架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome-服务化-——-节省更多的内存"><span class="nav-number">3.</span> <span class="nav-text">Chrome 服务化 —— 节省更多的内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站点隔离（Site-Isolation）"><span class="nav-number">4.</span> <span class="nav-text">站点隔离（Site Isolation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次简单的导航"><span class="nav-number">5.</span> <span class="nav-text">一次简单的导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渲染进程"><span class="nav-number">6.</span> <span class="nav-text">渲染进程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">killsos.ql@gmail.com</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
