@@ -230,6 +230,249 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/29/same-site-same-origin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/29/same-site-same-origin/" itemprop="url">same-site same-origin</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-29T16:53:19+08:00">
+                2020-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">origin  同协议  同主机名  同端口</span><br><span class="line"></span><br><span class="line">三同为一个origin</span><br></pre></td></tr></table></figure>
+<h2 id="同站"><a href="#同站" class="headerlink" title="同站"></a>同站</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">site .com 和 .org 这样的顶级域名(tld)会在根区域数据库中被列出</span><br><span class="line">tld: Top-level Domain</span><br><span class="line"></span><br><span class="line">site 是 TLD 和它前面的部分域的组合</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">给定一个URL  https://www.example.com:443/foo ，site 就是 example.com</span><br><span class="line"></span><br><span class="line">对于 .co.jp 或 .github.io 这样的域名。仅仅使用 .jp 或 .io 的 TLD 是不够细粒度的。</span><br><span class="line">而且也没有办法通过算法确定特定 TLD 的可注册域名级别。</span><br><span class="line">这就是创建“有效顶级域名”列表的原因。</span><br><span class="line">.github.io等这种域名 它们在公共后缀列表中定义。</span><br><span class="line">etld 列表在 publicsuffix.org/list 上维护。</span><br><span class="line"></span><br><span class="line">整个站点命名为 eTLD + 1 。例如，假定 URL 为 https://my-project.github.io，则 eTLD 为 .github.io</span><br><span class="line"></span><br><span class="line">而 eTLD + 1 为 my-project.github.io，这被视为 site。</span><br><span class="line"></span><br><span class="line">换句话说，eTLD+1 是有效的 TLD 紧接其之前的域的一部分。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Cookie（复数形态Cookies），类型为「小型文本文件」，指某些网站为了辨别用户身份而储存在用户本地终端上的数据。</span><br><span class="line"></span><br><span class="line">作为一段一般不超过 4KB 的小型文本数据，它由一个名称（Name）、一个值（Value）和其它几个用于控制 Cookie 有效期、安全性、使用范围的可选属性组成，</span><br><span class="line"></span><br><span class="line">Mac 下的 Chrome，存放目录就是 ~/Library/Application Support/Google/Chrome/Default，里面会有一个名为 Cookies 的数据库文件</span><br><span class="line"></span><br><span class="line">你可以使用 sqlite 软件打开它</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SameSite</span><br><span class="line">SameSite 是最近非常值得一提的内容，因为 2 月份发布的 Chrome80 版本中默认屏蔽了第三方的 Cookie，这会导致产生问题</span><br><span class="line">1. 作用</span><br><span class="line">我们先来看看这个属性的作用：</span><br><span class="line"></span><br><span class="line">SameSite 属性可以让 Cookie 在跨站请求时不会被发送，从而可以阻止跨站请求伪造攻击（CSRF）</span><br><span class="line">2. 属性值</span><br><span class="line">SameSite 可以有下面三种值：</span><br><span class="line"></span><br><span class="line">Strict 仅允许一方请求携带 Cookie，即浏览器将只发送相同站点请求的 Cookie，即当前网页 URL 与请求目标 URL 完全一致。</span><br><span class="line">Lax 允许部分第三方请求携带 Cookie</span><br><span class="line">None 无论是否跨站都会发送 Cookie</span><br><span class="line">之前默认是 None 的，Chrome80 后默认是 Lax</span><br><span class="line"></span><br><span class="line">Cookie中的「同站」判断就比较宽松：只要两个 URL 的 eTLD+1 相同即可，不需要考虑协议和端口。</span><br><span class="line">其中，eTLD 表示有效顶级域名，注册于 Mozilla 维护的公共后缀列表（Public Suffix List）中，</span><br><span class="line">例如，.com、.co.uk、.github.io 等。eTLD+1 则表示，有效顶级域名+二级域名，例如 taobao.com 等。</span><br><span class="line"></span><br><span class="line">Chrome 发送请求时会附带一个  Sec-Fetch-Site HTTP Header 。截至2020年4月，还没有其他浏览器支持 Sec-Fetch-Site，这个 HTTP Header 将有以下值之一:</span><br><span class="line"></span><br><span class="line">cross-site</span><br><span class="line">same-site</span><br><span class="line">same-origin</span><br><span class="line">none</span><br><span class="line">通过检查 Sec-Fetch-Site 的值，您可以确定请求是 “同站”，“同源” 还是 “跨站”。</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/28/JavaScript-Basics-—-Prototypes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/28/JavaScript-Basics-—-Prototypes/" itemprop="url">JavaScript Basics — Prototypes</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-28T18:00:25+08:00">
+                2020-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Prototypes"><a href="#Prototypes" class="headerlink" title="Prototypes"></a>Prototypes</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">Prototype是一个对象</span><br><span class="line">js继承通过它来完成</span><br><span class="line"></span><br><span class="line">对象通过Object.getPrototypeOf来原型</span><br><span class="line"></span><br><span class="line">Object.getPrototypeOf() 方法返回指定对象的原型（内部[[Prototype]]属性的值）</span><br><span class="line"></span><br><span class="line">或者 __proto__</span><br><span class="line"></span><br><span class="line">函数 继承自 Function.prototype</span><br><span class="line"></span><br><span class="line">Function.prototype 继承自Object.prototype</span><br><span class="line"></span><br><span class="line">函数</span><br><span class="line"></span><br><span class="line">function bar() &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(1, bar.prototype) // &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(2, bar.prototype.constructor)  // [Function: bar]</span><br><span class="line"></span><br><span class="line">console.log(3, Object.getPrototypeOf(bar)) // [Function]</span><br><span class="line"></span><br><span class="line">console.log(4, Object.getPrototypeOf(bar).constructor) // [Function: Function]</span><br><span class="line"></span><br><span class="line">console.log(5, Object.getPrototypeOf(Object.getPrototypeOf(bar))) // &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(6, Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(bar)))) // null</span><br><span class="line"></span><br><span class="line">function bar() &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(1, bar.prototype) // bar &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(2, bar.prototype.constructor) // [Function: bar]</span><br><span class="line"></span><br><span class="line">console.log(3, bar.__proto__) // [Function]</span><br><span class="line"></span><br><span class="line">console.log(4, bar.__proto__.constructor) // [Function: Function]</span><br><span class="line"></span><br><span class="line">console.log(5, Object.getPrototypeOf(bar)) // [Function]</span><br><span class="line"></span><br><span class="line">console.log(6, Object.getPrototypeOf(bar).constructor) // [Function: Function]</span><br><span class="line"></span><br><span class="line">总结 对于函数的 __proto__属性 和  Object.getPrototypeOf方法 是获得 对象的原型的获取</span><br><span class="line">所以 是对bar.prototype这个对象进行计算</span><br><span class="line"></span><br><span class="line">一道不错的面试题</span><br><span class="line"></span><br><span class="line">function bar() &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(1, bar.prototype) // bar &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(2, bar.prototype.constructor) // [Function: bar]</span><br><span class="line"></span><br><span class="line">console.log(3, bar.__proto__) // [Function]</span><br><span class="line"></span><br><span class="line">console.log(4, bar.__proto__.constructor) // [Function: Function]</span><br><span class="line"></span><br><span class="line">说明了 函数没有__proto__属性 只有普通对象才会有这个属性__proto__</span><br><span class="line">所以会才递归查找</span><br><span class="line"></span><br><span class="line">同理 Object.getPrototypeOf这个也是查询普通对象的原型</span><br><span class="line"></span><br><span class="line">所有 bar.protprototype 一定不等于 Object.getPrototypeOf(bar)</span><br><span class="line"></span><br><span class="line">对象</span><br><span class="line"></span><br><span class="line">let  bar = &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(1, bar.__proto__) // &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(2, bar.__proto__.constructor)  // [Function: Object]</span><br><span class="line"></span><br><span class="line">console.log(3, Object.getPrototypeOf(bar)) // &#123;&#125;</span><br><span class="line"></span><br><span class="line">console.log(3, Object.getPrototypeOf(bar) === bar.__proto__) // true</span><br><span class="line"></span><br><span class="line">console.log(4, Object.getPrototypeOf(bar).constructor) // [Function: Object]</span><br><span class="line"></span><br><span class="line">console.log(5, Object.getPrototypeOf(Object.getPrototypeOf(bar))) // null</span><br></pre></td></tr></table></figure>
+<h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">指定原型创造对象</span><br><span class="line">Object.create(proto, [propertiesObject])</span><br><span class="line"></span><br><span class="line">// proto 可以为null</span><br></pre></td></tr></table></figure>
+<h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">类的出现是原型继承的语法糖</span><br><span class="line"></span><br><span class="line">extends</span><br><span class="line"></span><br><span class="line">super 继承父级属性和调用父级方法</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/28/Scopes-in-Javascript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1218,249 +1461,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/09/get请求参数中文编码乱码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/09/get请求参数中文编码乱码/" itemprop="url">get请求参数中文编码乱码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T11:09:09+08:00">
-                2020-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">get请求的字符编码问题</span><br><span class="line">因为其请求参数都是拼接在url上，而Request对象设置编码只能对请求体其作用，</span><br><span class="line">并不能对url编码起作用，url依然使用的是iso-8859-1编码</span><br><span class="line"></span><br><span class="line">get的限制表单的数据集为ASCII码  url=encodeURI(url);</span><br><span class="line"></span><br><span class="line">GET请求  浏览器端是以UTF-8进行编码</span><br><span class="line"></span><br><span class="line">encodeURIComponent()是对统一资源标识符（URI）的组成部分进行编码的方法</span><br><span class="line">它使用一到四个转义序列来表示字符串中的每个字符的UTF-8编码</span><br><span class="line">只有由两个Unicode代理区字符组成的字符才用四个转义字符编码</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">encodeURI()  函数通过将特定字符的每个实例替换为一个、两个</span><br><span class="line">三或四转义序列来对统一资源标识符 (URI) 进行编码</span><br><span class="line">该字符的 UTF-8 编码仅为四转义序列)由两个 &quot;代理&quot; 字符组成</span><br></pre></td></tr></table></figure>
-<h2 id="Post请求"><a href="#Post请求" class="headerlink" title="Post请求"></a>Post请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">post请求处理编码比较容易，直接使用request对象设置编码就可以了</span><br><span class="line">因为post的数据实在请求体里，而request设置编码是会影响到请求体数据编码的所以设置编码有效</span><br></pre></td></tr></table></figure>
-<h2 id="escape-字符编码"><a href="#escape-字符编码" class="headerlink" title="escape 字符编码"></a>escape 字符编码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">escape是对字符串(string)进行编码</span><br><span class="line"></span><br><span class="line">其中 ASCII字母 数字 @*/+  这几个字符不会被编码，其余的都会</span><br></pre></td></tr></table></figure>
-<h2 id="URL-编码"><a href="#URL-编码" class="headerlink" title="URL 编码"></a>URL 编码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">encodeURI 和 encodeURIComponent 都是编码URL，唯一区别就是编码的字符范围</span><br><span class="line"></span><br><span class="line">1. encodeURI</span><br><span class="line"></span><br><span class="line">2. encodeURIComponent</span><br><span class="line"></span><br><span class="line">encodeURI方法不会对下列字符编码  ASCII字母  数字  ~!@#$&amp;*()=:/,;?+&apos;</span><br><span class="line"></span><br><span class="line">encodeURIComponent方法不会对下列字符编码 ASCII字母  数字  ~!*()&apos;</span><br><span class="line"></span><br><span class="line">所以encodeURIComponent比encodeURI编码的范围更大。</span><br><span class="line"></span><br><span class="line">escape 和 encodeURI 都属于 Percent-encoding，基本功能都是把 URI 非法字符转化成合法字符，转化后形式类似「%*」。</span><br><span class="line"></span><br><span class="line">它们的根本区别在于，escape 在处理 0xff 之外字符的时候，是直接使用字符的 unicode 在前面加上一个 「%u」，</span><br><span class="line">而encodeURI则是先进行 UTF-8，再在 UTF-8 的每个字节码前加上一个 「%」</span><br><span class="line">在处理 0xff 以内字符时，编码方式是一样的（都是「%XX」，XX为字符的 16 进制 unicode，同时也是字符的 UTF-8），</span><br><span class="line"></span><br><span class="line">只是范围（即哪些字符编码哪些字符不编码）不一样。</span><br><span class="line"></span><br><span class="line">encodeURI 是W3C 的标准，而 Escape 是非标准</span><br><span class="line"></span><br><span class="line">Percent-encoding</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding%5Fin%5Fa%5FURI</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/09/JavaScript-Events-Handlers-—-onanimationstart/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/09/JavaScript-Events-Handlers-—-onanimationstart/" itemprop="url">JavaScript Events Handlers — onanimationstart</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T10:02:40+08:00">
-                2020-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="onanimationstart"><a href="#onanimationstart" class="headerlink" title="onanimationstart"></a>onanimationstart</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// when a CSS animation starts to play</span></span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">'container'</span>&gt;</span><br><span class="line">  &lt;div id=<span class="string">'box'</span>&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line">#box &#123;</span><br><span class="line">  width: <span class="number">100</span>px;</span><br><span class="line">  height: <span class="number">100</span>px;</span><br><span class="line">  left: <span class="number">0</span>;</span><br><span class="line">  top: <span class="number">0</span>;</span><br><span class="line">  border: <span class="number">1</span>px solid red;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  position: relative;</span><br><span class="line">  background-color: red;</span><br><span class="line">  display: block;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  animation: <span class="number">5</span>s resizeBox;</span><br><span class="line">&#125;</span><br><span class="line">#container &#123;</span><br><span class="line">  height: <span class="number">500</span>px;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes resizeBox &#123;</span><br><span class="line">  <span class="keyword">from</span> &#123;</span><br><span class="line">    transform: translateX(<span class="number">100</span>%) scaleX(<span class="number">3</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    transform: translateX(<span class="number">0</span>) scaleX(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// create the resizeBox animation</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.onanimationstart = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(event);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Animation starts'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">event:</span><br><span class="line"></span><br><span class="line">  bubbles</span><br><span class="line"></span><br><span class="line">  cancelBubble</span><br><span class="line"></span><br><span class="line">  cancelable</span><br><span class="line"></span><br><span class="line">  composed is a read-only boolean property that indicates whether or not the event can bubble across</span><br><span class="line">  the boundary between the shadow DOM and the regular DOM</span><br><span class="line"></span><br><span class="line">  currentTarget</span><br><span class="line"></span><br><span class="line">  deepPath</span><br><span class="line"></span><br><span class="line">  defaultPrevented</span><br><span class="line"></span><br><span class="line">  eventPhase</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  explicitOriginalTarget</span><br><span class="line"></span><br><span class="line">  originalTarget</span><br><span class="line"></span><br><span class="line">  returnValue</span><br><span class="line"></span><br><span class="line">  srcElement</span><br><span class="line"></span><br><span class="line">  timeStamp</span><br><span class="line"></span><br><span class="line">  type</span><br><span class="line"></span><br><span class="line">  isTrusted</span><br><span class="line"></span><br><span class="line">AnimationEvent</span><br><span class="line"></span><br><span class="line">  animationName</span><br><span class="line"></span><br><span class="line">  elapsedTime</span><br><span class="line"></span><br><span class="line">  pseudoElement</span><br><span class="line"></span><br><span class="line">  animationName: <span class="string">"resizeBox"</span></span><br><span class="line">  bubbles: <span class="literal">true</span></span><br><span class="line">  ​cancelBubble: <span class="literal">false</span></span><br><span class="line">  ​cancelable: <span class="literal">false</span></span><br><span class="line">  ​composed: <span class="literal">false</span></span><br><span class="line">  ​currentTarget: <span class="literal">null</span></span><br><span class="line">  ​defaultPrevented: <span class="literal">false</span></span><br><span class="line">  ​elapsedTime: <span class="number">0</span></span><br><span class="line">  ​eventPhase: <span class="number">0</span></span><br><span class="line">  ​explicitOriginalTarget: <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span></span></span><br><span class="line"><span class="xml">  ​isTrusted: true</span></span><br><span class="line">  ​originalTarget: &lt;div id="box"&gt;</span><br><span class="line">  ​pseudoElement: ""</span><br><span class="line">  ​returnValue: true</span><br><span class="line">  ​srcElement: &lt;div id="box"&gt;​target: &lt;div id="box"&gt;</span><br><span class="line">  ​timeStamp: 297</span><br><span class="line">  ​type: "animationstart"</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1511,7 +1511,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-count">137</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

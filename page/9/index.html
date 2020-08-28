@@ -230,6 +230,322 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/04/JavaScript-new-features-in-ES2019-ES10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/04/JavaScript-new-features-in-ES2019-ES10/" itemprop="url">JavaScript new features in ES2019(ES10)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T09:10:39+08:00">
+                2020-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Array-prototype-flat-depth"><a href="#1-Array-prototype-flat-depth" class="headerlink" title="1. Array.prototype.flat(depth)"></a>1. Array.prototype.flat(depth)</h2><ol>
+<li>指定深度 拍平</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> array1 = [<span class="string">'a'</span>,<span class="string">'b'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]];</span><br><span class="line"><span class="keyword">let</span> array2 = array1.flat();</span><br><span class="line"></span><br><span class="line"><span class="comment">//['a', 'b', 1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>过滤空元素</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> array1 = [<span class="string">'a'</span>, <span class="string">'b'</span>, , , , <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">let</span> array2 = array1.flat();</span><br><span class="line"><span class="comment">// ['a','b','c']</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-Array-prototype-flatMap"><a href="#2-Array-prototype-flatMap" class="headerlink" title="2. Array.prototype.flatMap"></a>2. Array.prototype.flatMap</h2><ol>
+<li>自动拍平深度默认是1  用map方法遍历所有元素  返回一个新数组</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">arr1.map(<span class="function"><span class="params">x</span> =&gt;</span> [x * <span class="number">2</span>]); </span><br><span class="line"><span class="comment">// [[2], [4], [6], [8]]</span></span><br><span class="line"></span><br><span class="line">arr1.flatMap(<span class="function"><span class="params">x</span> =&gt;</span> [x * <span class="number">2</span>]);</span><br><span class="line"><span class="comment">// [2, 4, 6, 8]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// only one level is flattened</span></span><br><span class="line">arr1.flatMap(<span class="function"><span class="params">x</span> =&gt;</span> [[x * <span class="number">2</span>]]);</span><br><span class="line"><span class="comment">// [[2], [4], [6], [8]]</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-Object-fromEntries"><a href="#3-Object-fromEntries" class="headerlink" title="3. Object.fromEntries()"></a>3. Object.fromEntries()</h2><ol>
+<li>转为 key-value对 放到一个数组中 参数对象必须是可迭代的</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> entries = <span class="built_in">Object</span>.entries(obj);</span><br><span class="line"></span><br><span class="line"><span class="comment">// entries</span></span><br><span class="line">(<span class="number">3</span>) [<span class="built_in">Array</span>(<span class="number">2</span>), <span class="built_in">Array</span>(<span class="number">2</span>), <span class="built_in">Array</span>(<span class="number">2</span>)]</span><br><span class="line"><span class="number">0</span>: (<span class="number">2</span>) [<span class="string">"a"</span>, <span class="number">1</span>]</span><br><span class="line"><span class="number">1</span>: (<span class="number">2</span>) [<span class="string">"b"</span>, <span class="number">2</span>]</span><br><span class="line"><span class="number">2</span>: (<span class="number">2</span>) [<span class="string">"c"</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = <span class="built_in">Object</span>.fromEntries(entries)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;a: 1, b: 2, c: 3&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-String-trimStart-amp-String-trimEnd"><a href="#4-String-trimStart-amp-String-trimEnd" class="headerlink" title="4. String.trimStart() &amp; String.trimEnd()"></a>4. String.trimStart() &amp; String.trimEnd()</h2><ol>
+<li>去掉头部或尾部的空格</li>
+</ol>
+<h2 id="5-Optional-Catch-Binding"><a href="#5-Optional-Catch-Binding" class="headerlink" title="5. Optional Catch Binding"></a>5. Optional Catch Binding</h2><p>catch 本来需要提供error参数 现在不需要了</p>
+<p>Without optional catch binding:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">// we have error parameter to handle it</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>With optional catch binding:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="comment">// no binding or parameter to handle it</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-Function-“toString”-Revision"><a href="#6-Function-“toString”-Revision" class="headerlink" title="6. Function “toString” Revision"></a>6. Function “toString” Revision</h2><p>Now the toString method must return source text slice from the beginning of the first token to end of the<br>last token matched by the appropriate grammar</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> /* <span class="title">kk</span>*/ <span class="title">foo</span>(<span class="params"></span>) </span>&#123; <span class="comment">/* cc */</span> &#125;</span><br><span class="line"><span class="comment">// before:</span></span><br><span class="line">foo.toString();</span><br><span class="line"><span class="comment">// "function foo() &#123;&#125;"</span></span><br><span class="line"><span class="comment">// Now:</span></span><br><span class="line">foo.toString();</span><br><span class="line"><span class="comment">//"function /* kk*/ foo() &#123; /* cc */ &#125;"</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-Array-Sort-Stability"><a href="#7-Array-Sort-Stability" class="headerlink" title="7.Array.Sort Stability"></a>7.Array.Sort Stability</h3><p>V8中数组排序使用的不稳定快排算法 如果数组的元素多余10个的时候</p>
+<p>v8(chrome&gt;=70) 使用了 稳定 TimeSort 算法</p>
+<h2 id="8-Symbol-description"><a href="#8-Symbol-description" class="headerlink" title="8. Symbol.description"></a>8. Symbol.description</h2><p>获得一个Symbol的描述</p>
+<p>before</p>
+<p>const symbol1 = Symbol(‘my symbol’);<br>console.log(symbol1.toString());//Symbol(my symbol)</p>
+<p>Now:</p>
+<p>const symbol1 = Symbol(‘my symbol’);<br>console.log(symbol1)<br>console.log(String(symbol1) === <code>Symbol(${&#39;my symbol&#39;})</code>);<br>console.log(symbol1.description);<br>console.log(String(symbol1))</p>
+<p>// Symbol(my symbol)<br>// true<br>// my symbol<br>// Symbol(my symbol)</p>
+<h2 id="9-私有类变量"><a href="#9-私有类变量" class="headerlink" title="9. 私有类变量"></a>9. 私有类变量</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  #born = 1980</span><br><span class="line">  age() &#123; console.log(2020 - this.#born) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person1 = <span class="keyword">new</span> Person()</span><br><span class="line">person1.age() <span class="comment">// 40</span></span><br><span class="line">console.log(person1.#age)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Uncaught SyntaxError: Private field '#age' must be declared in an     </span></span><br><span class="line"><span class="comment">//enclosing class</span></span><br></pre></td></tr></table></figure>
+<h2 id="10-Promise-allSettled"><a href="#10-Promise-allSettled" class="headerlink" title="10. Promise.allSettled"></a>10. Promise.allSettled</h2><p>静态方法 all race allsettled</p>
+<p>all race 只有一个rejected 就会终止  短回路</p>
+<p>allsettled 不会因为任何一个 一定是等待所有 settled 后 </p>
+<p>Promise.allSettled does not short-circuit added in ES2020</p>
+<p>Promise.all short-circuits when an input value is rejected added in ES6</p>
+<p>Promise.race short-circuits when an input value is settled added in ES6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promiseOne = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span></span><br><span class="line">                       setTimeout(resolve, <span class="number">300</span>));</span><br><span class="line"><span class="keyword">const</span> promiseTwo = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span></span><br><span class="line">                       setTimeout(reject, <span class="number">300</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.allSettled([promiseOne, promiseTwo]).then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'data'</span>, data));</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.all([promiseOne, promiseTwo]).then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'data'</span>, data), error =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error'</span>, error)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.race([promiseOne, promiseTwo]).then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'data'</span>, data), error =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error'</span>, error)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="11-String-prototype-matchAll"><a href="#11-String-prototype-matchAll" class="headerlink" title="11. String.prototype.matchAll"></a>11. String.prototype.matchAll</h2><p>给定一个字符串和一个正则表达式，matchAll（）方法返回一个与正则表达式匹配字符串的所有结果的迭代器，包括捕获组</p>
+<p>Syntax: str.matchAll(regexp)</p>
+<p>regexp: A regular expression object</p>
+<p>Return value: An iterator (which is not a restartable iterable)</p>
+<p>Capture groups are ignored when using match() with the global /g flag</p>
+<p>const regexp = /g(ro)(up(\d?))/g;<br>const groups = ‘group1group2group3’;<br>groups.match(regexp);<br>//(3) [“group1”, “group2”, “group3”]<br>//0: “group1”<br>//1: “group2”<br>//2: “group3”</p>
+<p>Using matchAll, you can access capture groups</p>
+<p>const regexp = /g(ro)(up(\d?))/g;<br>const someString = ‘group1group2group3’;<br>const array = […someString.matchAll(regexp)];<br>array<br>//(3) [Array(4), Array(4), Array(4)]<br>//0: (4) [“group1”, “ro”, “up1”, “1”, index: 0, input: //“group1group2group3”, groups: undefined]<br>//1: (4) [“group2”, “ro”, “up2”, “2”, index: 6, input: //“group1group2group3”, groups: undefined]<br>//2: (4) [“group3”, “ro”, “up3”, “3”, index: 12, input: //“group1group2group3”, groups: undefined]<br>//length: 3</p>
+<h2 id="12-Optional-Chaining-Operator"><a href="#12-Optional-Chaining-Operator" class="headerlink" title="12. Optional Chaining Operator ?."></a>12. Optional Chaining Operator ?.</h2><p>对象 数组 函数调用</p>
+<p>let consumption = car?.engine?.consumption</p>
+<p>let car1 = array?.[1]</p>
+<h2 id="13-Dynamic-Import"><a href="#13-Dynamic-Import" class="headerlink" title="13. Dynamic Import"></a>13. Dynamic Import</h2><p>动态import（）引入了一种类似于函数的新导入形式，与静态导入相比，它可以释放新功能，例如：我们可以与延迟加载一起使用</p>
+<p>//greetingsModule.js<br>export hello () =&gt; console.log(“Hello World!”);</p>
+<p>静态引入</p>
+<p>//main.js<br>import * as greet from ‘./ greetingsModule.js’;<br>greet.hello();<br>//Hello World!</p>
+<p>静态导入语法只能在文件的顶层使用</p>
+<p>相反，使用动态导入，import（module）表达式将加载模块并返回一个promise</p>
+<p>该promise将解析为包含其所有导出内容的模块对象</p>
+<p>另外，您可以在代码中的任何位置调用它</p>
+<p>…<br>if( 1 === 1){<br>import(’./greetingsModule.js’).then( (greet) =&gt; {<br>             greet.hello();<br>            // Hello World!<br>         });<br>}<br>…</p>
+<p>Or you can use async/await:</p>
+<p>…<br>async function load() {<br>    let greet = await import(’./greetingsModule.js’);<br>    greet.hello();<br>    // Hello!<br>  }<br>…</p>
+<p>静态导入和动态导入()都很有用。</p>
+<p>每个都有自己的用例</p>
+<p>使用静态导入，例如初始依赖项</p>
+<p>在其他情况下，考虑使用动态导入特性按需加载依赖项</p>
+<h2 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h2><p>JavaScripts Number对固定范围的数字有严格的限制，并且不能正确操作大整数。 </p>
+<p>BigInt的新功能解决了这个问题，这在处理大价值的不同领域可能是一个相当大的问题。</p>
+<p>BigInt是任意长度的整数。 现在，这种类型的变量可以包含253个数字字符，并且不限于数字值</p>
+<p>我们可以使用新的BigInt数据类型解决此问题。 在数字末尾添加字母“ n”</p>
+<p>const myBigNumber = 9007199254740991n;<br>console.log(myBigNumber +1n);<br>//9007199254740992n  -&gt; Correct value!<br>console.log(myBigNumber +10n);<br>//9007199254741001n  -&gt; Correct value!<br>//Note:<br>console.log(myBigNumber +10);<br>//Error: you cannot mix BigInt and other types, use explicit //conversions.<br>//Correct way: You have to add the letter ‘n’ on the end of the //number</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/03/chrome-devtool-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/03/chrome-devtool-tips/" itemprop="url">chrome devtool tips</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T09:03:18+08:00">
+                2020-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="console使用类css选择器"><a href="#console使用类css选择器" class="headerlink" title="console使用类css选择器"></a>console使用类css选择器</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'tagName'</span>) /$(<span class="string">'.class'</span>)/ $(<span class="string">'#id'</span>) 还是 $(<span class="string">'.class #id'</span>) 等类似的选择器</span><br><span class="line">都相当于原生JS的<span class="built_in">document</span>.querySelector(<span class="string">''</span>) 方法</span><br><span class="line">这个方法返回第一个匹配选择规则的DOM元素</span><br><span class="line"></span><br><span class="line">$$(<span class="string">'tagName'</span>) 或者 $$(<span class="string">'.className'</span>) 记得是两个$$符号来选择所有匹配规则的DOM元素</span><br><span class="line">选择返回的结果是一个数组，可以通过数组的方法来访问其中的单个元素</span><br><span class="line">都相当于原生JS的<span class="built_in">document</span>.querySelectorAll(<span class="string">''</span>) 方法</span><br></pre></td></tr></table></figure>
+<h2 id="获取某个DOM元素绑定的事件"><a href="#获取某个DOM元素绑定的事件" class="headerlink" title="获取某个DOM元素绑定的事件"></a>获取某个DOM元素绑定的事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getEventListeners($(<span class="string">'selector'</span>))方法以数组对象的格式返回某个元素绑定的所有事件</span><br><span class="line">你可以在控制台里展开对象查看详细的内容</span><br><span class="line"></span><br><span class="line">要是你需要选择其中的某个事件，可以通过下面的方法来访问：</span><br><span class="line"></span><br><span class="line">getEventListeners($(<span class="string">'selector'</span>)).eventName[<span class="number">0</span>].listener</span><br><span class="line">这里的 eventName 表示某种事件类型，例如：</span><br><span class="line"></span><br><span class="line">getEventListeners($(<span class="string">'#firstName'</span>)).click[<span class="number">0</span>].listener</span><br></pre></td></tr></table></figure>
+<h2 id="获取监测事件"><a href="#获取监测事件" class="headerlink" title="获取监测事件"></a>获取监测事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">monitorEvents($(<span class="string">'selector'</span>)) 会监测某个元素上绑定的所有事件</span><br><span class="line">一旦该元素的某个事件被触发就会在控制台里显示出来。</span><br><span class="line">monitorEvents($(<span class="string">'selector'</span>),<span class="string">'eventName'</span>) 可以监听某个元素上绑定的具体事件</span><br><span class="line">第二个参数代表事件类型的名称。例如 monitorEvents($(<span class="string">'#firstName'</span>),<span class="string">'click'</span>) </span><br><span class="line">只监测ID为firstName的元素上的click事件</span><br><span class="line"></span><br><span class="line">monitorEvents($(<span class="string">'selector'</span>),[<span class="string">'eventName1'</span>,<span class="string">'eventName3'</span>,….]) 同上</span><br><span class="line">可以同时检测具体指定的多个事件类型</span><br><span class="line"></span><br><span class="line">unmonitorEvents($(<span class="string">'selector'</span>)) 用来停止对某个元素的事件监测</span><br></pre></td></tr></table></figure>
+<h2 id="通过控制台方法来检查元素"><a href="#通过控制台方法来检查元素" class="headerlink" title="通过控制台方法来检查元素"></a>通过控制台方法来检查元素</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inspect($(<span class="string">'selector'</span>)) 会检查所有匹配选择器的DOM元素，并返回所有选择器选择的DOM对象</span><br><span class="line">例如inspect($(<span class="string">'#firstName'</span>)) 选择所有ID是 firstName 的元素，inspect($(<span class="string">'a'</span>)[<span class="number">3</span>]) 检查并返回页面上第四个 p元素</span><br></pre></td></tr></table></figure>
+<h2 id="列出某个元素的所有属性"><a href="#列出某个元素的所有属性" class="headerlink" title="列出某个元素的所有属性"></a>列出某个元素的所有属性</h2><p>你也可以通过控制台列出某个元素的所有属性<br>dir($(‘selector’)) 会返回匹配选择器的DOM元素的所有属性</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/02/28/preventDefault-vs-stopPropagation-vs-stopImmediatePropagation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1557,334 +1873,6 @@ console.log(&apos;done!&apos;)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/12/web性能测试优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/12/web性能测试优化/" itemprop="url">web性能测试优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T09:44:59+08:00">
-                2019-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-lighthouse"><a href="#1-lighthouse" class="headerlink" title="1. lighthouse"></a>1. lighthouse</h2><pre><code>npm i -g lighthouse
-</code></pre><h2 id="2-FP、FCP、FMP与LCP"><a href="#2-FP、FCP、FMP与LCP" class="headerlink" title="2. FP、FCP、FMP与LCP"></a>2. FP、FCP、FMP与LCP</h2><pre><code>FP（全称“First Paint”，翻译为“首次绘制”） 是时间线上的第一个“时间点”
-
-它代表浏览器第一次向屏幕传输像素的时间，也就是页面在屏幕上首次发生视觉变化的时间
-
-FP不包含默认背景绘制，但包含非默认的背景绘制
-
-
-FCP（全称“First Contentful Paint”，翻译为“首次内容绘制”）
-它代表浏览器第一次向屏幕绘制 “内容”
-
-注意：只有首次绘制文本、图片（包含背景图）、非白色的canvas或SVG时才被算作FCP
-
-FP与FCP这两个指标之间的主要区别是：FP是当浏览器开始绘制内容到屏幕上的时候
-
-只要在视觉上开始发生变化，无论是什么内容触发的视觉变化，在这一刻，这个时间点，叫做FP
-
-相比之下，FCP指的是浏览器首次绘制来自DOM的内容。例如：文本，图片，SVG，canvas元素等，这个时间点叫FCP。
-
-FP和FCP可能是相同的时间，也可能是先FP后FCP
-</code></pre><h2 id="FMP"><a href="#FMP" class="headerlink" title="FMP"></a>FMP</h2><pre><code>FMP（全称“First Meaningful Paint”，翻译为“首次有效绘制”） 表示页面的“主要内容”开始出现在屏幕上的时间点。它是我们测量用户加载体验的主要指标。
-
-FMP本质上是通过一个算法来猜测某个时间点可能是FMP，所以有时候不准
-</code></pre><h2 id="LCP"><a href="#LCP" class="headerlink" title="LCP"></a>LCP</h2><pre><code>LCP（全称“Largest Contentful Paint”） 表示可视区“内容”最大的可见元素开始出现在屏幕上的时间点
-了解和测量网站真实的性能其实非常困难，像load和DOMContentLoaded不会告诉我们用户什么时候可以在屏幕上看到内容
-而FP和FCP又只能捕获整个渲染过程的最开始，FMP更好一点，但是它的算法比较复杂，而且前面说了，有时候不准
-根据W3C Web性能工作组的讨论和Google的研究，发现测量页面主要内容的可见时间有一种更精准且简单的方法是查看什么时候渲染最大元素
-</code></pre><h2 id="TTI"><a href="#TTI" class="headerlink" title="TTI"></a>TTI</h2><pre><code>TTI（全称“Time to Interactive”，翻译为“可交互时间”） 表示网页第一次 完全达到可交互状态 的时间点。可交互状态指的是页面上的UI组件是可以交互的
-
-（可以响应按钮的点击或在文本框输入文字等），不仅如此，此时主线程已经达到“流畅”的程度，主线程的任务均不超过50毫秒。
-
-TTI很重要，因为TTI可以让我们了解我们的产品需要多久可以真正达到“可用”的状态
-</code></pre><h2 id="TTFB"><a href="#TTFB" class="headerlink" title="TTFB"></a>TTFB</h2><pre><code>TTFB（全称“Time to First Byte”） 表示浏览器接收第一个字节的时间
-</code></pre><h2 id="FCI"><a href="#FCI" class="headerlink" title="FCI"></a>FCI</h2><pre><code>全称“First CPU Idle”） 是对TTI的一种补充，TTI可以告诉我们页面什么时候完全达到可用，但是我们不知道浏览器第一次可以响应用户输入是什么时候。
-我们不知道网页的“最小可交互时间”是多少，最小可交互时间是说网页的首屏已经达到了可交互的状态了，但整个页面可能还没达到。
-从名字也可以看出这个指标的意思，第一次CPU空闲，主线程空闲就代表可以接收用户的响应了。
-更通俗的理解TTI与FCI的区别：FCI代表浏览器真正的第一次可以响应用户的输入，而TTI代表浏览器已经可以持续性的响应用户的输入
-</code></pre><h2 id="FID"><a href="#FID" class="headerlink" title="FID"></a>FID</h2><pre><code>全称“First Input Delay”，翻译为“首次输入延迟”） 顾名思义，FID指的是用户首次与产品进行交互时，我们产品可以在多长时间给出反馈
-TTI可以告诉我们网页什么时候可以开始流畅地响应用户的交互，但是如果用户在TTI的时间内，没有与网页产生交互，那么TTI其实是影响不到用户的
-TTI是不需要用户参与的指标，但如果我们真的想知道TTI对用户的影响，我们需要FID。不同的用户可能会在TTI之前开始与网页产生交互
-也可能在TTI之后才与网页产生交互。所以对于不同的用户它的FID是不同的。如果在TTI之前用户就已经与网页产生了交互
-那么它的FID时间就比较长，而如果在TTI之后才第一次与网页产生交互，那么他的FID时间就短。
-
-捕获FID比较简单，我们只需要在网页的head标签里注册一个事件（click、mousedown、keydown、touchstart、pointerdown）
-然后在事件响应函数中使用当前时间减去事件对象被创建的时间即可
-
-performance.now() - event.timeStamp
-</code></pre><h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><pre><code>DCL 表示DomContentloaded事件触发的时间。
-L 表示onLoad事件触发的时间。
-DomContentloaded事件与onLoad事件的区别是，浏览器解析HTML这个操作完成后立刻触发DomContentloaded事件
-而只有页面所有资源都加载完毕后（比如图片，CSS），才会触发onLoad事件
-</code></pre><h2 id="Speed-Index"><a href="#Speed-Index" class="headerlink" title="Speed Index"></a>Speed Index</h2><pre><code>表示显示页面可见部分的平均时间（注意，是真正的可见，用户可以立马看见的，屏幕外的部分不算），数值越小说明速度越快
-它主要用于测量页面内容在视觉上填充的速度。通常会使用这个指标来进行性能的比较。比如优化前和优化后
-我们的产品与竞品的性能比较等。但是只能用于 粗略 的比较，不同的产品侧重点完全不同
-所以还是需要根据自己产品所侧重的方向，并结合其他指标来进行更详细的对比
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2019/12/12/图片懒加载小结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/12/图片懒加载小结/" itemprop="url">图片懒加载小结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T09:14:31+08:00">
-                2019-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-如何判断图片出现在当前视口"><a href="#1-如何判断图片出现在当前视口" class="headerlink" title="1. 如何判断图片出现在当前视口"></a>1. 如何判断图片出现在当前视口</h2><p>监听window.scroll事件  通过clientTop，offsetTop，clientHeight 以及 scrollTop 都是一些元素高度的属性 判断是否出现当前视口</p>
-<pre><code>&lt;img data-src=&quot;imgurl.jpg&quot;&gt;
-首先设置一个临时属性 data-src，加载时再使用 src 代替 data-src
-</code></pre><h2 id="2-如何判断图片出现在了当前视口"><a href="#2-如何判断图片出现在了当前视口" class="headerlink" title="2. 如何判断图片出现在了当前视口"></a>2. 如何判断图片出现在了当前视口</h2><pre><code>Element.getBoundingClientRect() 方法返回元素的大小及其相对于视口的位置
-
-// clientHeight 代表当前视口的高度
-img.getBoundingClientRect().top &lt; document.documentElement.clientHeight
-
-监听 window.scroll 事件也优化  通过节流提高性能 一般使用 lodash.throttle 
-</code></pre><h2 id="3-如何判断图片出现在了当前视口"><a href="#3-如何判断图片出现在了当前视口" class="headerlink" title="3. 如何判断图片出现在了当前视口"></a>3. 如何判断图片出现在了当前视口</h2><pre><code>最新API IntersectionObserver 能够监听元素是否到了当前视口的事件，一步到位
-
-事件回调的参数是 IntersectionObserverEntry 的集合，代表关于是否在可见视口的一系列值
-其中，entry.isIntersecting 代表目标元素可见
-
-const observer = new IntersectionObserver((changes) =&gt; {
-// changes: 目标元素集合
-changes.forEach((change) =&gt; {
-    // intersectionRatio
-    if (change.isIntersecting) {
-    const img = change.target
-    img.src = img.dataset.src
-    observer.unobserve(img)
-    }
-})
-})
-
-observer.observe(img);
-
-IntersectionObserver 除了给图片做懒加载外，还可以对单页应用资源做预加载
-
-如在 next.js v9 中，会对视口内的资源做预加载，可以参考 next 9 production optimizations
-</code></pre><h2 id="4-loading-”lazy”"><a href="#4-loading-”lazy”" class="headerlink" title="4. loading=”lazy”"></a>4. loading=”lazy”</h2><pre><code>&lt;img src=&quot;celebration.jpg&quot; loading=&quot;lazy&quot; alt=&quot;...&quot; /&gt;
-&lt;iframe src=&quot;video-player.html&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;
-
-lazy还可以用在 iframe
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1935,7 +1923,7 @@ lazy还可以用在 iframe
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-count">137</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

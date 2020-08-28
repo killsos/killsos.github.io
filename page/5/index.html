@@ -230,6 +230,255 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/06/How-to-Create-Dynamic-Backgrounds-With-the-CSS-Paint-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/06/How-to-Create-Dynamic-Backgrounds-With-the-CSS-Paint-API/" itemprop="url">How to Create Dynamic Backgrounds With the CSS Paint API</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-06T15:56:26+08:00">
+                2020-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Setting-Up-the-Project"><a href="#1-Setting-Up-the-Project" class="headerlink" title="1. Setting Up the Project"></a>1. Setting Up the Project</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>🎨 CSS Paint API<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"styles.css"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">class</span>=<span class="string">"pattern"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="string">'paintWorklet'</span> <span class="keyword">in</span> CSS) &#123;</span></span><br><span class="line"><span class="javascript">                CSS.paintWorklet.addModule(<span class="string">'pattern.js'</span>);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="What-is-a-worklet"><a href="#What-is-a-worklet" class="headerlink" title="What is a worklet?"></a>What is a worklet?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Paint worklet是一个类，它定义应在画布上绘制的内容</span><br><span class="line">它们的工作方式与canvas元素相似</span><br><span class="line"></span><br><span class="line">如果您以前对此有所了解，则该代码将看起来很熟悉</span><br><span class="line">但是，它们不是100％相同。 例如，工作簿中尚不支持文本呈现方法</span><br><span class="line"></span><br><span class="line">.pattern &#123;</span><br><span class="line">    width: 250px;</span><br><span class="line">    height: 250px;</span><br><span class="line">    border: 1px solid #000;</span><br><span class="line">    background-image: paint(pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Defining-the-Worklet"><a href="#Defining-the-Worklet" class="headerlink" title="Defining the Worklet"></a>Defining the Worklet</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pattern</span> </span>&#123;</span><br><span class="line">    paint(context, canvas, properties) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">registerPaint(<span class="string">'pattern'</span>, Pattern);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在这里可以使用registerPaint方法注册绘画工作集</span></span><br><span class="line"><span class="comment">// 您可以在此处定义的CSS中引用第一个参数</span></span><br><span class="line"><span class="comment">// 第二个参数是定义应在画布上绘画的类</span></span><br><span class="line"><span class="comment">// 它具有一个采用三个参数的绘制方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// context: This returns a PaintRenderingContext2D object that implements a subset of the CanvasRenderingContext2D API.</span></span><br><span class="line"><span class="comment">// canvas: This is our canvas, a PaintSize object that only has two properties: width and height.</span></span><br><span class="line"><span class="comment">// properties: This returns a StylePropertyMapReadOnly object that we can use to read CSS properties and their values through JavaScript.</span></span><br></pre></td></tr></table></figure>
+<h2 id="Drawing-the-rectangles"><a href="#Drawing-the-rectangles" class="headerlink" title="Drawing the rectangles"></a>Drawing the rectangles</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">paint(context, canvas, properties) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> x = <span class="number">0</span>; x &lt; canvas.height / <span class="number">20</span>; x++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> y = <span class="number">0</span>; y &lt; canvas.width / <span class="number">20</span>; y++) &#123;</span><br><span class="line">            <span class="keyword">const</span> bgColor = (x + y) % <span class="number">2</span> === <span class="number">0</span> ? <span class="string">'#FFF'</span> : <span class="string">'#FFCC00'</span>;</span><br><span class="line"></span><br><span class="line">            context.shadowColor = <span class="string">'#212121'</span>;</span><br><span class="line">            context.shadowBlur = <span class="number">10</span>;</span><br><span class="line">            context.shadowOffsetX = <span class="number">10</span>;</span><br><span class="line">            context.shadowOffsetY = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            context.beginPath();</span><br><span class="line">            context.fillStyle = bgColor;</span><br><span class="line">            context.rect(x * <span class="number">20</span>, y * <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">            context.fill();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Making-the-Background-Dynamic"><a href="#Making-the-Background-Dynamic" class="headerlink" title="Making the Background Dynamic"></a>Making the Background Dynamic</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-class">.pattern</span> &#123;</span><br><span class="line">     <span class="attribute">width</span>: <span class="number">250px</span>;</span><br><span class="line">     <span class="attribute">height</span>: <span class="number">250px</span>;</span><br><span class="line">     <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line"></span><br><span class="line">     <span class="attribute">background-image</span>: <span class="built_in">paint</span>(pattern);</span><br><span class="line">    <span class="attribute">--pattern-color</span>: <span class="number">#FFCC00</span>;</span><br><span class="line">    <span class="attribute">--pattern-size</span>: <span class="number">23</span>;</span><br><span class="line">    <span class="attribute">--pattern-spacing</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">--pattern-shadow-blur</span>: <span class="number">10</span>;</span><br><span class="line">    <span class="attribute">--pattern-shadow-x</span>: <span class="number">10</span>;</span><br><span class="line">    <span class="attribute">--pattern-shadow-y</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Checking-support-in-CSS"><a href="#Checking-support-in-CSS" class="headerlink" title="Checking support in CSS"></a>Checking support in CSS</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* 1st option */</span></span><br><span class="line">@<span class="keyword">supports</span> (background: paint(pattern)) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * If this part gets evaluated, it means that the Paint API</span></span><br><span class="line"><span class="comment">   * is supported</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 2nd option</span></span><br><span class="line"><span class="comment"> * If the Paint API is supported, the latter rule will override</span></span><br><span class="line"><span class="comment"> * the first one. If it's not, CSS will invalidate it and the one</span></span><br><span class="line"><span class="comment"> * with url() will be applied</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="selector-class">.pattern</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(pattern.png);</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">paint</span>(pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Accessing-the-parameters-in-the-paint-worklet"><a href="#Accessing-the-parameters-in-the-paint-worklet" class="headerlink" title="Accessing the parameters in the paint worklet"></a>Accessing the parameters in the paint worklet</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pattern</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Anything that the `inputProperties` method returns</span></span><br><span class="line">    <span class="comment">// the paint worklet will have access to</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">get</span> inputProperties() &#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">'--pattern-color'</span>,</span><br><span class="line">            <span class="string">'--pattern-size'</span>,</span><br><span class="line">            <span class="string">'--pattern-spacing'</span>,</span><br><span class="line">            <span class="string">'--pattern-shadow-blur'</span>,</span><br><span class="line">            <span class="string">'--pattern-shadow-x'</span>,</span><br><span class="line">            <span class="string">'--pattern-shadow-y'</span></span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">paint(context, canvas, properties) &#123;</span><br><span class="line">    <span class="keyword">const</span> props = &#123;</span><br><span class="line">        color: properties.get(<span class="string">'--pattern-color'</span>).toString().trim(),</span><br><span class="line">        size: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-size'</span>).toString()),</span><br><span class="line">        spacing: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-spacing'</span>).toString()),</span><br><span class="line">        shadow: &#123;</span><br><span class="line">            blur: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-shadow-blur'</span>).toString()),</span><br><span class="line">            x: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-shadow-x'</span>).toString()),</span><br><span class="line">            y: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-shadow-y'</span>).toString())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">paint(context, canvas, properties) &#123;</span><br><span class="line">    <span class="keyword">const</span> getPropertyAsString = <span class="function"><span class="params">property</span> =&gt;</span> properties.get(property).toString().trim();</span><br><span class="line">    <span class="keyword">const</span> getPropertyAsNumber = <span class="function"><span class="params">property</span> =&gt;</span> <span class="built_in">parseInt</span>(properties.get(property).toString());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> props = &#123;</span><br><span class="line">        color: getPropertyAsString(<span class="string">'--pattern-color'</span>),</span><br><span class="line">        size: getPropertyAsNumber(<span class="string">'--pattern-size'</span>),</span><br><span class="line">        spacing: getPropertyAsNumber(<span class="string">'--pattern-spacing'</span>),</span><br><span class="line">        shadow: &#123;</span><br><span class="line">            blur: getPropertyAsNumber(<span class="string">'--pattern-shadow-blur'</span>),</span><br><span class="line">            x: getPropertyAsNumber(<span class="string">'--pattern-shadow-x'</span>),</span><br><span class="line">            y: getPropertyAsNumber(<span class="string">'--pattern-shadow-y'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x = <span class="number">0</span>; x &lt; canvas.height / props.size; x++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> y = <span class="number">0</span>; y &lt; canvas.width / props.size; y++) &#123;</span><br><span class="line">        <span class="keyword">const</span> bgColor = (x + y) % <span class="number">2</span> === <span class="number">0</span> ? <span class="string">'#FFF'</span> : props.color;</span><br><span class="line"></span><br><span class="line">        context.shadowColor = <span class="string">'#212121'</span>;</span><br><span class="line">        context.shadowBlur = props.shadow.blur;</span><br><span class="line">        context.shadowOffsetX = props.shadow.x;</span><br><span class="line">        context.shadowOffsetY = props.shadow.y;</span><br><span class="line"></span><br><span class="line">        context.beginPath();</span><br><span class="line">        context.fillStyle = bgColor;</span><br><span class="line">        context.rect(x * (props.size + props.spacing),</span><br><span class="line">                     y * (props.size + props.spacing), props.size, props.size);</span><br><span class="line">        context.fill();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/06/Redirect-Refresh-and-Access-the-URL-of-the-Current-Page-in-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/06/Redirect-Refresh-and-Access-the-URL-of-the-Current-Page-in-JavaScript/" itemprop="url">Redirect, Refresh, and Access the URL of the Current Page in JavaScript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-06T15:27:01+08:00">
+                2020-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="window-location"><a href="#window-location" class="headerlink" title="window.location"></a>window.location</h2><h2 id="location-href"><a href="#location-href" class="headerlink" title="location.href"></a>location.href</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">location.href = <span class="string">"new url"</span>;</span><br><span class="line"><span class="comment">// or we can use</span></span><br><span class="line">location.assign(<span class="string">"new url"</span>);</span><br><span class="line"></span><br><span class="line">location.replace(<span class="string">"new url"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.reload()</span><br></pre></td></tr></table></figure>
+<h2 id="Force-refresh"><a href="#Force-refresh" class="headerlink" title="Force refresh"></a>Force refresh</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//from cache</span></span><br><span class="line"><span class="built_in">window</span>.location.reload();</span><br><span class="line"><span class="built_in">window</span>.location.reload(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// from server</span></span><br><span class="line"><span class="built_in">window</span>.location.reload(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Properties-of-Location-Object"><a href="#Properties-of-Location-Object" class="headerlink" title="Properties of Location Object"></a>Properties of Location Object</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 1. Href</span></span><br><span class="line"><span class="comment">// Contains the entire URL of the page</span></span><br><span class="line"><span class="comment">// current page url addresss</span></span><br><span class="line"></span><br><span class="line">location.href;</span><br><span class="line"></span><br><span class="line">location.href = <span class="string">"https://google.com"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Make sure to add http/https. Otherwise, it makes the request on the same page.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Protocol</span></span><br><span class="line">location.protocol; <span class="comment">// https:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. Host  Website hostname with port number.</span></span><br><span class="line">location.host; <span class="comment">// medium.com</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// with port number</span></span><br><span class="line"><span class="keyword">var</span> anchor = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span><br><span class="line">anchor.href = <span class="string">"https:\/\/medium.com:4097"</span></span><br><span class="line">anchor.host <span class="comment">// "medium:4097"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. Hostname  Website hostname</span></span><br><span class="line">location.host; <span class="comment">// medium.com</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. Port</span></span><br><span class="line"><span class="keyword">var</span> anchor = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span><br><span class="line">anchor.href = <span class="string">"https:\/\/medium.com:4097"</span></span><br><span class="line">anchor.port <span class="comment">// "4097"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 6. Pathname</span></span><br><span class="line">location.href; <span class="comment">//https://medium.com/@jagathishsaravanan</span></span><br><span class="line">location.pathname; <span class="comment">// "/@jagathishsaravanan"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 7. Search</span></span><br><span class="line">location.search; <span class="comment">// ?q=javascriptjeep</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 8. Hash</span></span><br><span class="line"><span class="comment">// Contains string of '#' followed by the fragment identifier of the URL</span></span><br><span class="line"></span><br><span class="line">&lt;a id=<span class="string">"myAnchor"</span> href=<span class="string">"/en-US/docs/HTMLHyperlinkElementUtils.href#Examples"</span>&gt;Examples&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">var anchor = document.getElementById("myAnchor");</span></span><br><span class="line"><span class="regexp">console.log(anchor.hash); /</span><span class="regexp">/ Returns '#Examples'</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 9. Origin</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ Origin of specific location</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ consider we are at page : https:/</span><span class="regexp">/medium.com/</span>search?q=javascriptjeep</span><br><span class="line">location.origin; <span class="comment">// https://medium.com</span></span><br></pre></td></tr></table></figure>
+<h2 id="Location-Methods"><a href="#Location-Methods" class="headerlink" title="Location Methods"></a>Location Methods</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 1. assign</span></span><br><span class="line"><span class="comment">// Loads the resource at the URL provided in the parameter</span></span><br><span class="line">location.assign(<span class="string">"https://medium.com"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. reload</span></span><br><span class="line"><span class="comment">// The Location.reload() method reloads the current URL, like the Refresh button</span></span><br><span class="line">location.reload();</span><br><span class="line"></span><br><span class="line"><span class="comment">// forceReload</span></span><br><span class="line">location.reload(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. replace</span></span><br><span class="line"><span class="comment">// consider we are google.com</span></span><br><span class="line"><span class="comment">// when we run this line</span></span><br><span class="line">location.replace(<span class="string">"htts://medium.com"</span>)</span><br><span class="line"><span class="comment">// it will replace the current page and redirect to medium page</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// The difference from the assign() method is that after using replace()</span></span><br><span class="line"><span class="comment">// the current page will not be saved in session History</span></span><br><span class="line"><span class="comment">// meaning the user won't be able to use the Back button to navigate to it</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. toString</span></span><br><span class="line">location.toString();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/06/JavaScript-Patterns-—-Modules-and-Sandbox/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1224,250 +1473,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/05/12/4-Useful-JavaScript-Design-Patterns-You-Should-Know/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/12/4-Useful-JavaScript-Design-Patterns-You-Should-Know/" itemprop="url">4 Useful JavaScript Design Patterns You Should Know</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-12T17:17:41+08:00">
-                2020-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">软件设计模式是软件设计中给定上下文中常见问题的通用的、可重用的解决方案</span><br><span class="line"></span><br><span class="line">设计模式的价值在于更好地组织我们当前的代码并使将来的迭代更容易。</span><br></pre></td></tr></table></figure>
-<h2 id="Strategy-Pattern-策略模式"><a href="#Strategy-Pattern-策略模式" class="headerlink" title="Strategy Pattern 策略模式"></a>Strategy Pattern 策略模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">假设我们有一个要求，当用户试图打开一个页面时，只有满足以下条件才能看到正确的内容：</span><br><span class="line"></span><br><span class="line">该用户是该站点的注册用户</span><br><span class="line"></span><br><span class="line">用户等级不小于1</span><br><span class="line"></span><br><span class="line">用户必须是前端开发工程师</span><br><span class="line"></span><br><span class="line">用户类型是活跃用户</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">我们需要编写判断逻辑以确保只有合适的用户才能看到内容。 你是做什么？ 许多新手程序员可能只是选择“ if-else”并编写如下代码</span><br><span class="line"></span><br><span class="line">function checkAuth(data) &#123;</span><br><span class="line">  if (data.role !== &apos;registered&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not a registered user&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.grade &lt; 1) &#123;</span><br><span class="line">    console.log(&quot;The user&apos;s level is less than 1&quot;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.job !== &apos;FE&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not a front-end development engineer&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.type !== &apos;active user&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not an active user&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">我确定您之前都写过类似的代码，但是存在以下问题：</span><br><span class="line"></span><br><span class="line">checkAuth函数是臃肿的</span><br><span class="line"></span><br><span class="line">每个判断功能都不能重用</span><br><span class="line"></span><br><span class="line">违反开闭原则</span><br><span class="line"></span><br><span class="line">策略模式允许封装用于特定任务的替代算法</span><br><span class="line"></span><br><span class="line">它定义了一系列算法，并以一种在运行时可以互换的方式封装它们，而不会受到客户端的干扰或了解</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const jobList = [&apos;FE&apos;, &apos;BE&apos;];</span><br><span class="line">var strategies = &#123;</span><br><span class="line">  checkRole: function(value) &#123;</span><br><span class="line">    if (value === &apos;registered&apos;) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkGrade: function(value) &#123;</span><br><span class="line">    if (value &gt;= 1) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkJob: function(value) &#123;</span><br><span class="line">    if (jobList.indexOf(value) &gt; 1) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkType: function(value) &#123;</span><br><span class="line">    if (value === &apos;active user&apos;) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var Validator = function() &#123;</span><br><span class="line">  // Store strategies</span><br><span class="line">  this.cache = [];</span><br><span class="line">// add strategy to cache</span><br><span class="line">  this.add = function(value, method) &#123;</span><br><span class="line">    this.cache.push(function() &#123;</span><br><span class="line">      return strategies[method](value);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">// check all strategies</span><br><span class="line">  this.check = function() &#123;</span><br><span class="line">    for (let i = 0; i &lt; this.cache.length; i++) &#123;</span><br><span class="line">      let valiFn = this.cache[i];</span><br><span class="line">      var data = valiFn();</span><br><span class="line">      if (!data) &#123;</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var compose1 = function() &#123;</span><br><span class="line">  var validator = new Validator();</span><br><span class="line">  const data1 = &#123;</span><br><span class="line">    role: &apos;register&apos;,</span><br><span class="line">    grade: 3,</span><br><span class="line">    job: &apos;FE&apos;,</span><br><span class="line">    type: &apos;active user&apos;</span><br><span class="line">  &#125;;</span><br><span class="line">  validator.add(data1.role, &apos;checkRole&apos;);</span><br><span class="line">  validator.add(data1.grade, &apos;checkGrade&apos;);</span><br><span class="line">  validator.add(data1.type, &apos;checkType&apos;);</span><br><span class="line">  validator.add(data1.job, &apos;checkJob&apos;);</span><br><span class="line"></span><br><span class="line">  const result = validator.check();</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="Publish–subscribe-pattern-发布订阅模式"><a href="#Publish–subscribe-pattern-发布订阅模式" class="headerlink" title="Publish–subscribe pattern  发布订阅模式"></a>Publish–subscribe pattern  发布订阅模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">// 发布订阅模式</span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"></span><br><span class="line">function applySuccess() &#123;</span><br><span class="line">  // Notify the message center for the latest content</span><br><span class="line">  MessageCenter.fetch();</span><br><span class="line">  // Update order information</span><br><span class="line">  Order.update();</span><br><span class="line">  // Inform the person in charge to review</span><br><span class="line">  Checker.alert();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">您的项目通常不仅依赖于这三个模块</span><br><span class="line">例如，当申请成功时，我们需要提交日志。 您如何处理这种情况？</span><br><span class="line">您可能必须再次修改原始功能</span><br><span class="line"></span><br><span class="line">function applySuccess() &#123;</span><br><span class="line">  // Notify the message center for the latest content</span><br><span class="line">  MessageCenter.fetch();</span><br><span class="line">  // Update order information</span><br><span class="line">  Order.update();</span><br><span class="line">  // Inform the person in charge to review</span><br><span class="line">  Checker.alert();</span><br><span class="line">  Log.write();</span><br><span class="line">  // Maybe more</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">随着涉及到越来越多的模块，我们的代码变得越来越肿，难以维护</span><br><span class="line">那就是发布和订阅模型可以节省灾难的时候</span><br><span class="line"></span><br><span class="line">发布-订阅是一种消息传递范例</span><br><span class="line">其中消息的发布者不直接将消息发送给特定的订阅者</span><br><span class="line">而是通过消息通道进行广播</span><br><span class="line">订阅者可以通过订阅获得他们想要的消息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 消息中心 函数</span><br><span class="line"></span><br><span class="line">const EventEmit = function() &#123;</span><br><span class="line">  this.events = &#123;&#125;;</span><br><span class="line">  this.on = function(name, cb) &#123;</span><br><span class="line">    if (this.events[name]) &#123;</span><br><span class="line">      this.events[name].push(cb);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.events[name] = [cb];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  this.trigger = function(name, ...arg) &#123;</span><br><span class="line">    if (this.events[name]) &#123;</span><br><span class="line">      this.events[name].forEach(eventListener =&gt; &#123;</span><br><span class="line">        eventListener(...arg);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 订阅发布</span><br><span class="line"></span><br><span class="line">let event = new EventEmit();</span><br><span class="line">MessageCenter.fetch() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;update MessageCenter&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">Order.update() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;update Order&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">Checker.alert() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;Notify Checker&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">event.trigger(&apos;success&apos;);</span><br></pre></td></tr></table></figure>
-<p><img src="../images/publish-subscribe.png" alt="发布订阅模式"></p>
-<h2 id="Decorator-Pattern-装饰模式"><a href="#Decorator-Pattern-装饰模式" class="headerlink" title="Decorator Pattern  装饰模式"></a>Decorator Pattern  装饰模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">核心： 在原来的逻辑上包装一层自己特定逻辑</span><br><span class="line"></span><br><span class="line">正如任何了解React的人所知道的那样，高阶组件实际上只是一个函数。</span><br><span class="line">它接受一个组件作为参数并返回一个新的组件。</span><br><span class="line"></span><br><span class="line">因此，让我们编写一个高阶组件HOC，并用它来装饰TargetComponent</span><br><span class="line"></span><br><span class="line">import React from &apos;react&apos;;</span><br><span class="line">const yellowHOC = WrapperComponent =&gt; &#123;</span><br><span class="line">  return class extends React.Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">      &lt;div style=&#123;&#123; backgroundColor: &apos;yellow&apos; &#125;&#125;&gt;</span><br><span class="line">        &lt;WrapperComponent &#123;...this.props&#125; /&gt;</span><br><span class="line">      &lt;/div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">export default yellowHOC;</span><br><span class="line"></span><br><span class="line">// 装饰  </span><br><span class="line"></span><br><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import yellowHOC from &apos;./yellowHOC&apos;;</span><br><span class="line">class TargetComponent extends Reac.Compoment &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;div&gt;hello world&lt;/div&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default yellowHOC(TargetComponent);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Jon was originally a Chinese speaker</span><br><span class="line">const jonWrite = function() &#123;</span><br><span class="line">  this.writeChinese = function() &#123;</span><br><span class="line">    console.log(&apos;I can only write Chinese&apos;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">// Add the ability to write English to Jon through the decorator</span><br><span class="line">const Decorator = function(old) &#123;</span><br><span class="line">  this.oldWrite = old.writeChinese;</span><br><span class="line">  this.writeEnglish = function() &#123;</span><br><span class="line">    console.log(&apos;Give Jon the ability to write English&apos;);</span><br><span class="line">  &#125;;</span><br><span class="line">  this.newWrite = function() &#123;</span><br><span class="line">    this.oldWrite();</span><br><span class="line">    this.writeEnglish();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">const oldJonWrite = new jonWrite();</span><br><span class="line">const decorator = new Decorator(oldJonWrite);</span><br><span class="line">decorator.newWrite();</span><br></pre></td></tr></table></figure>
-<h2 id="Chain-of-Responsibility-Pattern-责任链模式"><a href="#Chain-of-Responsibility-Pattern-责任链模式" class="headerlink" title="Chain of Responsibility Pattern  责任链模式"></a>Chain of Responsibility Pattern  责任链模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">假设当我们申请从公司购买设备时，必须按以下步骤进行操作：</span><br><span class="line"></span><br><span class="line">申请设备</span><br><span class="line"></span><br><span class="line">选择送货地址</span><br><span class="line"></span><br><span class="line">选择负责人进行审核</span><br><span class="line"></span><br><span class="line">许多新手将其视为非常简单的要求，并开始编写类似的代码</span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"></span><br><span class="line">function applyDevice(data) &#123;</span><br><span class="line">  // some code to apply device</span><br><span class="line">  // ...</span><br><span class="line">// Then go to the next step</span><br><span class="line">  selectAddress(nextData);</span><br><span class="line">&#125;</span><br><span class="line">function selectAddress(data) &#123;</span><br><span class="line">  // some code to select address</span><br><span class="line">  // ...</span><br><span class="line"></span><br><span class="line">  // Then go to the next step</span><br><span class="line">  selectChecker(nextData);</span><br><span class="line">&#125;</span><br><span class="line">function selectChecker(data) &#123;</span><br><span class="line">  // Some code to select a person to review</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">上述缺点非常大：我们的购买过程可能会发生变化，例如添加库存检查过程</span><br><span class="line">然后，您必须彻底更改原始代码，这很难维护代码设计</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在这一点上，我们可以考虑使用责任链模式</span><br><span class="line"></span><br><span class="line">const Chain = function(fn) &#123;</span><br><span class="line">  this.fn = fn</span><br><span class="line">  this.setNext = function(next) &#123;</span><br><span class="line">    return this.next = next</span><br><span class="line">  &#125;</span><br><span class="line">  this.run = function(...args) &#123;</span><br><span class="line">    let result = this.fn.call(this, ...args);</span><br><span class="line">    if (result) &#123;</span><br><span class="line">      this.next &amp;&amp; this.next.fn.call(this.next,...args);</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">const applyDevice = function() &#123;&#125;</span><br><span class="line">const chainApplyDevice = new Chain(applyDevice);</span><br><span class="line">const selectAddress = function() &#123;&#125;</span><br><span class="line">const chainSelectAddress = new Chain(selectAddress);</span><br><span class="line">const selectChecker = function() &#123;&#125;</span><br><span class="line">const chainSelectChecker = new Chain(selectChecker);</span><br><span class="line">chainApplyDevice.setNext(chainSelectAddress).setNext(chainSelectChecker);</span><br><span class="line">chainApplyDevice.run();</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/05/09/chrome-philosophy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/09/chrome-philosophy/" itemprop="url">chrome philosophy</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T10:24:22+08:00">
-                2020-05-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1518,7 +1523,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-count">137</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

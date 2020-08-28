@@ -230,6 +230,262 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/对else说no/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/13/对else说no/" itemprop="url">对else说no</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T14:52:16+08:00">
+                2020-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="why"><a href="#why" class="headerlink" title="why"></a>why</h2><p>为了避免使用if / else if，请仅使用if语句，以花一些时间来确保if组的输入条件互斥，以使答案不依赖于执行顺序  </p>
+<h2 id="1-Don’t-use-if-else-keyword"><a href="#1-Don’t-use-if-else-keyword" class="headerlink" title="1. Don’t use if-else keyword"></a>1. Don’t use if-else keyword</h2><p>通过全部使用if语句来代替</p>
+<h2 id="2-We-will-use-the-State-Pattern-to-remove-all-if-else-keyword-in-these-codes"><a href="#2-We-will-use-the-State-Pattern-to-remove-all-if-else-keyword-in-these-codes" class="headerlink" title="2. We will use the State Pattern to remove all if-else keyword in these codes"></a>2. We will use the State Pattern to remove all if-else keyword in these codes</h2><p>Traffic Light: Green (1 minute) → Yellow (10 seconds)→ Red (1 minute)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> TrafficLight = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// default state = red</span></span><br><span class="line">    <span class="keyword">var</span> currentState = <span class="keyword">new</span> Green(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.change = <span class="function"><span class="keyword">function</span> (<span class="params">state</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// limits number of changes</span></span><br><span class="line">        <span class="keyword">if</span> (count++ &gt;= <span class="number">10</span>) <span class="keyword">return</span>;</span><br><span class="line">        currentState = state;</span><br><span class="line">        currentState.go();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.start = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        currentState.go();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Red = <span class="function"><span class="keyword">function</span> (<span class="params">light</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.light = light</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.go = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log((<span class="string">"Red --&gt; for 1 minute"</span>))</span><br><span class="line">        light.change(<span class="keyword">new</span> Green(light));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Yellow = <span class="function"><span class="keyword">function</span> (<span class="params">light</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.light = light;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.go = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Yellow --&gt; for 10 seconds"</span>)</span><br><span class="line">        light.change(<span class="keyword">new</span> Red(light));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Green = <span class="function"><span class="keyword">function</span> (<span class="params">light</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.light = light;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.go = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Green --&gt; for 1 minute"</span>);</span><br><span class="line">        light.change(<span class="keyword">new</span> Yellow(light));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/JS小特点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/13/JS小特点/" itemprop="url">JS小特点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-13T10:28:14+08:00">
+                2020-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-this指向"><a href="#1-this指向" class="headerlink" title="1. this指向"></a>1. this指向</h2><p>记住一点 看调用 不看定义 注意bind</p>
+<h2 id="2-函数调用"><a href="#2-函数调用" class="headerlink" title="2. 函数调用"></a>2. 函数调用</h2><p>  函数调用  方法调用  类调用  call/apply</p>
+<h2 id="3-块级作用域"><a href="#3-块级作用域" class="headerlink" title="3. 块级作用域"></a>3. 块级作用域</h2><p>  ES6之后新增的  let  const</p>
+<h2 id="4-奇怪的类型强制行为"><a href="#4-奇怪的类型强制行为" class="headerlink" title="4. 奇怪的类型强制行为"></a>4. 奇怪的类型强制行为</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="literal">true</span> + <span class="function"><span class="params">false</span> =&gt;</span> <span class="number">1</span> <span class="comment">// coerced to number</span></span><br><span class="line">[<span class="string">'1'</span>, <span class="string">'2'</span>] + [<span class="string">'3'</span>, <span class="string">'4'</span>] =&gt; <span class="string">'1,23,4'</span> <span class="comment">// coerced to string</span></span><br><span class="line"><span class="string">'1'</span> + <span class="number">1</span> = <span class="string">'11'</span> <span class="comment">// coerced to string</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> + <span class="number">1</span> =&gt; <span class="number">2</span></span><br><span class="line"><span class="number">1</span> + <span class="string">'1'</span> =&gt; <span class="number">11</span></span><br><span class="line"><span class="string">'1'</span> + <span class="number">1</span> =&gt; <span class="number">11</span></span><br><span class="line"><span class="string">'1'</span> + <span class="string">'1'</span> =&gt; <span class="number">11</span></span><br><span class="line"></span><br><span class="line">+<span class="string">'1'</span> + +<span class="string">'1'</span> = <span class="number">2</span> <span class="comment">// using + as prefix will convert to number</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'1'</span>) <span class="comment">// equals 1</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'1px'</span>) <span class="comment">// equals 1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'1'</span>) <span class="comment">// equals 1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'1px'</span>) <span class="comment">// equals NaN</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-防止强制类型转换"><a href="#5-防止强制类型转换" class="headerlink" title="5. 防止强制类型转换"></a>5. 防止强制类型转换</h2><p>Falsy Values: 6种<br>false<br>0<br>empty strings (‘’ or “”)<br>null<br>undefined<br>NaN</p>
+<p>Everything else is truthy</p>
+<h2 id="6-Not-handling-errors-properly-or-null-and-undefined"><a href="#6-Not-handling-errors-properly-or-null-and-undefined" class="headerlink" title="6. Not handling errors properly (or null and undefined)"></a>6. Not handling errors properly (or null and undefined)</h2><p>Error Handling: via Promises</p>
+<p>Error Handling: via RXJS   </p>
+<p>someHTTPStream.pipe(<br>                map(val =&gt; val || null),<br>                catchError(err =&gt; console.log(err))<br>               );</p>
+<p>Error Handling: via try..catch</p>
+<p>Null Handling: not handling null or undefined can produce an error</p>
+<p>Better Null Handling: Check for null or undefined   </p>
+<p>someHTTPStream.pipe( // expecting an array<br>                    map(val =&gt; {<br>                        if (val) {<br>                          return val.length;<br>                        }<br>                        return 0;<br>                    }));</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">[] == ![]; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">[] == ![]</span><br><span class="line"></span><br><span class="line">!运算符的优先级大于 ==，所以实际上这里还涉及到!的运算。</span><br><span class="line">这个比较简单！会将后面的值转化为布尔值。即![]变成!<span class="built_in">Boolean</span>([]), 也就是!<span class="literal">true</span>,也就是<span class="literal">false</span>。</span><br><span class="line"></span><br><span class="line">实际上是对比 [] == <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">运用上面的顺序，<span class="literal">false</span>是布尔值，所以转化为数值<span class="built_in">Number</span>(flase), 为<span class="number">0</span>。</span><br><span class="line"></span><br><span class="line">对比[] == <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">满足第三条规则[] 是对象（数组也属于对象），<span class="number">0</span>不是对象。所以ToPrimitive([])是<span class="string">""</span></span><br><span class="line"></span><br><span class="line">对比<span class="string">""</span> == <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">满足第二条规则，<span class="string">""</span> 是字符串，<span class="number">0</span>是数值，对比<span class="built_in">Number</span>(<span class="string">""</span>) == <span class="number">0</span>, 也就是 <span class="number">0</span> == <span class="number">0</span>。</span><br><span class="line"></span><br><span class="line">所以得出 [] == ![]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">!![]       <span class="comment">// true</span></span><br><span class="line">[] == <span class="literal">true</span> <span class="comment">// false</span></span><br><span class="line">!!<span class="literal">null</span>; <span class="comment">// false</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">false</span>; <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>(); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>); <span class="comment">// NaN</span></span><br><span class="line"><span class="keyword">typeof</span> []; <span class="comment">// 'object'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// 'object'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// but...</span></span><br><span class="line"><span class="literal">null</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">由Javascript规范规定的，Null和<span class="built_in">Object</span>都是javascript中的数据类型。  </span><br><span class="line"></span><br><span class="line">Null数据类型只有一个值：<span class="literal">null</span>   </span><br><span class="line"></span><br><span class="line">就像<span class="literal">undefined</span>数据类型只有一个值：<span class="literal">undefined</span>   </span><br><span class="line"></span><br><span class="line">对于Null类型的值（只有<span class="literal">null</span>），规范就是定义返回<span class="string">"object"</span>这个字符串。</span><br><span class="line"></span><br><span class="line">但是本质上Null和<span class="built_in">Object</span>不是一个数据类型，<span class="literal">null</span>值并不是以<span class="built_in">Object</span>为原型创建出来的。</span><br><span class="line"></span><br><span class="line">所以<span class="literal">null</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>是<span class="literal">false</span>。</span><br><span class="line"></span><br><span class="line">但从这里也可以看到，<span class="literal">null</span>确实是javascript中用来表示空引用的一个特殊值。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">使得它不是<span class="keyword">instanceof</span> Ojbect，而<span class="keyword">typeof</span> <span class="literal">null</span>是“object”。在语义上也是可以理解的。</span><br><span class="line"></span><br><span class="line"><span class="literal">NaN</span> === <span class="function"><span class="params">NaN</span> =&gt;</span> <span class="literal">false</span> <span class="comment">// erm...</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">NaN</span> =&gt; number <span class="comment">// so NotANumber is a number..</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/13/DOM变化的监听检测/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1428,322 +1684,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/04/JavaScript-new-features-in-ES2019-ES10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/04/JavaScript-new-features-in-ES2019-ES10/" itemprop="url">JavaScript new features in ES2019(ES10)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T09:10:39+08:00">
-                2020-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-Array-prototype-flat-depth"><a href="#1-Array-prototype-flat-depth" class="headerlink" title="1. Array.prototype.flat(depth)"></a>1. Array.prototype.flat(depth)</h2><ol>
-<li>指定深度 拍平</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> array1 = [<span class="string">'a'</span>,<span class="string">'b'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]];</span><br><span class="line"><span class="keyword">let</span> array2 = array1.flat();</span><br><span class="line"></span><br><span class="line"><span class="comment">//['a', 'b', 1, 2, 3]</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>过滤空元素</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> array1 = [<span class="string">'a'</span>, <span class="string">'b'</span>, , , , <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">let</span> array2 = array1.flat();</span><br><span class="line"><span class="comment">// ['a','b','c']</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-Array-prototype-flatMap"><a href="#2-Array-prototype-flatMap" class="headerlink" title="2. Array.prototype.flatMap"></a>2. Array.prototype.flatMap</h2><ol>
-<li>自动拍平深度默认是1  用map方法遍历所有元素  返回一个新数组</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">arr1.map(<span class="function"><span class="params">x</span> =&gt;</span> [x * <span class="number">2</span>]); </span><br><span class="line"><span class="comment">// [[2], [4], [6], [8]]</span></span><br><span class="line"></span><br><span class="line">arr1.flatMap(<span class="function"><span class="params">x</span> =&gt;</span> [x * <span class="number">2</span>]);</span><br><span class="line"><span class="comment">// [2, 4, 6, 8]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// only one level is flattened</span></span><br><span class="line">arr1.flatMap(<span class="function"><span class="params">x</span> =&gt;</span> [[x * <span class="number">2</span>]]);</span><br><span class="line"><span class="comment">// [[2], [4], [6], [8]]</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-Object-fromEntries"><a href="#3-Object-fromEntries" class="headerlink" title="3. Object.fromEntries()"></a>3. Object.fromEntries()</h2><ol>
-<li>转为 key-value对 放到一个数组中 参数对象必须是可迭代的</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> entries = <span class="built_in">Object</span>.entries(obj);</span><br><span class="line"></span><br><span class="line"><span class="comment">// entries</span></span><br><span class="line">(<span class="number">3</span>) [<span class="built_in">Array</span>(<span class="number">2</span>), <span class="built_in">Array</span>(<span class="number">2</span>), <span class="built_in">Array</span>(<span class="number">2</span>)]</span><br><span class="line"><span class="number">0</span>: (<span class="number">2</span>) [<span class="string">"a"</span>, <span class="number">1</span>]</span><br><span class="line"><span class="number">1</span>: (<span class="number">2</span>) [<span class="string">"b"</span>, <span class="number">2</span>]</span><br><span class="line"><span class="number">2</span>: (<span class="number">2</span>) [<span class="string">"c"</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = <span class="built_in">Object</span>.fromEntries(entries)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;a: 1, b: 2, c: 3&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="4-String-trimStart-amp-String-trimEnd"><a href="#4-String-trimStart-amp-String-trimEnd" class="headerlink" title="4. String.trimStart() &amp; String.trimEnd()"></a>4. String.trimStart() &amp; String.trimEnd()</h2><ol>
-<li>去掉头部或尾部的空格</li>
-</ol>
-<h2 id="5-Optional-Catch-Binding"><a href="#5-Optional-Catch-Binding" class="headerlink" title="5. Optional Catch Binding"></a>5. Optional Catch Binding</h2><p>catch 本来需要提供error参数 现在不需要了</p>
-<p>Without optional catch binding:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">// we have error parameter to handle it</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>With optional catch binding:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="comment">// no binding or parameter to handle it</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="6-Function-“toString”-Revision"><a href="#6-Function-“toString”-Revision" class="headerlink" title="6. Function “toString” Revision"></a>6. Function “toString” Revision</h2><p>Now the toString method must return source text slice from the beginning of the first token to end of the<br>last token matched by the appropriate grammar</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> /* <span class="title">kk</span>*/ <span class="title">foo</span>(<span class="params"></span>) </span>&#123; <span class="comment">/* cc */</span> &#125;</span><br><span class="line"><span class="comment">// before:</span></span><br><span class="line">foo.toString();</span><br><span class="line"><span class="comment">// "function foo() &#123;&#125;"</span></span><br><span class="line"><span class="comment">// Now:</span></span><br><span class="line">foo.toString();</span><br><span class="line"><span class="comment">//"function /* kk*/ foo() &#123; /* cc */ &#125;"</span></span><br></pre></td></tr></table></figure>
-<h3 id="7-Array-Sort-Stability"><a href="#7-Array-Sort-Stability" class="headerlink" title="7.Array.Sort Stability"></a>7.Array.Sort Stability</h3><p>V8中数组排序使用的不稳定快排算法 如果数组的元素多余10个的时候</p>
-<p>v8(chrome&gt;=70) 使用了 稳定 TimeSort 算法</p>
-<h2 id="8-Symbol-description"><a href="#8-Symbol-description" class="headerlink" title="8. Symbol.description"></a>8. Symbol.description</h2><p>获得一个Symbol的描述</p>
-<p>before</p>
-<p>const symbol1 = Symbol(‘my symbol’);<br>console.log(symbol1.toString());//Symbol(my symbol)</p>
-<p>Now:</p>
-<p>const symbol1 = Symbol(‘my symbol’);<br>console.log(symbol1)<br>console.log(String(symbol1) === <code>Symbol(${&#39;my symbol&#39;})</code>);<br>console.log(symbol1.description);<br>console.log(String(symbol1))</p>
-<p>// Symbol(my symbol)<br>// true<br>// my symbol<br>// Symbol(my symbol)</p>
-<h2 id="9-私有类变量"><a href="#9-私有类变量" class="headerlink" title="9. 私有类变量"></a>9. 私有类变量</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  #born = 1980</span><br><span class="line">  age() &#123; console.log(2020 - this.#born) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person1 = <span class="keyword">new</span> Person()</span><br><span class="line">person1.age() <span class="comment">// 40</span></span><br><span class="line">console.log(person1.#age)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Uncaught SyntaxError: Private field '#age' must be declared in an     </span></span><br><span class="line"><span class="comment">//enclosing class</span></span><br></pre></td></tr></table></figure>
-<h2 id="10-Promise-allSettled"><a href="#10-Promise-allSettled" class="headerlink" title="10. Promise.allSettled"></a>10. Promise.allSettled</h2><p>静态方法 all race allsettled</p>
-<p>all race 只有一个rejected 就会终止  短回路</p>
-<p>allsettled 不会因为任何一个 一定是等待所有 settled 后 </p>
-<p>Promise.allSettled does not short-circuit added in ES2020</p>
-<p>Promise.all short-circuits when an input value is rejected added in ES6</p>
-<p>Promise.race short-circuits when an input value is settled added in ES6</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promiseOne = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span></span><br><span class="line">                       setTimeout(resolve, <span class="number">300</span>));</span><br><span class="line"><span class="keyword">const</span> promiseTwo = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span></span><br><span class="line">                       setTimeout(reject, <span class="number">300</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.allSettled([promiseOne, promiseTwo]).then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'data'</span>, data));</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.all([promiseOne, promiseTwo]).then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'data'</span>, data), error =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error'</span>, error)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.race([promiseOne, promiseTwo]).then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'data'</span>, data), error =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error'</span>, error)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="11-String-prototype-matchAll"><a href="#11-String-prototype-matchAll" class="headerlink" title="11. String.prototype.matchAll"></a>11. String.prototype.matchAll</h2><p>给定一个字符串和一个正则表达式，matchAll（）方法返回一个与正则表达式匹配字符串的所有结果的迭代器，包括捕获组</p>
-<p>Syntax: str.matchAll(regexp)</p>
-<p>regexp: A regular expression object</p>
-<p>Return value: An iterator (which is not a restartable iterable)</p>
-<p>Capture groups are ignored when using match() with the global /g flag</p>
-<p>const regexp = /g(ro)(up(\d?))/g;<br>const groups = ‘group1group2group3’;<br>groups.match(regexp);<br>//(3) [“group1”, “group2”, “group3”]<br>//0: “group1”<br>//1: “group2”<br>//2: “group3”</p>
-<p>Using matchAll, you can access capture groups</p>
-<p>const regexp = /g(ro)(up(\d?))/g;<br>const someString = ‘group1group2group3’;<br>const array = […someString.matchAll(regexp)];<br>array<br>//(3) [Array(4), Array(4), Array(4)]<br>//0: (4) [“group1”, “ro”, “up1”, “1”, index: 0, input: //“group1group2group3”, groups: undefined]<br>//1: (4) [“group2”, “ro”, “up2”, “2”, index: 6, input: //“group1group2group3”, groups: undefined]<br>//2: (4) [“group3”, “ro”, “up3”, “3”, index: 12, input: //“group1group2group3”, groups: undefined]<br>//length: 3</p>
-<h2 id="12-Optional-Chaining-Operator"><a href="#12-Optional-Chaining-Operator" class="headerlink" title="12. Optional Chaining Operator ?."></a>12. Optional Chaining Operator ?.</h2><p>对象 数组 函数调用</p>
-<p>let consumption = car?.engine?.consumption</p>
-<p>let car1 = array?.[1]</p>
-<h2 id="13-Dynamic-Import"><a href="#13-Dynamic-Import" class="headerlink" title="13. Dynamic Import"></a>13. Dynamic Import</h2><p>动态import（）引入了一种类似于函数的新导入形式，与静态导入相比，它可以释放新功能，例如：我们可以与延迟加载一起使用</p>
-<p>//greetingsModule.js<br>export hello () =&gt; console.log(“Hello World!”);</p>
-<p>静态引入</p>
-<p>//main.js<br>import * as greet from ‘./ greetingsModule.js’;<br>greet.hello();<br>//Hello World!</p>
-<p>静态导入语法只能在文件的顶层使用</p>
-<p>相反，使用动态导入，import（module）表达式将加载模块并返回一个promise</p>
-<p>该promise将解析为包含其所有导出内容的模块对象</p>
-<p>另外，您可以在代码中的任何位置调用它</p>
-<p>…<br>if( 1 === 1){<br>import(’./greetingsModule.js’).then( (greet) =&gt; {<br>             greet.hello();<br>            // Hello World!<br>         });<br>}<br>…</p>
-<p>Or you can use async/await:</p>
-<p>…<br>async function load() {<br>    let greet = await import(’./greetingsModule.js’);<br>    greet.hello();<br>    // Hello!<br>  }<br>…</p>
-<p>静态导入和动态导入()都很有用。</p>
-<p>每个都有自己的用例</p>
-<p>使用静态导入，例如初始依赖项</p>
-<p>在其他情况下，考虑使用动态导入特性按需加载依赖项</p>
-<h2 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h2><p>JavaScripts Number对固定范围的数字有严格的限制，并且不能正确操作大整数。 </p>
-<p>BigInt的新功能解决了这个问题，这在处理大价值的不同领域可能是一个相当大的问题。</p>
-<p>BigInt是任意长度的整数。 现在，这种类型的变量可以包含253个数字字符，并且不限于数字值</p>
-<p>我们可以使用新的BigInt数据类型解决此问题。 在数字末尾添加字母“ n”</p>
-<p>const myBigNumber = 9007199254740991n;<br>console.log(myBigNumber +1n);<br>//9007199254740992n  -&gt; Correct value!<br>console.log(myBigNumber +10n);<br>//9007199254741001n  -&gt; Correct value!<br>//Note:<br>console.log(myBigNumber +10);<br>//Error: you cannot mix BigInt and other types, use explicit //conversions.<br>//Correct way: You have to add the letter ‘n’ on the end of the //number</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/03/chrome-devtool-tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/03/chrome-devtool-tips/" itemprop="url">chrome devtool tips</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T09:03:18+08:00">
-                2020-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="console使用类css选择器"><a href="#console使用类css选择器" class="headerlink" title="console使用类css选择器"></a>console使用类css选择器</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'tagName'</span>) /$(<span class="string">'.class'</span>)/ $(<span class="string">'#id'</span>) 还是 $(<span class="string">'.class #id'</span>) 等类似的选择器</span><br><span class="line">都相当于原生JS的<span class="built_in">document</span>.querySelector(<span class="string">''</span>) 方法</span><br><span class="line">这个方法返回第一个匹配选择规则的DOM元素</span><br><span class="line"></span><br><span class="line">$$(<span class="string">'tagName'</span>) 或者 $$(<span class="string">'.className'</span>) 记得是两个$$符号来选择所有匹配规则的DOM元素</span><br><span class="line">选择返回的结果是一个数组，可以通过数组的方法来访问其中的单个元素</span><br><span class="line">都相当于原生JS的<span class="built_in">document</span>.querySelectorAll(<span class="string">''</span>) 方法</span><br></pre></td></tr></table></figure>
-<h2 id="获取某个DOM元素绑定的事件"><a href="#获取某个DOM元素绑定的事件" class="headerlink" title="获取某个DOM元素绑定的事件"></a>获取某个DOM元素绑定的事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getEventListeners($(<span class="string">'selector'</span>))方法以数组对象的格式返回某个元素绑定的所有事件</span><br><span class="line">你可以在控制台里展开对象查看详细的内容</span><br><span class="line"></span><br><span class="line">要是你需要选择其中的某个事件，可以通过下面的方法来访问：</span><br><span class="line"></span><br><span class="line">getEventListeners($(<span class="string">'selector'</span>)).eventName[<span class="number">0</span>].listener</span><br><span class="line">这里的 eventName 表示某种事件类型，例如：</span><br><span class="line"></span><br><span class="line">getEventListeners($(<span class="string">'#firstName'</span>)).click[<span class="number">0</span>].listener</span><br></pre></td></tr></table></figure>
-<h2 id="获取监测事件"><a href="#获取监测事件" class="headerlink" title="获取监测事件"></a>获取监测事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">monitorEvents($(<span class="string">'selector'</span>)) 会监测某个元素上绑定的所有事件</span><br><span class="line">一旦该元素的某个事件被触发就会在控制台里显示出来。</span><br><span class="line">monitorEvents($(<span class="string">'selector'</span>),<span class="string">'eventName'</span>) 可以监听某个元素上绑定的具体事件</span><br><span class="line">第二个参数代表事件类型的名称。例如 monitorEvents($(<span class="string">'#firstName'</span>),<span class="string">'click'</span>) </span><br><span class="line">只监测ID为firstName的元素上的click事件</span><br><span class="line"></span><br><span class="line">monitorEvents($(<span class="string">'selector'</span>),[<span class="string">'eventName1'</span>,<span class="string">'eventName3'</span>,….]) 同上</span><br><span class="line">可以同时检测具体指定的多个事件类型</span><br><span class="line"></span><br><span class="line">unmonitorEvents($(<span class="string">'selector'</span>)) 用来停止对某个元素的事件监测</span><br></pre></td></tr></table></figure>
-<h2 id="通过控制台方法来检查元素"><a href="#通过控制台方法来检查元素" class="headerlink" title="通过控制台方法来检查元素"></a>通过控制台方法来检查元素</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inspect($(<span class="string">'selector'</span>)) 会检查所有匹配选择器的DOM元素，并返回所有选择器选择的DOM对象</span><br><span class="line">例如inspect($(<span class="string">'#firstName'</span>)) 选择所有ID是 firstName 的元素，inspect($(<span class="string">'a'</span>)[<span class="number">3</span>]) 检查并返回页面上第四个 p元素</span><br></pre></td></tr></table></figure>
-<h2 id="列出某个元素的所有属性"><a href="#列出某个元素的所有属性" class="headerlink" title="列出某个元素的所有属性"></a>列出某个元素的所有属性</h2><p>你也可以通过控制台列出某个元素的所有属性<br>dir($(‘selector’)) 会返回匹配选择器的DOM元素的所有属性</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1794,7 +1734,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-count">137</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

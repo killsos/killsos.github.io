@@ -230,6 +230,249 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/09/get请求参数中文编码乱码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/09/get请求参数中文编码乱码/" itemprop="url">get请求参数中文编码乱码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T11:09:09+08:00">
+                2020-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">get请求的字符编码问题</span><br><span class="line">因为其请求参数都是拼接在url上，而Request对象设置编码只能对请求体其作用，</span><br><span class="line">并不能对url编码起作用，url依然使用的是iso-8859-1编码</span><br><span class="line"></span><br><span class="line">get的限制表单的数据集为ASCII码  url=encodeURI(url);</span><br><span class="line"></span><br><span class="line">GET请求  浏览器端是以UTF-8进行编码</span><br><span class="line"></span><br><span class="line">encodeURIComponent()是对统一资源标识符（URI）的组成部分进行编码的方法</span><br><span class="line">它使用一到四个转义序列来表示字符串中的每个字符的UTF-8编码</span><br><span class="line">只有由两个Unicode代理区字符组成的字符才用四个转义字符编码</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">encodeURI()  函数通过将特定字符的每个实例替换为一个、两个</span><br><span class="line">三或四转义序列来对统一资源标识符 (URI) 进行编码</span><br><span class="line">该字符的 UTF-8 编码仅为四转义序列)由两个 &quot;代理&quot; 字符组成</span><br></pre></td></tr></table></figure>
+<h2 id="Post请求"><a href="#Post请求" class="headerlink" title="Post请求"></a>Post请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">post请求处理编码比较容易，直接使用request对象设置编码就可以了</span><br><span class="line">因为post的数据实在请求体里，而request设置编码是会影响到请求体数据编码的所以设置编码有效</span><br></pre></td></tr></table></figure>
+<h2 id="escape-字符编码"><a href="#escape-字符编码" class="headerlink" title="escape 字符编码"></a>escape 字符编码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">escape是对字符串(string)进行编码</span><br><span class="line"></span><br><span class="line">其中 ASCII字母 数字 @*/+  这几个字符不会被编码，其余的都会</span><br></pre></td></tr></table></figure>
+<h2 id="URL-编码"><a href="#URL-编码" class="headerlink" title="URL 编码"></a>URL 编码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">encodeURI 和 encodeURIComponent 都是编码URL，唯一区别就是编码的字符范围</span><br><span class="line"></span><br><span class="line">1. encodeURI</span><br><span class="line"></span><br><span class="line">2. encodeURIComponent</span><br><span class="line"></span><br><span class="line">encodeURI方法不会对下列字符编码  ASCII字母  数字  ~!@#$&amp;*()=:/,;?+&apos;</span><br><span class="line"></span><br><span class="line">encodeURIComponent方法不会对下列字符编码 ASCII字母  数字  ~!*()&apos;</span><br><span class="line"></span><br><span class="line">所以encodeURIComponent比encodeURI编码的范围更大。</span><br><span class="line"></span><br><span class="line">escape 和 encodeURI 都属于 Percent-encoding，基本功能都是把 URI 非法字符转化成合法字符，转化后形式类似「%*」。</span><br><span class="line"></span><br><span class="line">它们的根本区别在于，escape 在处理 0xff 之外字符的时候，是直接使用字符的 unicode 在前面加上一个 「%u」，</span><br><span class="line">而encodeURI则是先进行 UTF-8，再在 UTF-8 的每个字节码前加上一个 「%」</span><br><span class="line">在处理 0xff 以内字符时，编码方式是一样的（都是「%XX」，XX为字符的 16 进制 unicode，同时也是字符的 UTF-8），</span><br><span class="line"></span><br><span class="line">只是范围（即哪些字符编码哪些字符不编码）不一样。</span><br><span class="line"></span><br><span class="line">encodeURI 是W3C 的标准，而 Escape 是非标准</span><br><span class="line"></span><br><span class="line">Percent-encoding</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding%5Fin%5Fa%5FURI</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/09/JavaScript-Events-Handlers-—-onanimationstart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/09/JavaScript-Events-Handlers-—-onanimationstart/" itemprop="url">JavaScript Events Handlers — onanimationstart</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T10:02:40+08:00">
+                2020-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="onanimationstart"><a href="#onanimationstart" class="headerlink" title="onanimationstart"></a>onanimationstart</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// when a CSS animation starts to play</span></span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">'container'</span>&gt;</span><br><span class="line">  &lt;div id=<span class="string">'box'</span>&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line">#box &#123;</span><br><span class="line">  width: <span class="number">100</span>px;</span><br><span class="line">  height: <span class="number">100</span>px;</span><br><span class="line">  left: <span class="number">0</span>;</span><br><span class="line">  top: <span class="number">0</span>;</span><br><span class="line">  border: <span class="number">1</span>px solid red;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  position: relative;</span><br><span class="line">  background-color: red;</span><br><span class="line">  display: block;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  animation: <span class="number">5</span>s resizeBox;</span><br><span class="line">&#125;</span><br><span class="line">#container &#123;</span><br><span class="line">  height: <span class="number">500</span>px;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes resizeBox &#123;</span><br><span class="line">  <span class="keyword">from</span> &#123;</span><br><span class="line">    transform: translateX(<span class="number">100</span>%) scaleX(<span class="number">3</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    transform: translateX(<span class="number">0</span>) scaleX(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// create the resizeBox animation</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.onanimationstart = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(event);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Animation starts'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">event:</span><br><span class="line"></span><br><span class="line">  bubbles</span><br><span class="line"></span><br><span class="line">  cancelBubble</span><br><span class="line"></span><br><span class="line">  cancelable</span><br><span class="line"></span><br><span class="line">  composed is a read-only boolean property that indicates whether or not the event can bubble across</span><br><span class="line">  the boundary between the shadow DOM and the regular DOM</span><br><span class="line"></span><br><span class="line">  currentTarget</span><br><span class="line"></span><br><span class="line">  deepPath</span><br><span class="line"></span><br><span class="line">  defaultPrevented</span><br><span class="line"></span><br><span class="line">  eventPhase</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  explicitOriginalTarget</span><br><span class="line"></span><br><span class="line">  originalTarget</span><br><span class="line"></span><br><span class="line">  returnValue</span><br><span class="line"></span><br><span class="line">  srcElement</span><br><span class="line"></span><br><span class="line">  timeStamp</span><br><span class="line"></span><br><span class="line">  type</span><br><span class="line"></span><br><span class="line">  isTrusted</span><br><span class="line"></span><br><span class="line">AnimationEvent</span><br><span class="line"></span><br><span class="line">  animationName</span><br><span class="line"></span><br><span class="line">  elapsedTime</span><br><span class="line"></span><br><span class="line">  pseudoElement</span><br><span class="line"></span><br><span class="line">  animationName: <span class="string">"resizeBox"</span></span><br><span class="line">  bubbles: <span class="literal">true</span></span><br><span class="line">  ​cancelBubble: <span class="literal">false</span></span><br><span class="line">  ​cancelable: <span class="literal">false</span></span><br><span class="line">  ​composed: <span class="literal">false</span></span><br><span class="line">  ​currentTarget: <span class="literal">null</span></span><br><span class="line">  ​defaultPrevented: <span class="literal">false</span></span><br><span class="line">  ​elapsedTime: <span class="number">0</span></span><br><span class="line">  ​eventPhase: <span class="number">0</span></span><br><span class="line">  ​explicitOriginalTarget: <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span></span></span><br><span class="line"><span class="xml">  ​isTrusted: true</span></span><br><span class="line">  ​originalTarget: &lt;div id="box"&gt;</span><br><span class="line">  ​pseudoElement: ""</span><br><span class="line">  ​returnValue: true</span><br><span class="line">  ​srcElement: &lt;div id="box"&gt;​target: &lt;div id="box"&gt;</span><br><span class="line">  ​timeStamp: 297</span><br><span class="line">  ​type: "animationstart"</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/08/JavaScript-Decorators/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1197,255 +1440,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/06/How-to-Create-Dynamic-Backgrounds-With-the-CSS-Paint-API/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/06/How-to-Create-Dynamic-Backgrounds-With-the-CSS-Paint-API/" itemprop="url">How to Create Dynamic Backgrounds With the CSS Paint API</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-06T15:56:26+08:00">
-                2020-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-Setting-Up-the-Project"><a href="#1-Setting-Up-the-Project" class="headerlink" title="1. Setting Up the Project"></a>1. Setting Up the Project</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>🎨 CSS Paint API<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"styles.css"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">class</span>=<span class="string">"pattern"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="string">'paintWorklet'</span> <span class="keyword">in</span> CSS) &#123;</span></span><br><span class="line"><span class="javascript">                CSS.paintWorklet.addModule(<span class="string">'pattern.js'</span>);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="What-is-a-worklet"><a href="#What-is-a-worklet" class="headerlink" title="What is a worklet?"></a>What is a worklet?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Paint worklet是一个类，它定义应在画布上绘制的内容</span><br><span class="line">它们的工作方式与canvas元素相似</span><br><span class="line"></span><br><span class="line">如果您以前对此有所了解，则该代码将看起来很熟悉</span><br><span class="line">但是，它们不是100％相同。 例如，工作簿中尚不支持文本呈现方法</span><br><span class="line"></span><br><span class="line">.pattern &#123;</span><br><span class="line">    width: 250px;</span><br><span class="line">    height: 250px;</span><br><span class="line">    border: 1px solid #000;</span><br><span class="line">    background-image: paint(pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Defining-the-Worklet"><a href="#Defining-the-Worklet" class="headerlink" title="Defining the Worklet"></a>Defining the Worklet</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pattern</span> </span>&#123;</span><br><span class="line">    paint(context, canvas, properties) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">registerPaint(<span class="string">'pattern'</span>, Pattern);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在这里可以使用registerPaint方法注册绘画工作集</span></span><br><span class="line"><span class="comment">// 您可以在此处定义的CSS中引用第一个参数</span></span><br><span class="line"><span class="comment">// 第二个参数是定义应在画布上绘画的类</span></span><br><span class="line"><span class="comment">// 它具有一个采用三个参数的绘制方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// context: This returns a PaintRenderingContext2D object that implements a subset of the CanvasRenderingContext2D API.</span></span><br><span class="line"><span class="comment">// canvas: This is our canvas, a PaintSize object that only has two properties: width and height.</span></span><br><span class="line"><span class="comment">// properties: This returns a StylePropertyMapReadOnly object that we can use to read CSS properties and their values through JavaScript.</span></span><br></pre></td></tr></table></figure>
-<h2 id="Drawing-the-rectangles"><a href="#Drawing-the-rectangles" class="headerlink" title="Drawing the rectangles"></a>Drawing the rectangles</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">paint(context, canvas, properties) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> x = <span class="number">0</span>; x &lt; canvas.height / <span class="number">20</span>; x++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> y = <span class="number">0</span>; y &lt; canvas.width / <span class="number">20</span>; y++) &#123;</span><br><span class="line">            <span class="keyword">const</span> bgColor = (x + y) % <span class="number">2</span> === <span class="number">0</span> ? <span class="string">'#FFF'</span> : <span class="string">'#FFCC00'</span>;</span><br><span class="line"></span><br><span class="line">            context.shadowColor = <span class="string">'#212121'</span>;</span><br><span class="line">            context.shadowBlur = <span class="number">10</span>;</span><br><span class="line">            context.shadowOffsetX = <span class="number">10</span>;</span><br><span class="line">            context.shadowOffsetY = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            context.beginPath();</span><br><span class="line">            context.fillStyle = bgColor;</span><br><span class="line">            context.rect(x * <span class="number">20</span>, y * <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">            context.fill();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Making-the-Background-Dynamic"><a href="#Making-the-Background-Dynamic" class="headerlink" title="Making the Background Dynamic"></a>Making the Background Dynamic</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-class">.pattern</span> &#123;</span><br><span class="line">     <span class="attribute">width</span>: <span class="number">250px</span>;</span><br><span class="line">     <span class="attribute">height</span>: <span class="number">250px</span>;</span><br><span class="line">     <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line"></span><br><span class="line">     <span class="attribute">background-image</span>: <span class="built_in">paint</span>(pattern);</span><br><span class="line">    <span class="attribute">--pattern-color</span>: <span class="number">#FFCC00</span>;</span><br><span class="line">    <span class="attribute">--pattern-size</span>: <span class="number">23</span>;</span><br><span class="line">    <span class="attribute">--pattern-spacing</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">--pattern-shadow-blur</span>: <span class="number">10</span>;</span><br><span class="line">    <span class="attribute">--pattern-shadow-x</span>: <span class="number">10</span>;</span><br><span class="line">    <span class="attribute">--pattern-shadow-y</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Checking-support-in-CSS"><a href="#Checking-support-in-CSS" class="headerlink" title="Checking support in CSS"></a>Checking support in CSS</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* 1st option */</span></span><br><span class="line">@<span class="keyword">supports</span> (background: paint(pattern)) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * If this part gets evaluated, it means that the Paint API</span></span><br><span class="line"><span class="comment">   * is supported</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 2nd option</span></span><br><span class="line"><span class="comment"> * If the Paint API is supported, the latter rule will override</span></span><br><span class="line"><span class="comment"> * the first one. If it's not, CSS will invalidate it and the one</span></span><br><span class="line"><span class="comment"> * with url() will be applied</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="selector-class">.pattern</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(pattern.png);</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">paint</span>(pattern);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Accessing-the-parameters-in-the-paint-worklet"><a href="#Accessing-the-parameters-in-the-paint-worklet" class="headerlink" title="Accessing the parameters in the paint worklet"></a>Accessing the parameters in the paint worklet</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pattern</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Anything that the `inputProperties` method returns</span></span><br><span class="line">    <span class="comment">// the paint worklet will have access to</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">get</span> inputProperties() &#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">'--pattern-color'</span>,</span><br><span class="line">            <span class="string">'--pattern-size'</span>,</span><br><span class="line">            <span class="string">'--pattern-spacing'</span>,</span><br><span class="line">            <span class="string">'--pattern-shadow-blur'</span>,</span><br><span class="line">            <span class="string">'--pattern-shadow-x'</span>,</span><br><span class="line">            <span class="string">'--pattern-shadow-y'</span></span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">paint(context, canvas, properties) &#123;</span><br><span class="line">    <span class="keyword">const</span> props = &#123;</span><br><span class="line">        color: properties.get(<span class="string">'--pattern-color'</span>).toString().trim(),</span><br><span class="line">        size: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-size'</span>).toString()),</span><br><span class="line">        spacing: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-spacing'</span>).toString()),</span><br><span class="line">        shadow: &#123;</span><br><span class="line">            blur: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-shadow-blur'</span>).toString()),</span><br><span class="line">            x: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-shadow-x'</span>).toString()),</span><br><span class="line">            y: <span class="built_in">parseInt</span>(properties.get(<span class="string">'--pattern-shadow-y'</span>).toString())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">paint(context, canvas, properties) &#123;</span><br><span class="line">    <span class="keyword">const</span> getPropertyAsString = <span class="function"><span class="params">property</span> =&gt;</span> properties.get(property).toString().trim();</span><br><span class="line">    <span class="keyword">const</span> getPropertyAsNumber = <span class="function"><span class="params">property</span> =&gt;</span> <span class="built_in">parseInt</span>(properties.get(property).toString());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> props = &#123;</span><br><span class="line">        color: getPropertyAsString(<span class="string">'--pattern-color'</span>),</span><br><span class="line">        size: getPropertyAsNumber(<span class="string">'--pattern-size'</span>),</span><br><span class="line">        spacing: getPropertyAsNumber(<span class="string">'--pattern-spacing'</span>),</span><br><span class="line">        shadow: &#123;</span><br><span class="line">            blur: getPropertyAsNumber(<span class="string">'--pattern-shadow-blur'</span>),</span><br><span class="line">            x: getPropertyAsNumber(<span class="string">'--pattern-shadow-x'</span>),</span><br><span class="line">            y: getPropertyAsNumber(<span class="string">'--pattern-shadow-y'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x = <span class="number">0</span>; x &lt; canvas.height / props.size; x++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> y = <span class="number">0</span>; y &lt; canvas.width / props.size; y++) &#123;</span><br><span class="line">        <span class="keyword">const</span> bgColor = (x + y) % <span class="number">2</span> === <span class="number">0</span> ? <span class="string">'#FFF'</span> : props.color;</span><br><span class="line"></span><br><span class="line">        context.shadowColor = <span class="string">'#212121'</span>;</span><br><span class="line">        context.shadowBlur = props.shadow.blur;</span><br><span class="line">        context.shadowOffsetX = props.shadow.x;</span><br><span class="line">        context.shadowOffsetY = props.shadow.y;</span><br><span class="line"></span><br><span class="line">        context.beginPath();</span><br><span class="line">        context.fillStyle = bgColor;</span><br><span class="line">        context.rect(x * (props.size + props.spacing),</span><br><span class="line">                     y * (props.size + props.spacing), props.size, props.size);</span><br><span class="line">        context.fill();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/06/06/Redirect-Refresh-and-Access-the-URL-of-the-Current-Page-in-JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/06/Redirect-Refresh-and-Access-the-URL-of-the-Current-Page-in-JavaScript/" itemprop="url">Redirect, Refresh, and Access the URL of the Current Page in JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-06T15:27:01+08:00">
-                2020-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="window-location"><a href="#window-location" class="headerlink" title="window.location"></a>window.location</h2><h2 id="location-href"><a href="#location-href" class="headerlink" title="location.href"></a>location.href</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">location.href = <span class="string">"new url"</span>;</span><br><span class="line"><span class="comment">// or we can use</span></span><br><span class="line">location.assign(<span class="string">"new url"</span>);</span><br><span class="line"></span><br><span class="line">location.replace(<span class="string">"new url"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.reload()</span><br></pre></td></tr></table></figure>
-<h2 id="Force-refresh"><a href="#Force-refresh" class="headerlink" title="Force refresh"></a>Force refresh</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//from cache</span></span><br><span class="line"><span class="built_in">window</span>.location.reload();</span><br><span class="line"><span class="built_in">window</span>.location.reload(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// from server</span></span><br><span class="line"><span class="built_in">window</span>.location.reload(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="Properties-of-Location-Object"><a href="#Properties-of-Location-Object" class="headerlink" title="Properties of Location Object"></a>Properties of Location Object</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 1. Href</span></span><br><span class="line"><span class="comment">// Contains the entire URL of the page</span></span><br><span class="line"><span class="comment">// current page url addresss</span></span><br><span class="line"></span><br><span class="line">location.href;</span><br><span class="line"></span><br><span class="line">location.href = <span class="string">"https://google.com"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Make sure to add http/https. Otherwise, it makes the request on the same page.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Protocol</span></span><br><span class="line">location.protocol; <span class="comment">// https:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. Host  Website hostname with port number.</span></span><br><span class="line">location.host; <span class="comment">// medium.com</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// with port number</span></span><br><span class="line"><span class="keyword">var</span> anchor = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span><br><span class="line">anchor.href = <span class="string">"https:\/\/medium.com:4097"</span></span><br><span class="line">anchor.host <span class="comment">// "medium:4097"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. Hostname  Website hostname</span></span><br><span class="line">location.host; <span class="comment">// medium.com</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. Port</span></span><br><span class="line"><span class="keyword">var</span> anchor = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span><br><span class="line">anchor.href = <span class="string">"https:\/\/medium.com:4097"</span></span><br><span class="line">anchor.port <span class="comment">// "4097"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 6. Pathname</span></span><br><span class="line">location.href; <span class="comment">//https://medium.com/@jagathishsaravanan</span></span><br><span class="line">location.pathname; <span class="comment">// "/@jagathishsaravanan"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 7. Search</span></span><br><span class="line">location.search; <span class="comment">// ?q=javascriptjeep</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 8. Hash</span></span><br><span class="line"><span class="comment">// Contains string of '#' followed by the fragment identifier of the URL</span></span><br><span class="line"></span><br><span class="line">&lt;a id=<span class="string">"myAnchor"</span> href=<span class="string">"/en-US/docs/HTMLHyperlinkElementUtils.href#Examples"</span>&gt;Examples&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">var anchor = document.getElementById("myAnchor");</span></span><br><span class="line"><span class="regexp">console.log(anchor.hash); /</span><span class="regexp">/ Returns '#Examples'</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 9. Origin</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ Origin of specific location</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ consider we are at page : https:/</span><span class="regexp">/medium.com/</span>search?q=javascriptjeep</span><br><span class="line">location.origin; <span class="comment">// https://medium.com</span></span><br></pre></td></tr></table></figure>
-<h2 id="Location-Methods"><a href="#Location-Methods" class="headerlink" title="Location Methods"></a>Location Methods</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 1. assign</span></span><br><span class="line"><span class="comment">// Loads the resource at the URL provided in the parameter</span></span><br><span class="line">location.assign(<span class="string">"https://medium.com"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. reload</span></span><br><span class="line"><span class="comment">// The Location.reload() method reloads the current URL, like the Refresh button</span></span><br><span class="line">location.reload();</span><br><span class="line"></span><br><span class="line"><span class="comment">// forceReload</span></span><br><span class="line">location.reload(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. replace</span></span><br><span class="line"><span class="comment">// consider we are google.com</span></span><br><span class="line"><span class="comment">// when we run this line</span></span><br><span class="line">location.replace(<span class="string">"htts://medium.com"</span>)</span><br><span class="line"><span class="comment">// it will replace the current page and redirect to medium page</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// The difference from the assign() method is that after using replace()</span></span><br><span class="line"><span class="comment">// the current page will not be saved in session History</span></span><br><span class="line"><span class="comment">// meaning the user won't be able to use the Back button to navigate to it</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. toString</span></span><br><span class="line">location.toString();</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1496,7 +1490,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-count">137</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

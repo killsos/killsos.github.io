@@ -230,6 +230,250 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/05/12/4-Useful-JavaScript-Design-Patterns-You-Should-Know/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/12/4-Useful-JavaScript-Design-Patterns-You-Should-Know/" itemprop="url">4 Useful JavaScript Design Patterns You Should Know</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-12T17:17:41+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">软件设计模式是软件设计中给定上下文中常见问题的通用的、可重用的解决方案</span><br><span class="line"></span><br><span class="line">设计模式的价值在于更好地组织我们当前的代码并使将来的迭代更容易。</span><br></pre></td></tr></table></figure>
+<h2 id="Strategy-Pattern-策略模式"><a href="#Strategy-Pattern-策略模式" class="headerlink" title="Strategy Pattern 策略模式"></a>Strategy Pattern 策略模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">假设我们有一个要求，当用户试图打开一个页面时，只有满足以下条件才能看到正确的内容：</span><br><span class="line"></span><br><span class="line">该用户是该站点的注册用户</span><br><span class="line"></span><br><span class="line">用户等级不小于1</span><br><span class="line"></span><br><span class="line">用户必须是前端开发工程师</span><br><span class="line"></span><br><span class="line">用户类型是活跃用户</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">我们需要编写判断逻辑以确保只有合适的用户才能看到内容。 你是做什么？ 许多新手程序员可能只是选择“ if-else”并编写如下代码</span><br><span class="line"></span><br><span class="line">function checkAuth(data) &#123;</span><br><span class="line">  if (data.role !== &apos;registered&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not a registered user&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.grade &lt; 1) &#123;</span><br><span class="line">    console.log(&quot;The user&apos;s level is less than 1&quot;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.job !== &apos;FE&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not a front-end development engineer&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.type !== &apos;active user&apos;) &#123;</span><br><span class="line">    console.log(&apos;The user is not an active user&apos;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">我确定您之前都写过类似的代码，但是存在以下问题：</span><br><span class="line"></span><br><span class="line">checkAuth函数是臃肿的</span><br><span class="line"></span><br><span class="line">每个判断功能都不能重用</span><br><span class="line"></span><br><span class="line">违反开闭原则</span><br><span class="line"></span><br><span class="line">策略模式允许封装用于特定任务的替代算法</span><br><span class="line"></span><br><span class="line">它定义了一系列算法，并以一种在运行时可以互换的方式封装它们，而不会受到客户端的干扰或了解</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const jobList = [&apos;FE&apos;, &apos;BE&apos;];</span><br><span class="line">var strategies = &#123;</span><br><span class="line">  checkRole: function(value) &#123;</span><br><span class="line">    if (value === &apos;registered&apos;) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkGrade: function(value) &#123;</span><br><span class="line">    if (value &gt;= 1) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkJob: function(value) &#123;</span><br><span class="line">    if (jobList.indexOf(value) &gt; 1) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;,</span><br><span class="line">  checkType: function(value) &#123;</span><br><span class="line">    if (value === &apos;active user&apos;) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var Validator = function() &#123;</span><br><span class="line">  // Store strategies</span><br><span class="line">  this.cache = [];</span><br><span class="line">// add strategy to cache</span><br><span class="line">  this.add = function(value, method) &#123;</span><br><span class="line">    this.cache.push(function() &#123;</span><br><span class="line">      return strategies[method](value);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">// check all strategies</span><br><span class="line">  this.check = function() &#123;</span><br><span class="line">    for (let i = 0; i &lt; this.cache.length; i++) &#123;</span><br><span class="line">      let valiFn = this.cache[i];</span><br><span class="line">      var data = valiFn();</span><br><span class="line">      if (!data) &#123;</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var compose1 = function() &#123;</span><br><span class="line">  var validator = new Validator();</span><br><span class="line">  const data1 = &#123;</span><br><span class="line">    role: &apos;register&apos;,</span><br><span class="line">    grade: 3,</span><br><span class="line">    job: &apos;FE&apos;,</span><br><span class="line">    type: &apos;active user&apos;</span><br><span class="line">  &#125;;</span><br><span class="line">  validator.add(data1.role, &apos;checkRole&apos;);</span><br><span class="line">  validator.add(data1.grade, &apos;checkGrade&apos;);</span><br><span class="line">  validator.add(data1.type, &apos;checkType&apos;);</span><br><span class="line">  validator.add(data1.job, &apos;checkJob&apos;);</span><br><span class="line"></span><br><span class="line">  const result = validator.check();</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Publish–subscribe-pattern-发布订阅模式"><a href="#Publish–subscribe-pattern-发布订阅模式" class="headerlink" title="Publish–subscribe pattern  发布订阅模式"></a>Publish–subscribe pattern  发布订阅模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">// 发布订阅模式</span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"></span><br><span class="line">function applySuccess() &#123;</span><br><span class="line">  // Notify the message center for the latest content</span><br><span class="line">  MessageCenter.fetch();</span><br><span class="line">  // Update order information</span><br><span class="line">  Order.update();</span><br><span class="line">  // Inform the person in charge to review</span><br><span class="line">  Checker.alert();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">您的项目通常不仅依赖于这三个模块</span><br><span class="line">例如，当申请成功时，我们需要提交日志。 您如何处理这种情况？</span><br><span class="line">您可能必须再次修改原始功能</span><br><span class="line"></span><br><span class="line">function applySuccess() &#123;</span><br><span class="line">  // Notify the message center for the latest content</span><br><span class="line">  MessageCenter.fetch();</span><br><span class="line">  // Update order information</span><br><span class="line">  Order.update();</span><br><span class="line">  // Inform the person in charge to review</span><br><span class="line">  Checker.alert();</span><br><span class="line">  Log.write();</span><br><span class="line">  // Maybe more</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">随着涉及到越来越多的模块，我们的代码变得越来越肿，难以维护</span><br><span class="line">那就是发布和订阅模型可以节省灾难的时候</span><br><span class="line"></span><br><span class="line">发布-订阅是一种消息传递范例</span><br><span class="line">其中消息的发布者不直接将消息发送给特定的订阅者</span><br><span class="line">而是通过消息通道进行广播</span><br><span class="line">订阅者可以通过订阅获得他们想要的消息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 消息中心 函数</span><br><span class="line"></span><br><span class="line">const EventEmit = function() &#123;</span><br><span class="line">  this.events = &#123;&#125;;</span><br><span class="line">  this.on = function(name, cb) &#123;</span><br><span class="line">    if (this.events[name]) &#123;</span><br><span class="line">      this.events[name].push(cb);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.events[name] = [cb];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  this.trigger = function(name, ...arg) &#123;</span><br><span class="line">    if (this.events[name]) &#123;</span><br><span class="line">      this.events[name].forEach(eventListener =&gt; &#123;</span><br><span class="line">        eventListener(...arg);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 订阅发布</span><br><span class="line"></span><br><span class="line">let event = new EventEmit();</span><br><span class="line">MessageCenter.fetch() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;update MessageCenter&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">Order.update() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;update Order&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">Checker.alert() &#123;</span><br><span class="line">  event.on(&apos;success&apos;, () =&gt; &#123;</span><br><span class="line">    console.log(&apos;Notify Checker&apos;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">event.trigger(&apos;success&apos;);</span><br></pre></td></tr></table></figure>
+<p><img src="../images/publish-subscribe.png" alt="发布订阅模式"></p>
+<h2 id="Decorator-Pattern-装饰模式"><a href="#Decorator-Pattern-装饰模式" class="headerlink" title="Decorator Pattern  装饰模式"></a>Decorator Pattern  装饰模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">核心： 在原来的逻辑上包装一层自己特定逻辑</span><br><span class="line"></span><br><span class="line">正如任何了解React的人所知道的那样，高阶组件实际上只是一个函数。</span><br><span class="line">它接受一个组件作为参数并返回一个新的组件。</span><br><span class="line"></span><br><span class="line">因此，让我们编写一个高阶组件HOC，并用它来装饰TargetComponent</span><br><span class="line"></span><br><span class="line">import React from &apos;react&apos;;</span><br><span class="line">const yellowHOC = WrapperComponent =&gt; &#123;</span><br><span class="line">  return class extends React.Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">      &lt;div style=&#123;&#123; backgroundColor: &apos;yellow&apos; &#125;&#125;&gt;</span><br><span class="line">        &lt;WrapperComponent &#123;...this.props&#125; /&gt;</span><br><span class="line">      &lt;/div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">export default yellowHOC;</span><br><span class="line"></span><br><span class="line">// 装饰  </span><br><span class="line"></span><br><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import yellowHOC from &apos;./yellowHOC&apos;;</span><br><span class="line">class TargetComponent extends Reac.Compoment &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;div&gt;hello world&lt;/div&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default yellowHOC(TargetComponent);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Jon was originally a Chinese speaker</span><br><span class="line">const jonWrite = function() &#123;</span><br><span class="line">  this.writeChinese = function() &#123;</span><br><span class="line">    console.log(&apos;I can only write Chinese&apos;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">// Add the ability to write English to Jon through the decorator</span><br><span class="line">const Decorator = function(old) &#123;</span><br><span class="line">  this.oldWrite = old.writeChinese;</span><br><span class="line">  this.writeEnglish = function() &#123;</span><br><span class="line">    console.log(&apos;Give Jon the ability to write English&apos;);</span><br><span class="line">  &#125;;</span><br><span class="line">  this.newWrite = function() &#123;</span><br><span class="line">    this.oldWrite();</span><br><span class="line">    this.writeEnglish();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">const oldJonWrite = new jonWrite();</span><br><span class="line">const decorator = new Decorator(oldJonWrite);</span><br><span class="line">decorator.newWrite();</span><br></pre></td></tr></table></figure>
+<h2 id="Chain-of-Responsibility-Pattern-责任链模式"><a href="#Chain-of-Responsibility-Pattern-责任链模式" class="headerlink" title="Chain of Responsibility Pattern  责任链模式"></a>Chain of Responsibility Pattern  责任链模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">假设当我们申请从公司购买设备时，必须按以下步骤进行操作：</span><br><span class="line"></span><br><span class="line">申请设备</span><br><span class="line"></span><br><span class="line">选择送货地址</span><br><span class="line"></span><br><span class="line">选择负责人进行审核</span><br><span class="line"></span><br><span class="line">许多新手将其视为非常简单的要求，并开始编写类似的代码</span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"></span><br><span class="line">function applyDevice(data) &#123;</span><br><span class="line">  // some code to apply device</span><br><span class="line">  // ...</span><br><span class="line">// Then go to the next step</span><br><span class="line">  selectAddress(nextData);</span><br><span class="line">&#125;</span><br><span class="line">function selectAddress(data) &#123;</span><br><span class="line">  // some code to select address</span><br><span class="line">  // ...</span><br><span class="line"></span><br><span class="line">  // Then go to the next step</span><br><span class="line">  selectChecker(nextData);</span><br><span class="line">&#125;</span><br><span class="line">function selectChecker(data) &#123;</span><br><span class="line">  // Some code to select a person to review</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">上述缺点非常大：我们的购买过程可能会发生变化，例如添加库存检查过程</span><br><span class="line">然后，您必须彻底更改原始代码，这很难维护代码设计</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在这一点上，我们可以考虑使用责任链模式</span><br><span class="line"></span><br><span class="line">const Chain = function(fn) &#123;</span><br><span class="line">  this.fn = fn</span><br><span class="line">  this.setNext = function(next) &#123;</span><br><span class="line">    return this.next = next</span><br><span class="line">  &#125;</span><br><span class="line">  this.run = function(...args) &#123;</span><br><span class="line">    let result = this.fn.call(this, ...args);</span><br><span class="line">    if (result) &#123;</span><br><span class="line">      this.next &amp;&amp; this.next.fn.call(this.next,...args);</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">const applyDevice = function() &#123;&#125;</span><br><span class="line">const chainApplyDevice = new Chain(applyDevice);</span><br><span class="line">const selectAddress = function() &#123;&#125;</span><br><span class="line">const chainSelectAddress = new Chain(selectAddress);</span><br><span class="line">const selectChecker = function() &#123;&#125;</span><br><span class="line">const chainSelectChecker = new Chain(selectChecker);</span><br><span class="line">chainApplyDevice.setNext(chainSelectAddress).setNext(chainSelectChecker);</span><br><span class="line">chainApplyDevice.run();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/05/09/chrome-philosophy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="killsos.ql@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="killsos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/09/chrome-philosophy/" itemprop="url">chrome philosophy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T10:24:22+08:00">
+                2020-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/05/08/frontEnd-perform-parameter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1458,287 +1702,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/27/Do-you-know-why-this-x-is-Undefined-when-x-is-declared-with-Const-or-Let/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/27/Do-you-know-why-this-x-is-Undefined-when-x-is-declared-with-Const-or-Let/" itemprop="url">Do you know why this.x is Undefined when x is declared with Const or Let?</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-27T16:28:49+08:00">
-                2020-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="question"><a href="#question" class="headerlink" title="question"></a>question</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">&#125;</span><br><span class="line">f(); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-<p>根据文档，对于所有执行上下文，有三个组件-代码评估状态，函数和领域。 我们将研究第三个组件Realm  </p>
-<p>A Realm is a kind of a world that associated ECMAScript resources live.   </p>
-<p>And the realm of the running execution is called the current Realm.  </p>
-<p> Why this is a matter? When you execute JavaScript code,   </p>
-<p> it creates a global execution context whose current Realm is the global Realm.   </p>
-<p> In this realm, an object called globalEnv is created and envolved, which contains a Lexical Environment.</p>
-<p> 领域是一种与ECMAScript资源相关联的世界。 运行执行的领域称为当前领域。   </p>
-<p> 为什么这是问题？ 当您执行JavaScript代码时，它将创建一个全局执行上下文，其当前领域是全局领域。   </p>
-<p> 在此领域中，将创建并旋转一个名为globalEnv的对象，其中包含一个词法环境。</p>
-<h2 id="Global-Lexical-Environment"><a href="#Global-Lexical-Environment" class="headerlink" title="Global Lexical Environment"></a>Global Lexical Environment</h2><p> Every lexical environment has an environment record, which contains your variables and keeps tracking them.     </p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> globalLexicalEnvironment = &#123;</span><br><span class="line">  environmentRecord: &#123;</span><br><span class="line">    name: name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">The lexical environment created <span class="keyword">in</span> the Realm <span class="keyword">of</span> the global execution context contains thewindow object.</span><br></pre></td></tr></table></figure>
-<p> 生成全局执行上下文时，将创建其环境记录，并将其视为所有ECMAScript元素共享的最外部作用域。   </p>
-<p> 全球环境记录中存在一个领域，换句话说，它是最外部的范围。   </p>
-<p> 并且此环境记录提供了内置变量或函数的绑定。 这是这些内置物品的列表。  </p>
-<p>Infinity<br>NaN<br>undefined<br>eval<br>Array<br>Boolean</p>
-<p>….</p>
-<p>对于浏览器JavaScript，将这些属性分配给的对象称为window。   </p>
-<p>这种关系可以表示如下，但是，这当然不是JavaScript的工作方式</p>
-<p>var window = {<br>  Infinity: …,<br>  NaN: …,<br>  undefined: …,<br>  eval: …,<br>  Array: …,<br>  Boolean: …,<br>};<br>var globalExecutionContext = {<br>  environmentRecords: {<br>    window: window<br>  }<br>};</p>
-<h2 id="Var-vs-Const-amp-Let"><a href="#Var-vs-Const-amp-Let" class="headerlink" title="Var vs Const &amp; Let"></a>Var vs Const &amp; Let</h2><p>那么为什么var变量成为window属性 而let和const声明的属性则不是呢？</p>
-<p>在将事物声明并分配给全局环境记录中涉及的名为window的对象时，将向全局环境记录中添加另一个声明。 称为TopLevelVarDeclaredNames。  </p>
-<p>它定义了JavaScript如何在顶级范围内处理var变量。 根据规范，程序开头是一个空数组  </p>
-<p>事实是，没有TopLevelLetDeclaredNames或TopLevelConstDeclaredNames。 意思是，const和let变量不会添加到全局对象window。   </p>
-<h2 id="那我无法永远访问它们吗？"><a href="#那我无法永远访问它们吗？" class="headerlink" title="那我无法永远访问它们吗？"></a>那我无法永远访问它们吗？</h2><p>解决办法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">print</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.x = x;</span><br><span class="line">print(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jsonload.com/2020/03/27/this-keyword-in-JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="killsos.ql@gmail.com">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="killsos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/27/this-keyword-in-JavaScript/" itemprop="url">this keyword in JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-27T15:53:02+08:00">
-                2020-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="what-is-this-keyword"><a href="#what-is-this-keyword" class="headerlink" title="what is this keyword"></a>what is this keyword</h2><p>首先，您应该知道“ this”是什么以及它在JavaScript中的作用。<br>JavaScript中存在一个称为“执行上下文”的区域，该区域是JavaScript首次运行代码或调用函数时创建的。<br>如果连续调用5个函数，则将创建6个执行上下文-全局执行上下文，以及其他5个函数执行上下文。<br>每个执行上下文都包含一个名为ThisBinding的值，该值与“ this”关键字有关</p>
-<p>那又是什么呢？ 在JavaScript中，“ this”是一个特殊的关键字，无论您当前的函数在哪里，<br>都可以使用它直接在当前作用域中访问某个对象。<br>认情况下，它引用全局对象。 在Node.Js中，它将是全局的global；在浏览器中，它将是window。  </p>
-<p>但更重要的是要记住，“ this”所指出的内容取决于哪个上下文调用包含“ this”的函数。</p>
-<h2 id="how-use-this"><a href="#how-use-this" class="headerlink" title="how use this"></a>how use this</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">x</span>: <span class="number">2</span> &#125;;</span><br><span class="line">obj.foo = foo;</span><br><span class="line"></span><br><span class="line">obj.foo(); <span class="comment">// 2</span></span><br><span class="line">foo(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-<p>即使“ this”是由调用函数的上下文决定的，但“ this”并不总是遵循此规则</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);  </span><br><span class="line">  &#125;</span><br><span class="line">  bar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.foo = foo;</span><br><span class="line">obj.foo();</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<h2 id="How-to-avoid-this-flaw"><a href="#How-to-avoid-this-flaw" class="headerlink" title="How to avoid this flaw?"></a>How to avoid this flaw?</h2><ol>
-<li><p>Function.prototype.bind</p>
-</li>
-<li><p>Function.prototype.call and Function.prototype.apply</p>
-</li>
-<li><p>that = this  _this = this</p>
-</li>
-<li><p>arrow function  this取决于声明的地方</p>
-</li>
-</ol>
-<p>An arrow function does not have its own this<br>The this value of the enclosing lexical scope is used<br>arrow functions follow the normal variable lookup rules  </p>
-<h2 id="this-in-a-constructor-function"><a href="#this-in-a-constructor-function" class="headerlink" title="this in a constructor function"></a>this in a constructor function</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1789,7 +1752,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-count">137</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
